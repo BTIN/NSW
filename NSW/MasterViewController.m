@@ -43,7 +43,7 @@
     
     
     EventDataSource * ed = [[EventDataSource alloc]init];
-    //[ed connectionDidFinishLoading];
+    [ed getStringFromURL];
     
 }
 
