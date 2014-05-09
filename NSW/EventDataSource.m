@@ -17,7 +17,7 @@
 NSMutableData *receivedData;
 
 
-- (void) getStringFromUrl {
+- (void) getStringFromURL {
     
     // Create the request.
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"]

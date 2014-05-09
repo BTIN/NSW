@@ -11,7 +11,10 @@
 @interface EventDataSource : NSObject
 
 
-NSMutableArray *getEventArrayForDate(NSString *date);
+//NSMutableArray *getEventArrayForDate(NSString *date);
 
+void getStringFromURL();
+void connectionDidFinishLoading();
+void connection();
 
 @end
