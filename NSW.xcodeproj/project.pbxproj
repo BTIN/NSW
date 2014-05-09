@@ -10,10 +10,6 @@
 		6C0A18E5937C4725A4DCB069 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2E3248EC341149C22A407 /* libPods.a */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
 		E21CDE76191D4B8A00884608 /* events-1.ics in Resources */ = {isa = PBXBuildFile; fileRef = E21CDE75191D4B8A00884608 /* events-1.ics */; };
-		E21CDE80191D4F9200884608 /* MXLCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE79191D4F9200884608 /* MXLCalendar.m */; };
-		E21CDE81191D4F9200884608 /* MXLCalendarEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE7B191D4F9200884608 /* MXLCalendarEvent.m */; };
-		E21CDE82191D4F9200884608 /* MXLCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE7D191D4F9200884608 /* MXLCalendarManager.m */; };
-		E21CDE83191D4F9200884608 /* NSTimeZone+ProperAbbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE7F191D4F9200884608 /* NSTimeZone+ProperAbbreviation.m */; };
 		E2842AC3191A9992007FBD9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC2191A9992007FBD9B /* Foundation.framework */; };
 		E2842AC5191A9992007FBD9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC4191A9992007FBD9B /* CoreGraphics.framework */; };
 		E2842AC7191A9992007FBD9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC6191A9992007FBD9B /* UIKit.framework */; };
@@ -47,14 +43,6 @@
 		E21CDE72191D47BF00884608 /* EventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataSource.h; sourceTree = "<group>"; };
 		E21CDE73191D47BF00884608 /* EventDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDataSource.m; sourceTree = "<group>"; };
 		E21CDE75191D4B8A00884608 /* events-1.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "events-1.ics"; path = "../../../../Downloads/events-1.ics"; sourceTree = "<group>"; };
-		E21CDE78191D4F9200884608 /* MXLCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXLCalendar.h; sourceTree = "<group>"; };
-		E21CDE79191D4F9200884608 /* MXLCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXLCalendar.m; sourceTree = "<group>"; };
-		E21CDE7A191D4F9200884608 /* MXLCalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXLCalendarEvent.h; sourceTree = "<group>"; };
-		E21CDE7B191D4F9200884608 /* MXLCalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXLCalendarEvent.m; sourceTree = "<group>"; };
-		E21CDE7C191D4F9200884608 /* MXLCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXLCalendarManager.h; sourceTree = "<group>"; };
-		E21CDE7D191D4F9200884608 /* MXLCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXLCalendarManager.m; sourceTree = "<group>"; };
-		E21CDE7E191D4F9200884608 /* NSTimeZone+ProperAbbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimeZone+ProperAbbreviation.h"; sourceTree = "<group>"; };
-		E21CDE7F191D4F9200884608 /* NSTimeZone+ProperAbbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimeZone+ProperAbbreviation.m"; sourceTree = "<group>"; };
 		E2842ABF191A9992007FBD9B /* NSW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2842AC2191A9992007FBD9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E2842AC4191A9992007FBD9B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,26 +91,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E21CDE77191D4F9200884608 /* MXLCalendarManager */ = {
-			isa = PBXGroup;
-			children = (
-				E21CDE78191D4F9200884608 /* MXLCalendar.h */,
-				E21CDE79191D4F9200884608 /* MXLCalendar.m */,
-				E21CDE7A191D4F9200884608 /* MXLCalendarEvent.h */,
-				E21CDE7B191D4F9200884608 /* MXLCalendarEvent.m */,
-				E21CDE7C191D4F9200884608 /* MXLCalendarManager.h */,
-				E21CDE7D191D4F9200884608 /* MXLCalendarManager.m */,
-				E21CDE7E191D4F9200884608 /* NSTimeZone+ProperAbbreviation.h */,
-				E21CDE7F191D4F9200884608 /* NSTimeZone+ProperAbbreviation.m */,
-			);
-			name = MXLCalendarManager;
-			path = "../../../Downloads/MXLCalendarManager-master/MXLCalendarManager";
-			sourceTree = "<group>";
-		};
 		E2842AB6191A9991007FBD9B = {
 			isa = PBXGroup;
 			children = (
-				E21CDE77191D4F9200884608 /* MXLCalendarManager */,
 				E2842AC8191A9992007FBD9B /* NSW */,
 				E2842AEA191A9992007FBD9B /* NSWTests */,
 				E2842AC1191A9992007FBD9B /* Frameworks */,
@@ -334,14 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2842AD3191A9992007FBD9B /* AppDelegate.m in Sources */,
-				E21CDE80191D4F9200884608 /* MXLCalendar.m in Sources */,
 				E2842AD9191A9992007FBD9B /* MasterViewController.m in Sources */,
-				E21CDE81191D4F9200884608 /* MXLCalendarEvent.m in Sources */,
 				E2842ACF191A9992007FBD9B /* main.m in Sources */,
-				E21CDE82191D4F9200884608 /* MXLCalendarManager.m in Sources */,
 				E2842ADC191A9992007FBD9B /* DetailViewController.m in Sources */,
 				E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */,
-				E21CDE83191D4F9200884608 /* NSTimeZone+ProperAbbreviation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
