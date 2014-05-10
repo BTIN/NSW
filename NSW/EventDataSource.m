@@ -15,6 +15,7 @@
 // declare constant something
 
 NSMutableData *receivedData;
+NSString* allEvents;
 
 
 - (void) getStringFromURL {
@@ -57,11 +58,21 @@ NSMutableData *receivedData;
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    // This ascii is weird. Other things give us Chinese.
-    NSString* allEvents = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
+    
+    // This ASCII is weird. Other things give us Chinese. What do we do?
+    
+    allEvents = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
+    //NSLog(@"%@", allEvents);
+    
+}
+
+- (void) parseIntoEvents {
+    
+    NSArray *myWords = [[NSArray alloc]init];
+    myWords = [allEvents componentsSeparatedByString:@"BEGIN:VEVENT"];
     NSLog(@"%@", allEvents);
     
-    
+
 }
 
 

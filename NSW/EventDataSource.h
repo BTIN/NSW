@@ -13,8 +13,9 @@
 
 //NSMutableArray *getEventArrayForDate(NSString *date);
 
--(void *)getStringFromURL;
--(void *)connectionDidFinishLoading;
--(void *)connection;
+-(void)getStringFromURL;
+-(void)connectionDidFinishLoading;
+-(void)connection;
+-(void)parseIntoEvents;
 
 @end

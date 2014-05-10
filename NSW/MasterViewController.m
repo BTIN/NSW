@@ -44,17 +44,12 @@
     
     EventDataSource * ed = [[EventDataSource alloc]init];
     [ed getStringFromURL];
+    [ed parseIntoEvents];
+    
+    
+    
     
 }
-
-
-
-
-
-
-
-
-
 
 
 
