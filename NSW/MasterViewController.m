@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "MMDrawerController.h"
 #import "EventDataSource.h"
+#import "Event.h"
 
 #import "DetailViewController.h"
 

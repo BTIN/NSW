@@ -12,9 +12,9 @@
 
 @implementation Event
 @synthesize title;
-@synthesize description;
+@synthesize theDescription;
 @synthesize location;
-@synthesize startDT;
+@synthesize startDateTime;
 @synthesize duration;
 
 - (id)init {
@@ -26,33 +26,51 @@
     return self;
 }
 
-- (void) setStartDTFromString:(NSString *)rawStartDT {
+-(id)initWithTitle:(NSString *)title_ Description:(NSString *)desc_ Location:(NSString *)location_ Start:(NSString *)rawStart Duration:(NSString *)rawDuration
+{
+    self = [super init];
+    if (self) {
+        self.title = title_;
+        self.theDescription = desc_;
+        self.location = location_;
+        self.startDateTime = [self parseStartDateTimeFromString:rawStart];
+        self.duration = [self parseDurationFromString:rawDuration];
+    }
+    return self;
+}
+
+-(NSString *) description {
+    return [NSString stringWithFormat: @"Event: Title=%@ \nDescription=%@ \nLocation=%@ \nStart=%@ \nDuration=%@ seconds", title, theDescription, location, startDateTime, duration];
+}
+
+
+
+- (NSDate *) parseStartDateTimeFromString:(NSString *)rawStartDateTime {
     static NSDateFormatter *dateFormatter = nil;
     if (dateFormatter == nil){
         dateFormatter = [[NSDateFormatter alloc] init];
         NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
         
         [dateFormatter setLocale:enUSPOSIXLocale];
-        [dateFormatter setDateFormat:@"yyyymmdd'T'hhmmss"]; //this is the correct format but I'm not sure if the syntax is right
+        [dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"]; //this is the correct format but I'm not sure if the syntax is right
         [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-5*3600]]; // US Central time
     }
     
     // Convert raw string to an NSDate.
-    startDT = [dateFormatter dateFromString:rawStartDT];
+    return [dateFormatter dateFromString:rawStartDateTime];
+    NSLog(@"%@", startDateTime);
 }
 
-- (void) setdurationFromString:(NSString *)rawDuration {
-    NSString *durationPattern = @"PT(\\d{1,2})H(\\d{1,2})S(\\d{1,2})";
+- (NSNumber *) parseDurationFromString:(NSString *)rawDuration {
+    // Split a string that looks like "PT##H##M##S" into the array ['P', # of hours, # of minutes, # of seconds, '']
+    NSArray *matches = [rawDuration componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"THMS"]];
+
+    NSNumber *hours = matches[1];
+    NSNumber *minutes = matches[2];
+    NSNumber *seconds = matches[3];
     
-    NSRegularExpression *durationRE = [NSRegularExpression regularExpressionWithPattern:durationPattern options:NSRegularExpressionCaseInsensitive error:nil];
-    
-    NSArray *matches = [durationRE matchesInString:rawDuration options:0 range:NSMakeRange(0, [rawDuration length])];
-    
-    NSNumber *hours = [matches objectAtIndex:0];
-    NSNumber *minutes = [matches objectAtIndex:1];
-    NSNumber *seconds = [matches objectAtIndex:2];
-    
-    duration = [NSNumber numberWithInt:([hours intValue] * 3600 + [minutes intValue] * 60 + [seconds intValue])];
+    return [NSNumber numberWithInt:([hours intValue] * 3600 + [minutes intValue] * 60 + [seconds intValue])];
+    NSLog(@"%@", duration);
 }
 
 @end
