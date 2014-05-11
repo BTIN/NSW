@@ -13,8 +13,10 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *location;
-@property (nonatomic, strong) NSDate *startDT;
+@property (nonatomic, strong) NSDate *startDateTime;
 @property (nonatomic, strong) NSNumber *duration;
 
+-(void) setStartDateTimeFromString:(NSString *)rawStartDateTime;
+-(void) setDurationFromString:(NSString *)rawDuration;
 
 @end

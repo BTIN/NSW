@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "MMDrawerController.h"
 #import "EventDataSource.h"
+#import "Event.h"
 
 #import "DetailViewController.h"
 
@@ -42,9 +43,13 @@
     
     
     
-    EventDataSource * ed = [[EventDataSource alloc]init];
-    [ed getStringFromURL];
-    [ed parseIntoEvents];
+    //EventDataSource * ed = [[EventDataSource alloc]init];
+    //[ed getStringFromURL];
+    //[ed parseIntoEvents];
+    
+    Event *e = [[Event alloc] init];
+    [e setStartDateTimeFromString:@"20120904T140000"];
+    //[e setDurationFromString:@"PT1H0M0S"];
     
     
     
