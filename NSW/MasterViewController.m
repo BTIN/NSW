@@ -39,15 +39,15 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
-    
-    
-    
     EventDataSource * ed = [[EventDataSource alloc]init];
-    [ed parseStringFromURL];
+    [ed returnArray];
     
     
+
     
+    //NSArray *parsedEvents = [ed connectionDidFinishLoading];
     
+
 }
 
 

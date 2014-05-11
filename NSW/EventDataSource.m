@@ -13,15 +13,18 @@
 
 //String of all events
 @synthesize rawEvents;
+@synthesize allParsedEvents;
 
 // NSMutableArray * eventList = [NSMutableArray alloc];
 
 NSMutableData *receivedData;
-NSArray *allParsedEvents;
-bool didFinishLoading = NO;
+bool done;
+
 
 
 - (void) parseStringFromURL {
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     // Create the request.
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"]
@@ -39,6 +42,7 @@ bool didFinishLoading = NO;
     NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
     
     
+    
     if (!theConnection) {
         // Release the receivedData object.
         receivedData = nil;
@@ -46,10 +50,9 @@ bool didFinishLoading = NO;
         NSLog(@"Connection failed");
         
     }
-    
-    
 
 }
+
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -66,18 +69,37 @@ bool didFinishLoading = NO;
     
     // This ASCII is weird. Other things give us Chinese. What do we do?
     self.rawEvents = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
-    self.parseIntoEvents;
-
+    [self parseIntoEvents];
+    
+    
+    
 }
 
 - (void) parseIntoEvents {
     
-    allParsedEvents = [[NSArray alloc]init];
-    allParsedEvents = [self.rawEvents componentsSeparatedByString:@"BEGIN:VEVENT"];
-    NSLog(@"%@", allParsedEvents[1]);
+    self.allParsedEvents = [[NSArray alloc]init];
+    self.allParsedEvents = [self.rawEvents componentsSeparatedByString:@"BEGIN:VEVENT"];
+    //NSLog(@"%@", allParsedEvents[1]);
     
-
+    done = YES;
+    
+    NSLog(@"test 2");
+    
+    
 }
+
+- (void) returnArray{
+    [self parseStringFromURL];
+    if (done) {
+        NSLog(@"%@", self.allParsedEvents[1]);
+    }
+    
+    NSLog(@"test");
+
+   
+    
+}
+
 
 
 
