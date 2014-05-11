@@ -48,8 +48,8 @@
     //[ed parseIntoEvents];
     
     Event *e = [[Event alloc] init];
-    //[e setStartDateTimeFromString:@"20120904T140000"];
-    [e setDurationFromString:@"PT2H45M30S"];
+    //[e parseStartDateTimeFromString:@"20120904T140000"];
+    [e parseDurationFromString:@"PT2H45M30S"];
     
     
     

@@ -17,6 +17,6 @@
 @property (nonatomic, strong) NSNumber *duration; // The number of seconds that the event lasts
 
 
--(void) setStartDateTimeFromString:(NSString *)rawStartDateTime;
--(void) setDurationFromString:(NSString *)rawDuration;
+-(void) parseStartDateTimeFromString:(NSString *)rawStartDateTime;
+-(void) parseDurationFromString:(NSString *)rawDuration;
 @end

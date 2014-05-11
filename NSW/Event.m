@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void) setStartDateTimeFromString:(NSString *)rawStartDateTime {
+- (void) parseStartDateTimeFromString:(NSString *)rawStartDateTime {
     static NSDateFormatter *dateFormatter = nil;
     if (dateFormatter == nil){
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -42,7 +42,7 @@
     NSLog(@"%@", startDateTime);
 }
 
-- (void) setDurationFromString:(NSString *)rawDuration {
+- (void) parseDurationFromString:(NSString *)rawDuration {
     // Split a string that looks like "PT##H##M##S" into the array ['P', # of hours, # of minutes, # of seconds, '']
     NSArray *matches = [rawDuration componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"THMS"]];
 
