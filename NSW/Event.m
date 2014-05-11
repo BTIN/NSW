@@ -12,7 +12,7 @@
 
 @implementation Event
 @synthesize title;
-@synthesize description;
+@synthesize theDescription;
 @synthesize location;
 @synthesize startDateTime;
 @synthesize duration;
@@ -26,7 +26,26 @@
     return self;
 }
 
-- (void) parseStartDateTimeFromString:(NSString *)rawStartDateTime {
+-(id)initWithTitle:(NSString *)title_ Description:(NSString *)desc_ Location:(NSString *)location_ Start:(NSString *)rawStart Duration:(NSString *)rawDuration
+{
+    self = [super init];
+    if (self) {
+        self.title = title_;
+        self.theDescription = desc_;
+        self.location = location_;
+        self.startDateTime = [self parseStartDateTimeFromString:rawStart];
+        self.duration = [self parseDurationFromString:rawDuration];
+    }
+    return self;
+}
+
+-(NSString *) description {
+    return [NSString stringWithFormat: @"Event: Title=%@ \nDescription=%@ \nLocation=%@ \nStart=%@ \nDuration=%@ seconds", title, theDescription, location, startDateTime, duration];
+}
+
+
+
+- (NSDate *) parseStartDateTimeFromString:(NSString *)rawStartDateTime {
     static NSDateFormatter *dateFormatter = nil;
     if (dateFormatter == nil){
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -38,11 +57,11 @@
     }
     
     // Convert raw string to an NSDate.
-    startDateTime = [dateFormatter dateFromString:rawStartDateTime];
+    return [dateFormatter dateFromString:rawStartDateTime];
     NSLog(@"%@", startDateTime);
 }
 
-- (void) parseDurationFromString:(NSString *)rawDuration {
+- (NSNumber *) parseDurationFromString:(NSString *)rawDuration {
     // Split a string that looks like "PT##H##M##S" into the array ['P', # of hours, # of minutes, # of seconds, '']
     NSArray *matches = [rawDuration componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"THMS"]];
 
@@ -50,7 +69,7 @@
     NSNumber *minutes = matches[2];
     NSNumber *seconds = matches[3];
     
-    duration = [NSNumber numberWithInt:([hours intValue] * 3600 + [minutes intValue] * 60 + [seconds intValue])];
+    return [NSNumber numberWithInt:([hours intValue] * 3600 + [minutes intValue] * 60 + [seconds intValue])];
     NSLog(@"%@", duration);
 }
 

@@ -11,12 +11,12 @@
 @interface Event : NSObject
 
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *theDescription;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSDate *startDateTime; // a NSDate object representing the start date and time of the event
 @property (nonatomic, strong) NSNumber *duration; // The number of seconds that the event lasts
 
-
--(void) parseStartDateTimeFromString:(NSString *)rawStartDateTime;
--(void) parseDurationFromString:(NSString *)rawDuration;
+-(id)initWithTitle:(NSString *)title_ Description:(NSString *)desc_ Location:(NSString *)location_ Start:(NSString *)rawStart Duration:(NSString *)rawDuration;
+//-(NSDate *) parseStartDateTimeFromString:(NSString *)rawStartDateTime;
+//-(NSNumber *) parseDurationFromString:(NSString *)rawDuration;
 @end

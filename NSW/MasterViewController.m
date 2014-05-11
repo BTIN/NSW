@@ -47,9 +47,16 @@
     //[ed getStringFromURL];
     //[ed parseIntoEvents];
     
-    Event *e = [[Event alloc] init];
+    NSString *title = @"New Student Week Welcome & Registration";
+    NSString *desc = @"Welcome to Carleton! Make this your first stop when you arrive on campus. You‚Äôll receive a welcome packet and meet lots of friendly students and staff members who will get you pointed in the right direction. Just look for the HUGE tent on the Bald Spot near the Chapel and main entrance to campus. Can‚Äôt find it? Just look for the staff members in the blue t-shirts for a ssistance. For those arriving after 3:00 p.m., late check in will be available until 6:00 p.m. at the Sayles-Hill information desk.";
+    NSString *loc = @"Bald Spot Welcome Tent";
+    NSString *start = @"20120904T080000";
+    NSString *dur = @"PT7H0M0S";
+    
+    Event *e = [[Event alloc] initWithTitle:title Description:desc Location:loc Start:start Duration:dur];
+    NSLog(@"%@", e);
     //[e parseStartDateTimeFromString:@"20120904T140000"];
-    [e parseDurationFromString:@"PT2H45M30S"];
+    //[e parseDurationFromString:@"PT2H45M30S"];
     
     
     
