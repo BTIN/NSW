@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		688BA69D191ED5F5008EF1FF /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 688BA69C191ED5F5008EF1FF /* Event.m */; };
 		68E045E3191FF6B100B36423 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events.ics */; };
+		68E045E51920061700B36423 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E045E41920061700B36423 /* Event.m */; };
 		6C0A18E5937C4725A4DCB069 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2E3248EC341149C22A407 /* libPods.a */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
 		E2842AC3191A9992007FBD9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC2191A9992007FBD9B /* Foundation.framework */; };
@@ -26,7 +26,6 @@
 		E2842AE7191A9992007FBD9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC6191A9992007FBD9B /* UIKit.framework */; };
 		E2842AEF191A9992007FBD9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2842AED191A9992007FBD9B /* InfoPlist.strings */; };
 		E2842AF1191A9992007FBD9B /* NSWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2842AF0191A9992007FBD9B /* NSWTests.m */; };
-		E2DB1C3B191FEE6200F87AE9 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = E2DB1C3A191FEE6200F87AE9 /* events.ics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +41,8 @@
 /* Begin PBXFileReference section */
 		5BE2E3248EC341149C22A407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		688BA69B191ED5F5008EF1FF /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		688BA69C191ED5F5008EF1FF /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		68E045E2191FF6B100B36423 /* events.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = events.ics; sourceTree = "<group>"; };
+		68E045E41920061700B36423 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		C06B0FA12298495BA45210A7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E21CDE72191D47BF00884608 /* EventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataSource.h; sourceTree = "<group>"; };
 		E21CDE73191D47BF00884608 /* EventDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDataSource.m; sourceTree = "<group>"; };
@@ -68,7 +67,6 @@
 		E2842AEC191A9992007FBD9B /* NSWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NSWTests-Info.plist"; sourceTree = "<group>"; };
 		E2842AEE191A9992007FBD9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2842AF0191A9992007FBD9B /* NSWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSWTests.m; sourceTree = "<group>"; };
-		E2DB1C3A191FEE6200F87AE9 /* events.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = events.ics; path = ../../../../Downloads/events.ics; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,9 +138,10 @@
 				E2842ADA191A9992007FBD9B /* DetailViewController.h */,
 				E2842ADB191A9992007FBD9B /* DetailViewController.m */,
 				688BA69B191ED5F5008EF1FF /* Event.h */,
-				688BA69C191ED5F5008EF1FF /* Event.m */,
+				68E045E41920061700B36423 /* Event.m */,
 				E21CDE72191D47BF00884608 /* EventDataSource.h */,
 				E21CDE73191D47BF00884608 /* EventDataSource.m */,
+				688BA69B191ED5F5008EF1FF /* Event.h */,
 				E2842ADD191A9992007FBD9B /* Images.xcassets */,
 				E2842AC9191A9992007FBD9B /* Supporting Files */,
 			);
@@ -311,7 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				688BA69D191ED5F5008EF1FF /* Event.m in Sources */,
+				68E045E51920061700B36423 /* Event.m in Sources */,
 				E2842AD3191A9992007FBD9B /* AppDelegate.m in Sources */,
 				E2842AD9191A9992007FBD9B /* MasterViewController.m in Sources */,
 				E2842ACF191A9992007FBD9B /* main.m in Sources */,

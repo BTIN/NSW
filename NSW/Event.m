@@ -43,17 +43,12 @@
 }
 
 - (void) setDurationFromString:(NSString *)rawDuration {
-    // pattern for regular expression
-    NSString *durationPattern = @"PT(\\d{1,2})H(\\d{1,2})S(\\d{1,2})";
-    
-    // create regular expression from pattern
-    NSRegularExpression *durationRE = [NSRegularExpression regularExpressionWithPattern:durationPattern options:NSRegularExpressionCaseInsensitive error:nil];
-    
-    NSArray *matches = [durationRE matchesInString:rawDuration options:0 range:NSMakeRange(0, [rawDuration length])];
-    NSLog(@"%@", matches);
-    NSNumber *hours = [matches objectAtIndex:0];
-    NSNumber *minutes = [matches objectAtIndex:1];
-    NSNumber *seconds = [matches objectAtIndex:2];
+    // Split a string that looks like "PT##H##M##S" into the array ['P', # of hours, # of minutes, # of seconds, '']
+    NSArray *matches = [rawDuration componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"THMS"]];
+
+    NSNumber *hours = matches[1];
+    NSNumber *minutes = matches[2];
+    NSNumber *seconds = matches[3];
     
     duration = [NSNumber numberWithInt:([hours intValue] * 3600 + [minutes intValue] * 60 + [seconds intValue])];
     NSLog(@"%@", duration);
