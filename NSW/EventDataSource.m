@@ -11,14 +11,17 @@
 
 @implementation EventDataSource
 
+//String of all events
+@synthesize rawEvents;
+
 // NSMutableArray * eventList = [NSMutableArray alloc];
-// declare constant something
 
 NSMutableData *receivedData;
-NSString* allEvents;
+NSArray *allParsedEvents;
+bool didFinishLoading = NO;
 
 
-- (void) getStringFromURL {
+- (void) parseStringFromURL {
     
     // Create the request.
     NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"]
@@ -43,6 +46,8 @@ NSString* allEvents;
         NSLog(@"Connection failed");
         
     }
+    
+    
 
 }
 
@@ -60,17 +65,16 @@ NSString* allEvents;
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // This ASCII is weird. Other things give us Chinese. What do we do?
-    
-    allEvents = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
-    //NSLog(@"%@", allEvents);
-    
+    self.rawEvents = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
+    self.parseIntoEvents;
+
 }
 
 - (void) parseIntoEvents {
     
-    NSArray *myWords = [[NSArray alloc]init];
-    myWords = [allEvents componentsSeparatedByString:@"BEGIN:VEVENT"];
-    NSLog(@"%@", allEvents);
+    allParsedEvents = [[NSArray alloc]init];
+    allParsedEvents = [self.rawEvents componentsSeparatedByString:@"BEGIN:VEVENT"];
+    NSLog(@"%@", allParsedEvents[1]);
     
 
 }

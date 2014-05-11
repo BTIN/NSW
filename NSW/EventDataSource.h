@@ -10,10 +10,11 @@
 
 @interface EventDataSource : NSObject
 
+@property NSString *rawEvents;
 
 //NSMutableArray *getEventArrayForDate(NSString *date);
 
--(void)getStringFromURL;
+-(void)parseStringFromURL;
 -(void)connectionDidFinishLoading;
 -(void)connection;
 -(void)parseIntoEvents;
