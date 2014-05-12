@@ -10,6 +10,7 @@
 #import "Event.h"
 
 @interface DetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
 - (void)configureView;
 @end
 
@@ -17,7 +18,7 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(Event)newDetailItem
+- (void)setDetailItem:(Event *)newDetailItem
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
@@ -33,6 +34,7 @@
 
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [self.detailItem location];
+        self.descLabel.text = [self.detailItem theDescription];
     }
 }
 

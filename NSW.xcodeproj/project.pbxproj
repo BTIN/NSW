@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6896DDE71921354D00570E6B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE41921354D00570E6B /* Contact.m */; };
+		6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE61921354D00570E6B /* ContactDataSource.m */; };
 		68E045E3191FF6B100B36423 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events.ics */; };
 		68E045E51920061700B36423 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E045E41920061700B36423 /* Event.m */; };
 		6C0A18E5937C4725A4DCB069 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2E3248EC341149C22A407 /* libPods.a */; };
@@ -41,6 +43,10 @@
 /* Begin PBXFileReference section */
 		5BE2E3248EC341149C22A407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		688BA69B191ED5F5008EF1FF /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		6896DDE31921354D00570E6B /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		6896DDE41921354D00570E6B /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		6896DDE51921354D00570E6B /* ContactDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDataSource.h; sourceTree = "<group>"; };
+		6896DDE61921354D00570E6B /* ContactDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDataSource.m; sourceTree = "<group>"; };
 		68E045E2191FF6B100B36423 /* events.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = events.ics; sourceTree = "<group>"; };
 		68E045E41920061700B36423 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		C06B0FA12298495BA45210A7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -131,6 +137,10 @@
 			children = (
 				68E045E2191FF6B100B36423 /* events.ics */,
 				E2842AD1191A9992007FBD9B /* AppDelegate.h */,
+				6896DDE31921354D00570E6B /* Contact.h */,
+				6896DDE41921354D00570E6B /* Contact.m */,
+				6896DDE51921354D00570E6B /* ContactDataSource.h */,
+				6896DDE61921354D00570E6B /* ContactDataSource.m */,
 				E2842AD2191A9992007FBD9B /* AppDelegate.m */,
 				E2842AD4191A9992007FBD9B /* Main.storyboard */,
 				E2842AD7191A9992007FBD9B /* MasterViewController.h */,
@@ -314,6 +324,8 @@
 				E2842AD3191A9992007FBD9B /* AppDelegate.m in Sources */,
 				E2842AD9191A9992007FBD9B /* MasterViewController.m in Sources */,
 				E2842ACF191A9992007FBD9B /* main.m in Sources */,
+				6896DDE71921354D00570E6B /* Contact.m in Sources */,
+				6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */,
 				E2842ADC191A9992007FBD9B /* DetailViewController.m in Sources */,
 				E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */,
 			);
