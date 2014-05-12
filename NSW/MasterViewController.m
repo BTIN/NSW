@@ -90,8 +90,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    Event *object = _objects[indexPath.row];
+    cell.textLabel.text = [object title];
     return cell;
 }
 
@@ -131,7 +131,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
+        Event *object = _objects[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
