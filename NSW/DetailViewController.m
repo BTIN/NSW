@@ -10,14 +10,16 @@
 #import "Event.h"
 
 @interface DetailViewController ()
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
 - (void)configureView;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeDescriptionLabel;
 @end
 
 @implementation DetailViewController
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(Event)newDetailItem
+- (void)setDetailItem:(Event *)newDetailItem
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
@@ -33,6 +35,15 @@
 
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [self.detailItem location];
+        
+        // Convert NSDate to NSString
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        NSString *string = [dateFormatter stringFromDate:[self.detailItem startDateTime]];
+        
+        self.startTimeDescriptionLabel.text = string;
+        self.title =[self.detailItem title];
+        
     }
 }
 
