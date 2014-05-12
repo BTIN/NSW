@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Event.h"
 
-@interface DetailViewController : UIViewController
+@interface EventDetailViewController : UIViewController
 
 @property (strong, nonatomic) Event * detailItem;
 

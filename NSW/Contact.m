@@ -23,4 +23,16 @@
     
     return self;
 }
+
+- (id)initWithTitle:(NSString *)contactName Phone:(NSString *)phoneNumber Fax:(NSString *)faxNumber  Email:(NSString *)emailAddress{
+    self = [super init];
+    if (self) {
+        self.title = contactName;
+        self.phone = phoneNumber;
+        self.fax = faxNumber;
+        self.email = emailAddress;
+    }
+    
+    return self;
+}
 @end

@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Stephen Grinich. All rights reserved.
 //
 
-#import "MasterViewController.h"
+#import "EventListViewController.h"
 #import "MMDrawerController.h"
 #import "EventDataSource.h"
 #import "Event.h"
 
-#import "DetailViewController.h"
+#import "EventDetailViewController.h"
 
-@interface MasterViewController () {
+@interface EventListViewController () {
     NSMutableArray *_objects;
     
 }
 @end
 
-@implementation MasterViewController
+@implementation EventListViewController
 
 
 - (void)awakeFromNib

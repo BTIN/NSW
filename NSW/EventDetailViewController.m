@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Stephen Grinich. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "EventDetailViewController.h"
 #import "Event.h"
 
-@interface DetailViewController ()
+@interface EventDetailViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
 - (void)configureView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeDescriptionLabel;
 @end
 
-@implementation DetailViewController
+@implementation EventDetailViewController
 
 #pragma mark - Managing the detail item
 
