@@ -53,9 +53,16 @@
         self.title =[self.detailItem title];
         self.eventDescription.text = [self.detailItem theDescription];
         
-        // Convert NSNumber to NSString
+        // Convert NSNumber to NSString for minutes
         NSNumber *descriptionNumber = [self.detailItem duration];
-        NSString *descriptionString = [descriptionNumber stringValue];
+        int descriptionInteger = descriptionNumber.intValue;
+        descriptionInteger = descriptionInteger/60;
+        
+        
+        NSMutableString *descriptionString = [NSMutableString stringWithFormat:@"%d",descriptionInteger];
+        
+        [descriptionString appendString:@" minutes"];
+        
         self.durationDescription.text = descriptionString;
         
     }
