@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSDate *startDateTime; // a NSDate object representing the start date and time of the event
 @property (nonatomic, strong) NSNumber *duration; // The number of seconds that the event lasts
+//@property (nonatomic, strong) NSDate *endDateTime;
 
 -(id)initWithTitle:(NSString *)title_ Description:(NSString *)desc_ Location:(NSString *)location_ Start:(NSString *)rawStart Duration:(NSString *)rawDuration;
 //-(NSDate *) parseStartDateTimeFromString:(NSString *)rawStartDateTime;

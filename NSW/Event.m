@@ -39,12 +39,13 @@
     return self;
 }
 
+// This is a built-in function that's called when you try print an Event (like toString() in Java)
 -(NSString *) description {
-    return [NSString stringWithFormat: @"Event: Title=%@ \nDescription=%@ \nLocation=%@ \nStart=%@ \nDuration=%@ seconds", title, theDescription, location, startDateTime, duration];
+    return [NSString stringWithFormat: @"Event: Title=%@, Description=%@, Location=%@, Start=%@, Duration=%@ seconds.", title, theDescription, location, startDateTime, duration];
 }
 
 
-
+// Takes a start time string in the ICS format and translates it into an NSDate object
 - (NSDate *) parseStartDateTimeFromString:(NSString *)rawStartDateTime {
     static NSDateFormatter *dateFormatter = nil;
     if (dateFormatter == nil){
@@ -71,6 +72,11 @@
     
     return [NSNumber numberWithInt:([hours intValue] * 3600 + [minutes intValue] * 60 + [seconds intValue])];
     NSLog(@"%@", duration);
+}
+
+-(void) setEndDateTime{
+    // Use startDateTime and a NSTimeInterval based duration
+#warning stub method
 }
 
 @end

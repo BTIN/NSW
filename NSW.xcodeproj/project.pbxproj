@@ -291,7 +291,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Stephen Grinich";
+				ORGANIZATIONNAME = BTIN;
 				TargetAttributes = {
 					E2842AE2191A9992007FBD9B = {
 						TestTargetID = E2842ABE191A9991007FBD9B;
