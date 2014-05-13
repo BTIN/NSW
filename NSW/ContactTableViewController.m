@@ -7,6 +7,7 @@
 //
 
 #import "ContactTableViewController.h"
+#import "ContactTableViewCell.h"
 #import "Contact.h"
 
 @interface ContactTableViewController (){
@@ -37,7 +38,10 @@
     
     _objects = [[NSMutableArray alloc] init];
     
+    Contact *test = [[Contact alloc] initWithTitle:@"Campus Security" Phone:@"507-222-4444" Fax:@"507-222-4444" Email:@"security@carleton.edu"];
     
+    [_objects insertObject:test atIndex:0];
+    [_objects insertObject:test atIndex:0];
     
 }
 
@@ -51,24 +55,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return _objects.count;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ContactTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     Contact *contact = _objects[indexPath.row];
+    cell.textLabel.text = [contact title];
     
     return cell;
 }

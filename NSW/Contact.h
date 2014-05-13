@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSString *fax;
 @property (nonatomic, strong) NSString *email;
 
+- (id)initWithTitle:(NSString *)contactName Phone:(NSString *)phoneNumber Fax:(NSString *)faxNumber  Email:(NSString *)emailAddress;
 @end

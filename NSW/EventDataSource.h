@@ -18,7 +18,7 @@
 
 -(void)parseStringFromURL;
 -(void)parseIntoEvents;
--(void)connectionDidFinishLoading;
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection;
 -(void)returnArray;
 
 @end
