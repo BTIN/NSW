@@ -18,11 +18,12 @@
                         <segue destination="rS3-R9-Ivy" kind="relationship" relationship="viewControllers" id="A2K-Lt-AvM"/>
                         <segue destination="Pm7-vV-ilj" kind="relationship" relationship="viewControllers" id="LMZ-nr-Ehb"/>
                         <segue destination="OQC-lf-bEv" kind="relationship" relationship="viewControllers" id="Gaf-FL-HDC"/>
+                        <segue destination="kgm-6h-WZk" kind="relationship" relationship="viewControllers" id="a26-AE-bTn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVY-kt-R1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1413" y="-58"/>
+            <point key="canvasLocation" x="-1501" y="414"/>
         </scene>
         <!--Navigation Controller - Events-->
         <scene sceneID="cUi-kZ-frf">
@@ -151,9 +152,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDk-zv-DMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-406" y="766"/>
+            <point key="canvasLocation" x="-469" y="766"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Campus Map-->
         <scene sceneID="BqD-LU-ADy">
             <objects>
                 <viewController id="MST-y0-eiy" sceneMemberID="viewController">
@@ -161,11 +162,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
-                    <navigationItem key="navigationItem" id="Htt-9h-owR"/>
+                    <navigationItem key="navigationItem" title="Campus Map" id="Htt-9h-owR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGK-vR-QAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="178" y="766"/>
+        </scene>
+        <!--Carl Term View Controller - "Speak Carleton"-->
+        <scene sceneID="fed-4a-Tiz">
+            <objects>
+                <tableViewController id="eZM-in-jXY" customClass="CarlTermViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4zl-XQ-JfU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="UBd-HE-7xa" style="IBUITableViewCellStyleDefault" id="7ca-In-bAA">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7ca-In-bAA" id="apU-BQ-prT">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UBd-HE-7xa">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eZM-in-jXY" id="wYq-1i-gQh"/>
+                            <outlet property="delegate" destination="eZM-in-jXY" id="sEb-rT-0Vu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="&quot;Speak Carleton&quot;" id="uRH-Hc-g5k"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B2E-pa-7eS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="185" y="1464"/>
+        </scene>
+        <!--Navigation Controller - CarlTerms-->
+        <scene sceneID="eT5-kK-bW7">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="kgm-6h-WZk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="CarlTerms" id="iwY-Ix-EdP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fAT-3d-rfm">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eZM-in-jXY" kind="relationship" relationship="rootViewController" id="pgZ-YV-6Ui"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AAX-jq-TCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-469" y="1464"/>
         </scene>
         <!--Event Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
