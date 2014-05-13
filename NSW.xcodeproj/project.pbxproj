@@ -30,6 +30,7 @@
 		E2842AF1191A9992007FBD9B /* NSWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2842AF0191A9992007FBD9B /* NSWTests.m */; };
 		FA9DFDCF192166A000FC3A81 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */; };
 		FA9DFDD81921A20900FC3A81 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDD71921A20900FC3A81 /* ContactTableViewCell.m */; };
+		FA9DFDDB1921B9A400FC3A81 /* NSWStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		FA9DFDD0192166C700FC3A81 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		FA9DFDD61921A20900FC3A81 /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
 		FA9DFDD71921A20900FC3A81 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
+		FA9DFDD91921B9A400FC3A81 /* NSWStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWStyle.h; sourceTree = "<group>"; };
+		FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWStyle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,8 @@
 				E21CDE73191D47BF00884608 /* EventDataSource.m */,
 				E2842ADD191A9992007FBD9B /* Images.xcassets */,
 				E2842AC9191A9992007FBD9B /* Supporting Files */,
+				FA9DFDD91921B9A400FC3A81 /* NSWStyle.h */,
+				FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */,
 			);
 			path = NSW;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 			files = (
 				68E045E51920061700B36423 /* Event.m in Sources */,
 				FA9DFDCF192166A000FC3A81 /* ContactTableViewController.m in Sources */,
+				FA9DFDDB1921B9A400FC3A81 /* NSWStyle.m in Sources */,
 				FA9DFDD81921A20900FC3A81 /* ContactTableViewCell.m in Sources */,
 				E2842AD3191A9992007FBD9B /* AppDelegate.m in Sources */,
 				E2842AD9191A9992007FBD9B /* EventListViewController.m in Sources */,
