@@ -15,6 +15,7 @@ To-Do:
 ---
 - ```DictionaryWord``` model, DataSource, and UI (waiting on Web Services to agree on data format)
 - Introduce ```MMDrawerController``` in place of ```UITabBarController``` (more complex than just that)
-- Flesh out existing classes
+- Flesh out stub classes
 - Implement actual UI style standards to match mockups
 - Write tests
+- Implement custom ```UITableViewCell``` subclass(es) for ContactVC (and DictionaryWordVC)
