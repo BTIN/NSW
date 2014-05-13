@@ -46,7 +46,7 @@
     
     _objects = [[NSMutableArray alloc] init];
     
-    Event * test = [[Event alloc] initWithTitle:@"NSW: Office of Intercultural and International Life Welcome Reception" Description:@"DESCRIPTION:The Office of Intercultural and International Life (OIIL) invites students and parents to an informal outdoor reception. Tours of Stimson House, Carleton's intercultural center, also will be available. Enjoy some refreshments as we connect new students and their families to the Carleton community. Are you interested in having an OIIL Peer Leader? This is a great time to sign up. All are welcome. Rain location: Stimson House.f" Location:@"Alumni Guest House Patio" Start:@"20120904T140000" Duration:@"PT1H0M0S"];
+    Event * test = [[Event alloc] initWithTitle:@"NSW: Office of Intercultural and International Life Welcome Reception" Description:@"The Office of Intercultural and International Life (OIIL) invites students and parents to an informal outdoor reception. Tours of Stimson House, Carleton's intercultural center, also will be available. Enjoy some refreshments as we connect new students and their families to the Carleton community. Are you interested in having an OIIL Peer Leader? This is a great time to sign up. All are welcome. Rain location: Stimson House.f" Location:@"Alumni Guest House Patio" Start:@"20120904T140000" Duration:@"PT1H0M0S"];
     
     [_objects insertObject:test atIndex:0];
     [_objects insertObject:test atIndex:0];

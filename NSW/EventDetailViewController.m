@@ -10,6 +10,9 @@
 #import "Event.h"
 
 @interface EventDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *eventLocation;
+@property (weak, nonatomic) IBOutlet UILabel *eventDescription;
+@property (weak, nonatomic) IBOutlet UILabel *durationDescription;
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
 - (void)configureView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeDescriptionLabel;
@@ -34,15 +37,26 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem location];
+        self.eventLocation.text = [self.detailItem location];
         
         // Convert NSDate to NSString
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        //[dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"];
+        
+        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         NSString *string = [dateFormatter stringFromDate:[self.detailItem startDateTime]];
+        
+        
         
         self.startTimeDescriptionLabel.text = string;
         self.title =[self.detailItem title];
+        self.eventDescription.text = [self.detailItem theDescription];
+        
+        // Convert NSNumber to NSString
+        NSNumber *descriptionNumber = [self.detailItem duration];
+        NSString *descriptionString = [descriptionNumber stringValue];
+        self.durationDescription.text = descriptionString;
         
     }
 }
