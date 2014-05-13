@@ -2,7 +2,7 @@ NSW
 ===
 *An application for Carleton's New Student Week*
 
-Note: Make sure to open ```NSW.xcworkspace``` **not** ```NSW.xcodeproj```, otherwise the app won't build
+Note: Make sure to open ```NSW.xcworkspace``` **not** ~~```NSW.xcodeproj```~~, otherwise the app won't build
 
 Done:
 ---
