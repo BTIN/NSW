@@ -3,7 +3,7 @@
 //  NSW
 //
 //  Created by Alex Simonides on 5/10/14.
-//  Copyright (c) 2014 Alex Simonides. All rights reserved.
+//  Copyright (c) 2014 Stephen Grinich. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
