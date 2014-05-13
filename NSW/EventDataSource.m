@@ -3,7 +3,7 @@
 //  NSW
 //
 //  Created by Stephen Grinich on 5/9/14.
-//  Copyright (c) 2014 Stephen Grinich. All rights reserved.
+//  Copyright (c) 2014 BTIN. All rights reserved.
 //
 
 #import "EventDataSource.h"
