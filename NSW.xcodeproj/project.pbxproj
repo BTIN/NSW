@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6826E8B81921BBB1004F25C2 /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6826E8B71921BBB1004F25C2 /* map.jpg */; };
 		6896DDE71921354D00570E6B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE41921354D00570E6B /* Contact.m */; };
 		6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE61921354D00570E6B /* ContactDataSource.m */; };
 		68E045E3191FF6B100B36423 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events.ics */; };
@@ -32,6 +31,7 @@
 		FA9DFDCF192166A000FC3A81 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */; };
 		FA9DFDD81921A20900FC3A81 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDD71921A20900FC3A81 /* ContactTableViewCell.m */; };
 		FA9DFDDB1921B9A400FC3A81 /* NSWStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */; };
+		FA9DFDDD1921BDD200FC3A81 /* map.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA9DFDDC1921BDD200FC3A81 /* map.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 
 /* Begin PBXFileReference section */
 		5BE2E3248EC341149C22A407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6826E8B71921BBB1004F25C2 /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = map.jpg; path = ../../map.jpg; sourceTree = "<group>"; };
 		6896DDE31921354D00570E6B /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		6896DDE41921354D00570E6B /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		6896DDE51921354D00570E6B /* ContactDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDataSource.h; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		FA9DFDD71921A20900FC3A81 /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		FA9DFDD91921B9A400FC3A81 /* NSWStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWStyle.h; sourceTree = "<group>"; };
 		FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWStyle.m; sourceTree = "<group>"; };
+		FA9DFDDC1921BDD200FC3A81 /* map.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = map.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +148,7 @@
 			children = (
 				68E045E2191FF6B100B36423 /* events.ics */,
 				E2842AD4191A9992007FBD9B /* Main.storyboard */,
-				6826E8B71921BBB1004F25C2 /* map.jpg */,
+				FA9DFDDC1921BDD200FC3A81 /* map.jpg */,
 				E2842AD1191A9992007FBD9B /* AppDelegate.h */,
 				E2842AD2191A9992007FBD9B /* AppDelegate.m */,
 				6896DDE31921354D00570E6B /* Contact.h */,
@@ -282,11 +282,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9DFDDD1921BDD200FC3A81 /* map.jpg in Resources */,
 				68E045E3191FF6B100B36423 /* events.ics in Resources */,
 				E2842ADE191A9992007FBD9B /* Images.xcassets in Resources */,
 				E2842ACD191A9992007FBD9B /* InfoPlist.strings in Resources */,
 				E2842AD6191A9992007FBD9B /* Main.storyboard in Resources */,
-				6826E8B81921BBB1004F25C2 /* map.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
