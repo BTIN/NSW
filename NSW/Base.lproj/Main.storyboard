@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8y5-Ip-6gg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8y5-Ip-6gg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -17,6 +17,7 @@
                     <connections>
                         <segue destination="rS3-R9-Ivy" kind="relationship" relationship="viewControllers" id="A2K-Lt-AvM"/>
                         <segue destination="Pm7-vV-ilj" kind="relationship" relationship="viewControllers" id="LMZ-nr-Ehb"/>
+                        <segue destination="OQC-lf-bEv" kind="relationship" relationship="viewControllers" id="Gaf-FL-HDC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVY-kt-R1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,6 +128,36 @@
             </objects>
             <point key="canvasLocation" x="185" y="-58"/>
         </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="DYU-bM-EF7">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="OQC-lf-bEv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2Rv-3i-GVw"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2la-V2-JUw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MST-y0-eiy" kind="relationship" relationship="rootViewController" id="D4l-Bg-uFy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDk-zv-DMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-406" y="766"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="BqD-LU-ADy">
+            <objects>
+                <viewController id="MST-y0-eiy" sceneMemberID="viewController">
+                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map.jpg" id="knk-UQ-Wk4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </imageView>
+                    <navigationItem key="navigationItem" id="Htt-9h-owR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NGK-vR-QAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="178" y="766"/>
+        </scene>
         <!--Event Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
@@ -205,6 +236,9 @@
             <point key="canvasLocation" x="826" y="-58"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map.jpg" width="750" height="1000"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
