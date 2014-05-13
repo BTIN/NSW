@@ -146,31 +146,13 @@
 		E2842AC8191A9992007FBD9B /* NSW */ = {
 			isa = PBXGroup;
 			children = (
-				68E045E2191FF6B100B36423 /* events.ics */,
-				E2842AD4191A9992007FBD9B /* Main.storyboard */,
-				FA9DFDDC1921BDD200FC3A81 /* map.jpg */,
-				E2842AD1191A9992007FBD9B /* AppDelegate.h */,
-				E2842AD2191A9992007FBD9B /* AppDelegate.m */,
-				6896DDE31921354D00570E6B /* Contact.h */,
-				6896DDE41921354D00570E6B /* Contact.m */,
-				6896DDE51921354D00570E6B /* ContactDataSource.h */,
-				6896DDE61921354D00570E6B /* ContactDataSource.m */,
-				FA9DFDCD192166A000FC3A81 /* ContactTableViewController.h */,
-				FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */,
-				E2842AD7191A9992007FBD9B /* EventListViewController.h */,
-				E2842AD8191A9992007FBD9B /* EventListViewController.m */,
-				FA9DFDD61921A20900FC3A81 /* ContactTableViewCell.h */,
-				FA9DFDD71921A20900FC3A81 /* ContactTableViewCell.m */,
-				E2842ADA191A9992007FBD9B /* EventDetailViewController.h */,
-				E2842ADB191A9992007FBD9B /* EventDetailViewController.m */,
-				FA9DFDD0192166C700FC3A81 /* Event.h */,
-				68E045E41920061700B36423 /* Event.m */,
-				E21CDE72191D47BF00884608 /* EventDataSource.h */,
-				E21CDE73191D47BF00884608 /* EventDataSource.m */,
+				FA9DFDE31921C36900FC3A81 /* Common */,
+				FA9DFDE01921C2EC00FC3A81 /* DataSources */,
+				FA9DFDE11921C30F00FC3A81 /* Media */,
+				FA9DFDDE1921C2BB00FC3A81 /* Models */,
+				FA9DFDE21921C34900FC3A81 /* ViewControllers */,
 				E2842ADD191A9992007FBD9B /* Images.xcassets */,
 				E2842AC9191A9992007FBD9B /* Supporting Files */,
-				FA9DFDD91921B9A400FC3A81 /* NSWStyle.h */,
-				FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */,
 			);
 			path = NSW;
 			sourceTree = "<group>";
@@ -202,6 +184,64 @@
 				E2842AED191A9992007FBD9B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA9DFDDE1921C2BB00FC3A81 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6896DDE31921354D00570E6B /* Contact.h */,
+				6896DDE41921354D00570E6B /* Contact.m */,
+				FA9DFDD0192166C700FC3A81 /* Event.h */,
+				68E045E41920061700B36423 /* Event.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FA9DFDE01921C2EC00FC3A81 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				6896DDE51921354D00570E6B /* ContactDataSource.h */,
+				6896DDE61921354D00570E6B /* ContactDataSource.m */,
+				E21CDE72191D47BF00884608 /* EventDataSource.h */,
+				E21CDE73191D47BF00884608 /* EventDataSource.m */,
+			);
+			name = DataSources;
+			sourceTree = "<group>";
+		};
+		FA9DFDE11921C30F00FC3A81 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				68E045E2191FF6B100B36423 /* events.ics */,
+				FA9DFDDC1921BDD200FC3A81 /* map.jpg */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		FA9DFDE21921C34900FC3A81 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA9DFDD61921A20900FC3A81 /* ContactTableViewCell.h */,
+				FA9DFDD71921A20900FC3A81 /* ContactTableViewCell.m */,
+				FA9DFDCD192166A000FC3A81 /* ContactTableViewController.h */,
+				FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */,
+				E2842AD7191A9992007FBD9B /* EventListViewController.h */,
+				E2842AD8191A9992007FBD9B /* EventListViewController.m */,
+				E2842ADA191A9992007FBD9B /* EventDetailViewController.h */,
+				E2842ADB191A9992007FBD9B /* EventDetailViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FA9DFDE31921C36900FC3A81 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E2842AD4191A9992007FBD9B /* Main.storyboard */,
+				E2842AD1191A9992007FBD9B /* AppDelegate.h */,
+				E2842AD2191A9992007FBD9B /* AppDelegate.m */,
+				FA9DFDD91921B9A400FC3A81 /* NSWStyle.h */,
+				FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
