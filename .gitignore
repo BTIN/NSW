@@ -16,3 +16,4 @@ build/*
 !default.perspectivev3
 *.moved-aside
 *.xccheckout
+.idea
