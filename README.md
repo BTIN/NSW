@@ -6,16 +6,17 @@ Note: Make sure to open ```NSW.xcworkspace``` **not** ~~```NSW.xcodeproj```~~, o
 
 Done:
 ---
-- Mostly complete ```Event``` and ```Contact``` models
+- Mostly complete ```Event```, ```Contact```, and ```CarlTerm``` models
 - Stubs of Event and Contact DataSources
-- Stubs of Event, Contact, and Map UIs
+- Stubs of Events, Contacts, "Speak Carleton" and Map UIs
 - Tab bar navigation between various screens
 
 To-Do:
 ---
-- ```DictionaryWord``` model, DataSource, and UI (waiting on Web Services to agree on data format)
-- Introduce ```MMDrawerController``` in place of ```UITabBarController``` (more complex than just that)
+- Implement ```CarlTermDataSource```(waiting on Web Services to host and agree on data format)
+- Introduce ```MMDrawerController``` in place of ```UITabBarController``` (unfortunately, its more complex than just that)
 - Flesh out stub classes
 - Implement actual UI style standards to match mockups
 - Write tests
-- Implement custom ```UITableViewCell``` subclass(es) for ContactVC (and DictionaryWordVC)
+- Implement custom ```UITableViewCell``` subclass(es) for ContactVC (and CarlTermVC and maybe EventListVC)
+  - Want accordian-style detail view without changing scenesew view
