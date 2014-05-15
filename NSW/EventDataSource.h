@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "EventListViewController.h"
+#import "BaseNSWDataSource.h"
 
-@interface EventDataSource : NSObject {
-    __weak EventListViewController *eventListVC;
+@interface EventDataSource : BaseNSWDataSource {
+    //__weak EventListViewController *_eventListViewController;
 }
 
 //@property NSString *icsHeader;
@@ -18,9 +19,5 @@
 
 //NSMutableArray *getEventArrayForDate(NSString *date);
 -(id)initWithVCBackref:(EventListViewController *) eventListViewController;
-
-+ (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;
-
--(void)getRawDataFromURL;
 
 @end

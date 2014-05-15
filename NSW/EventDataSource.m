@@ -19,54 +19,12 @@
 NSMutableData *receivedData;
 
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
-    self = [super init];
-    if (self) {
-        eventListVC = eventListViewController;
-        [self getRawDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
-    }
+    self = [super initWithVCBackref:eventListViewController
+                     AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
 
     return self;
 }
 
-// TODO (Alex) This is probably a method we want in all DataSource classes, we may want to sanitize it and create a DataSource superclass
-- (void)getRawDataFromURL:(NSString *) dataURL{
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    // Create the request.
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:dataURL]
-                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                          timeoutInterval:60.0];
-    
-    
-    // Create the NSMutableData to hold the received data.
-    // receivedData is an instance variable declared elsewhere.
-    receivedData = [NSMutableData dataWithCapacity: 0];
-    
-    // create the connection with the request
-    // and start loading the data
-    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-
-    
-    if (!theConnection) {
-        // Release the receivedData object.
-        receivedData = nil;
-        // Inform the user that the connection failed.
-        NSLog(@"Connection failed");
-        
-    }
-
-}
-
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    // Append the new data to receivedData.
-    // receivedData is an instance variable declared elsewhere.
-    [receivedData appendData:data];
-    
-}
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
@@ -82,8 +40,8 @@ NSMutableData *receivedData;
         NSWEvent *currentEvent = [self parseEventFromString:splitEventStrings[i]];
         [self.fullEventList addObject:currentEvent];
     }
-    [eventListVC getEventListFromDataSource:self.fullEventList];
 
+    [myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 }
 
 /* Builds a NSWEvent from a given ics-formatted event
@@ -107,7 +65,7 @@ example ICS event:
     NSArray *lines = [icsFormattedEvent componentsSeparatedByString:@"\r\n"];
 
     NSString *id_ = [self parseID:lines[1]];
-    NSMutableString *title_ = [[self parseSimpleAttribute:lines[2]] mutableCopy];
+    NSMutableString *title_ = [[self parseSimpleICSAttribute:lines[2]] mutableCopy];
     NSMutableString *desc_;
 
     NSString *loc_;
@@ -151,7 +109,7 @@ example ICS event:
                 start_ = [self parseDateTimeFromICSString:splitLine[1]];
             }
             else if ([attributeTitle isEqual:@"DURATION"]){
-                dur_ = [self parseDurationFromString:splitLine[1]];
+                dur_ = [self parseDurationFromICSString:splitLine[1]];
             }
         }
     }
@@ -166,13 +124,6 @@ example ICS event:
                                Duration:dur_];
 }
 
-/* Convenience/readability wrapper for a very unwieldily-named function
- * Which splits a string between any of the characters listed in splitCharacters
- */
-+ (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters{
-    return [wholeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:splitCharacters]];
-}
-
 - (NSString *)parseID:(NSString *) idLine{
     NSArray *lineComponents = [EventDataSource splitString:idLine atCharactersInString:@"-@"];
     //The unique ID is the part between the "-" and the "@"
@@ -180,7 +131,7 @@ example ICS event:
 }
 
 // Most of the attributes are of the form "ATTRIBUTENAME:data-we-care-about"
-- (NSString *)parseSimpleAttribute:(NSString *) fullLine{
+- (NSString *)parseSimpleICSAttribute:(NSString *) fullLine{
     NSMutableArray *lineComponents = (NSMutableArray *) [fullLine componentsSeparatedByString:@":"];
 
     if (lineComponents.count == 2){
@@ -211,7 +162,7 @@ example ICS event:
 }
 
 // Create a NSTimeInterval from an ICS-formatted DURATION
-- (NSTimeInterval) parseDurationFromString:(NSString *)rawDuration {
+- (NSTimeInterval)parseDurationFromICSString:(NSString *)rawDuration {
     // Split a string that looks like "PT##H##M##S" into the array ['P', # of hours, # of minutes, # of seconds, '']
     NSArray *matches = [EventDataSource splitString:rawDuration atCharactersInString:@"THMS"];
 
@@ -234,10 +185,6 @@ example ICS event:
     
 }
 */
-
-- (void) cacheEvents{
-    //TODO(Alex) Implement caching events to the file system
-}
 
 
 

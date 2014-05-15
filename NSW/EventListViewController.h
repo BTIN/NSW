@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseNSWTableViewController.h"
 
-@interface EventListViewController : UITableViewController
+@interface EventListViewController : BaseNSWTableViewController
 
 
--(void)getEventListFromDataSource:(NSArray *)dataSourceEventList;
 @end

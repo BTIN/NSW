@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */; };
+		2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */; };
 		6896DDE71921354D00570E6B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE41921354D00570E6B /* Contact.m */; };
 		6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE61921354D00570E6B /* ContactDataSource.m */; };
 		68E045E3191FF6B100B36423 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events.ics */; };
@@ -48,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSWDataSource.m; sourceTree = "<group>"; };
+		2DBA199D76F580210C9F3B13 /* BaseNSWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNSWTableViewController.h; sourceTree = "<group>"; };
+		2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSWTableViewController.m; sourceTree = "<group>"; };
+		2DBA1F60FBF8244A097B7169 /* BaseNSWDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNSWDataSource.h; sourceTree = "<group>"; };
 		5BE2E3248EC341149C22A407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6896DDE31921354D00570E6B /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		6896DDE41921354D00570E6B /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
@@ -217,6 +223,8 @@
 				E21CDE73191D47BF00884608 /* EventDataSource.m */,
 				FA9DFDE71922D77F00FC3A81 /* CarlTermDataSource.h */,
 				FA9DFDE81922D77F00FC3A81 /* CarlTermDataSource.m */,
+				2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */,
+				2DBA1F60FBF8244A097B7169 /* BaseNSWDataSource.h */,
 			);
 			name = DataSources;
 			sourceTree = "<group>";
@@ -243,6 +251,8 @@
 				E2842ADB191A9992007FBD9B /* EventDetailViewController.m */,
 				FA9DFDEA1922D95400FC3A81 /* CarlTermViewController.h */,
 				FA9DFDEB1922D95400FC3A81 /* CarlTermViewController.m */,
+				2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */,
+				2DBA199D76F580210C9F3B13 /* BaseNSWTableViewController.h */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -407,6 +417,8 @@
 				6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */,
 				E2842ADC191A9992007FBD9B /* EventDetailViewController.m in Sources */,
 				E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */,
+				2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */,
+				2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
