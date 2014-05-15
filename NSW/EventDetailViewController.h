@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Event.h"
+#import "NSWEvent.h"
 
 @interface EventDetailViewController : UIViewController
 
-@property (strong, nonatomic) Event * detailItem;
+@property (strong, nonatomic) NSWEvent * detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

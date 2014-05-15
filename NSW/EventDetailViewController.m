@@ -7,13 +7,13 @@
 //
 
 #import "EventDetailViewController.h"
-#import "Event.h"
+//#import "NSWEvent.h"
 
 @interface EventDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *eventLocation;
 @property (weak, nonatomic) IBOutlet UILabel *eventDescription;
 @property (weak, nonatomic) IBOutlet UILabel *durationDescription;
-@property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
+//@property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
 - (void)configureView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeDescriptionLabel;
 @end
@@ -22,7 +22,7 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(Event *)newDetailItem
+- (void)setDetailItem:(NSWEvent *)newDetailItem
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
@@ -54,8 +54,8 @@
         self.eventDescription.text = [self.detailItem theDescription];
         
         // Convert NSNumber to NSString for minutes
-        NSNumber *descriptionNumber = [self.detailItem duration];
-        int descriptionInteger = descriptionNumber.intValue;
+        NSTimeInterval descriptionNumber = [self.detailItem duration];
+        int descriptionInteger = (int) descriptionNumber;
         descriptionInteger = descriptionInteger/60;
         
         

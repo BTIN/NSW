@@ -7,18 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EventListViewController.h"
 
-@interface EventDataSource : NSObject
+@interface EventDataSource : NSObject {
+    __weak EventListViewController *eventListVC;
+}
 
-@property NSString *rawEvents;
-@property NSArray *allParsedEvents;
-
+//@property NSString *icsHeader;
+//@property NSString *rawICSString;
+//@property NSArray *splitEventStrings;
+@property NSMutableArray *fullEventList;
 
 //NSMutableArray *getEventArrayForDate(NSString *date);
-
--(void)parseStringFromURL;
--(void)parseIntoEvents;
--(void)connectionDidFinishLoading:(NSURLConnection *)connection;
--(void)returnArray;
+-(id)initWithVCBackref:(EventListViewController *) eventListViewController;
+-(void)getRawDataFromURL;
+//-(void)connectionDidFinishLoading:(NSURLConnection *)connection;
+//-(void)returnArray;
 
 @end

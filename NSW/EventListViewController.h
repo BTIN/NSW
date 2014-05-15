@@ -10,4 +10,6 @@
 
 @interface EventListViewController : UITableViewController
 
+
+-(void)getEventListFromDataSource:(NSArray *)dataSourceEventList;
 @end
