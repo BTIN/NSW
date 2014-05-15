@@ -10,7 +10,7 @@
 
 @interface NSWEvent : NSObject
 
-@property (nonatomic, strong) NSString *calendarID; // Unique ID that could be useful
+@property (nonatomic, strong) NSString *calendarID; // Unique ID that may be useful
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *theDescription;
 @property (nonatomic, strong) NSString *location;
@@ -18,8 +18,10 @@
 @property (nonatomic) NSTimeInterval duration; // The number of seconds that the event lasts
 //@property (nonatomic, strong) NSDate *endDateTime;
 
--(id)initWithID:(NSString *) id_ Title:(NSString *)title_ Description:(NSString *)desc_ Location:(NSString *)location_ Start:(NSString *)rawStart Duration:(NSString *)rawDuration;
-//-(NSDate *) parseStartDateTimeFromString:(NSString *)rawStartDateTime;
-//-(NSNumber *) parseDurationFromString:(NSString *)rawDuration;
-+ (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;
+-(id)initWithID:(NSString *) id_
+          Title:(NSString *)title_
+    Description:(NSString *)desc_
+       Location:(NSString *)location_
+          Start:(NSDate *)rawStart
+       Duration:(NSTimeInterval)rawDuration;
 @end

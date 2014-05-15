@@ -14,14 +14,13 @@
 }
 
 //@property NSString *icsHeader;
-//@property NSString *rawICSString;
-//@property NSArray *splitEventStrings;
 @property NSMutableArray *fullEventList;
 
 //NSMutableArray *getEventArrayForDate(NSString *date);
 -(id)initWithVCBackref:(EventListViewController *) eventListViewController;
+
++ (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;
+
 -(void)getRawDataFromURL;
-//-(void)connectionDidFinishLoading:(NSURLConnection *)connection;
-//-(void)returnArray;
 
 @end

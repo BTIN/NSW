@@ -14,32 +14,27 @@
 
 //@synthesize icsHeader;
 //String of all events
-//@synthesize rawICSString;
-//@synthesize splitEventStrings;
 @synthesize fullEventList;
 
-// NSMutableArray * eventList = [NSMutableArray alloc];
-
 NSMutableData *receivedData;
-bool done;
 
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super init];
     if (self) {
         eventListVC = eventListViewController;
-        [self getRawDataFromURL];//@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
+        [self getRawDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
     }
 
     return self;
 }
 
 // TODO (Alex) This is probably a method we want in all DataSource classes, we may want to sanitize it and create a DataSource superclass
-- (void)getRawDataFromURL{//:(NSString *) dataURL{
+- (void)getRawDataFromURL:(NSString *) dataURL{
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     // Create the request.
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"]
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:dataURL]
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:60.0];
     
@@ -116,8 +111,8 @@ example ICS event:
     NSMutableString *desc_;
 
     NSString *loc_;
-    NSString *start_;
-    NSString *dur_;
+    NSDate *start_;
+    NSTimeInterval dur_ = 0;
 
 
     BOOL inTitle = YES;
@@ -153,25 +148,33 @@ example ICS event:
                 loc_ = splitLine[1];
             }
             else if ([attributeTitle isEqual:@"DTSTART"]){
-                start_ = splitLine[1];
+                start_ = [self parseDateTimeFromICSString:splitLine[1]];
             }
             else if ([attributeTitle isEqual:@"DURATION"]){
-                dur_ = splitLine[1];
+                dur_ = [self parseDurationFromString:splitLine[1]];
             }
         }
     }
-
-    NSWEvent *test = [[NSWEvent alloc] initWithID:id_
+    /*if (id_ == nil || title_ == nil || desc_ == nil || loc_ == nil || start_ == nil || dur_ == 0){
+        //TODO Handle Errors
+    }*/
+    return [[NSWEvent alloc] initWithID:id_
                                   Title:title_
                             Description:desc_
                                Location:loc_
                                   Start:start_
                                Duration:dur_];
-    return test;
+}
+
+/* Convenience/readability wrapper for a very unwieldily-named function
+ * Which splits a string between any of the characters listed in splitCharacters
+ */
++ (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters{
+    return [wholeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:splitCharacters]];
 }
 
 - (NSString *)parseID:(NSString *) idLine{
-    NSArray *lineComponents = [NSWEvent splitString:idLine atCharactersInString:@"-@"];
+    NSArray *lineComponents = [EventDataSource splitString:idLine atCharactersInString:@"-@"];
     //The unique ID is the part between the "-" and the "@"
     return lineComponents[1];
 }
@@ -188,6 +191,35 @@ example ICS event:
         [lineComponents removeObjectAtIndex:0];
         return [lineComponents componentsJoinedByString:@":"];
     }
+}
+
+
+// Takes a start time string in the ICS format and translates it into an NSDate object
+- (NSDate *)parseDateTimeFromICSString:(NSString *)rawStartDateTime {
+    static NSDateFormatter *dateFormatter = nil;
+    if (dateFormatter == nil){
+        dateFormatter = [[NSDateFormatter alloc] init];
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+
+        [dateFormatter setLocale:enUSPOSIXLocale];
+        [dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"]; //this is the correct format but I'm not sure if the syntax is right
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-5*3600]]; // US Central time
+    }
+
+    // Convert raw string to an NSDate.
+    return [dateFormatter dateFromString:rawStartDateTime];
+}
+
+// Create a NSTimeInterval from an ICS-formatted DURATION
+- (NSTimeInterval) parseDurationFromString:(NSString *)rawDuration {
+    // Split a string that looks like "PT##H##M##S" into the array ['P', # of hours, # of minutes, # of seconds, '']
+    NSArray *matches = [EventDataSource splitString:rawDuration atCharactersInString:@"THMS"];
+
+    NSNumber *hours = matches[1];
+    NSNumber *minutes = matches[2];
+    NSNumber *seconds = matches[3];
+
+    return ([hours doubleValue] * 3600 + [minutes doubleValue] * 60 + [seconds doubleValue]);
 }
 
 
