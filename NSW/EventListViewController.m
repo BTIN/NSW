@@ -14,7 +14,8 @@
 #import "EventDetailViewController.h"
 
 @interface EventListViewController () {
-    //EventDataSource *myEventDS;
+    EventDataSource *myEventDS;
+    //NSDate *today; //TODO(Alex) use this to tell the data source what day we want
 }
 
 @end
@@ -28,16 +29,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    EventDataSource *myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
+    //today = [NSDate date];
+    myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
 
 }
 
 #pragma mark - Table View
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     NSWEvent *event = self.listItems[(NSUInteger) indexPath.row];

@@ -8,15 +8,13 @@
 
 #import "EventDataSource.h"
 #import "NSWEvent.h"
+#import "NSWConstants.h"
 
 
 @implementation EventDataSource
 
-//@synthesize icsHeader;
-//String of all events
+// All the parsed NSWEvent objects
 @synthesize fullEventList;
-
-NSMutableData *receivedData;
 
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super initWithVCBackref:eventListViewController
@@ -29,11 +27,11 @@ NSMutableData *receivedData;
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
+    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
-    //NSLog(@"%@", splitEventStrings[1]);
+    NSLog(@"%@", splitEventStrings[1]);
 
     self.fullEventList = [[NSMutableArray alloc] init];
     for (NSUInteger i = 1; i < splitEventStrings.count-1; i++) {
@@ -43,6 +41,21 @@ NSMutableData *receivedData;
 
     [myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 }
+
+
+// Called by the ViewController to only get the events for one day
+- (void)getEventsForDate:(NSDate *)currentDate {
+    //TODO(Alex) we're going to want to use something like:
+    //TODO       [fullEventList filteredArrayUsingPredicate:"date == currentDate"]
+    //TODO       but it may be easier if we use NSDateComponents instead of NSDate for the start attribute
+
+    //[myTableViewController setVCArrayToDataSourceArray:];
+}
+
+
+// ----------------------------------------------------------------------------
+#pragma mark Parsing methods
+// ----------------------------------------------------------------------------
 
 /* Builds a NSWEvent from a given ics-formatted event
 example ICS event:
@@ -113,9 +126,11 @@ example ICS event:
             }
         }
     }
-    /*if (id_ == nil || title_ == nil || desc_ == nil || loc_ == nil || start_ == nil || dur_ == 0){
+    /*
+    if (id_ == nil || title_ == nil || desc_ == nil || loc_ == nil || start_ == nil || dur_ == 0){
         //TODO Handle Errors
-    }*/
+    }
+    */
     return [[NSWEvent alloc] initWithID:id_
                                   Title:title_
                             Description:desc_
@@ -153,8 +168,8 @@ example ICS event:
         NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
 
         [dateFormatter setLocale:enUSPOSIXLocale];
-        [dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"]; //this is the correct format but I'm not sure if the syntax is right
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-5*3600]]; // US Central time
+        [dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"];
+        [dateFormatter setTimeZone:[NSWConstants northfieldTimeZone]]; // US Central time
     }
 
     // Convert raw string to an NSDate.
@@ -170,7 +185,9 @@ example ICS event:
     NSNumber *minutes = matches[2];
     NSNumber *seconds = matches[3];
 
-    return ([hours doubleValue] * 3600 + [minutes doubleValue] * 60 + [seconds doubleValue]);
+    return ([hours doubleValue]*secondsPerHour +
+            [minutes doubleValue]*secondsPerMinute +
+            [seconds doubleValue]);
 }
 
 

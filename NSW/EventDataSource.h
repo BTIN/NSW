@@ -11,13 +11,12 @@
 #import "BaseNSWDataSource.h"
 
 @interface EventDataSource : BaseNSWDataSource {
-    //__weak EventListViewController *_eventListViewController;
 }
 
-//@property NSString *icsHeader;
 @property NSMutableArray *fullEventList;
 
 //NSMutableArray *getEventArrayForDate(NSString *date);
 -(id)initWithVCBackref:(EventListViewController *) eventListViewController;
+-(void)getEventsForDate:(NSDate *) currentDate;
 
 @end

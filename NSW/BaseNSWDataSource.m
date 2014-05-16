@@ -8,7 +8,7 @@
 
 @implementation BaseNSWDataSource
 
-NSMutableData *receivedData;
+@synthesize receivedData;
 
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
          AndDataFromURL:(NSString *) sourceURL {
@@ -51,8 +51,7 @@ NSMutableData *receivedData;
 }
 
 - (void)connection:(NSURLConnection *)connection
-    didReceiveData:(NSData *)data
-{
+    didReceiveData:(NSData *)data {
     // Append the new data to receivedData.
     // receivedData is an instance variable declared elsewhere.
     [receivedData appendData:data];

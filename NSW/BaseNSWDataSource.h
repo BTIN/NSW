@@ -11,6 +11,8 @@
     __weak BaseNSWTableViewController *myTableViewController;
 }
 
+@property (nonatomic, strong) NSMutableData *receivedData;
+
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController AndDataFromURL:(NSString *) sourceURL;
 
 +(NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;

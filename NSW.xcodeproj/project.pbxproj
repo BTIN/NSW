@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DBA1128AA3820D3ACDF6DB2 /* NSWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1B37E9654BD4635896D1 /* NSWConstants.m */; };
 		2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */; };
 		2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */; };
 		6896DDE71921354D00570E6B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE41921354D00570E6B /* Contact.m */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSWDataSource.m; sourceTree = "<group>"; };
 		2DBA199D76F580210C9F3B13 /* BaseNSWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNSWTableViewController.h; sourceTree = "<group>"; };
+		2DBA1B37E9654BD4635896D1 /* NSWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWConstants.m; sourceTree = "<group>"; };
+		2DBA1D2363EB3A1744B9F1F9 /* NSWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWConstants.h; sourceTree = "<group>"; };
 		2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSWTableViewController.m; sourceTree = "<group>"; };
 		2DBA1F60FBF8244A097B7169 /* BaseNSWDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNSWDataSource.h; sourceTree = "<group>"; };
 		5BE2E3248EC341149C22A407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,8 +226,8 @@
 				E21CDE73191D47BF00884608 /* EventDataSource.m */,
 				FA9DFDE71922D77F00FC3A81 /* CarlTermDataSource.h */,
 				FA9DFDE81922D77F00FC3A81 /* CarlTermDataSource.m */,
-				2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */,
 				2DBA1F60FBF8244A097B7169 /* BaseNSWDataSource.h */,
+				2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */,
 			);
 			name = DataSources;
 			sourceTree = "<group>";
@@ -251,8 +254,8 @@
 				E2842ADB191A9992007FBD9B /* EventDetailViewController.m */,
 				FA9DFDEA1922D95400FC3A81 /* CarlTermViewController.h */,
 				FA9DFDEB1922D95400FC3A81 /* CarlTermViewController.m */,
-				2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */,
 				2DBA199D76F580210C9F3B13 /* BaseNSWTableViewController.h */,
+				2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -265,6 +268,8 @@
 				E2842AD2191A9992007FBD9B /* AppDelegate.m */,
 				FA9DFDD91921B9A400FC3A81 /* NSWStyle.h */,
 				FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */,
+				2DBA1B37E9654BD4635896D1 /* NSWConstants.m */,
+				2DBA1D2363EB3A1744B9F1F9 /* NSWConstants.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */,
 				2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */,
 				2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */,
+				2DBA1128AA3820D3ACDF6DB2 /* NSWConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
