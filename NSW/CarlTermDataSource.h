@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseNSWDataSource.h"
+#import "CarlTermViewController.h"
 
-@interface CarlTermDataSource : NSObject
+@interface CarlTermDataSource : BaseNSWDataSource
 
 @property (nonatomic, strong) NSMutableArray *abbreviationList;
+-(id)initWithVCBackref:(CarlTermViewController *) carlTermViewController;
 
 
 @end

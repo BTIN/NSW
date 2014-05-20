@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseNSWTableViewController.h"
 
-@interface CarlTermViewController : UITableViewController
+@interface CarlTermViewController : BaseNSWTableViewController
 
 @end

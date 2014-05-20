@@ -8,7 +8,8 @@
 
 @interface BaseNSWTableViewController : UITableViewController
 
-@property NSArray *listItems;
+@property NSMutableArray *listItems;
+@property (nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 
 -(void)setVCArrayToDataSourceArray:(NSArray *)dataSourceEventList;
 

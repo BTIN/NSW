@@ -1,5 +1,5 @@
 //
-//  MasterViewController.m
+//  EventListViewController.m
 //  NSW
 //
 //  Created by Stephen Grinich on 5/7/14.

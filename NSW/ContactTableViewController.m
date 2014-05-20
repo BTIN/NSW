@@ -11,7 +11,7 @@
 #import "Contact.h"
 
 @interface ContactTableViewController (){
-    NSMutableArray *_objects;
+    //NSMutableArray *listItems;
 }
 @end
 
@@ -36,33 +36,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    _objects = [[NSMutableArray alloc] init];
+    self.listItems = [[NSMutableArray alloc] init];
     
     Contact *test = [[Contact alloc] initWithTitle:@"Campus Security" Phone:@"507-222-4444" Fax:@"507-222-4444" Email:@"security@carleton.edu"];
     
-    [_objects insertObject:test atIndex:0];
-    [_objects insertObject:test atIndex:0];
+    [self.listItems insertObject:test atIndex:0];
+    [self.listItems insertObject:test atIndex:0];
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return _objects.count;
 }
 
 
@@ -70,7 +50,7 @@
 {
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    Contact *contact = _objects[indexPath.row];
+    Contact *contact = self.listItems[(NSUInteger) indexPath.row];
     cell.textLabel.text = [contact title];
     
     return cell;

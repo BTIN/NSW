@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseNSWTableViewController.h"
 
-@interface ContactTableViewController : UITableViewController
+@interface ContactTableViewController : BaseNSWTableViewController
 
 @end

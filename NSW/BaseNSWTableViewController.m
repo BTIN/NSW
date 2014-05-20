@@ -4,16 +4,26 @@
 //
 
 #import "BaseNSWTableViewController.h"
+#import "SWRevealViewController.h"
 
+@interface BaseNSWTableViewController ()
+@end
 
-@implementation BaseNSWTableViewController {
+@implementation BaseNSWTableViewController
 
-}
 @synthesize listItems;
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    [self.revealButtonItem setTarget: self.revealViewController];
+    [self.revealButtonItem setAction: @selector( revealToggle: )];
+}
 
 // Called by the DataSource when it's ready to update the VC with its objects
 - (void)setVCArrayToDataSourceArray:(NSArray *)dataSourceObjects {
-    self.listItems = [[NSArray alloc] initWithArray:dataSourceObjects];
+    self.listItems = [[NSMutableArray alloc] initWithArray:dataSourceObjects];
     [self.tableView reloadData];
 }
 

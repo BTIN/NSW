@@ -11,7 +11,6 @@
 #import "CarlTerm.h"
 
 @interface CarlTermViewController (){
-    NSMutableArray *_objects;
 }
 @end
 
@@ -29,40 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    _objects = [[NSMutableArray alloc] init];
-    
-    CarlTerm *test = [[CarlTerm alloc] initWithAbbreviation:@"CMC" LongName:@"The Center for Math and Computing"];
-    CarlTerm *test2 = [[CarlTerm alloc] initWithAbbreviation:@"NSW" LongName:@"New Student Week"];
-    [_objects insertObject:test atIndex:0];
-    [_objects insertObject:test2 atIndex:0];
-    
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+    CarlTermDataSource *dataSource = [[CarlTermDataSource alloc] initWithVCBackref:self];
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return _objects.count;
 }
 
 
@@ -70,7 +38,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    CarlTerm *term = _objects[indexPath.row];
+    CarlTerm *term = self.listItems[(NSUInteger) indexPath.row];
     cell.textLabel.text = [term abbreviation];
     
     return cell;
