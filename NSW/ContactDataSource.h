@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseNSWDataSource.h"
 
-@interface ContactDataSource : NSObject
-@property NSString *pageSrc;
+@class ContactTableViewController;
 
-//NSMutableArray *getEventArrayForDate(NSString *date);
+@interface ContactDataSource : BaseNSWDataSource
 
--(void)parseStringFromURL;
+-(id)initWithVCBackref:(ContactTableViewController *) contactTableViewController;
 
--(void)parseIntoContacts;
 @end

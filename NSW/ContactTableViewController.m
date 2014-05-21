@@ -9,6 +9,7 @@
 #import "ContactTableViewController.h"
 #import "ContactTableViewCell.h"
 #import "Contact.h"
+#import "ContactDataSource.h"
 
 @interface ContactTableViewController (){
     //NSMutableArray *listItems;
@@ -38,11 +39,8 @@
     
     self.listItems = [[NSMutableArray alloc] init];
     
-    Contact *test = [[Contact alloc] initWithTitle:@"Campus Security" Phone:@"507-222-4444" Fax:@"507-222-4444" Email:@"security@carleton.edu"];
-    
-    [self.listItems insertObject:test atIndex:0];
-    [self.listItems insertObject:test atIndex:0];
-    
+    ContactDataSource *contactDataSource = [[ContactDataSource alloc] initWithVCBackref:self];
+
 }
 
 
