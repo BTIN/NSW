@@ -38,8 +38,9 @@
         NSWEvent *currentEvent = [self parseEventFromString:splitEventStrings[i]];
         [self.fullEventList addObject:currentEvent];
     }
+    [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
+    //[myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 
-    [myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 }
 
 
@@ -49,7 +50,24 @@
     //TODO       [fullEventList filteredArrayUsingPredicate:"date == currentDate"]
     //TODO       but it may be easier if we use NSDateComponents instead of NSDate for the start attribute
 
-    //[myTableViewController setVCArrayToDataSourceArray:];
+    NSDateComponents *currentDateComps = [NSWEvent getDateComponentsFromDate:currentDate];
+    NSString *predicateFormat = [NSString stringWithFormat: @"startDateComponents.day = %i && startDateComponents.month == %i && startDateComponents.year == %i",
+                    currentDateComps.day, currentDateComps.month, currentDateComps.year];
+    NSLog(@"%@", currentDateComps);
+    NSPredicate *dateMatchesCurrent = [NSComparisonPredicate predicateWithFormat:predicateFormat];
+    NSArray *todaysEvents = [fullEventList filteredArrayUsingPredicate:dateMatchesCurrent];
+
+    [myTableViewController setVCArrayToDataSourceArray:todaysEvents];
+}
+
+//Returns an NSDate for exactly 1 day before the input
++ (NSDate *)oneDayBefore:(NSDate *) currentDate{
+    return [NSDate dateWithTimeInterval:(-1 * secondsPerDay) sinceDate:currentDate];
+}
+
+//Returns an NSDate for exactly 1 day after the input
++ (NSDate *)oneDayAfter:(NSDate *) currentDate{
+    return [NSDate dateWithTimeInterval:(secondsPerDay) sinceDate:currentDate];
 }
 
 

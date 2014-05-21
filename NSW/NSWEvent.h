@@ -19,6 +19,7 @@
 @property (nonatomic) NSTimeInterval duration; // The number of seconds that the event lasts
 //@property (nonatomic, strong) NSDate *endDateTime;
 
++(NSDateComponents *)getDateComponentsFromDate:(NSDate *) date;
 -(id)initWithID:(NSString *) id_
           Title:(NSString *)title_
     Description:(NSString *)desc_

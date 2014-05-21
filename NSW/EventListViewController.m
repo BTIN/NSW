@@ -15,7 +15,7 @@
 
 @interface EventListViewController () {
     EventDataSource *myEventDS;
-    NSDate *today; //TODO(Alex) use this to tell the data source what day we want
+    NSDate *currentDate;
 }
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
@@ -30,9 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //today = [NSDate date];
     myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
-    
+    currentDate = [myEventDS parseDateTimeFromICSString:@"20120904T000000"]; //TODO Only for testing, eventually use [NSDate date]
     UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeLeft:)];
     
     [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
@@ -53,10 +52,14 @@
     
     NSString *stringFromDate = [formatter stringFromDate:myNSDateInstance];
     */
-    _dateLabel.text = today;
+    _dateLabel.text = currentDate.description;
     
     //[self.view addSubview:_dateLabel];
+}
 
+// Updates the event list to the events for currentDate
+-(void)getEventsFromCurrentDate{
+    [myEventDS getEventsForDate:currentDate];
 }
 
 #pragma mark - Table View
@@ -64,17 +67,27 @@
     _dateLabel.text = @"another day";
 }
 
+// Updates the label for the current day
+-(void)updateDateLabelToCurrentDate {
+    _dateLabel.text = currentDate.description;
+}
 
+// Updates currentDate then the list of events to one day after the previous day
 - (void)oneFingerSwipeLeft:(UITapGestureRecognizer *)recognizer {
     NSLog(@"LEFT");
-    [myEventDS setEmpty];
-
-    
+    currentDate = [EventDataSource oneDayAfter:currentDate];
+    [self getEventsFromCurrentDate];
+    [self updateDateLabelToCurrentDate];
 }
 
+// Updates currentDate then the list of events to one day before the previous day
 - (void)oneFingerSwipeRight:(UITapGestureRecognizer *)recognizer {
     NSLog(@"RIGHT");
+    currentDate = [EventDataSource oneDayBefore:currentDate];
+    [self getEventsFromCurrentDate];
+    [self updateDateLabelToCurrentDate];
 }
+
 
 
 

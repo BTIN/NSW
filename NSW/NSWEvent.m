@@ -40,7 +40,7 @@
         self.theDescription = desc_;
         self.location = location_;
         self.startDateTime = start_;
-        self.startDateComponents = [self getDateComponentsFromDate:start_];
+        self.startDateComponents = [NSWEvent getDateComponentsFromDate:start_];
         self.duration = duration_;
     }
     return self;
@@ -52,7 +52,7 @@
                     title, theDescription, location, startDateTime, duration];
 }
 
--(NSDateComponents *)getDateComponentsFromDate:(NSDate *) date{
++(NSDateComponents *)getDateComponentsFromDate:(NSDate *) date{
     NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
 
     NSCalendar * cal = [NSCalendar currentCalendar];

@@ -12,4 +12,6 @@
 @interface EventListViewController : BaseNSWTableViewController
 -(void)setHeaderLabel;
 
+
+-(void)getEventsFromCurrentDate;
 @end
