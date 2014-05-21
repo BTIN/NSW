@@ -40,6 +40,7 @@
         self.theDescription = desc_;
         self.location = location_;
         self.startDateTime = start_;
+        self.startDateComponents = [self getDateComponentsFromDate:start_];
         self.duration = duration_;
     }
     return self;
@@ -49,6 +50,14 @@
 -(NSString *) description {
     return [NSString stringWithFormat: @"NSWEvent: Title=%@, Description=%@, Location=%@, Start=%@, Duration=%f seconds.",
                     title, theDescription, location, startDateTime, duration];
+}
+
+-(NSDateComponents *)getDateComponentsFromDate:(NSDate *) date{
+    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+
+    NSCalendar * cal = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [cal components:unitFlags fromDate:date];
+    return comps;
 }
 
 
