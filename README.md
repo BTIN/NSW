@@ -6,17 +6,16 @@ Note: Make sure to open ```NSW.xcworkspace``` **not** ~~```NSW.xcodeproj```~~, o
 
 Done:
 ---
-- Mostly complete ```Event```, ```Contact```, and ```CarlTerm``` models
-- Stubs of Event and Contact DataSources
-- Stubs of Events, Contacts, "Speak Carleton" and Map UIs
-- Tab bar navigation between various screens
+- Complete ```NSWEvent```, ```Contact```, and ```CarlTerm``` models
+- All DataSources 95+% complete
+- Functional
+- Drawer-style navigation with [SWRevealController](https://github.com/John-Lluch/SWRevealViewController)
 
 To-Do:
 ---
-- Implement ```CarlTermDataSource```(waiting on Web Services to host and agree on data format)
-- Introduce ```MMDrawerController``` in place of ```UITabBarController``` (unfortunately, its more complex than just that)
-- Flesh out stub classes
-- Implement actual UI style standards to match mockups
+- Get ```CarlTermDataSource``` reading from a file (waiting on Web Services to host and agree on data format)
+- ~~Flesh out stub classes~~
+- COLORS 
 - Write tests
 - Implement custom ```UITableViewCell``` subclass(es) for ContactVC (and CarlTermVC and maybe EventListVC)
-  - Want accordian-style detail view without changing scenesew view
+  - Want accordian-style detail view without opening whole new view. (maybe learn from [Expandable-Collapsable-TableView](https://github.com/singhson/Expandable-Collapsable-TableView)?)
