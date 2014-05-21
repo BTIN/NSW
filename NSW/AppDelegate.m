@@ -7,25 +7,13 @@
 //
 
 #import "AppDelegate.h"
-//#import "MMDrawerController.h"
+#import "NSWStyle.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    /*
-    MMDrawerController * drawerController = (MMDrawerController *)self.window.rootViewController;
-    [drawerController setMaximumRightDrawerWidth:200.0];
-    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    [drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-        MMDrawerControllerDrawerVisualStateBlock block;
-        block = [[MMExampleDrawerVisualStateManager sharedManager]
-                 drawerVisualStateBlockForDrawerSide:drawerSide];
-        if(block){
-            block(drawerController, drawerSide, percentVisible);
-        }
-    }];*/
+    //self.window.backgroundColor = [NSWStyle lightBlueColor];
     
     return YES;
 }

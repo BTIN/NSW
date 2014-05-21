@@ -11,4 +11,8 @@
 // A class containing color constants for consistent styling throughout the app
 @interface NSWStyle : NSObject
 
++ (UIColor *)lightBlueColor;
++ (UIColor *)darkBlueColor;
++ (UIColor *)grayColor;
+
 @end
