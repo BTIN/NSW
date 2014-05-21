@@ -15,8 +15,9 @@
 
 @interface EventListViewController () {
     EventDataSource *myEventDS;
-    //NSDate *today; //TODO(Alex) use this to tell the data source what day we want
+    NSDate *today; //TODO(Alex) use this to tell the data source what day we want
 }
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -31,10 +32,50 @@
     [super viewDidLoad];
     //today = [NSDate date];
     myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
+    
+    UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeLeft:)];
+    
+    [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [[self view] addGestureRecognizer:oneFingerSwipeLeft];
+    
+    UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]
+                                                      initWithTarget:self
+                                                      action:@selector(oneFingerSwipeRight:)];
+    [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [[self view] addGestureRecognizer:oneFingerSwipeRight];
+    
+    /*
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    
+    //Optionally for time zone converstions
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:myNSDateInstance];
+    */
+    _dateLabel.text = today;
+    
+    //[self.view addSubview:_dateLabel];
 
 }
 
 #pragma mark - Table View
+-(void)setHeaderLabel{
+    _dateLabel.text = @"another day";
+}
+
+
+- (void)oneFingerSwipeLeft:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"LEFT");
+    [myEventDS setEmpty];
+
+    
+}
+
+- (void)oneFingerSwipeRight:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"RIGHT");
+}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

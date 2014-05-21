@@ -10,6 +10,6 @@
 #import "BaseNSWTableViewController.h"
 
 @interface EventListViewController : BaseNSWTableViewController
-
+-(void)setHeaderLabel;
 
 @end

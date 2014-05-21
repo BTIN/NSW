@@ -18,5 +18,6 @@
 //NSMutableArray *getEventArrayForDate(NSString *date);
 -(id)initWithVCBackref:(EventListViewController *) eventListViewController;
 -(void)getEventsForDate:(NSDate *) currentDate;
+-(void)setEmpty;
 
 @end

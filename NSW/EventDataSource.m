@@ -189,7 +189,11 @@ example ICS event:
             [minutes doubleValue]*secondsPerMinute +
             [seconds doubleValue]);
 }
-
+-(void)setEmpty{
+    NSMutableArray * emptylist = [[NSMutableArray alloc] init];
+    [myTableViewController setVCArrayToDataSourceArray:emptylist];
+    
+}
 
 /*
 - (void) returnArray{
