@@ -93,7 +93,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
+    //TODO handle cell-is-null case
+    //TODO init custom table cell
     NSWEvent *event = self.listItems[(NSUInteger) indexPath.row];
     cell.textLabel.text = [event title];
     return cell;

@@ -5,6 +5,7 @@
 
 #import "BaseNSWTableViewController.h"
 #import "SWRevealViewController.h"
+#import "NSWStyle.h"
 
 @interface BaseNSWTableViewController ()
 @end

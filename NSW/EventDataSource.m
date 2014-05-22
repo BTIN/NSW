@@ -19,6 +19,7 @@
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super initWithVCBackref:eventListViewController
                      AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
+    //@"file:/Users/alex/Documents/CS/NSW/NSW/events.ics"
 
     return self;
 }
@@ -27,7 +28,7 @@
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
+    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding]; //NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
@@ -97,7 +98,7 @@ example ICS event:
 
     NSString *id_ = [self parseID:lines[1]];
     NSMutableString *title_ = [[self parseSimpleICSAttribute:lines[2]] mutableCopy];
-    NSMutableString *desc_;
+    NSMutableString *desc_ = [@"" mutableCopy];
 
     NSString *loc_;
     NSDate *start_;
@@ -130,7 +131,7 @@ example ICS event:
             NSString *attributeTitle = splitLine[0];
 
             if ([attributeTitle isEqual:@"DESCRIPTION"]) {
-                desc_ = [splitLine[1] mutableCopy];
+                [desc_ appendString:splitLine[1]];
                 inDescription = YES;
             }
             else if ([attributeTitle isEqual:@"LOCATION"]){
