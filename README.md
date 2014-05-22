@@ -13,6 +13,9 @@ Done:
 
 To-Do:
 ---
+- Hunt down the evil character(s):trollface: that is(/are) [preventing us from decoding the ics file as proper UTF-8](https://github.com/BTIN/NSW/blob/master/NSW/EventDataSource.m#L29-L30):rage:
+- Get all the DataSources to download their network source files (ics, html, json) to local and read from local
+  - Reload by checking if "date-modified" (probably not the actual term for that) was 1 day or more before current time
 - Get ```CarlTermDataSource``` reading from a file (waiting on Web Services to host and agree on data format)
 - ~~Flesh out stub classes~~
 - COLORS 
