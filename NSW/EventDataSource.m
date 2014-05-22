@@ -18,7 +18,7 @@
 
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super initWithVCBackref:eventListViewController
-                     AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
+                     AndDataFromURL:@"file:/Users/alex/Documents/CS/NSW/NSW/events_test.ics"];//@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
     //@"file:/Users/alex/Documents/CS/NSW/NSW/events.ics"
 
     return self;
@@ -47,9 +47,6 @@
 
 // Called by the ViewController to only get the events for one day
 - (void)getEventsForDate:(NSDate *)currentDate {
-    //TODO(Alex) we're going to want to use something like:
-    //TODO       [fullEventList filteredArrayUsingPredicate:"date == currentDate"]
-    //TODO       but it may be easier if we use NSDateComponents instead of NSDate for the start attribute
 
     NSDateComponents *currentDateComps = [NSWEvent getDateComponentsFromDate:currentDate];
     NSString *predicateFormat = [NSString stringWithFormat: @"startDateComponents.day = %i && startDateComponents.month == %i && startDateComponents.year == %i",
