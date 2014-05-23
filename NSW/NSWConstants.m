@@ -14,13 +14,5 @@
     return [NSTimeZone timeZoneForSecondsFromGMT: -5 * secondsPerHour];
 }
 
-+ (NSTimeInterval)yesterday {
-    return -1 * secondsPerDay;
-}
-
-+ (NSTimeInterval)tomorrow {
-    return secondsPerDay;
-}
-
 
 @end

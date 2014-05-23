@@ -9,6 +9,7 @@
 #import "NSWStyle.h"
 
 
+//TODO Put any colors you use here so that we can reuse them easily
 @implementation NSWStyle
 + (UIColor *)lightBlueColor {
     return [UIColor colorWithRed:132.0f/255.0f green:181.0f/255.0f blue:255.0f/255.0f alpha:1.0];
@@ -22,8 +23,12 @@
     return [UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:248.0f/255.0f alpha:1.0];
 }
 
++ (UIColor *)whiteColor {
+    return [UIColor whiteColor];
+}
 
-//TODO Put our colors here
+
+
 
 //Main UI Elements: #84b5ff Blue
 

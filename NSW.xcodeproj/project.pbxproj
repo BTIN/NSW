@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		2DBA1128AA3820D3ACDF6DB2 /* NSWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1B37E9654BD4635896D1 /* NSWConstants.m */; };
+		2DBA1144374E8617A6191C18 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA139D7276BDC39D4DB255 /* reveal-icon.png */; };
 		2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */; };
+		2DBA12A52E9246896DE26E84 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1EE6E371CB5470BFB579 /* events.ics */; };
 		2DBA145C9F5E8FBDAF398B20 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1D9C44FC924E305DABBC /* SWRevealViewController.m */; };
 		2DBA1466DB064C56C6700DF2 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11891644C1A2292AD911 /* MenuViewController.m */; };
 		2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */; };
 		2DBA1BE3106731EC27A0A6BA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1955C9B983DEC4C57B77 /* MapViewController.m */; };
+		2DBA1BF8815FA54720707B52 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */; };
 		6896DDE71921354D00570E6B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE41921354D00570E6B /* Contact.m */; };
 		6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE61921354D00570E6B /* ContactDataSource.m */; };
-		68E045E3191FF6B100B36423 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events.ics */; };
+		68E045E3191FF6B100B36423 /* events_old.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events_old.ics */; };
 		68E045E51920061700B36423 /* NSWEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E045E41920061700B36423 /* NSWEvent.m */; };
 		6C0A18E5937C4725A4DCB069 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2E3248EC341149C22A407 /* libPods.a */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
@@ -41,8 +44,6 @@
 		FA9DFDE91922D77F00FC3A81 /* CarlTermDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDE81922D77F00FC3A81 /* CarlTermDataSource.m */; };
 		FA9DFDEC1922D95400FC3A81 /* CarlTermViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDEB1922D95400FC3A81 /* CarlTermViewController.m */; };
 		FA9DFDEE1922DB5800FC3A81 /* CarlTerm.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDED1922DB5800FC3A81 /* CarlTerm.m */; };
-		FAAFD18C192BF99B00C3906A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAFD18A192BF99B00C3906A /* reveal-icon.png */; };
-		FAAFD18D192BF99B00C3906A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAFD18B192BF99B00C3906A /* reveal-icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		2DBA11891644C1A2292AD911 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		2DBA139D7276BDC39D4DB255 /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		2DBA13A2ACE1AE8E36E36C90 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSWDataSource.m; sourceTree = "<group>"; };
 		2DBA1955C9B983DEC4C57B77 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -65,15 +67,17 @@
 		2DBA1B37E9654BD4635896D1 /* NSWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWConstants.m; sourceTree = "<group>"; };
 		2DBA1D2363EB3A1744B9F1F9 /* NSWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWConstants.h; sourceTree = "<group>"; };
 		2DBA1D9C44FC924E305DABBC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		2DBA1E15920BCF66B29F9D24 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSWTableViewController.m; sourceTree = "<group>"; };
+		2DBA1EE6E371CB5470BFB579 /* events.ics */ = {isa = PBXFileReference; lastKnownFileType = file.ics; path = events.ics; sourceTree = "<group>"; };
 		2DBA1F60FBF8244A097B7169 /* BaseNSWDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNSWDataSource.h; sourceTree = "<group>"; };
 		5BE2E3248EC341149C22A407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6896DDE31921354D00570E6B /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		6896DDE41921354D00570E6B /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		6896DDE51921354D00570E6B /* ContactDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDataSource.h; sourceTree = "<group>"; };
 		6896DDE61921354D00570E6B /* ContactDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDataSource.m; sourceTree = "<group>"; };
-		68E045E2191FF6B100B36423 /* events.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = events.ics; sourceTree = "<group>"; };
+		68E045E2191FF6B100B36423 /* events_old.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.ics; path = events_old.ics; sourceTree = "<group>"; };
 		68E045E41920061700B36423 /* NSWEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWEvent.m; sourceTree = "<group>"; };
 		C06B0FA12298495BA45210A7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E21CDE72191D47BF00884608 /* EventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataSource.h; sourceTree = "<group>"; };
@@ -113,8 +117,6 @@
 		FA9DFDEA1922D95400FC3A81 /* CarlTermViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarlTermViewController.h; sourceTree = "<group>"; };
 		FA9DFDEB1922D95400FC3A81 /* CarlTermViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarlTermViewController.m; sourceTree = "<group>"; };
 		FA9DFDED1922DB5800FC3A81 /* CarlTerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarlTerm.m; sourceTree = "<group>"; };
-		FAAFD18A192BF99B00C3906A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
-		FAAFD18B192BF99B00C3906A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +204,6 @@
 		E2842AC9191A9992007FBD9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FAAFD18A192BF99B00C3906A /* reveal-icon.png */,
-				FAAFD18B192BF99B00C3906A /* reveal-icon@2x.png */,
 				E2842ACA191A9992007FBD9B /* NSW-Info.plist */,
 				E2842ACB191A9992007FBD9B /* InfoPlist.strings */,
 				E2842ACE191A9992007FBD9B /* main.m */,
@@ -261,8 +261,11 @@
 		FA9DFDE11921C30F00FC3A81 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				68E045E2191FF6B100B36423 /* events.ics */,
+				68E045E2191FF6B100B36423 /* events_old.ics */,
 				FA9DFDDC1921BDD200FC3A81 /* map.jpg */,
+				2DBA139D7276BDC39D4DB255 /* reveal-icon.png */,
+				2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */,
+				2DBA1EE6E371CB5470BFB579 /* events.ics */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -383,12 +386,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9DFDDD1921BDD200FC3A81 /* map.jpg in Resources */,
-				68E045E3191FF6B100B36423 /* events.ics in Resources */,
-				FAAFD18D192BF99B00C3906A /* reveal-icon@2x.png in Resources */,
+				68E045E3191FF6B100B36423 /* events_old.ics in Resources */,
 				E2842ADE191A9992007FBD9B /* Images.xcassets in Resources */,
 				E2842ACD191A9992007FBD9B /* InfoPlist.strings in Resources */,
 				E2842AD6191A9992007FBD9B /* Main.storyboard in Resources */,
-				FAAFD18C192BF99B00C3906A /* reveal-icon.png in Resources */,
+				2DBA1144374E8617A6191C18 /* reveal-icon.png in Resources */,
+				2DBA1BF8815FA54720707B52 /* reveal-icon@2x.png in Resources */,
+				2DBA12A52E9246896DE26E84 /* events.ics in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,9 +16,6 @@ typedef enum {
 } secondsPer;
 
 +(NSTimeZone *)northfieldTimeZone;
-//macros to move forward/backward by a day
-+(NSTimeInterval)yesterday;
-+(NSTimeInterval)tomorrow;
 
 
 @end

@@ -16,6 +16,6 @@ DEPENDENCIES:
   - MMDrawerController (~> 0.5.3)
 
 SPEC CHECKSUMS:
-  MMDrawerController: fb6a17a3e2d1cb4f5f4a411915703b3569cdb227
+  MMDrawerController: 45c08be28375eac9f0ecaa75f1f0e47eb38c8eb1
 
 COCOAPODS: 0.32.1

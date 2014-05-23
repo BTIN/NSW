@@ -19,6 +19,7 @@
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super initWithVCBackref:eventListViewController
                      AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
+    //@"file:/Users/alex/Documents/CS/NSW/NSW/events.ics"
 
     return self;
 }
@@ -27,7 +28,7 @@
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
+    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding]; //NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
@@ -38,8 +39,9 @@
         NSWEvent *currentEvent = [self parseEventFromString:splitEventStrings[i]];
         [self.fullEventList addObject:currentEvent];
     }
+    [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
+    //[myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 
-    [myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 }
 
 
@@ -49,7 +51,24 @@
     //TODO       [fullEventList filteredArrayUsingPredicate:"date == currentDate"]
     //TODO       but it may be easier if we use NSDateComponents instead of NSDate for the start attribute
 
-    //[myTableViewController setVCArrayToDataSourceArray:];
+    NSDateComponents *currentDateComps = [NSWEvent getDateComponentsFromDate:currentDate];
+    NSString *predicateFormat = [NSString stringWithFormat: @"startDateComponents.day = %i && startDateComponents.month == %i && startDateComponents.year == %i",
+                    currentDateComps.day, currentDateComps.month, currentDateComps.year];
+    NSLog(@"%@", currentDateComps);
+    NSPredicate *dateMatchesCurrent = [NSComparisonPredicate predicateWithFormat:predicateFormat];
+    NSArray *todaysEvents = [fullEventList filteredArrayUsingPredicate:dateMatchesCurrent];
+
+    [myTableViewController setVCArrayToDataSourceArray:todaysEvents];
+}
+
+//Returns an NSDate for exactly 1 day before the input
++ (NSDate *)oneDayBefore:(NSDate *) currentDate{
+    return [NSDate dateWithTimeInterval:(-1 * secondsPerDay) sinceDate:currentDate];
+}
+
+//Returns an NSDate for exactly 1 day after the input
++ (NSDate *)oneDayAfter:(NSDate *) currentDate{
+    return [NSDate dateWithTimeInterval:(secondsPerDay) sinceDate:currentDate];
 }
 
 
@@ -79,7 +98,7 @@ example ICS event:
 
     NSString *id_ = [self parseID:lines[1]];
     NSMutableString *title_ = [[self parseSimpleICSAttribute:lines[2]] mutableCopy];
-    NSMutableString *desc_;
+    NSMutableString *desc_ = [@"" mutableCopy];
 
     NSString *loc_;
     NSDate *start_;
@@ -112,7 +131,7 @@ example ICS event:
             NSString *attributeTitle = splitLine[0];
 
             if ([attributeTitle isEqual:@"DESCRIPTION"]) {
-                desc_ = [splitLine[1] mutableCopy];
+                [desc_ appendString:splitLine[1]];
                 inDescription = YES;
             }
             else if ([attributeTitle isEqual:@"LOCATION"]){
@@ -189,7 +208,11 @@ example ICS event:
             [minutes doubleValue]*secondsPerMinute +
             [seconds doubleValue]);
 }
-
+-(void)setEmpty{
+    NSMutableArray * emptylist = [[NSMutableArray alloc] init];
+    [myTableViewController setVCArrayToDataSourceArray:emptylist];
+    
+}
 
 /*
 - (void) returnArray{
