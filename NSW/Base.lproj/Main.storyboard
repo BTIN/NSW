@@ -248,6 +248,10 @@
                             <bool key="isElement" value="YES"/>
                         </accessibility>
                         <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3MH-E6-rvg" appends="YES" id="BqH-iJ-H6q"/>
+                            <outletCollection property="gestureRecognizers" destination="gfP-Ml-eJS" appends="YES" id="cTs-Z2-GB8"/>
+                        </connections>
                     </imageView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="f0w-5y-qQR">
@@ -259,6 +263,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGK-vR-QAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="3MH-E6-rvg">
+                    <connections>
+                        <action selector="handlePinch:" destination="MST-y0-eiy" id="4xl-w0-Jyc"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="gfP-Ml-eJS">
+                    <connections>
+                        <action selector="handlePan:" destination="MST-y0-eiy" id="w6n-Yh-QVp"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="369" y="992"/>
         </scene>

@@ -25,6 +25,8 @@ UIImageView *mapImageView;
     
     mapImageView = [aStoryboard instantiateViewControllerWithIdentifier:@"mapImage"];
     
+    /**
+     // ignore this
     UIPanGestureRecognizer *panTagGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
     [panTagGesture setDelegate:self];
     [mapImageView addGestureRecognizer:panTagGesture];
@@ -32,7 +34,7 @@ UIImageView *mapImageView;
     UIPinchGestureRecognizer *pinchTagGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     [pinchTagGesture setDelegate:self];
     [mapImageView addGestureRecognizer:pinchTagGesture];
-    
+    **/
     
      self.navigationItem.title = @"Map of Campus";
     [self.revealButtonItem setTarget: self.revealViewController];
@@ -69,13 +71,6 @@ CGFloat lastScale;
 
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
     
-    CGPoint point = [recognizer locationInView:mapImageView];
-    
-    CGRect mapImageViewBounds = mapImageView.bounds;
-    CGRect mapImageViewFrame  =  mapImageView.frame;
-    
-     //NSLog(@"%@", mapImageViewBounds;
-
     CGPoint translation = [recognizer translationInView:self.view];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
                                          recognizer.view.center.y + translation.y);
