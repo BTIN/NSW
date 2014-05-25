@@ -10,7 +10,7 @@
 
 #import "EventDataSource.h"
 #import "NSWEvent.h"
-
+#import "EventTableViewCell.h"
 #import "EventDetailViewController.h"
 
 @interface EventListViewController () {
@@ -43,16 +43,11 @@
     [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [[self view] addGestureRecognizer:oneFingerSwipeRight];
     
-    /*
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy"];
+    NSDateFormatter *time = [[NSDateFormatter alloc] init];
+    [time setDateFormat:@"MMMM dd"];
     
-    //Optionally for time zone converstions
-    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
-    
-    NSString *stringFromDate = [formatter stringFromDate:myNSDateInstance];
-    */
-    _dateLabel.text = currentDate.description;
+    NSString *current = [time stringFromDate:currentDate];
+    self.navigationController.navigationBar.topItem.title = current;
     
     //[self.view addSubview:_dateLabel];
 }
@@ -69,7 +64,16 @@
 
 // Updates the label for the current day
 -(void)updateDateLabelToCurrentDate {
-    _dateLabel.text = currentDate.description;
+    NSDateFormatter *time = [[NSDateFormatter alloc] init];
+    [time setDateFormat:@"MMMM dd"];
+    
+    NSString *current = [time stringFromDate:currentDate];
+    
+    
+    self.navigationController.navigationBar.topItem.title = current;
+    
+
+    //_dateLabel.text = current;
 }
 
 // Updates currentDate then the list of events to one day after the previous day
@@ -91,15 +95,34 @@
 
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (EventTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     //TODO handle cell-is-null case
     //TODO init custom table cell
+    
     NSWEvent *event = self.listItems[(NSUInteger) indexPath.row];
-    cell.textLabel.text = [event title];
+    
+    //Optionally for time zone converstions
+    //[formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+    
+    NSDateFormatter *time = [[NSDateFormatter alloc] init];
+    [time setDateFormat:@"hh:mm a"];
+
+    NSString *start = [time stringFromDate:event.startDateTime];
+    //NSString *end = [time stringFromDate:event.];
+    if ([[start substringToIndex:1] isEqualToString:@"0"]){
+        start = [start substringFromIndex:1];
+    }
+    cell.startEndLabel.text = start;
+    cell.eventNameLabel.text = [event title];
+    
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [self performSegueWithIdentifier:@"showDetail" sender:self];
+    
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -108,5 +131,7 @@
         [[segue destinationViewController] setDetailItem:object];
     }
 }
+
+
 
 @end
