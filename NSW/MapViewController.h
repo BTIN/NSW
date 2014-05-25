@@ -7,4 +7,7 @@
 
 
 @interface MapViewController : UIViewController
+- (IBAction)handlePinch:(UIPinchGestureRecognizer *)recognizer;
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
+
 @end
