@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSDate *startDateTime; // a NSDate object representing the start date and time of the event
 @property (nonatomic, strong) NSDateComponents *startDateComponents;
 @property (nonatomic) NSTimeInterval duration; // The number of seconds that the event lasts
-//@property (nonatomic, strong) NSDate *endDateTime;
+@property (nonatomic, strong) NSDate *endDateTime;
 
 +(NSDateComponents *)getDateComponentsFromDate:(NSDate *) date;
 -(id)initWithID:(NSString *) id_
