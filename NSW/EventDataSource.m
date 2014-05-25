@@ -40,7 +40,6 @@
         [self.fullEventList addObject:currentEvent];
     }
     [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
-    [myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 
 }
 
@@ -205,23 +204,6 @@ example ICS event:
             [minutes doubleValue]*secondsPerMinute +
             [seconds doubleValue]);
 }
--(void)setEmpty{
-    NSMutableArray * emptylist = [[NSMutableArray alloc] init];
-    [myTableViewController setVCArrayToDataSourceArray:emptylist];
-    
-}
-
-/*
-- (void) returnArray{
-    [self getRawDataFromURL];
-    if (done) {
-        NSLog(@"%@", self.fullEventList[0]);
-    }
-    
-    NSLog(@"test");
-    
-}
-*/
 
 
 
