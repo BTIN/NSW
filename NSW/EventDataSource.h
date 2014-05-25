@@ -20,7 +20,7 @@
 -(void)getEventsForDate:(NSDate *) currentDate;
 +(NSDate *)oneDayBefore:(NSDate *) currentDate;
 +(NSDate *)oneDayAfter:(NSDate *) currentDate;
--(void)setEmpty;
+
 - (NSDate *)parseDateTimeFromICSString:(NSString *)rawStartDateTime;
 
 @end
