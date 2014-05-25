@@ -56,7 +56,7 @@
 - (ContactTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     Contact *contact = self.listItems[(NSUInteger) indexPath.row];
     cell.titleLabel.text = [contact title];
     [cell.phoneLabel setTitle:[contact phone] forState:UIControlStateNormal];
