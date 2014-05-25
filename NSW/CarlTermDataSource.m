@@ -35,6 +35,9 @@ NSMutableArray * parsedCarlTerms;
         CarlTerm * term = [[CarlTerm alloc] initWithAbbreviation:key LongName:value];
         [parsedCarlTerms addObject:term];
     }
+    
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"abbreviation" ascending:YES];
+    [parsedCarlTerms sortUsingDescriptors:[NSArray arrayWithObject:sort]];
     [myTableViewController setVCArrayToDataSourceArray:parsedCarlTerms];
 }
 
