@@ -78,6 +78,7 @@
 
 // Updates currentDate then the list of events to one day after the previous day
 - (void)oneFingerSwipeLeft:(UITapGestureRecognizer *)recognizer {
+    //TODO Nice-to-have: animation with swipe so that it's less of a sudden change
     NSLog(@"LEFT");
     currentDate = [EventDataSource oneDayAfter:currentDate];
     [self getEventsFromCurrentDate];

@@ -24,8 +24,7 @@ NSMutableArray * parsedContacts;
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    // This ASCII is weird. Other things give us Chinese. What do we do?
-    NSString *rawPageSrc = [[NSString alloc] initWithData:self.receivedData encoding:NSASCIIStringEncoding];
+    NSString *rawPageSrc = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     [self parseContactsFromHTML:rawPageSrc];
     
 }

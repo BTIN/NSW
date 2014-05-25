@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "NSWStyle.h"
+//#import "NSWStyle.h"
+#import "FLDownloader.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,8 @@
 {
     //self.window.backgroundColor = [NSWStyle lightBlueColor];
     
+    // Initialize the singleton downloader
+    [FLDownloader sharedDownloader];
     return YES;
 }
 							

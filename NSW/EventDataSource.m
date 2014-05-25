@@ -40,16 +40,12 @@
         [self.fullEventList addObject:currentEvent];
     }
     [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
-    [myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 
 }
 
 
 // Called by the ViewController to only get the events for one day
 - (void)getEventsForDate:(NSDate *)currentDate {
-    //TODO(Alex) we're going to want to use something like:
-    //TODO       [fullEventList filteredArrayUsingPredicate:"date == currentDate"]
-    //TODO       but it may be easier if we use NSDateComponents instead of NSDate for the start attribute
 
     NSDateComponents *currentDateComps = [NSWEvent getDateComponentsFromDate:currentDate];
     NSString *predicateFormat = [NSString stringWithFormat: @"startDateComponents.day = %i && startDateComponents.month == %i && startDateComponents.year == %i",
@@ -208,23 +204,6 @@ example ICS event:
             [minutes doubleValue]*secondsPerMinute +
             [seconds doubleValue]);
 }
--(void)setEmpty{
-    NSMutableArray * emptylist = [[NSMutableArray alloc] init];
-    [myTableViewController setVCArrayToDataSourceArray:emptylist];
-    
-}
-
-/*
-- (void) returnArray{
-    [self getRawDataFromURL];
-    if (done) {
-        NSLog(@"%@", self.fullEventList[0]);
-    }
-    
-    NSLog(@"test");
-    
-}
-*/
 
 
 
