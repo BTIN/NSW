@@ -16,6 +16,7 @@
 UIImageView *mapImageView;
 
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -23,6 +24,15 @@ UIImageView *mapImageView;
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     
     mapImageView = [aStoryboard instantiateViewControllerWithIdentifier:@"mapImage"];
+    
+    UIPanGestureRecognizer *panTagGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [panTagGesture setDelegate:self];
+    [mapImageView addGestureRecognizer:panTagGesture];
+    
+    UIPinchGestureRecognizer *pinchTagGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [pinchTagGesture setDelegate:self];
+    [mapImageView addGestureRecognizer:pinchTagGesture];
+    
     
      self.navigationItem.title = @"Map of Campus";
     [self.revealButtonItem setTarget: self.revealViewController];
@@ -59,18 +69,13 @@ CGFloat lastScale;
 
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
     
-    /**CGPoint point = [recognizer locationInView:self.view];
+    CGPoint point = [recognizer locationInView:mapImageView];
     
-    //Only allow movement up to within 100 pixels of the right bound of the screen
-    if (point.x < [UIScreen mainScreen].bounds.size.width - 100) {
-        
-        CGRect newframe = CGRectMake(point.x, point.y, mapImageView.frame.size.width, mapImageView.frame.size.height);
-        
-        mapImageView.frame = newframe;
-        
-    }**/
+    CGRect mapImageViewBounds = mapImageView.bounds;
+    CGRect mapImageViewFrame  =  mapImageView.frame;
     
-    
+     //NSLog(@"%@", mapImageViewBounds;
+
     CGPoint translation = [recognizer translationInView:self.view];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x,
                                          recognizer.view.center.y + translation.y);

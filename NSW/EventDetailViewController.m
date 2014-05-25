@@ -12,6 +12,7 @@
 @interface EventDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *eventLocation;
 @property (weak, nonatomic) IBOutlet UILabel *eventDescription;
+@property (weak, nonatomic) IBOutlet UIButton *notificationButton;
 @property (weak, nonatomic) IBOutlet UILabel *durationDescription;
 //@property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
 - (void)configureView;
@@ -19,6 +20,8 @@
 @end
 
 @implementation EventDetailViewController
+
+
 
 #pragma mark - Managing the detail item
 
@@ -80,5 +83,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)notificationButton:(id)sender {
+    
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+    localNotification.alertBody = @"Notification Test";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    
+
+}
+
+
 
 @end
