@@ -248,11 +248,6 @@
                             <bool key="isElement" value="YES"/>
                         </accessibility>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="XNC-zh-LiU" appends="YES" id="Br6-fb-OhS"/>
-                            <outletCollection property="gestureRecognizers" destination="XNC-zh-LiU" appends="YES" id="lzk-JK-p3B"/>
-                            <outletCollection property="gestureRecognizers" destination="ZIU-hX-eMF" appends="YES" id="pDd-uG-cUV"/>
-                        </connections>
                     </imageView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="f0w-5y-qQR">
@@ -264,16 +259,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGK-vR-QAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="XNC-zh-LiU">
-                    <connections>
-                        <action selector="handlePinch:" destination="MST-y0-eiy" id="hf8-EV-AeU"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="ZIU-hX-eMF">
-                    <connections>
-                        <action selector="handlePan:" destination="MST-y0-eiy" id="a5Z-tV-R9Y"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="369" y="992"/>
         </scene>
@@ -421,6 +406,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="notificationButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7r-7W-j8I">
+                                <rect key="frame" x="33" y="477" width="256" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="notificationButton"/>
+                                <color key="tintColor" red="0.0" green="0.4839373911321081" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Notify Me About This">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="notificationButton:" destination="Ah7-4n-0Wa" eventType="touchUpInside" id="srX-1Q-V2Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -429,6 +428,7 @@
                         <outlet property="durationDescription" destination="AJb-nd-9d3" id="2Od-5u-4o6"/>
                         <outlet property="eventDescription" destination="zYr-e2-5j7" id="l8M-g2-aUV"/>
                         <outlet property="eventLocation" destination="3lg-c0-Kmq" id="Fvk-F8-Mwf"/>
+                        <outlet property="notificationButton" destination="d7r-7W-j8I" id="tg2-rz-WcH"/>
                         <outlet property="startTimeDescriptionLabel" destination="sRy-N9-Z0e" id="4DQ-vE-KhM"/>
                     </connections>
                 </viewController>

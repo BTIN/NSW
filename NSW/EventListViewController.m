@@ -12,6 +12,7 @@
 #import "NSWEvent.h"
 #import "EventTableViewCell.h"
 #import "EventDetailViewController.h"
+#import "NSWStyle.h"
 
 @interface EventListViewController () {
     EventDataSource *myEventDS;
@@ -24,12 +25,15 @@
 @implementation EventListViewController
 
 
+
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+        
     myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
     currentDate = [myEventDS parseDateTimeFromICSString:@"20120904T000000"]; //TODO Only for testing, eventually use [NSDate date]
     UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeLeft:)];
