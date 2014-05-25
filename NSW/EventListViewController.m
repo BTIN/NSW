@@ -109,12 +109,15 @@
     NSDateFormatter *time = [[NSDateFormatter alloc] init];
     [time setDateFormat:@"hh:mm a"];
 
-    NSString *start = [time stringFromDate:event.startDateTime];
-    //NSString *end = [time stringFromDate:event.];
-    if ([[start substringToIndex:1] isEqualToString:@"0"]){
-        start = [start substringFromIndex:1];
+    NSString *startTime = [time stringFromDate:event.startDateTime];
+    NSString *endTime = [time stringFromDate:event.endDateTime];
+    if ([[startTime substringToIndex:1] isEqualToString:@"0"]){
+        startTime = [startTime substringFromIndex:1];
+    }if ([[endTime substringToIndex:1] isEqualToString:@"0"]){
+        endTime = [endTime substringFromIndex:1];
     }
-    cell.startEndLabel.text = start;
+    NSString *startEnd = [NSString stringWithFormat:@"%@ - %@", startTime, endTime];
+    cell.startEndLabel.text = startEnd;
     cell.eventNameLabel.text = [event title];
     
     return cell;

@@ -42,6 +42,7 @@
         self.startDateTime = start_;
         self.startDateComponents = [NSWEvent getDateComponentsFromDate:start_];
         self.duration = duration_;
+        self.endDateTime = [self setEndDateTime];
     }
     return self;
 }
@@ -61,7 +62,7 @@
 }
 
 
--(NSDate *) getEndDateTime{
+-(NSDate *) setEndDateTime{
     return [NSDate dateWithTimeInterval:duration sinceDate:startDateTime];
 }
 
