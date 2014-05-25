@@ -42,18 +42,29 @@
     ContactDataSource *contactDataSource = [[ContactDataSource alloc] initWithVCBackref:self];
 
 }
+- (IBAction)phoneLabel:(id)sender {
+    UIButton *button = (UIButton*)sender;
+    NSString *promptprefix = @"tel://";
+    NSString *callprompt = [promptprefix stringByAppendingString:button.currentTitle];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callprompt]];
+}
 
+- (IBAction)emailLabel:(id)sender {
+    //emailto
+}
 
 - (ContactTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     Contact *contact = self.listItems[(NSUInteger) indexPath.row];
-    cell.textLabel.text = [contact title];
+    cell.titleLabel.text = [contact title];
+    [cell.phoneLabel setTitle:[contact phone] forState:UIControlStateNormal];
+    [cell.emailLabel setTitle:[contact email] forState:UIControlStateNormal];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.

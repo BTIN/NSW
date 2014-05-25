@@ -12,7 +12,7 @@
 
 @interface CarlTermDataSource : BaseNSWDataSource
 
-@property (nonatomic, strong) NSMutableArray *abbreviationList;
+
 -(id)initWithVCBackref:(CarlTermViewController *) carlTermViewController;
 
 

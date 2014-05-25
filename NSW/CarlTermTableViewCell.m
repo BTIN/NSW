@@ -1,14 +1,14 @@
 //
-//  ContactTableViewCell.m
+//  CarlTermTableViewCell.m
 //  NSW
 //
-//  Created by Alex Simonides on 5/12/14.
+//  Created by Evan Harris on 5/24/14.
 //  Copyright (c) 2014 BTIN. All rights reserved.
 //
 
-#import "ContactTableViewCell.h"
+#import "CarlTermTableViewCell.h"
 
-@implementation ContactTableViewCell
+@implementation CarlTermTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,6 +30,5 @@
 
     // Configure the view for the selected state
 }
-
 
 @end
