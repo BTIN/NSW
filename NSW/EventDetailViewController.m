@@ -47,8 +47,8 @@
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         NSString *string = [dateFormatter stringFromDate:[self.detailItem startDateTime]];
         
-        
-        
+        self.eventDescription.adjustsFontSizeToFitWidth = YES;
+        [self.eventDescription sizeToFit];
         self.startTimeDescriptionLabel.text = string;
         self.title =[self.detailItem title];
         self.eventDescription.text = [self.detailItem theDescription];

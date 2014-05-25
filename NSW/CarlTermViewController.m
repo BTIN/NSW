@@ -9,6 +9,7 @@
 #import "CarlTermViewController.h"
 #import "CarlTermDataSource.h"
 #import "CarlTerm.h"
+#import "CarlTermTableViewCell.h"
 
 @interface CarlTermViewController (){
 }
@@ -25,24 +26,56 @@
     return self;
 }
 
+
+int selectedIndex;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    selectedIndex = -1;
     CarlTermDataSource *dataSource = [[CarlTermDataSource alloc] initWithVCBackref:self];
 
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CarlTermTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    CarlTermTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     CarlTerm *term = self.listItems[(NSUInteger) indexPath.row];
-    cell.textLabel.text = [term abbreviation];
-    
+    cell.longNameLabel.text = [term longName];
+    cell.abbreviationLabel.text = [term abbreviation];
+    cell.longNameLabel.numberOfLines = 1;
     return cell;
 }
+
+/*
+ Set selectedIndex to the clicked indexPath. [tableView begin/endUpdates] will reload view, calling heightForRowAtIndexPath. This sets the cell at selectedIndex to have a height 80
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (selectedIndex == [indexPath row]){
+        CarlTermTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.longNameLabel.numberOfLines = 1;
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        selectedIndex = -1;
+    }
+    else {
+        CarlTermTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.longNameLabel.numberOfLines = 0;   //0 means unbounded in this case
+        selectedIndex = [indexPath row];
+    }
+
+    [tableView beginUpdates];
+    [tableView endUpdates];
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath row] == selectedIndex) {
+        return  80;
+    }
+    else return 40;
+}
+
 
 
 /*

@@ -22,6 +22,8 @@
 		68E045E3191FF6B100B36423 /* events_old.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events_old.ics */; };
 		68E045E51920061700B36423 /* NSWEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E045E41920061700B36423 /* NSWEvent.m */; };
 		6C0A18E5937C4725A4DCB069 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2E3248EC341149C22A407 /* libPods.a */; };
+		D699F9CA193119BF00410DF7 /* CarlTermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D699F9C9193119BF00410DF7 /* CarlTermTableViewCell.m */; };
+		D699F9CD19315FF100410DF7 /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D699F9CC19315FF100410DF7 /* EventTableViewCell.m */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
 		E2842AC3191A9992007FBD9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC2191A9992007FBD9B /* Foundation.framework */; };
 		E2842AC5191A9992007FBD9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC4191A9992007FBD9B /* CoreGraphics.framework */; };
@@ -82,6 +84,10 @@
 		68E045E2191FF6B100B36423 /* events_old.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.ics; path = events_old.ics; sourceTree = "<group>"; };
 		68E045E41920061700B36423 /* NSWEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWEvent.m; sourceTree = "<group>"; };
 		C06B0FA12298495BA45210A7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		D699F9C8193119BF00410DF7 /* CarlTermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarlTermTableViewCell.h; sourceTree = "<group>"; };
+		D699F9C9193119BF00410DF7 /* CarlTermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarlTermTableViewCell.m; sourceTree = "<group>"; };
+		D699F9CB19315FF100410DF7 /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
+		D699F9CC19315FF100410DF7 /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		E21CDE72191D47BF00884608 /* EventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataSource.h; sourceTree = "<group>"; };
 		E21CDE73191D47BF00884608 /* EventDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDataSource.m; sourceTree = "<group>"; };
 		E2842ABF191A9992007FBD9B /* NSW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSW.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -277,6 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				FA9DFDD61921A20900FC3A81 /* ContactTableViewCell.h */,
+				D699F9CB19315FF100410DF7 /* EventTableViewCell.h */,
+				D699F9CC19315FF100410DF7 /* EventTableViewCell.m */,
 				FA9DFDD71921A20900FC3A81 /* ContactTableViewCell.m */,
 				FA9DFDCD192166A000FC3A81 /* ContactTableViewController.h */,
 				FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */,
@@ -286,6 +294,8 @@
 				E2842ADB191A9992007FBD9B /* EventDetailViewController.m */,
 				FA9DFDEA1922D95400FC3A81 /* CarlTermViewController.h */,
 				FA9DFDEB1922D95400FC3A81 /* CarlTermViewController.m */,
+				D699F9C8193119BF00410DF7 /* CarlTermTableViewCell.h */,
+				D699F9C9193119BF00410DF7 /* CarlTermTableViewCell.m */,
 				2DBA199D76F580210C9F3B13 /* BaseNSWTableViewController.h */,
 				2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */,
 				2DBA11891644C1A2292AD911 /* MenuViewController.m */,
@@ -455,6 +465,7 @@
 				FA9DFDD81921A20900FC3A81 /* ContactTableViewCell.m in Sources */,
 				E2842AD3191A9992007FBD9B /* AppDelegate.m in Sources */,
 				FA9DFDEC1922D95400FC3A81 /* CarlTermViewController.m in Sources */,
+				D699F9CA193119BF00410DF7 /* CarlTermTableViewCell.m in Sources */,
 				E2842AD9191A9992007FBD9B /* EventListViewController.m in Sources */,
 				E2842ACF191A9992007FBD9B /* main.m in Sources */,
 				FA9DFDEE1922DB5800FC3A81 /* CarlTerm.m in Sources */,
@@ -463,6 +474,7 @@
 				E2842ADC191A9992007FBD9B /* EventDetailViewController.m in Sources */,
 				E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */,
 				2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */,
+				D699F9CD19315FF100410DF7 /* EventTableViewCell.m in Sources */,
 				2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */,
 				2DBA1128AA3820D3ACDF6DB2 /* NSWConstants.m in Sources */,
 				2DBA145C9F5E8FBDAF398B20 /* SWRevealViewController.m in Sources */,

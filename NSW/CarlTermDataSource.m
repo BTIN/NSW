@@ -14,24 +14,28 @@
 
 @implementation CarlTermDataSource
 
-@synthesize abbreviationList;
-
+NSMutableArray * parsedCarlTerms;
 
 - (id)initWithVCBackref:(CarlTermViewController *)carlTermViewController {
     self = [super initWithVCBackref:carlTermViewController AndDataFromURL:@""];
-
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL
+                                                          URLWithString:@"http://harrise.github.io/terms.json"]];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:nil error:nil];
+    [self parseAndSet:response];
     return self;
 }
 
-- (void)getRawDataFromURL:(NSString *)sourceURL {
-    CarlTerm *test = [[CarlTerm alloc] initWithAbbreviation:@"CMC" LongName:@"The Center for Math and Computing"];
-    CarlTerm *test2 = [[CarlTerm alloc] initWithAbbreviation:@"NSW" LongName:@"New Student Week"];
-    abbreviationList = [[NSMutableArray alloc] init];
-
-    [abbreviationList addObject:test];
-    [abbreviationList addObject:test2];
-
-    [myTableViewController setVCArrayToDataSourceArray:self.abbreviationList];
+- (void)parseAndSet:(NSData *)JSONData {
+    parsedCarlTerms = [[NSMutableArray alloc] init];
+    NSDictionary *termlist = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
+    for(id key in termlist) {
+        id value = [termlist objectForKey:key];
+        CarlTerm * term = [[CarlTerm alloc] initWithAbbreviation:key LongName:value];
+        [parsedCarlTerms addObject:term];
+    }
+    [myTableViewController setVCArrayToDataSourceArray:parsedCarlTerms];
 }
 
 

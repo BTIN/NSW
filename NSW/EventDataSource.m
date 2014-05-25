@@ -28,7 +28,7 @@
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding]; //NSUTF8StringEncoding];
+    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
@@ -40,7 +40,7 @@
         [self.fullEventList addObject:currentEvent];
     }
     [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
-    //[myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
+    [myTableViewController setVCArrayToDataSourceArray:self.fullEventList];
 
 }
 
