@@ -33,6 +33,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Swipe!"
+                                                    message:@"Swipe left or right to go to previous or next day"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    
+    
+    
         
     myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
     currentDate = [myEventDS parseDateTimeFromICSString:@"20120904T000000"]; //TODO Only for testing, eventually use [NSDate date]

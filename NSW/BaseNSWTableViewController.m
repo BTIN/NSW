@@ -26,6 +26,10 @@
 -(void)setNavigationColors{
     UINavigationBar *navBar = self.navigationController.navigationBar;
     navBar.barTintColor = [NSWStyle lightBlueColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    UIBarButtonItem *barBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(popoverArrowDirection)];
+    self.navigationItem.backBarButtonItem = barBtnItem;
     //"navBar text color" = [NSWStyle whiteColor];
     self.revealButtonItem.tintColor = [NSWStyle whiteColor];
 }
