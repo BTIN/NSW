@@ -13,6 +13,7 @@
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
          AndDataFromURL:(NSString *) sourceURL {
     self = [super init];
+    
     if (self) {
         myTableViewController = tableViewController;
         //TODO Pseudocode
