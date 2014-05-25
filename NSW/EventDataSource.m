@@ -54,7 +54,18 @@
     NSPredicate *dateMatchesCurrent = [NSComparisonPredicate predicateWithFormat:predicateFormat];
     NSArray *todaysEvents = [fullEventList filteredArrayUsingPredicate:dateMatchesCurrent];
 
-    [myTableViewController setVCArrayToDataSourceArray:todaysEvents];
+    [myTableViewController setVCArrayToDataSourceArray:[self eventsSortedByTime:todaysEvents]];
+}
+
+//Sorts the input array of NSWEvents by their startDateTime attribute
+-(NSArray *)eventsSortedByTime:(NSArray *)unsortedEvents {
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDateTime"
+                                                 ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    NSArray *sortedEvents = [unsortedEvents sortedArrayUsingDescriptors:sortDescriptors];
+
+    return sortedEvents;
 }
 
 //Returns an NSDate for exactly 1 day before the input
