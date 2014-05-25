@@ -15,6 +15,10 @@
     self = [super init];
     if (self) {
         myTableViewController = tableViewController;
+        //TODO Pseudocode
+        //If (self.localData doesn't exist) OR (self.localData.dateModified earlier than 24-hours-before-now)
+            //Download from url to local
+        //At this point, localData should exist, so load from that 
         [self getRawDataFromURL:sourceURL];
     }
 

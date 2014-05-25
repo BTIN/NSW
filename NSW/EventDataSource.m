@@ -18,7 +18,7 @@
 
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super initWithVCBackref:eventListViewController
-                     AndDataFromURL:@"file:/Users/alex/Documents/CS/NSW/NSW/events_test.ics"];//@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
+                     AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
     //@"file:/Users/alex/Documents/CS/NSW/NSW/events.ics"
 
     return self;
