@@ -20,6 +20,14 @@
 
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector( revealToggle: )];
+    [self setNavigationColors];
+}
+
+-(void)setNavigationColors{
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    navBar.barTintColor = [NSWStyle lightBlueColor];
+    //"navBar text color" = [NSWStyle whiteColor];
+    self.revealButtonItem.tintColor = [NSWStyle whiteColor];
 }
 
 // Called by the DataSource when it's ready to update the VC with its objects
