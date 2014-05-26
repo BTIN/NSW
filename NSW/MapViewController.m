@@ -5,6 +5,7 @@
 
 #import "MapViewController.h"
 #import "SWRevealViewController.h"
+#import "NSWStyle.h"
 
 @interface MapViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
@@ -40,7 +41,23 @@ UIImageView *mapImageView;
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    [self setNavigationColors];
+    self.view.backgroundColor = [NSWStyle lightBlueColor];
 }
+
+//This is directly lifted from BaseNSWTableViewController, can we put it in an interface or such?
+- (void)setNavigationColors{
+        UINavigationBar *navBar = self.navigationController.navigationBar;
+        navBar.translucent = NO;
+        navBar.barTintColor = [NSWStyle lightBlueColor];
+        [navBar setTitleTextAttributes:@{
+                NSForegroundColorAttributeName : [NSWStyle whiteColor],
+                NSFontAttributeName : [NSWStyle boldFont]}];
+        UIBarButtonItem *barBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStyleBordered target:self action:@selector(popoverArrowDirection)];
+        self.navigationItem.backBarButtonItem = barBtnItem;
+        //"navBar text color" = [NSWStyle whiteColor];
+        self.revealButtonItem.tintColor = [NSWStyle whiteColor];
+    }
 
 CGFloat lastScale;
 

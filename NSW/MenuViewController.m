@@ -5,11 +5,17 @@
 
 #import "MenuViewController.h"
 #import "SWRevealViewController.h"
+#import "NSWStyle.h"
 
 @implementation DrawerTableViewCell
 @end
 
 @implementation MenuViewController
+
+- (void)viewDidLoad {
+    self.tableView.backgroundColor = [NSWStyle lightBlueColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
@@ -49,27 +55,37 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    static NSString *optionTitle = @"Cell";
 
     switch ( indexPath.row )
     {
         case 0:
             CellIdentifier = @"events";
+            optionTitle = @"Schedule";
             break;
 
         case 1:
             CellIdentifier = @"map";
+            optionTitle = @"Campus Map";
             break;
 
         case 2:
             CellIdentifier = @"terms";
+            optionTitle = @"CarleTerms";
             break;
 
         case 3:
             CellIdentifier = @"contacts";
+            optionTitle = @"Important Contacts";
             break;
+        default:break;
     }
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier forIndexPath: indexPath];
+    cell.backgroundColor = [NSWStyle lightBlueColor];
+    cell.textLabel.textColor = [NSWStyle whiteColor];
+    cell.textLabel.font = [NSWStyle boldFont];
+    cell.textLabel.text = optionTitle;
 
     return cell;
 }

@@ -10,6 +10,7 @@
 #import "CarlTermDataSource.h"
 #import "CarlTerm.h"
 #import "CarlTermTableViewCell.h"
+#import "NSWStyle.h"
 
 @interface CarlTermViewController (){
 }
@@ -44,6 +45,7 @@ int selectedIndex;
     CarlTerm *term = self.listItems[(NSUInteger) indexPath.row];
     cell.longNameLabel.text = [term longName];
     cell.abbreviationLabel.text = [term abbreviation];
+    cell.abbreviationLabel.textColor = [NSWStyle lightBlueColor];
     cell.longNameLabel.numberOfLines = 1;
     return cell;
 }

@@ -8,7 +8,6 @@
 
 #import "CarlTermDataSource.h"
 #import "CarlTerm.h"
-#import "CarlTermViewController.h"
 
 
 
@@ -31,13 +30,14 @@ NSMutableArray * parsedCarlTerms;
     parsedCarlTerms = [[NSMutableArray alloc] init];
     NSDictionary *termlist = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
     for(id key in termlist) {
-        id value = [termlist objectForKey:key];
+        id value = termlist[key];
         CarlTerm * term = [[CarlTerm alloc] initWithAbbreviation:key LongName:value];
         [parsedCarlTerms addObject:term];
     }
     
+    // "'Scrunch'" is getting placed at the top because of the single quotes...
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"abbreviation" ascending:YES];
-    [parsedCarlTerms sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    [parsedCarlTerms sortUsingDescriptors:@[sort]];
     [myTableViewController setVCArrayToDataSourceArray:parsedCarlTerms];
 }
 

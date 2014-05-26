@@ -27,6 +27,26 @@
     return [UIColor whiteColor];
 }
 
+//-----------------------------------------------------------------------------
+#pragma mark Fonts
+//-----------------------------------------------------------------------------
+
+
++ (UIFont *)fontWithSize:(CGFloat) fontSize {
+    return [UIFont fontWithName:@"Helvetica Neue" size:fontSize];
+}
+
++ (UIFont *)boldFontWithSize:(CGFloat) fontSize {
+    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
+}
+
++ (UIFont *)basicFont {
+    return [self fontWithSize:12.0];
+}
+
++ (UIFont *)boldFont {
+    return [self boldFontWithSize:18.0];
+}
 
 
 

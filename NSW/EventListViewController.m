@@ -131,9 +131,12 @@
     }if ([[endTime substringToIndex:1] isEqualToString:@"0"]){
         endTime = [endTime substringFromIndex:1];
     }
+    
     NSString *startEnd = [NSString stringWithFormat:@"%@ - %@", startTime, endTime];
     cell.startEndLabel.text = startEnd;
+    cell.startEndLabel.textColor = [NSWStyle darkBlueColor];
     cell.eventNameLabel.text = [event title];
+    cell.eventNameLabel.textColor = [NSWStyle darkBlueColor];
     
     return cell;
 }
