@@ -22,6 +22,7 @@ Checklist:
 - [x] Implement custom ```UITableViewCell``` subclass(es) for ContactVC (and CarlTermVC and maybe EventListVC)
   - [ ] Want accordian-style detail view without opening whole new view. (maybe learn from [Expandable-Collapsable-TableView](https://github.com/singhson/Expandable-Collapsable-TableView)?)
 - [ ] About page
+- [ ] App icon + splash screen graphic of NSW logo
 
 Suggestions:
 ---
@@ -30,10 +31,11 @@ Suggestions:
 - [ ] change notification button color when selected
 - [ ] swipe left and right animation on schedule days
 - [ ] put arrows on each side of a day's title, so it would look like <- September 10 ->
+- [ ] Put day of week in title
 - [ ] change "carl speak" icons
 - [ ] have an actual splash screen
 - [ ] display full names in "carl speak"
-- [ ] be able to go to a day a few days over without having to swipe left or right all the way there
+- [ ] be able to go to a day a few days over without having to swipe left or right all the way there (like a little calendar icon on right  of navbar)
 - [ ] constrain date to new student week
-- [ ] Put some blank space at top of menu close to the height of the navBar
+- [ ] Put some blank space at top of menu close to the height of the navbar
 - [ ] Make taps in right margin close menu instead of acting on the center view
