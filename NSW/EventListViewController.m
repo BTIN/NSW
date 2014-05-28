@@ -40,10 +40,6 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-    
-    
-    
-    
         
     myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
     currentDate = [myEventDS parseDateTimeFromICSString:@"20120904T000000"]; //TODO Only for testing, eventually use [NSDate date]
@@ -113,8 +109,6 @@
 
 - (EventTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    //TODO handle cell-is-null case
-    //TODO init custom table cell
     
     NSWEvent *event = self.listItems[(NSUInteger) indexPath.row];
     

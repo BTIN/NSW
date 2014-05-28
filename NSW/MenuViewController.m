@@ -7,16 +7,30 @@
 #import "SWRevealViewController.h"
 #import "NSWStyle.h"
 
-@implementation DrawerTableViewCell
+@interface MenuViewController ()
+
+@property (nonatomic, strong) NSArray *menuIDs;
+@property (nonatomic, strong) NSArray *menuTitles;
+
 @end
+
 
 @implementation MenuViewController
 
 - (void)viewDidLoad {
     self.tableView.backgroundColor = [NSWStyle lightBlueColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.scrollEnabled = NO;
+
+    // Add gestures to return to current view by tapping or panning (dragging) the menu away
+    [self.revealViewController tapGestureRecognizer];
+    [self.revealViewController panGestureRecognizer];
+
+    self.menuIDs = @[@"events", @"map", @"terms", @"contacts"];
+    self.menuTitles = @[@"Schedule", @"Campus Map", @"Speak Carleton", @"Important Contacts"];
 }
 
+// boilerplate preparation for storyboard segues
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
     // configure the destination view controller:
@@ -40,52 +54,45 @@
 }
 
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 1;
+    return tableView.rowHeight;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString *headerID = @"MenuHeaderID";
+    UITableViewHeaderFooterView *menuHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerID];
+    if (!menuHeaderView) {
+        menuHeaderView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerID];
+        menuHeaderView.contentView.backgroundColor = [NSWStyle lightBlueColor];
+        //menuHeaderView.textLabel.text = @"Carleton NSW";
+        //menuHeaderView.textLabel.textColor = [NSWStyle whiteColor];
+        //menuHeaderView.textLabel.font = [NSWStyle boldFont];
+
+    }
+    return menuHeaderView;
+}
+
+#pragma mark - Table view
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.menuTitles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    static NSString *optionTitle = @"Cell";
+    
+    CellIdentifier = [self.menuIDs objectAtIndex:(NSUInteger) indexPath.row];
 
-    switch ( indexPath.row )
-    {
-        case 0:
-            CellIdentifier = @"events";
-            optionTitle = @"Schedule";
-            break;
-
-        case 1:
-            CellIdentifier = @"map";
-            optionTitle = @"Campus Map";
-            break;
-
-        case 2:
-            CellIdentifier = @"terms";
-            optionTitle = @"CarleTerms";
-            break;
-
-        case 3:
-            CellIdentifier = @"contacts";
-            optionTitle = @"Important Contacts";
-            break;
-        default:break;
-    }
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier forIndexPath: indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
     cell.backgroundColor = [NSWStyle lightBlueColor];
     cell.textLabel.textColor = [NSWStyle whiteColor];
     cell.textLabel.font = [NSWStyle boldFont];
-    cell.textLabel.text = optionTitle;
+    cell.textLabel.text = [self.menuTitles objectAtIndex:(NSUInteger) indexPath.row];
 
     return cell;
 }

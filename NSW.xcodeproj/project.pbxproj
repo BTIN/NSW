@@ -158,7 +158,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2DBA117A9E3FC69E8A187ED8 /* third-party */ = {
+		2DBA117A9E3FC69E8A187ED8 /* Third-Party */ = {
 			isa = PBXGroup;
 			children = (
 				2DBA1E15920BCF66B29F9D24 /* SWRevealViewController.h */,
@@ -168,8 +168,8 @@
 				2DBA19B56A1927B2FA54136F /* FLDownloadTask.h */,
 				2DBA146BBDAA372C1B5E4B37 /* FLDownloadTask.m */,
 			);
-			name = "third-party";
-			path = "NSW/third-party";
+			name = "Third-Party";
+			path = "NSW/Third-Party";
 			sourceTree = "<group>";
 		};
 		2DBA1BB93B02090DFFAF7DAA /* ViewCells */ = {
@@ -193,7 +193,7 @@
 				E2842AC1191A9992007FBD9B /* Frameworks */,
 				E2842AC0191A9992007FBD9B /* Products */,
 				C06B0FA12298495BA45210A7 /* Pods.xcconfig */,
-				2DBA117A9E3FC69E8A187ED8 /* third-party */,
+				2DBA117A9E3FC69E8A187ED8 /* Third-Party */,
 			);
 			sourceTree = "<group>";
 		};
