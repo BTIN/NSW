@@ -35,3 +35,5 @@ Suggestions:
 - [ ] display full names in "carl speak"
 - [ ] be able to go to a day a few days over without having to swipe left or right all the way there
 - [ ] constrain date to new student week
+- [ ] Put some blank space at top of menu close to the height of the navBar
+- [ ] Make taps in right margin close menu instead of acting on the center view
