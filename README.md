@@ -16,7 +16,7 @@ Checklist:
   - Reload by checking if "date-modified" (probably not the actual term for that) was 1 day or more before current time
 - [x] Get ```CarlTermDataSource``` reading from a file (waiting on Web Services to host and agree on data format)
 - [x] Flesh out stub classes
-- [ ] COLORS 
+- [x] COLORS 
 - [ ] Write tests
 - [x] Implement custom ```UITableViewCell``` subclass(es) for ContactVC (and CarlTermVC and maybe EventListVC)
   - [x] Want accordian-style detail view without opening whole new view. (maybe learn from [Expandable-Collapsable-TableView](https://github.com/singhson/Expandable-Collapsable-TableView)?)
