@@ -24,7 +24,7 @@
 
     // Add gestures to return to current view by tapping or panning (dragging) the menu away
     [self.revealViewController tapGestureRecognizer];
-    [self.revealViewController panGestureRecognizer];
+    //[self.revealViewController panGestureRecognizer];
 
     self.menuIDs = @[@"events", @"map", @"terms", @"contacts"];
     self.menuTitles = @[@"Schedule", @"Campus Map", @"Speak Carleton", @"Important Contacts"];
