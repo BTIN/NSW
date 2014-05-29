@@ -4,50 +4,129 @@
 //
 
 #import "BaseNSWDataSource.h"
+#import "FLDownloader.h"
 
+@interface BaseNSWDataSource ()
+@property (nonatomic, strong) NSDictionary *urlMap;
+@end
 
 @implementation BaseNSWDataSource
 
-@synthesize receivedData;
+static NSString *genericLocalFilePath;
+@synthesize localData;
+
+// Maps what URL corresponds to which local file name
+- (id)urlMap {
+    if (!_urlMap) {
+        NSArray *fileNames = @[@"events.ics", @"contacts.html", @"terms.json"];
+        NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"],
+                [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/"],
+                [NSURL URLWithString:@"http://harrise.github.io/terms.json"]];
+        _urlMap = [NSDictionary dictionaryWithObjects:urls forKeys:fileNames];
+    }
+    return _urlMap;
+}
 
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
-         AndDataFromURL:(NSString *) sourceURL {
+         AndDataFromURL:(NSString *)stringURL {
     self = [super init];
     
     if (self) {
         myTableViewController = tableViewController;
-        //TODO Pseudocode
-        //If (self.localData doesn't exist) OR (self.localData.dateModified earlier than 24-hours-before-now)
-            //Download from url to local
-        //At this point, localData should exist, so load from that 
-        [self getRawDataFromURL:sourceURL];
+        [self getRawDataFromURL:[NSURL URLWithString:stringURL]];
     }
 
     return self;
 }
 
-- (void)getRawDataFromURL:(NSString *)sourceURL {
+// Load the given file from the local storage location
+- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
+        AndDataFromFile:(NSString *)localName {
+    self = [super init];
+
+    if (self) {
+        myTableViewController = tableViewController;
+        [self getLocalFile:localName
+         orDownloadFromURL:[self.urlMap objectForKey:localName]];
+    }
+
+    return self;
+}
+
+// Create the directory that the data files will be stored in 
+// if it hasn't already been created
+- (void)createLocalDataDirectoryIfNoneExists {
+    genericLocalFilePath = [[[FLDownloader sharedDownloader] defaultFilePath] stringByAppendingPathComponent:@"LocalData"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    BOOL isDir;
+    BOOL locationExists = [fileManager fileExistsAtPath:genericLocalFilePath 
+                                            isDirectory:&isDir];
+    // isDir will be changed to whether the genericLocalFilePath is a directory. 
+    // It's how the existence function is able to "return" 2 values
+    if (!(locationExists || isDir))
+    {
+        NSError *error;
+        [fileManager createDirectoryAtPath:genericLocalFilePath 
+               withIntermediateDirectories:NO 
+                                attributes:nil 
+                                     error:&error];
+    }
+}
+
+// If the file exists locally, load it into self.localData (using getRawDataFromURL)
+// Otherwise, download it to local storage THEN load it into self.localData
+- (void)getLocalFile:(NSString *)fileName orDownloadFromURL:(NSURL *)URL {
+    [self createLocalDataDirectoryIfNoneExists];
+    NSString *pathToLocalFile = [genericLocalFilePath stringByAppendingPathComponent:fileName];
+    
+    //A block to "download" the data file from the file system into self.localData
+    void (^onCompletion)(BOOL, NSError *) = ^(BOOL success, NSError *error) {
+        if (success) {
+            [self getRawDataFromURL:[NSURL fileURLWithPath:pathToLocalFile]];
+        } else {
+            NSLog(@"Error downloading %@: %@", fileName, error);
+        }
+    };
+    
+    //Set up a FLDownloadTask to download the source from the URL, but don't start yet
+    FLDownloadTask *downloadTask = [[FLDownloader sharedDownloader] downloadTaskForURL:URL];
+    [downloadTask setFileName:fileName];
+    [downloadTask setDestinationDirectory:genericLocalFilePath];
+    [downloadTask setCompletionBlock:onCompletion];
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:pathToLocalFile]){
+        onCompletion(YES, nil);
+        //TODO check how old the data is, Then reload if more than a day
+    } else {
+        [downloadTask start];
+    }
+    
+}
+
+
+
+- (void)getRawDataFromURL:(NSURL *)sourceURL {
 
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     // Create the request.
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:sourceURL]
+    NSURLRequest *theRequest=[NSURLRequest requestWithURL:sourceURL
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:60.0];
 
 
     // Create the NSMutableData to hold the received data.
-    // receivedData is an instance variable declared elsewhere.
-    receivedData = [NSMutableData dataWithCapacity: 0];
-
+    // localData is an instance variable declared elsewhere.
+    localData = [NSMutableData dataWithCapacity: 0];
     // create the connection with the request
     // and start loading the data
     NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
 
 
     if (!theConnection) {
-        // Release the receivedData object.
-        receivedData = nil;
+        // Release the localData object.
+        localData = nil;
         // Inform the user that the connection failed.
         NSLog(@"Connection failed");
 
@@ -57,9 +136,9 @@
 
 - (void)connection:(NSURLConnection *)connection
     didReceiveData:(NSData *)data {
-    // Append the new data to receivedData.
-    // receivedData is an instance variable declared elsewhere.
-    [receivedData appendData:data];
+    // Append the new data to localData.
+    // localData is an instance variable declared elsewhere.
+    [localData appendData:data];
 
 }
 
@@ -72,10 +151,6 @@
  */
 + (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters{
     return [wholeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:splitCharacters]];
-}
-
-- (void) cacheEvents{
-    //TODO(Alex) Implement caching events to the file system
 }
 
 @end

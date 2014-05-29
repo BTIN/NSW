@@ -18,7 +18,8 @@
 
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super initWithVCBackref:eventListViewController
-                     AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
+                    AndDataFromFile:@"events.ics"];
+                     //AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
     //@"file:/Users/alex/Documents/CS/NSW/NSW/events.ics"
 
     return self;
@@ -28,7 +29,7 @@
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
+    NSString *rawICSString = [[NSString alloc] initWithData:self.localData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 

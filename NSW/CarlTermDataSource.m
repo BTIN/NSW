@@ -16,14 +16,15 @@
 NSMutableArray * parsedCarlTerms;
 
 - (id)initWithVCBackref:(CarlTermViewController *)carlTermViewController {
-    self = [super initWithVCBackref:carlTermViewController AndDataFromURL:@"http://harrise.github.io/terms.json"];
+    self = [super initWithVCBackref:carlTermViewController
+                    AndDataFromFile:@"terms.json"];
     
     return self;
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    [self parseAndSet:self.receivedData];
+
+    [self parseAndSet:self.localData];
     
 }
 - (void)parseAndSet:(NSData *)JSONData {

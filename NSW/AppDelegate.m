@@ -16,9 +16,10 @@
 {
     //self.window.backgroundColor = [NSWStyle lightBlueColor];
     
-    
     // Initialize the singleton downloader
-    [FLDownloader sharedDownloader];
+    NSString *pathToDocuments = [[FLDownloader sharedDownloader] defaultFilePath];
+    NSLog(@"Will download data files to %@ by default", 
+            pathToDocuments);
     return YES;
 }
 							

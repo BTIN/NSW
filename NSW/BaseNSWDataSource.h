@@ -11,12 +11,14 @@
     __weak BaseNSWTableViewController *myTableViewController;
 }
 
-@property (nonatomic, strong) NSMutableData *receivedData;
+@property (nonatomic, strong) NSMutableData *localData;
 
-- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController AndDataFromURL:(NSString *) sourceURL;
-
+- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController 
+         AndDataFromURL:(NSString *)stringURL;
+- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
+        AndDataFromFile:(NSString *)localName;
 +(NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;
 
--(void)getRawDataFromURL:(NSString *)sourceURL;
+-(void)getRawDataFromURL:(NSURL *)sourceURL;
 
 @end

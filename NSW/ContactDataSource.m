@@ -17,14 +17,14 @@ NSMutableArray * parsedContacts;
 
 - (id)initWithVCBackref:(ContactTableViewController *)contactTableViewController {
     self = [super initWithVCBackref:contactTableViewController
-                     AndDataFromURL:@"https://apps.carleton.edu/newstudents/contact/"];
+                    AndDataFromFile:@"contacts.html"];
 
     return self;
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    NSString *rawPageSrc = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+    NSString *rawPageSrc = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
     [self parseContactsFromHTML:rawPageSrc];
     
 }
