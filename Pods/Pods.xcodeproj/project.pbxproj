@@ -7,206 +7,226 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		083FE3F5A76C4757A1FAC580 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3EA8DB16E4353A1EFE3C6 /* MMDrawerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		0D2B5076611E47E9A24AF49D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F9BBF808FC4E459E5FF64D /* Foundation.framework */; };
-		3130F448C38745EEB21DF200 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A4EEE394A340A699854C0C /* Pods-dummy.m */; };
-		4B27BD209D444AA7858306ED /* MMDrawerVisualState.h in Headers */ = {isa = PBXBuildFile; fileRef = D39DAB775E6C4F2D8B264556 /* MMDrawerVisualState.h */; };
-		5961BE442450484C9A166531 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BD28A60DE94177A3E4FDAB /* UIViewController+MMDrawerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		69CCF93D1AF341B7BE0C9F22 /* Pods-MMDrawerController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4059320B2A8B4817B4AC29FD /* Pods-MMDrawerController-dummy.m */; };
-		6A2B485902EC44DFA69FD548 /* libPods-MMDrawerController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D134B300573440D9FEB30B7 /* libPods-MMDrawerController.a */; };
-		7E40A10D01374F8B8F0480FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EFE445140143CA810F96E4 /* QuartzCore.framework */; };
-		86BBFD52637349569D6D563A /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 059F2A67AC7640F4A9A11C83 /* MMDrawerController+Subclass.h */; };
-		AB473FB1ADC440739826AC80 /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 059F2A67AC7640F4A9A11C83 /* MMDrawerController+Subclass.h */; };
-		B9720CC5C962430A899D7D26 /* MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 449BD7EB635343669B4AF578 /* MMDrawerController.h */; };
-		C5BDC902F24949B6AE2C6CE2 /* UIViewController+MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EF55F778A6E4E77AC3DD7FD /* UIViewController+MMDrawerController.h */; };
-		D78BA59873274505A4AB111C /* MMDrawerBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB053561222477A874C13EA /* MMDrawerBarButtonItem.h */; };
-		DC993A40D1FE412DA1EDBE8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F9BBF808FC4E459E5FF64D /* Foundation.framework */; };
-		F033420F8D564F38B13AC21E /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 229A1524B75F42AAB7414907 /* MMDrawerBarButtonItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		F31F56B7CD774CF4B469FF04 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = C090020584AF4F45B20BED41 /* MMDrawerVisualState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		0C7E6E07494E4BABA702852B /* CEVerticalSwipeInteractionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A9A14AEFB814735BE9E97A4 /* CEVerticalSwipeInteractionController.h */; };
+		104ED5EC4E4F415BAD2B7149 /* CEPortalAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 01208DB7B2FE4643B450FD5E /* CEPortalAnimationController.h */; };
+		1B989B1E6D09465F832F48D0 /* CEExplodeAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 616C9A37905A4D94AE979120 /* CEExplodeAnimationController.m */; };
+		1F5CB1D5AB654099861E238B /* CEPinchInteractionController.h in Headers */ = {isa = PBXBuildFile; fileRef = E1FA05A7D9CA42488C1A0F41 /* CEPinchInteractionController.h */; };
+		2500982945864B87A5F02CC3 /* Pods-VCTransitionsLibrary-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C6E085BB914697A2AC125F /* Pods-VCTransitionsLibrary-dummy.m */; };
+		32CF1589E65D4DC198F8C3A9 /* CECrossfadeAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = EF55353E4E664169BFA6B51F /* CECrossfadeAnimationController.h */; };
+		32F40C38FB29477C9CBD9384 /* CEFlipAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A56DB2F4C274932A7B2C1D5 /* CEFlipAnimationController.h */; };
+		3E0E90A5EAF64616B2BE23DA /* CEReversibleAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5560ECDB87004CCB8E7D118B /* CEReversibleAnimationController.m */; };
+		4C005768F99546BDBDCD892B /* CEBaseInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6BB5B91FC047758F96BF93 /* CEBaseInteractionController.m */; };
+		4F74EA0F52974B008109B745 /* CEReversibleAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CF194756AB74819AAF05B92 /* CEReversibleAnimationController.h */; };
+		52F423C1FCFF4F38824F1A0A /* CECardsAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B76258670447E887ED5100 /* CECardsAnimationController.m */; };
+		53FE0D57B83E437FA534F488 /* CECubeAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A38DD7DE8BC45E6B721D5C2 /* CECubeAnimationController.h */; };
+		5865544098464B57A51B2B3C /* libPods-VCTransitionsLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D258BBAEFC4D5D949B5520 /* libPods-VCTransitionsLibrary.a */; };
+		5E05790847484A1EB70A7812 /* CEVerticalSwipeInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F48F22D76407BBBF0557E /* CEVerticalSwipeInteractionController.m */; };
+		685AA464CFBD422FB22BB479 /* CECubeAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546AA5D2833B4C94A069045C /* CECubeAnimationController.m */; };
+		7993A6A48D28417AA9746DF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA839109E934B26BE06D361 /* Foundation.framework */; };
+		8068FBC33C884C97B51A6900 /* CEExplodeAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = F627178493874898912DFA1A /* CEExplodeAnimationController.h */; };
+		895C511D1E344D2FB1F0884D /* CETurnAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E29951105F7947A5AC0C5E81 /* CETurnAnimationController.m */; };
+		8D45832E1BAF409B81BC09C1 /* CECrossfadeAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8781F0E0DE64D4E8F2622F3 /* CECrossfadeAnimationController.m */; };
+		8E6375857E4648CEBDD65ABF /* CEPortalAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEFEED6F6934C6193C259CE /* CEPortalAnimationController.m */; };
+		937DBA3A12D0484B858F5198 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA839109E934B26BE06D361 /* Foundation.framework */; };
+		B8F5985F41C04498BA63B2A3 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200A02D239A445291D3FBC7 /* Pods-dummy.m */; };
+		C252312EA2354C2789E430A1 /* CETurnAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 741F3256D64E4124833415A5 /* CETurnAnimationController.h */; };
+		D8F7123623534E6883EA416E /* CENatGeoAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164FFF6CEB24D1397142B1A /* CENatGeoAnimationController.m */; };
+		DA15DFE4CA984B9094EC1C3C /* CEPinchInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 686F2D740CA94831BD6EB5CD /* CEPinchInteractionController.m */; };
+		DD07228868F14B7EABA0F1DB /* CEHorizontalSwipeInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E1AC14C70E429E99F2FE53 /* CEHorizontalSwipeInteractionController.m */; };
+		E00402F530924C31AFCCAF1E /* CEFoldAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A3909E29D0B45A2BBA14D2B /* CEFoldAnimationController.m */; };
+		E110E2334ABF4E9C8651504E /* CECardsAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A6E465393E6A400AA0484970 /* CECardsAnimationController.h */; };
+		E4C3A3027B7F4BFE8F7BA4AB /* CEBaseInteractionController.h in Headers */ = {isa = PBXBuildFile; fileRef = FC075F7EDC194F38B19D7404 /* CEBaseInteractionController.h */; };
+		E8314B34EFA34F03AF350E6A /* CEHorizontalSwipeInteractionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD3ED06060C4BDA9FC361A3 /* CEHorizontalSwipeInteractionController.h */; };
+		EA36487E93CC4CC392B58762 /* CEFlipAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 774246FC72144A1C83D3DEEC /* CEFlipAnimationController.m */; };
+		EF6779251C004303B428DF0D /* CENatGeoAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1277C398C0D34AFF9B6B67A3 /* CENatGeoAnimationController.h */; };
+		FBE94C1195A34C389B11E9E6 /* CEFoldAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = FE7AD0731D4147D1A8D9BC73 /* CEFoldAnimationController.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2948FC04793A4172A32885CE /* PBXContainerItemProxy */ = {
+		5A8428B1EBAF42DA9BA1D3FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D47542A1363B464B8D9C379D /* Project object */;
+			containerPortal = CE27D7FFD5FC4DC2867D4F7C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 59485E46127F4FDFA179B158;
-			remoteInfo = "Pods-MMDrawerController";
+			remoteGlobalIDString = E9116A0C17324AC39BE3C82E;
+			remoteInfo = "Pods-VCTransitionsLibrary";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		059F2A67AC7640F4A9A11C83 /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MMDrawerController+Subclass.h"; path = "MMDrawerController/MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
-		097146B0884C4BAF91C7410E /* Pods-MMDrawerController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MMDrawerController-Private.xcconfig"; sourceTree = "<group>"; };
-		0C76679D90F742BF92EC969D /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		10370A51124F4334BF1A117E /* Pods-MMDrawerController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MMDrawerController-prefix.pch"; sourceTree = "<group>"; };
-		1CAFCECA07CB435FA6FC553D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
-		229A1524B75F42AAB7414907 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MMDrawerBarButtonItem.m; path = MMDrawerController/MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
-		4059320B2A8B4817B4AC29FD /* Pods-MMDrawerController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MMDrawerController-dummy.m"; sourceTree = "<group>"; };
-		449BD7EB635343669B4AF578 /* MMDrawerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMDrawerController.h; path = MMDrawerController/MMDrawerController.h; sourceTree = "<group>"; };
-		4ABBF54B7331498184F45A4A /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		6EF55F778A6E4E77AC3DD7FD /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MMDrawerController.h"; path = "MMDrawerController/UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
-		73A4EEE394A340A699854C0C /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		7AE3EA8DB16E4353A1EFE3C6 /* MMDrawerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MMDrawerController.m; path = MMDrawerController/MMDrawerController.m; sourceTree = "<group>"; };
-		7D134B300573440D9FEB30B7 /* libPods-MMDrawerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MMDrawerController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8250B95B711944EE833B2A5C /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		953956B962D34C24B882CA83 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		97EFE445140143CA810F96E4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		A15DE3D2E8784104911692F0 /* Pods-MMDrawerController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MMDrawerController.xcconfig"; sourceTree = "<group>"; };
-		A3D4B067C43C4206B436581C /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		BCB053561222477A874C13EA /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMDrawerBarButtonItem.h; path = MMDrawerController/MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
-		C090020584AF4F45B20BED41 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MMDrawerVisualState.m; path = MMDrawerController/MMDrawerVisualState.m; sourceTree = "<group>"; };
-		C1F9BBF808FC4E459E5FF64D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D39DAB775E6C4F2D8B264556 /* MMDrawerVisualState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMDrawerVisualState.h; path = MMDrawerController/MMDrawerVisualState.h; sourceTree = "<group>"; };
-		D9BD28A60DE94177A3E4FDAB /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MMDrawerController.m"; path = "MMDrawerController/UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
-		E813E4DC5CCD466CAEB69DC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		01208DB7B2FE4643B450FD5E /* CEPortalAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEPortalAnimationController.h; path = AnimationControllers/CEPortalAnimationController.h; sourceTree = "<group>"; };
+		1277C398C0D34AFF9B6B67A3 /* CENatGeoAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CENatGeoAnimationController.h; path = AnimationControllers/CENatGeoAnimationController.h; sourceTree = "<group>"; };
+		195F48F22D76407BBBF0557E /* CEVerticalSwipeInteractionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEVerticalSwipeInteractionController.m; path = InteractionControllers/CEVerticalSwipeInteractionController.m; sourceTree = "<group>"; };
+		1CF194756AB74819AAF05B92 /* CEReversibleAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEReversibleAnimationController.h; path = AnimationControllers/CEReversibleAnimationController.h; sourceTree = "<group>"; };
+		2DD3ED06060C4BDA9FC361A3 /* CEHorizontalSwipeInteractionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEHorizontalSwipeInteractionController.h; path = InteractionControllers/CEHorizontalSwipeInteractionController.h; sourceTree = "<group>"; };
+		48FD4453E257491D93FF0648 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		4A56DB2F4C274932A7B2C1D5 /* CEFlipAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEFlipAnimationController.h; path = AnimationControllers/CEFlipAnimationController.h; sourceTree = "<group>"; };
+		4A9A14AEFB814735BE9E97A4 /* CEVerticalSwipeInteractionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEVerticalSwipeInteractionController.h; path = InteractionControllers/CEVerticalSwipeInteractionController.h; sourceTree = "<group>"; };
+		5164FFF6CEB24D1397142B1A /* CENatGeoAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CENatGeoAnimationController.m; path = AnimationControllers/CENatGeoAnimationController.m; sourceTree = "<group>"; };
+		546AA5D2833B4C94A069045C /* CECubeAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CECubeAnimationController.m; path = AnimationControllers/CECubeAnimationController.m; sourceTree = "<group>"; };
+		5560ECDB87004CCB8E7D118B /* CEReversibleAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEReversibleAnimationController.m; path = AnimationControllers/CEReversibleAnimationController.m; sourceTree = "<group>"; };
+		5E281EB78BCF446A8AEDA9E8 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		616C9A37905A4D94AE979120 /* CEExplodeAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEExplodeAnimationController.m; path = AnimationControllers/CEExplodeAnimationController.m; sourceTree = "<group>"; };
+		686F2D740CA94831BD6EB5CD /* CEPinchInteractionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEPinchInteractionController.m; path = InteractionControllers/CEPinchInteractionController.m; sourceTree = "<group>"; };
+		69B76258670447E887ED5100 /* CECardsAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CECardsAnimationController.m; path = AnimationControllers/CECardsAnimationController.m; sourceTree = "<group>"; };
+		741F3256D64E4124833415A5 /* CETurnAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CETurnAnimationController.h; path = AnimationControllers/CETurnAnimationController.h; sourceTree = "<group>"; };
+		76170E9BBD41405A82532973 /* Pods-VCTransitionsLibrary-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VCTransitionsLibrary-Private.xcconfig"; sourceTree = "<group>"; };
+		7637ADA5D51F47808CFB20E4 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		774246FC72144A1C83D3DEEC /* CEFlipAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEFlipAnimationController.m; path = AnimationControllers/CEFlipAnimationController.m; sourceTree = "<group>"; };
+		7A38DD7DE8BC45E6B721D5C2 /* CECubeAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CECubeAnimationController.h; path = AnimationControllers/CECubeAnimationController.h; sourceTree = "<group>"; };
+		8D90A1988007405CA20B64DE /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		9200A02D239A445291D3FBC7 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		959D28FAB03548C5A5596115 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		9A3909E29D0B45A2BBA14D2B /* CEFoldAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEFoldAnimationController.m; path = AnimationControllers/CEFoldAnimationController.m; sourceTree = "<group>"; };
+		A2D36ABD953041ACA3BF4149 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A5E1AC14C70E429E99F2FE53 /* CEHorizontalSwipeInteractionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEHorizontalSwipeInteractionController.m; path = InteractionControllers/CEHorizontalSwipeInteractionController.m; sourceTree = "<group>"; };
+		A6E465393E6A400AA0484970 /* CECardsAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CECardsAnimationController.h; path = AnimationControllers/CECardsAnimationController.h; sourceTree = "<group>"; };
+		AB6BB5B91FC047758F96BF93 /* CEBaseInteractionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEBaseInteractionController.m; path = InteractionControllers/CEBaseInteractionController.m; sourceTree = "<group>"; };
+		BF8DE98841684B11B49F22A4 /* Pods-VCTransitionsLibrary-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VCTransitionsLibrary-prefix.pch"; sourceTree = "<group>"; };
+		C69BE723B26B45289989A76E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8C6E085BB914697A2AC125F /* Pods-VCTransitionsLibrary-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VCTransitionsLibrary-dummy.m"; sourceTree = "<group>"; };
+		CFEFEED6F6934C6193C259CE /* CEPortalAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CEPortalAnimationController.m; path = AnimationControllers/CEPortalAnimationController.m; sourceTree = "<group>"; };
+		D142AEBAF4A940AD9B0917CA /* Pods-VCTransitionsLibrary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VCTransitionsLibrary.xcconfig"; sourceTree = "<group>"; };
+		E1FA05A7D9CA42488C1A0F41 /* CEPinchInteractionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEPinchInteractionController.h; path = InteractionControllers/CEPinchInteractionController.h; sourceTree = "<group>"; };
+		E29951105F7947A5AC0C5E81 /* CETurnAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CETurnAnimationController.m; path = AnimationControllers/CETurnAnimationController.m; sourceTree = "<group>"; };
+		E3D258BBAEFC4D5D949B5520 /* libPods-VCTransitionsLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VCTransitionsLibrary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8781F0E0DE64D4E8F2622F3 /* CECrossfadeAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CECrossfadeAnimationController.m; path = AnimationControllers/CECrossfadeAnimationController.m; sourceTree = "<group>"; };
+		EEA839109E934B26BE06D361 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		EF55353E4E664169BFA6B51F /* CECrossfadeAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CECrossfadeAnimationController.h; path = AnimationControllers/CECrossfadeAnimationController.h; sourceTree = "<group>"; };
+		F627178493874898912DFA1A /* CEExplodeAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEExplodeAnimationController.h; path = AnimationControllers/CEExplodeAnimationController.h; sourceTree = "<group>"; };
+		FC075F7EDC194F38B19D7404 /* CEBaseInteractionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEBaseInteractionController.h; path = InteractionControllers/CEBaseInteractionController.h; sourceTree = "<group>"; };
+		FE7AD0731D4147D1A8D9BC73 /* CEFoldAnimationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CEFoldAnimationController.h; path = AnimationControllers/CEFoldAnimationController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0085DD0563A24579B13F170B /* Frameworks */ = {
+		1EC89B1094F6411B88E9EBAC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D2B5076611E47E9A24AF49D /* Foundation.framework in Frameworks */,
-				6A2B485902EC44DFA69FD548 /* libPods-MMDrawerController.a in Frameworks */,
+				937DBA3A12D0484B858F5198 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0C0A1C1BAB764DC9A7A3370E /* Frameworks */ = {
+		A691EF7BC18945C0A3FC9A4A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC993A40D1FE412DA1EDBE8C /* Foundation.framework in Frameworks */,
-				7E40A10D01374F8B8F0480FA /* QuartzCore.framework in Frameworks */,
+				7993A6A48D28417AA9746DF1 /* Foundation.framework in Frameworks */,
+				5865544098464B57A51B2B3C /* libPods-VCTransitionsLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2B1E1CAD42374EFAB5C90A85 /* Support Files */ = {
+		61366FC1C241403199C3B29B = {
 			isa = PBXGroup;
 			children = (
-				A15DE3D2E8784104911692F0 /* Pods-MMDrawerController.xcconfig */,
-				097146B0884C4BAF91C7410E /* Pods-MMDrawerController-Private.xcconfig */,
-				4059320B2A8B4817B4AC29FD /* Pods-MMDrawerController-dummy.m */,
-				10370A51124F4334BF1A117E /* Pods-MMDrawerController-prefix.pch */,
+				5E281EB78BCF446A8AEDA9E8 /* Podfile */,
+				7C25C144D24A4AA693832169 /* Frameworks */,
+				F8BC999DC4244507A83177BF /* Pods */,
+				BF9152C1D52B44E698B3216A /* Products */,
+				D2F3997ACD834032A09CC0EF /* Targets Support Files */,
 			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		6543CC875A944D8580694153 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E53AA87B929047D1B1CE70E2 /* iOS */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		85C4CE9ABF36486798C67ED5 /* Subclass */ = {
+		6EB654CDFF9147729AD66537 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = Subclass;
-			sourceTree = "<group>";
-		};
-		8E4750437EA2465597FB6D31 /* MMDrawerBarButtonItem */ = {
-			isa = PBXGroup;
-			children = (
-				BCB053561222477A874C13EA /* MMDrawerBarButtonItem.h */,
-				229A1524B75F42AAB7414907 /* MMDrawerBarButtonItem.m */,
-			);
-			name = MMDrawerBarButtonItem;
-			sourceTree = "<group>";
-		};
-		8FC8B63023944887BB6C9C50 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				449BD7EB635343669B4AF578 /* MMDrawerController.h */,
-				7AE3EA8DB16E4353A1EFE3C6 /* MMDrawerController.m */,
-				059F2A67AC7640F4A9A11C83 /* MMDrawerController+Subclass.h */,
-				6EF55F778A6E4E77AC3DD7FD /* UIViewController+MMDrawerController.h */,
-				D9BD28A60DE94177A3E4FDAB /* UIViewController+MMDrawerController.m */,
-			);
-			name = Core;
-			sourceTree = "<group>";
-		};
-		955A0FEF9AB34DE585BE0B80 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E813E4DC5CCD466CAEB69DC8 /* libPods.a */,
-				7D134B300573440D9FEB30B7 /* libPods-MMDrawerController.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A7AA1DFE373A477B9045ACFA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E4DCB1D81ADD47E49CAD5B45 /* MMDrawerController */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		B93FE2CC8C26423EBECA4927 /* MMDrawerVisualStates */ = {
-			isa = PBXGroup;
-			children = (
-				D39DAB775E6C4F2D8B264556 /* MMDrawerVisualState.h */,
-				C090020584AF4F45B20BED41 /* MMDrawerVisualState.m */,
-			);
-			name = MMDrawerVisualStates;
-			sourceTree = "<group>";
-		};
-		D43D8BE832EE4930BD5F0F47 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				FCA9641E0E1C4ABBB0DE91BA /* Pods */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		E4DCB1D81ADD47E49CAD5B45 /* MMDrawerController */ = {
-			isa = PBXGroup;
-			children = (
-				8FC8B63023944887BB6C9C50 /* Core */,
-				8E4750437EA2465597FB6D31 /* MMDrawerBarButtonItem */,
-				B93FE2CC8C26423EBECA4927 /* MMDrawerVisualStates */,
-				85C4CE9ABF36486798C67ED5 /* Subclass */,
-				2B1E1CAD42374EFAB5C90A85 /* Support Files */,
-			);
-			name = MMDrawerController;
-			path = MMDrawerController;
-			sourceTree = "<group>";
-		};
-		E53AA87B929047D1B1CE70E2 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				C1F9BBF808FC4E459E5FF64D /* Foundation.framework */,
-				97EFE445140143CA810F96E4 /* QuartzCore.framework */,
+				EEA839109E934B26BE06D361 /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		F9D66BAE06B947AD997B4661 = {
+		7C25C144D24A4AA693832169 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4ABBF54B7331498184F45A4A /* Podfile */,
-				6543CC875A944D8580694153 /* Frameworks */,
-				A7AA1DFE373A477B9045ACFA /* Pods */,
-				955A0FEF9AB34DE585BE0B80 /* Products */,
-				D43D8BE832EE4930BD5F0F47 /* Targets Support Files */,
+				6EB654CDFF9147729AD66537 /* iOS */,
 			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FCA9641E0E1C4ABBB0DE91BA /* Pods */ = {
+		B4A49265F0014BB59FCE17C0 /* VCTransitionsLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				1CAFCECA07CB435FA6FC553D /* Pods.xcconfig */,
-				953956B962D34C24B882CA83 /* Pods-acknowledgements.markdown */,
-				A3D4B067C43C4206B436581C /* Pods-acknowledgements.plist */,
-				73A4EEE394A340A699854C0C /* Pods-dummy.m */,
-				0C76679D90F742BF92EC969D /* Pods-environment.h */,
-				8250B95B711944EE833B2A5C /* Pods-resources.sh */,
+				FC075F7EDC194F38B19D7404 /* CEBaseInteractionController.h */,
+				AB6BB5B91FC047758F96BF93 /* CEBaseInteractionController.m */,
+				A6E465393E6A400AA0484970 /* CECardsAnimationController.h */,
+				69B76258670447E887ED5100 /* CECardsAnimationController.m */,
+				EF55353E4E664169BFA6B51F /* CECrossfadeAnimationController.h */,
+				E8781F0E0DE64D4E8F2622F3 /* CECrossfadeAnimationController.m */,
+				7A38DD7DE8BC45E6B721D5C2 /* CECubeAnimationController.h */,
+				546AA5D2833B4C94A069045C /* CECubeAnimationController.m */,
+				F627178493874898912DFA1A /* CEExplodeAnimationController.h */,
+				616C9A37905A4D94AE979120 /* CEExplodeAnimationController.m */,
+				4A56DB2F4C274932A7B2C1D5 /* CEFlipAnimationController.h */,
+				774246FC72144A1C83D3DEEC /* CEFlipAnimationController.m */,
+				FE7AD0731D4147D1A8D9BC73 /* CEFoldAnimationController.h */,
+				9A3909E29D0B45A2BBA14D2B /* CEFoldAnimationController.m */,
+				2DD3ED06060C4BDA9FC361A3 /* CEHorizontalSwipeInteractionController.h */,
+				A5E1AC14C70E429E99F2FE53 /* CEHorizontalSwipeInteractionController.m */,
+				1277C398C0D34AFF9B6B67A3 /* CENatGeoAnimationController.h */,
+				5164FFF6CEB24D1397142B1A /* CENatGeoAnimationController.m */,
+				E1FA05A7D9CA42488C1A0F41 /* CEPinchInteractionController.h */,
+				686F2D740CA94831BD6EB5CD /* CEPinchInteractionController.m */,
+				01208DB7B2FE4643B450FD5E /* CEPortalAnimationController.h */,
+				CFEFEED6F6934C6193C259CE /* CEPortalAnimationController.m */,
+				1CF194756AB74819AAF05B92 /* CEReversibleAnimationController.h */,
+				5560ECDB87004CCB8E7D118B /* CEReversibleAnimationController.m */,
+				741F3256D64E4124833415A5 /* CETurnAnimationController.h */,
+				E29951105F7947A5AC0C5E81 /* CETurnAnimationController.m */,
+				4A9A14AEFB814735BE9E97A4 /* CEVerticalSwipeInteractionController.h */,
+				195F48F22D76407BBBF0557E /* CEVerticalSwipeInteractionController.m */,
+				BA344FBD09BE48AE844B872B /* Support Files */,
+			);
+			name = VCTransitionsLibrary;
+			path = VCTransitionsLibrary;
+			sourceTree = "<group>";
+		};
+		BA344FBD09BE48AE844B872B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D142AEBAF4A940AD9B0917CA /* Pods-VCTransitionsLibrary.xcconfig */,
+				76170E9BBD41405A82532973 /* Pods-VCTransitionsLibrary-Private.xcconfig */,
+				C8C6E085BB914697A2AC125F /* Pods-VCTransitionsLibrary-dummy.m */,
+				BF8DE98841684B11B49F22A4 /* Pods-VCTransitionsLibrary-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		BF9152C1D52B44E698B3216A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C69BE723B26B45289989A76E /* libPods.a */,
+				E3D258BBAEFC4D5D949B5520 /* libPods-VCTransitionsLibrary.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2F3997ACD834032A09CC0EF /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC8AE03C484E46F18040A5DC /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F8BC999DC4244507A83177BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B4A49265F0014BB59FCE17C0 /* VCTransitionsLibrary */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FC8AE03C484E46F18040A5DC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48FD4453E257491D93FF0648 /* Pods.xcconfig */,
+				A2D36ABD953041ACA3BF4149 /* Pods-acknowledgements.markdown */,
+				8D90A1988007405CA20B64DE /* Pods-acknowledgements.plist */,
+				9200A02D239A445291D3FBC7 /* Pods-dummy.m */,
+				7637ADA5D51F47808CFB20E4 /* Pods-environment.h */,
+				959D28FAB03548C5A5596115 /* Pods-resources.sh */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -214,117 +234,221 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0BDEB248834D4B9CB10EBCCF /* Headers */ = {
+		5ACBAD77163A433FB5E2E5A3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D78BA59873274505A4AB111C /* MMDrawerBarButtonItem.h in Headers */,
-				86BBFD52637349569D6D563A /* MMDrawerController+Subclass.h in Headers */,
-				AB473FB1ADC440739826AC80 /* MMDrawerController+Subclass.h in Headers */,
-				B9720CC5C962430A899D7D26 /* MMDrawerController.h in Headers */,
-				4B27BD209D444AA7858306ED /* MMDrawerVisualState.h in Headers */,
-				C5BDC902F24949B6AE2C6CE2 /* UIViewController+MMDrawerController.h in Headers */,
+				E4C3A3027B7F4BFE8F7BA4AB /* CEBaseInteractionController.h in Headers */,
+				E110E2334ABF4E9C8651504E /* CECardsAnimationController.h in Headers */,
+				32CF1589E65D4DC198F8C3A9 /* CECrossfadeAnimationController.h in Headers */,
+				53FE0D57B83E437FA534F488 /* CECubeAnimationController.h in Headers */,
+				8068FBC33C884C97B51A6900 /* CEExplodeAnimationController.h in Headers */,
+				32F40C38FB29477C9CBD9384 /* CEFlipAnimationController.h in Headers */,
+				FBE94C1195A34C389B11E9E6 /* CEFoldAnimationController.h in Headers */,
+				E8314B34EFA34F03AF350E6A /* CEHorizontalSwipeInteractionController.h in Headers */,
+				EF6779251C004303B428DF0D /* CENatGeoAnimationController.h in Headers */,
+				1F5CB1D5AB654099861E238B /* CEPinchInteractionController.h in Headers */,
+				104ED5EC4E4F415BAD2B7149 /* CEPortalAnimationController.h in Headers */,
+				4F74EA0F52974B008109B745 /* CEReversibleAnimationController.h in Headers */,
+				C252312EA2354C2789E430A1 /* CETurnAnimationController.h in Headers */,
+				0C7E6E07494E4BABA702852B /* CEVerticalSwipeInteractionController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		59485E46127F4FDFA179B158 /* Pods-MMDrawerController */ = {
+		7414D29AA5E9480F80B2A184 /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FB8EB5A482044CE18BDB4EB5 /* Build configuration list for PBXNativeTarget "Pods-MMDrawerController" */;
+			buildConfigurationList = 7DA241F75D3340FA9B8CD88C /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				9C34BF8EA63149AF81837F9D /* Sources */,
-				0C0A1C1BAB764DC9A7A3370E /* Frameworks */,
-				0BDEB248834D4B9CB10EBCCF /* Headers */,
+				5D6EBA21B447405E98962AF0 /* Sources */,
+				A691EF7BC18945C0A3FC9A4A /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = "Pods-MMDrawerController";
-			productName = "Pods-MMDrawerController";
-			productReference = 7D134B300573440D9FEB30B7 /* libPods-MMDrawerController.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		F71D7F232F924990A39CA8B5 /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2405493B6AB34757A8915756 /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				77BCA06184A24492853750E0 /* Sources */,
-				0085DD0563A24579B13F170B /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5C1928F64BB04D5189E66BF4 /* PBXTargetDependency */,
+				309A2ECCB55944349831ABAA /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = E813E4DC5CCD466CAEB69DC8 /* libPods.a */;
+			productReference = C69BE723B26B45289989A76E /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E9116A0C17324AC39BE3C82E /* Pods-VCTransitionsLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CC5E3596DA24E49B15DAFD8 /* Build configuration list for PBXNativeTarget "Pods-VCTransitionsLibrary" */;
+			buildPhases = (
+				4CE7D73937A146DD87F538BC /* Sources */,
+				1EC89B1094F6411B88E9EBAC /* Frameworks */,
+				5ACBAD77163A433FB5E2E5A3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VCTransitionsLibrary";
+			productName = "Pods-VCTransitionsLibrary";
+			productReference = E3D258BBAEFC4D5D949B5520 /* libPods-VCTransitionsLibrary.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D47542A1363B464B8D9C379D /* Project object */ = {
+		CE27D7FFD5FC4DC2867D4F7C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 97FFA2E4FA22445CA4C54CDF /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = D5120B0807384F82B1C981FF /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = F9D66BAE06B947AD997B4661;
-			productRefGroup = 955A0FEF9AB34DE585BE0B80 /* Products */;
+			mainGroup = 61366FC1C241403199C3B29B;
+			productRefGroup = BF9152C1D52B44E698B3216A /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 			);
 			projectRoot = "";
 			targets = (
-				F71D7F232F924990A39CA8B5 /* Pods */,
-				59485E46127F4FDFA179B158 /* Pods-MMDrawerController */,
+				7414D29AA5E9480F80B2A184 /* Pods */,
+				E9116A0C17324AC39BE3C82E /* Pods-VCTransitionsLibrary */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		77BCA06184A24492853750E0 /* Sources */ = {
+		4CE7D73937A146DD87F538BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3130F448C38745EEB21DF200 /* Pods-dummy.m in Sources */,
+				4C005768F99546BDBDCD892B /* CEBaseInteractionController.m in Sources */,
+				52F423C1FCFF4F38824F1A0A /* CECardsAnimationController.m in Sources */,
+				8D45832E1BAF409B81BC09C1 /* CECrossfadeAnimationController.m in Sources */,
+				685AA464CFBD422FB22BB479 /* CECubeAnimationController.m in Sources */,
+				1B989B1E6D09465F832F48D0 /* CEExplodeAnimationController.m in Sources */,
+				EA36487E93CC4CC392B58762 /* CEFlipAnimationController.m in Sources */,
+				E00402F530924C31AFCCAF1E /* CEFoldAnimationController.m in Sources */,
+				DD07228868F14B7EABA0F1DB /* CEHorizontalSwipeInteractionController.m in Sources */,
+				D8F7123623534E6883EA416E /* CENatGeoAnimationController.m in Sources */,
+				DA15DFE4CA984B9094EC1C3C /* CEPinchInteractionController.m in Sources */,
+				8E6375857E4648CEBDD65ABF /* CEPortalAnimationController.m in Sources */,
+				3E0E90A5EAF64616B2BE23DA /* CEReversibleAnimationController.m in Sources */,
+				895C511D1E344D2FB1F0884D /* CETurnAnimationController.m in Sources */,
+				5E05790847484A1EB70A7812 /* CEVerticalSwipeInteractionController.m in Sources */,
+				2500982945864B87A5F02CC3 /* Pods-VCTransitionsLibrary-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C34BF8EA63149AF81837F9D /* Sources */ = {
+		5D6EBA21B447405E98962AF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F033420F8D564F38B13AC21E /* MMDrawerBarButtonItem.m in Sources */,
-				083FE3F5A76C4757A1FAC580 /* MMDrawerController.m in Sources */,
-				F31F56B7CD774CF4B469FF04 /* MMDrawerVisualState.m in Sources */,
-				69CCF93D1AF341B7BE0C9F22 /* Pods-MMDrawerController-dummy.m in Sources */,
-				5961BE442450484C9A166531 /* UIViewController+MMDrawerController.m in Sources */,
+				B8F5985F41C04498BA63B2A3 /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5C1928F64BB04D5189E66BF4 /* PBXTargetDependency */ = {
+		309A2ECCB55944349831ABAA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 59485E46127F4FDFA179B158 /* Pods-MMDrawerController */;
-			targetProxy = 2948FC04793A4172A32885CE /* PBXContainerItemProxy */;
+			target = E9116A0C17324AC39BE3C82E /* Pods-VCTransitionsLibrary */;
+			targetProxy = 5A8428B1EBAF42DA9BA1D3FF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		58E8C48D37474AFAAE0C059D /* Release */ = {
+		027B06261FDE415BB9CD1ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76170E9BBD41405A82532973 /* Pods-VCTransitionsLibrary-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-VCTransitionsLibrary-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		710066E793734798B66CED2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48FD4453E257491D93FF0648 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		97C8FCD6649E4AA5AC0E437A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48FD4453E257491D93FF0648 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A77EA6386B8244F7853B40D5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -354,9 +478,9 @@
 			};
 			name = Release;
 		};
-		5B02188BC629447C9990F84D /* Debug */ = {
+		E066F4FA819A4366B5846F49 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CAFCECA07CB435FA6FC553D /* Pods.xcconfig */;
+			baseConfigurationReference = 76170E9BBD41405A82532973 /* Pods-VCTransitionsLibrary-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -365,6 +489,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-VCTransitionsLibrary-prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -381,64 +506,7 @@
 			};
 			name = Debug;
 		};
-		9D0E7A993CBF48B1AA7D0575 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 097146B0884C4BAF91C7410E /* Pods-MMDrawerController-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MMDrawerController-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		B170ECC3F74C457BBDE181DA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CAFCECA07CB435FA6FC553D /* Pods.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		EAF1AD11582C4938B3914DC3 /* Debug */ = {
+		E5F7D639F6CB4E5A982E587C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -474,67 +542,37 @@
 			};
 			name = Debug;
 		};
-		F07B5B2B3BE34F2CB0AC27DE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 097146B0884C4BAF91C7410E /* Pods-MMDrawerController-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-MMDrawerController-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2405493B6AB34757A8915756 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		7CC5E3596DA24E49B15DAFD8 /* Build configuration list for PBXNativeTarget "Pods-VCTransitionsLibrary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5B02188BC629447C9990F84D /* Debug */,
-				B170ECC3F74C457BBDE181DA /* Release */,
+				E066F4FA819A4366B5846F49 /* Debug */,
+				027B06261FDE415BB9CD1ADC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		97FFA2E4FA22445CA4C54CDF /* Build configuration list for PBXProject "Pods" */ = {
+		7DA241F75D3340FA9B8CD88C /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EAF1AD11582C4938B3914DC3 /* Debug */,
-				58E8C48D37474AFAAE0C059D /* Release */,
+				97C8FCD6649E4AA5AC0E437A /* Debug */,
+				710066E793734798B66CED2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FB8EB5A482044CE18BDB4EB5 /* Build configuration list for PBXNativeTarget "Pods-MMDrawerController" */ = {
+		D5120B0807384F82B1C981FF /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9D0E7A993CBF48B1AA7D0575 /* Debug */,
-				F07B5B2B3BE34F2CB0AC27DE /* Release */,
+				E5F7D639F6CB4E5A982E587C /* Debug */,
+				A77EA6386B8244F7853B40D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D47542A1363B464B8D9C379D /* Project object */;
+	rootObject = CE27D7FFD5FC4DC2867D4F7C /* Project object */;
 }

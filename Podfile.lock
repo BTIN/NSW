@@ -1,21 +1,10 @@
 PODS:
-  - MMDrawerController (0.5.5):
-    - MMDrawerController/Core
-    - MMDrawerController/MMDrawerBarButtonItem
-    - MMDrawerController/MMDrawerVisualStates
-    - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.5.5)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.5):
-    - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.5):
-    - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.5):
-    - MMDrawerController/Core
+  - VCTransitionsLibrary (1.4.0)
 
 DEPENDENCIES:
-  - MMDrawerController (~> 0.5.3)
+  - VCTransitionsLibrary (~> 1.4.0)
 
 SPEC CHECKSUMS:
-  MMDrawerController: 45c08be28375eac9f0ecaa75f1f0e47eb38c8eb1
+  VCTransitionsLibrary: 0624c9163552cf5ded57f80f6285e20fa2863607
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.32.1
