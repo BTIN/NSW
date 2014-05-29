@@ -26,7 +26,7 @@ Checklist:
 
 Suggestions:
 ---
-- [ ] take away arrows from "Carl Speak"
+- [x] take away arrows from "Carl Speak"
 - [ ] make events scrollable 
 - [ ] change notification button color when selected
 - [ ] swipe left and right animation on schedule days
@@ -37,5 +37,5 @@ Suggestions:
 - [ ] display full names in "carl speak"
 - [ ] be able to go to a day a few days over without having to swipe left or right all the way there (like a little calendar icon on right  of navbar)
 - [ ] constrain date to new student week
-- [ ] Put some blank space at top of menu close to the height of the navbar
-- [ ] Make taps in right margin close menu instead of acting on the center view
+- [x] Put some blank space at top of menu close to the height of the navbar
+- [x] Make taps in right margin close menu instead of acting on the center view
