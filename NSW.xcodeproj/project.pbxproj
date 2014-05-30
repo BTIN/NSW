@@ -16,7 +16,6 @@
 		2DBA1604FAF3CAA6FA3288A8 /* FLDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA146BBDAA372C1B5E4B37 /* FLDownloadTask.m */; };
 		2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA161F24FB78D7CD613800 /* BaseNSWDataSource.m */; };
 		2DBA174E2354E5295C25AF96 /* FLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA174CF3B30C6834562744 /* FLDownloader.m */; };
-		2DBA178B46A05E0FF27EFF32 /* DataSourceDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1D4279544F7E303D535A /* DataSourceDownloader.m */; };
 		2DBA1ADD2D7E87F1AEA01F08 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA14AC9697B76D6FF558C1 /* ContactTableViewCell.m */; };
 		2DBA1BE3106731EC27A0A6BA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1955C9B983DEC4C57B77 /* MapViewController.m */; };
 		2DBA1BF8815FA54720707B52 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */; };
@@ -63,7 +62,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2DBA105278D40929BB6729F3 /* DataSourceDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceDownloader.h; sourceTree = "<group>"; };
 		2DBA11891644C1A2292AD911 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		2DBA12024D13496A05CB72A7 /* CarlTermTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarlTermTableViewCell.m; sourceTree = "<group>"; };
 		2DBA139D7276BDC39D4DB255 /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 		2DBA1B37E9654BD4635896D1 /* NSWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWConstants.m; sourceTree = "<group>"; };
 		2DBA1C71116CB7163E1AC0A9 /* events_test.ics */ = {isa = PBXFileReference; lastKnownFileType = file.ics; path = events_test.ics; sourceTree = "<group>"; };
 		2DBA1D2363EB3A1744B9F1F9 /* NSWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWConstants.h; sourceTree = "<group>"; };
-		2DBA1D4279544F7E303D535A /* DataSourceDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSourceDownloader.m; sourceTree = "<group>"; };
 		2DBA1D9C44FC924E305DABBC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		2DBA1E15920BCF66B29F9D24 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -337,8 +334,6 @@
 				FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */,
 				2DBA1B37E9654BD4635896D1 /* NSWConstants.m */,
 				2DBA1D2363EB3A1744B9F1F9 /* NSWConstants.h */,
-				2DBA1D4279544F7E303D535A /* DataSourceDownloader.m */,
-				2DBA105278D40929BB6729F3 /* DataSourceDownloader.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -505,7 +500,6 @@
 				2DBA1ADD2D7E87F1AEA01F08 /* ContactTableViewCell.m in Sources */,
 				2DBA174E2354E5295C25AF96 /* FLDownloader.m in Sources */,
 				2DBA1604FAF3CAA6FA3288A8 /* FLDownloadTask.m in Sources */,
-				2DBA178B46A05E0FF27EFF32 /* DataSourceDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

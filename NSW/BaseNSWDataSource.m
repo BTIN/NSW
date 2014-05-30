@@ -64,7 +64,7 @@ static NSString *genericLocalFilePath;
                                             isDirectory:&isDir];
     // isDir will be changed to whether the genericLocalFilePath is a directory. 
     // It's how the existence function is able to "return" 2 values
-    if (!(locationExists || isDir))
+    if (!locationExists)
     {
         NSError *error;
         [fileManager createDirectoryAtPath:genericLocalFilePath 
