@@ -55,14 +55,14 @@ int selectedIndex;
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (selectedIndex == [indexPath row]){
-        CarlTermTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
         cell.longNameLabel.numberOfLines = 1;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         selectedIndex = -1;
     }
     else {
-        CarlTermTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
         cell.longNameLabel.numberOfLines = 0;   //0 means unbounded in this case
         cell.accessoryType = UITableViewCellAccessoryNone;
         selectedIndex = [indexPath row];

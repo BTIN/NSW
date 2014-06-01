@@ -14,12 +14,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //self.window.backgroundColor = [NSWStyle lightBlueColor];
-    
-    // Initialize the singleton downloader
-    NSString *pathToDocuments = [[FLDownloader sharedDownloader] defaultFilePath];
-    NSLog(@"Will download data files to %@ by default", 
-            pathToDocuments);
+    // Initialize the singleton downloader and
+    // ensure there aren't any pending downloads (our downloads are 
+    // so quick that we're better off just getting a new copy in 
+    // case the data's been updated since that other download started).
+    FLDownloader *downloader = [FLDownloader sharedDownloader];
+    [downloader cancelAnyExistingDownloads];
+    NSString *pathToDocuments = [downloader defaultFilePath];
+    NSLog(@"Default download location:\n  %@", pathToDocuments);
     return YES;
 }
 							

@@ -71,6 +71,11 @@ static NSString *genericLocalFilePath;
                withIntermediateDirectories:NO 
                                 attributes:nil 
                                      error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    } else if (!isDir) {
+        NSLog(@"%@ exists but isn't a directory", genericLocalFilePath);
     }
 }
 
@@ -97,8 +102,14 @@ static NSString *genericLocalFilePath;
 
     if ([[NSFileManager defaultManager] fileExistsAtPath:pathToLocalFile]){
         onCompletion(YES, nil);
-        //TODO check how old the data is, Then reload if more than a day
+        //TODO check how old the local data is, Then reload if more than a day
     } else {
+        // Logs the progress of the the download
+        [downloadTask setProgressBlock:^(NSURL *url, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite)
+                {
+                    float progress = (float)totalBytesWritten / (float)totalBytesExpectedToWrite;
+                    NSLog(@"%@ Progress: %.2f", fileName, progress);
+                }];
         [downloadTask start];
     }
     
