@@ -22,7 +22,7 @@ static NSString *genericLocalFilePath;
         NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"],
                 [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/"],
                 [NSURL URLWithString:@"http://harrise.github.io/terms.json"]];
-        _urlMap = [NSDictionary dictionaryWithObjects:urls forKeys:fileNames];
+        _urlMap = @{fileNames : urls};
     }
     return _urlMap;
 }

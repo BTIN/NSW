@@ -62,7 +62,7 @@
 -(NSArray *)eventsSortedByTime:(NSArray *)unsortedEvents {
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDateTime"
                                                  ascending:YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *sortDescriptors = @[sortDescriptor];
     
     NSArray *sortedEvents = [unsortedEvents sortedArrayUsingDescriptors:sortDescriptors];
 

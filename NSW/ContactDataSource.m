@@ -49,7 +49,7 @@ NSMutableArray * parsedContacts;
     // The first 'contact' is a special case because its <p> doesn't have a class, so we fix it
     NSString *firstContact = splitHTMLContacts[0];
     NSString *normalizedFirst = [firstContact componentsSeparatedByString:@"<p><strong>"][1];
-    [splitHTMLContacts replaceObjectAtIndex:0 withObject:normalizedFirst];
+    splitHTMLContacts[0] = normalizedFirst;
     
     
     /* loop through parse each each section of HTML into a new Contact
