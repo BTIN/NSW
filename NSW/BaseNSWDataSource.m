@@ -5,6 +5,7 @@
 
 #import "BaseNSWDataSource.h"
 #import "FLDownloader.h"
+#import "EventListViewController.h"
 
 @interface BaseNSWDataSource ()
 @property (nonatomic, strong) NSDictionary *urlMap;
@@ -13,7 +14,9 @@
 @implementation BaseNSWDataSource
 
 static NSString *genericLocalFilePath;
+static BOOL dataIsReady;
 @synthesize localData;
+@synthesize dataList;
 
 // Maps what URL corresponds to which local file name
 - (id)urlMap {
@@ -22,7 +25,10 @@ static NSString *genericLocalFilePath;
         NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"],
                 [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/"],
                 [NSURL URLWithString:@"http://harrise.github.io/terms.json"]];
-        _urlMap = @{fileNames : urls};
+        _urlMap = [NSDictionary dictionaryWithObjects:urls forKeys:fileNames];
+        if (_urlMap.count != urls.count) {
+            NSLog(@"Have %d URLs, but have %d entries in urlMap", urls.count, _urlMap.count);
+        }
     }
     return _urlMap;
 }
@@ -30,19 +36,8 @@ static NSString *genericLocalFilePath;
 
 - (id)initPrivate {
     self.downloadStarted = [NSDate date];
+    dataIsReady = NO;
     return [super init];
-}
-
-- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
-         AndDataFromURL:(NSString *)stringURL {
-    self = [self initPrivate];
-    
-    if (self) {
-        myTableViewController = tableViewController;
-        [self getRawDataFromURL:[NSURL URLWithString:stringURL]];
-    }
-
-    return self;
 }
 
 // Load the given file from the local storage location
@@ -57,6 +52,36 @@ static NSString *genericLocalFilePath;
     }
 
     return self;
+}
+
+- (id)initWithDataFromFile:(NSString *)localName {
+    self = [self initPrivate];
+
+    if (self) {
+        myTableViewController = nil;
+        NSURL *remoteURL = [self.urlMap objectForKey:localName];
+        [self getLocalFile:localName orDownloadFromURL:remoteURL];
+    }
+
+    return self;
+}
+
+// Attaches a TableViewController to send the data to once it has been loaded
+- (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController {
+    myTableViewController = tableViewController;
+    
+    // If data is ready, send it to tableViewController. Otherwise the data is still 
+    // being retrieved and will be sent when it's ready.
+    if (dataIsReady) {
+        // EventListViewController only wants the list for today
+        if ([tableViewController isKindOfClass:[EventListViewController class]]) {
+            [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
+        } else {
+            [myTableViewController setVCArrayToDataSourceArray:self.dataList];
+        }
+    } else {
+        NSLog(@"Data is still being retrieved.");
+    }
 }
 
 // Create the directory that the data files will be stored in 
@@ -121,10 +146,9 @@ static NSString *genericLocalFilePath;
     
 }
 
-
-
 - (void)getRawDataFromURL:(NSURL *)sourceURL {
-
+    
+    // Allow the network activity indicator in the status bar
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     // Create the request.
@@ -163,7 +187,9 @@ static NSString *genericLocalFilePath;
     //Override in subclasses
 }
 
+// Log how long it took to retrieve the download
 - (void)logDownloadTime {
+    dataIsReady = YES;
     NSDate *downloadFinished = [NSDate date];
     NSLog(@"Download took %.6f seconds", [downloadFinished timeIntervalSinceDate:self.downloadStarted]);
 }

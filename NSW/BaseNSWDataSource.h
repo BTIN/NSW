@@ -15,10 +15,15 @@
 
 @property (nonatomic, strong) NSMutableData *localData;
 
-- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController 
-         AndDataFromURL:(NSString *)stringURL;
+// The list of objects specific to each dataSource (Events, CarlTerms, or Contacts)
+@property (nonatomic, strong) NSArray *dataList;
+
+- (id)initWithDataFromFile:(NSString *)localName;
+
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
         AndDataFromFile:(NSString *)localName;
+
+- (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController;
 
 - (void)logDownloadTime;
 

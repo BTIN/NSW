@@ -11,6 +11,7 @@
 #import "CarlTerm.h"
 #import "CarlTermTableViewCell.h"
 #import "NSWStyle.h"
+#import "DataSourceManager.h"
 
 @interface CarlTermViewController (){
 }
@@ -34,7 +35,9 @@ int selectedIndex;
 {
     [super viewDidLoad];
     selectedIndex = -1;
-    CarlTermDataSource *dataSource = [[CarlTermDataSource alloc] initWithVCBackref:self];
+
+    //Connect this VC to the shared DataSource
+    [[[DataSourceManager sharedDSManager] getCarlTermDataSource] attachVCBackref:self];
 
 }
 

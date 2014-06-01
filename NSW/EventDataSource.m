@@ -25,8 +25,20 @@
     return self;
 }
 
+- (id)init {
+    self = [super initWithDataFromFile:@"events.ics"];
+
+    return self;
+}
+
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
+
+    [self parseDataIntoEventList];
+    [self logDownloadTime];
+}
+
+- (void)parseDataIntoEventList {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
     NSString *rawICSString = [[NSString alloc] initWithData:self.localData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
@@ -40,8 +52,14 @@
         NSWEvent *currentEvent = [self parseEventFromString:splitEventStrings[i]];
         [self.fullEventList addObject:currentEvent];
     }
-    [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
-    [self logDownloadTime];
+
+    // Send the data to the view controller if there's one linked, otherwise 
+    // copy it into self.dataList to be retrieved once a VC has been linked
+    if (myTableViewController != nil) {
+        [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
+    } else {
+        self.dataList = fullEventList;
+    }
 }
 
 
@@ -200,7 +218,8 @@ example ICS event:
     }
 
     // Convert raw string to an NSDate.
-    return [dateFormatter dateFromString:rawStartDateTime];
+    NSDate *convertedDate = [dateFormatter dateFromString:rawStartDateTime];
+    return convertedDate;
 }
 
 // Create a NSTimeInterval from an ICS-formatted DURATION

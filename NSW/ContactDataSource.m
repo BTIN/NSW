@@ -12,12 +12,18 @@
 
 @implementation ContactDataSource
 
-NSMutableArray * parsedContacts;
+NSMutableArray *parsedContacts;
 
 
 - (id)initWithVCBackref:(ContactTableViewController *)contactTableViewController {
     self = [super initWithVCBackref:contactTableViewController
                     AndDataFromFile:@"contacts.html"];
+
+    return self;
+}
+
+- (id)init {
+    self = [super initWithDataFromFile:@"contacts.html"];
 
     return self;
 }
@@ -60,7 +66,13 @@ NSMutableArray * parsedContacts;
         [parsedContacts addObject:currentContact];
     }
 
-    [myTableViewController setVCArrayToDataSourceArray:parsedContacts];
+    // Send the data to the view controller if there's one linked, otherwise 
+    // copy it into self.dataList to be retrieved once a VC has been linked
+    if (myTableViewController != nil){
+        [myTableViewController setVCArrayToDataSourceArray:parsedContacts];
+    } else {
+        self.dataList = [NSArray arrayWithArray:parsedContacts];
+    }
 }
 
 - (Contact *)parseContactFromString:(NSString *) htmlContact {

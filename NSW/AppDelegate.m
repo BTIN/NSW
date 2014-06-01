@@ -9,19 +9,20 @@
 #import "AppDelegate.h"
 //#import "NSWStyle.h"
 #import "FLDownloader.h"
+#import "DataSourceManager.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Initialize the singleton downloader and
-    // ensure there aren't any pending downloads (our downloads are 
-    // so quick that we're better off just getting a new copy in 
-    // case the data's been updated since that other download started).
+    // Initialize the downloader singleton and ensure there aren't any pending downloads 
+    // (our downloads are so quick that we're better off just getting a new copy in case 
+    // the data's been updated since that other download started).
     FLDownloader *downloader = [FLDownloader sharedDownloader];
     [downloader cancelAnyExistingDownloads];
     NSString *pathToDocuments = [downloader defaultFilePath];
     NSLog(@"Default download location:\n  %@", pathToDocuments);
+    [DataSourceManager sharedDSManager];
     return YES;
 }
 							
