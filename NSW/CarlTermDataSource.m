@@ -25,7 +25,7 @@ NSMutableArray * parsedCarlTerms;
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
 
     [self parseAndSet:self.localData];
-    
+    [self logDownloadTime];
 }
 - (void)parseAndSet:(NSData *)JSONData {
     parsedCarlTerms = [[NSMutableArray alloc] init];

@@ -26,7 +26,7 @@ NSMutableArray * parsedContacts;
     
     NSString *rawPageSrc = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
     [self parseContactsFromHTML:rawPageSrc];
-    
+    [self logDownloadTime];
 }
 
 - (void)parseContactsFromHTML:(NSString *) rawHTML{

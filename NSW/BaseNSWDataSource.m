@@ -27,9 +27,15 @@ static NSString *genericLocalFilePath;
     return _urlMap;
 }
 
+
+- (id)initPrivate {
+    self.downloadStarted = [NSDate date];
+    return [super init];
+}
+
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
          AndDataFromURL:(NSString *)stringURL {
-    self = [super init];
+    self = [self initPrivate];
     
     if (self) {
         myTableViewController = tableViewController;
@@ -42,7 +48,7 @@ static NSString *genericLocalFilePath;
 // Load the given file from the local storage location
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
         AndDataFromFile:(NSString *)localName {
-    self = [super init];
+    self = [self initPrivate];
 
     if (self) {
         myTableViewController = tableViewController;
@@ -155,6 +161,11 @@ static NSString *genericLocalFilePath;
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     //Override in subclasses
+}
+
+- (void)logDownloadTime {
+    NSDate *downloadFinished = [NSDate date];
+    NSLog(@"Download took %.6f seconds", [downloadFinished timeIntervalSinceDate:self.downloadStarted]);
 }
 
 /* Convenience/readability wrapper for a very unwieldily-named function

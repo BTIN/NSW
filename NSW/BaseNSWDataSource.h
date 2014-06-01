@@ -10,6 +10,8 @@
 @interface BaseNSWDataSource : NSObject {
     __weak BaseNSWTableViewController *myTableViewController;
 }
+// the time that the download started
+@property (nonatomic, strong) NSDate *downloadStarted;
 
 @property (nonatomic, strong) NSMutableData *localData;
 
@@ -17,6 +19,9 @@
          AndDataFromURL:(NSString *)stringURL;
 - (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
         AndDataFromFile:(NSString *)localName;
+
+- (void)logDownloadTime;
+
 +(NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;
 
 -(void)getRawDataFromURL:(NSURL *)sourceURL;

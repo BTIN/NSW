@@ -41,7 +41,7 @@
         [self.fullEventList addObject:currentEvent];
     }
     [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
-
+    [self logDownloadTime];
 }
 
 
