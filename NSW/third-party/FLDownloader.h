@@ -27,6 +27,11 @@
 @property (copy, nonatomic, readonly) NSMutableDictionary *tasks;
 
 /**
+ Cancels all the queued downloads.
+*/
+- (void)cancelAnyExistingDownloads;
+
+/**
  Create and return a download task for a given URL. If the download already task exists, simply returns it.
  Once returned, the FLDownloadTask object must be started with 'start'. If you want, you can add a completion block, a progress block, and set other properties
 */

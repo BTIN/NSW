@@ -7,6 +7,8 @@
 #import "SWRevealViewController.h"
 #import "NSWStyle.h"
 
+@implementation DrawerTableViewCell
+@end
 @interface MenuViewController ()
 
 @property (nonatomic, strong) NSArray *menuIDs;
@@ -85,14 +87,14 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    CellIdentifier = [self.menuIDs objectAtIndex:(NSUInteger) indexPath.row];
+    CellIdentifier = self.menuIDs[(NSUInteger) indexPath.row];
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    DrawerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.backgroundColor = [NSWStyle lightBlueColor];
     cell.textLabel.textColor = [NSWStyle whiteColor];
     cell.textLabel.font = [NSWStyle boldFont];
-    cell.textLabel.text = [self.menuTitles objectAtIndex:(NSUInteger) indexPath.row];
+    cell.textLabel.text = self.menuTitles[(NSUInteger) indexPath.row];
 
     return cell;
 }

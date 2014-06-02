@@ -18,17 +18,30 @@
 
 - (id)initWithVCBackref:(EventListViewController *) eventListViewController{
     self = [super initWithVCBackref:eventListViewController
-                     AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
+                    AndDataFromFile:@"events.ics"];
+                     //AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
     //@"file:/Users/alex/Documents/CS/NSW/NSW/events.ics"
+
+    return self;
+}
+
+- (id)init {
+    self = [super initWithDataFromFile:@"events.ics"];
 
     return self;
 }
 
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
+
+    [self parseDataIntoEventList];
+    [self logDownloadTime];
+}
+
+- (void)parseDataIntoEventList {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:self.receivedData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
+    NSString *rawICSString = [[NSString alloc] initWithData:self.localData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
@@ -39,8 +52,14 @@
         NSWEvent *currentEvent = [self parseEventFromString:splitEventStrings[i]];
         [self.fullEventList addObject:currentEvent];
     }
-    [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
 
+    // Send the data to the view controller if there's one linked, otherwise 
+    // copy it into self.dataList to be retrieved once a VC has been linked
+    if (myTableViewController != nil) {
+        [(EventListViewController *) myTableViewController getEventsFromCurrentDate];
+    } else {
+        self.dataList = fullEventList;
+    }
 }
 
 
@@ -61,7 +80,7 @@
 -(NSArray *)eventsSortedByTime:(NSArray *)unsortedEvents {
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDateTime"
                                                  ascending:YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *sortDescriptors = @[sortDescriptor];
     
     NSArray *sortedEvents = [unsortedEvents sortedArrayUsingDescriptors:sortDescriptors];
 
@@ -199,7 +218,8 @@ example ICS event:
     }
 
     // Convert raw string to an NSDate.
-    return [dateFormatter dateFromString:rawStartDateTime];
+    NSDate *convertedDate = [dateFormatter dateFromString:rawStartDateTime];
+    return convertedDate;
 }
 
 // Create a NSTimeInterval from an ICS-formatted DURATION

@@ -190,6 +190,18 @@ static NSString *kFLDownloaderBackgroundSessionIdentifier = @"com.FLDownloader.b
     
 }
 
+-(void)cancelAnyExistingDownloads 
+{
+    if ([self.tasks count] > 0) 
+    {
+        for (NSURL *url in self.tasks)
+        {
+            [self cancelDownloadTaskForURL:url];
+        }
+        [self saveDownloads];
+    }
+}
+
 /**
  Obtain an URL from a NSURLSessionDownloadTask
  */

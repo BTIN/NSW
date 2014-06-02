@@ -13,6 +13,7 @@
 #import "EventTableViewCell.h"
 #import "EventDetailViewController.h"
 #import "NSWStyle.h"
+#import "DataSourceManager.h"
 
 @interface EventListViewController () {
     EventDataSource *myEventDS;
@@ -40,9 +41,12 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-        
-    myEventDS = [[EventDataSource alloc] initWithVCBackref:self];
+
+
+    //Connect this VC to the shared DataSource
+    myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource];
     currentDate = [myEventDS parseDateTimeFromICSString:@"20120904T000000"]; //TODO Only for testing, eventually use [NSDate date]
+    [myEventDS attachVCBackref:self];
     UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeLeft:)];
     
     [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
@@ -54,10 +58,10 @@
     [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [[self view] addGestureRecognizer:oneFingerSwipeRight];
     
-    NSDateFormatter *time = [[NSDateFormatter alloc] init];
-    [time setDateFormat:@"MMMM dd"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMMM dd"];
     
-    NSString *current = [time stringFromDate:currentDate];
+    NSString *current = [formatter stringFromDate:currentDate];
     self.navigationController.navigationBar.topItem.title = current;
     
     //[self.view addSubview:_dateLabel];

@@ -16,15 +16,22 @@
 NSMutableArray * parsedCarlTerms;
 
 - (id)initWithVCBackref:(CarlTermViewController *)carlTermViewController {
-    self = [super initWithVCBackref:carlTermViewController AndDataFromURL:@"http://harrise.github.io/terms.json"];
+    self = [super initWithVCBackref:carlTermViewController
+                    AndDataFromFile:@"terms.json"];
     
     return self;
 }
 
+- (id)init {
+    self = [super initWithDataFromFile:@"terms.json"];
+
+    return self;
+}
+
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    [self parseAndSet:self.receivedData];
-    
+
+    [self parseAndSet:self.localData];
+    [self logDownloadTime];
 }
 - (void)parseAndSet:(NSData *)JSONData {
     parsedCarlTerms = [[NSMutableArray alloc] init];
@@ -38,7 +45,14 @@ NSMutableArray * parsedCarlTerms;
     // "'Scrunch'" is getting placed at the top because of the single quotes...
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"abbreviation" ascending:YES];
     [parsedCarlTerms sortUsingDescriptors:@[sort]];
-    [myTableViewController setVCArrayToDataSourceArray:parsedCarlTerms];
+    
+    // Send the data to the view controller if there's one linked, otherwise 
+    // copy it into self.dataList to be retrieved once a VC has been linked
+    if (myTableViewController != nil) {
+        [myTableViewController setVCArrayToDataSourceArray:parsedCarlTerms];
+    } else {
+        self.dataList = [NSArray arrayWithArray:parsedCarlTerms];
+    }
 }
 
 

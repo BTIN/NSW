@@ -10,6 +10,7 @@
 #import "ContactTableViewCell.h"
 #import "Contact.h"
 #import "ContactDataSource.h"
+#import "DataSourceManager.h"
 
 @interface ContactTableViewController (){
     //NSMutableArray *listItems;
@@ -38,8 +39,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.listItems = [[NSMutableArray alloc] init];
-    
-    ContactDataSource *contactDataSource = [[ContactDataSource alloc] initWithVCBackref:self];
+
+    //Connect this VC to the shared DataSource
+    [[[DataSourceManager sharedDSManager] getContactDataSource] attachVCBackref:self];
 
 }
 - (IBAction)phoneLabel:(id)sender {

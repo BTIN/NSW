@@ -12,21 +12,27 @@
 
 @implementation ContactDataSource
 
-NSMutableArray * parsedContacts;
+NSMutableArray *parsedContacts;
 
 
 - (id)initWithVCBackref:(ContactTableViewController *)contactTableViewController {
     self = [super initWithVCBackref:contactTableViewController
-                     AndDataFromURL:@"https://apps.carleton.edu/newstudents/contact/"];
+                    AndDataFromFile:@"contacts.html"];
+
+    return self;
+}
+
+- (id)init {
+    self = [super initWithDataFromFile:@"contacts.html"];
 
     return self;
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    NSString *rawPageSrc = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+    NSString *rawPageSrc = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
     [self parseContactsFromHTML:rawPageSrc];
-    
+    [self logDownloadTime];
 }
 
 - (void)parseContactsFromHTML:(NSString *) rawHTML{
@@ -49,7 +55,7 @@ NSMutableArray * parsedContacts;
     // The first 'contact' is a special case because its <p> doesn't have a class, so we fix it
     NSString *firstContact = splitHTMLContacts[0];
     NSString *normalizedFirst = [firstContact componentsSeparatedByString:@"<p><strong>"][1];
-    [splitHTMLContacts replaceObjectAtIndex:0 withObject:normalizedFirst];
+    splitHTMLContacts[0] = normalizedFirst;
     
     
     /* loop through parse each each section of HTML into a new Contact
@@ -60,7 +66,13 @@ NSMutableArray * parsedContacts;
         [parsedContacts addObject:currentContact];
     }
 
-    [myTableViewController setVCArrayToDataSourceArray:parsedContacts];
+    // Send the data to the view controller if there's one linked, otherwise 
+    // copy it into self.dataList to be retrieved once a VC has been linked
+    if (myTableViewController != nil){
+        [myTableViewController setVCArrayToDataSourceArray:parsedContacts];
+    } else {
+        self.dataList = [NSArray arrayWithArray:parsedContacts];
+    }
 }
 
 - (Contact *)parseContactFromString:(NSString *) htmlContact {

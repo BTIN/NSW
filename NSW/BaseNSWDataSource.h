@@ -10,13 +10,25 @@
 @interface BaseNSWDataSource : NSObject {
     __weak BaseNSWTableViewController *myTableViewController;
 }
+// the time that the download started
+@property (nonatomic, strong) NSDate *downloadStarted;
 
-@property (nonatomic, strong) NSMutableData *receivedData;
+@property (nonatomic, strong) NSMutableData *localData;
 
-- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController AndDataFromURL:(NSString *) sourceURL;
+// The list of objects specific to each dataSource (Events, CarlTerms, or Contacts)
+@property (nonatomic, strong) NSArray *dataList;
+
+- (id)initWithDataFromFile:(NSString *)localName;
+
+- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
+        AndDataFromFile:(NSString *)localName;
+
+- (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController;
+
+- (void)logDownloadTime;
 
 +(NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;
 
--(void)getRawDataFromURL:(NSString *)sourceURL;
+-(void)getRawDataFromURL:(NSURL *)sourceURL;
 
 @end
