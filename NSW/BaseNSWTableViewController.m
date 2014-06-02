@@ -21,7 +21,10 @@
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self setNavigationColors];
+    
+    
 }
+
 
 // Set the colors for the navigation bar
 -(void)setNavigationColors{
