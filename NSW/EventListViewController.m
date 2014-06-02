@@ -34,14 +34,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    /**
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Swipe!"
                                                     message:@"Swipe left or right to go to previous or next day"
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-
+     **/
 
     //Connect this VC to the shared DataSource
     myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource];
