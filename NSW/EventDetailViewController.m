@@ -10,8 +10,9 @@
 //#import "NSWEvent.h"
 
 @interface EventDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *endTime;
 @property (weak, nonatomic) IBOutlet UILabel *eventLocation;
-@property (weak, nonatomic) IBOutlet UILabel *eventDescription;
+@property (weak, nonatomic) IBOutlet UITextView *eventDescription;
 @property (weak, nonatomic) IBOutlet UIButton *notificationButton;
 @property (weak, nonatomic) IBOutlet UILabel *durationDescription;
 //@property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
@@ -44,17 +45,32 @@
         
         // Convert NSDate to NSString
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        /**
+        NSLocale *twelveHourLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        dateFormatter.locale = twelveHourLocale;
+        **/
+        
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        
+        [dateFormatter setDateFormat:@"hh:mm a"];
+        
+        
+        
+        
         //[dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"];
         
-        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         NSString *string = [dateFormatter stringFromDate:[self.detailItem startDateTime]];
+        NSDate *startDateTime = [self.detailItem startDateTime];
         
-        self.eventDescription.adjustsFontSizeToFitWidth = YES;
+        
+        // handle description
+       // self.eventDescription.adjustsFontSizeToFitWidth = YES;
         [self.eventDescription sizeToFit];
-        self.startTimeDescriptionLabel.text = string;
-        self.title =[self.detailItem title];
+                //self.title =[self.detailItem title];
         self.eventDescription.text = [self.detailItem theDescription];
+        
+        
+        
         
         // Convert NSNumber to NSString for minutes
         NSTimeInterval descriptionNumber = [self.detailItem duration];
@@ -62,11 +78,29 @@
         descriptionInteger = descriptionInteger/60;
         
         
+        NSDate* newDate = [startDateTime dateByAddingTimeInterval:descriptionNumber];
+        NSString *newDateString = [dateFormatter stringFromDate:newDate];
+        NSString *dash = @" – ";
+        
+        self.startTimeDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ %@", string, dash, newDateString];
+    
+        
+        
+        
+        
+        
+        /**
+        
         NSMutableString *descriptionString = [NSMutableString stringWithFormat:@"%d",descriptionInteger];
-        
         [descriptionString appendString:@" minutes"];
-        
         self.durationDescription.text = descriptionString;
+         
+         **/
+        
+        
+        
+        
+        
         
     }
 }
@@ -75,6 +109,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    //[_eventDescription setUserInteractionEnabled:NO];
+    _eventDescription.editable = NO;
+    
     [self configureView];
 }
 
