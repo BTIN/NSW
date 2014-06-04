@@ -154,7 +154,7 @@
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     
     
-    
+    // try chaning to while
     if(self.timeChosen == YES){
     
     
@@ -215,6 +215,10 @@
     else if(popup.tag == 4){
         self.time = -86400;
         self.timeChosen = YES;
+    }
+    
+    else{
+        self.timeChosen = NO;
     }
     
 }
