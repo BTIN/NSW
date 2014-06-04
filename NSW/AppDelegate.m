@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "FLDownloader.h"
 #import "DataSourceManager.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "NSWConstants.h"
 
 @implementation AppDelegate
 
@@ -22,6 +24,13 @@
     NSString *pathToDocuments = [downloader defaultFilePath];
     NSLog(@"Default download location:\n  %@", pathToDocuments);
     [DataSourceManager sharedDSManager];
+    //self.window.backgroundColor = [NSWStyle lightBlueColor];
+    NSLog(@"Week start: %@\n  Week end: %@", [NSWConstants firstDayOfNSW], [NSWConstants lastDayOfNSW]);
+
+    [GMSServices provideAPIKey:@"AIzaSyA9sxD0EYVsx4lCy2Af8J--xJBzBxU6BRE"];
+    
+    // Initialize the singleton downloader
+    [FLDownloader sharedDownloader];
     return YES;
 }
 							
@@ -71,5 +80,6 @@
     // Set icon badge number to zero
     application.applicationIconBadgeNumber = 0;
 }
+
 
 @end

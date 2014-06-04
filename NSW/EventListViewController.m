@@ -16,6 +16,7 @@
 #import "DataSourceManager.h"
 #import "iToast.h"
 
+
 @interface EventListViewController () {
     EventDataSource *myEventDS;
     NSDate *currentDate;
@@ -78,7 +79,6 @@
     
     NSString *current = [time stringFromDate:currentDate];
     
-    
     self.navigationController.navigationBar.topItem.title = current;
     
 }
@@ -107,6 +107,7 @@
     NSLog(@"LEFT");
     currentDate = [EventDataSource oneDayAfter:currentDate];
     [self getEventsFromCurrentDate];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
     [self updateDateLabelToCurrentDate];
 }
 
@@ -115,6 +116,8 @@
     NSLog(@"RIGHT");
     currentDate = [EventDataSource oneDayBefore:currentDate];
     [self getEventsFromCurrentDate];
+
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
     [self updateDateLabelToCurrentDate];
 }
 
@@ -143,6 +146,7 @@
     NSString *startEnd = [NSString stringWithFormat:@"%@ - %@", startTime, endTime];
     cell.startEndLabel.text = startEnd;
     cell.startEndLabel.textColor = [NSWStyle darkBlueColor];
+    
     cell.eventNameLabel.text = [event title];
     cell.eventNameLabel.textColor = [NSWStyle darkBlueColor];
     

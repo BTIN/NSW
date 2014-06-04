@@ -13,7 +13,7 @@ Checklist:
 
 - [ ] Hunt down the evil character(s):trollface: that is(/are) [preventing us from decoding the ics file as proper UTF-8](https://github.com/BTIN/NSW/blob/master/NSW/EventDataSource.m#L29-L30):rage:
   - May be fixed by loading from local data :point_down:
-- [ ] Get all the DataSources to download their network source files (ics, html, json) to local and read from local
+- [x] Get all the DataSources to download their network source files (ics, html, json) to local and read from local
   - Reload by checking if "date-modified" (probably not the actual term for that) was 1 day or more before current time
 - [x] Get ```CarlTermDataSource``` reading from a file (waiting on Web Services to host and agree on data format)
 - [x] Flesh out stub classes
@@ -26,6 +26,7 @@ Checklist:
 
 Suggestions:
 ---
+- [ ] Disable notification button after pressing
 - [x] take away arrows from "Carl Speak"
 - [ ] make events scrollable 
 - [ ] change notification button color when selected

@@ -80,12 +80,25 @@
 
 //Returns an NSDate for exactly 1 day before the input
 + (NSDate *)oneDayBefore:(NSDate *) currentDate{
-    return [NSDate dateWithTimeInterval:(-1 * secondsPerDay) sinceDate:currentDate];
+    
+    if ([[NSDate dateWithTimeInterval:(-1 * secondsPerDay) sinceDate:currentDate] timeIntervalSinceDate:[NSWConstants firstDayOfNSW]] < 0){
+         NSLog(@"too soon");
+        return currentDate;
+    }
+    else{
+        return [NSDate dateWithTimeInterval:(-1 * secondsPerDay) sinceDate:currentDate];
+    }
 }
 
 //Returns an NSDate for exactly 1 day after the input
 + (NSDate *)oneDayAfter:(NSDate *) currentDate{
-    return [NSDate dateWithTimeInterval:(secondsPerDay) sinceDate:currentDate];
+    if ([[NSDate dateWithTimeInterval:(secondsPerDay) sinceDate:currentDate] timeIntervalSinceDate:[NSWConstants lastDayOfNSW]] > 0){
+        NSLog(@"too soon");
+        return currentDate;
+    }
+    else{
+        return [NSDate dateWithTimeInterval:(secondsPerDay) sinceDate:currentDate];
+    }
 }
 
 
