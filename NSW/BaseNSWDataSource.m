@@ -41,20 +41,6 @@ static BOOL dataIsReady;
     return [super init];
 }
 
-// Load the given file from the local storage location
-- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
-        AndDataFromFile:(NSString *)localName {
-    self = [self initPrivate];
-
-    if (self) {
-        myTableViewController = tableViewController;
-        [self getLocalFile:localName
-         orDownloadFromURL:[self.urlMap objectForKey:localName]];
-    }
-
-    return self;
-}
-
 - (id)initWithDataFromFile:(NSString *)localName {
     self = [self initPrivate];
 

@@ -16,18 +16,10 @@
 // All the parsed NSWEvent objects
 @synthesize fullEventList;
 
-- (id)initWithVCBackref:(EventListViewController *) eventListViewController{
-    self = [super initWithVCBackref:eventListViewController
-                    AndDataFromFile:@"events.ics"];
-                     //AndDataFromURL:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"];
-    //@"file:/Users/alex/Documents/CS/NSW/NSW/events.ics"
-
-    return self;
-}
 
 - (id)init {
     self = [super initWithDataFromFile:@"events.ics"];
-
+    
     return self;
 }
 

@@ -20,9 +20,6 @@
 
 - (id)initWithDataFromFile:(NSString *)localName;
 
-- (id)initWithVCBackref:(BaseNSWTableViewController *)tableViewController
-        AndDataFromFile:(NSString *)localName;
-
 - (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController;
 
 -(void)parseLocalData;
