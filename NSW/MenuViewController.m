@@ -95,6 +95,10 @@
     cell.textLabel.textColor = [NSWStyle whiteColor];
     cell.textLabel.font = [NSWStyle boldFont];
     cell.textLabel.text = self.menuTitles[(NSUInteger) indexPath.row];
+    
+    UIView * selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    [selectedBackgroundView setBackgroundColor:[NSWStyle darkBlueColor]]; // set color here
+    [cell setSelectedBackgroundView:selectedBackgroundView];
 
     return cell;
 }
