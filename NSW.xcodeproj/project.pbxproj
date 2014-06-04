@@ -10,7 +10,6 @@
 		2DBA1128AA3820D3ACDF6DB2 /* NSWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1B37E9654BD4635896D1 /* NSWConstants.m */; };
 		2DBA1144374E8617A6191C18 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA139D7276BDC39D4DB255 /* reveal-icon.png */; };
 		2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */; };
-		2DBA12A52E9246896DE26E84 /* events.ics in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1EE6E371CB5470BFB579 /* events.ics */; };
 		2DBA145C9F5E8FBDAF398B20 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1D9C44FC924E305DABBC /* SWRevealViewController.m */; };
 		2DBA1466DB064C56C6700DF2 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11891644C1A2292AD911 /* MenuViewController.m */; };
 		2DBA158FB79AE0291C63AD5A /* DataSourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA137AE7289011209C802F /* DataSourceManager.m */; };
@@ -21,11 +20,9 @@
 		2DBA1BE3106731EC27A0A6BA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1955C9B983DEC4C57B77 /* MapViewController.m */; };
 		2DBA1BF8815FA54720707B52 /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */; };
 		2DBA1DE1FBA75AE34934C6BC /* CarlTermTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA12024D13496A05CB72A7 /* CarlTermTableViewCell.m */; };
-		2DBA1ECE9BB7E4234609C451 /* events_test.ics in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA1C71116CB7163E1AC0A9 /* events_test.ics */; };
 		2DBA1ED00471D28CA268FA58 /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1418FDE87099C2D4D6A4 /* EventTableViewCell.m */; };
 		6896DDE71921354D00570E6B /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE41921354D00570E6B /* Contact.m */; };
 		6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6896DDE61921354D00570E6B /* ContactDataSource.m */; };
-		68E045E3191FF6B100B36423 /* events_old.ics in Resources */ = {isa = PBXBuildFile; fileRef = 68E045E2191FF6B100B36423 /* events_old.ics */; };
 		68E045E51920061700B36423 /* NSWEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E045E41920061700B36423 /* NSWEvent.m */; };
 		6C0A18E5937C4725A4DCB069 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE2E3248EC341149C22A407 /* libPods.a */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
@@ -82,13 +79,11 @@
 		2DBA1A06EC33CED5D5EBDC66 /* DataSourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceManager.h; sourceTree = "<group>"; };
 		2DBA1B1FE18AB14237271000 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		2DBA1B37E9654BD4635896D1 /* NSWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWConstants.m; sourceTree = "<group>"; };
-		2DBA1C71116CB7163E1AC0A9 /* events_test.ics */ = {isa = PBXFileReference; lastKnownFileType = file.ics; path = events_test.ics; sourceTree = "<group>"; };
 		2DBA1D2363EB3A1744B9F1F9 /* NSWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWConstants.h; sourceTree = "<group>"; };
 		2DBA1D9C44FC924E305DABBC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		2DBA1E15920BCF66B29F9D24 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSWTableViewController.m; sourceTree = "<group>"; };
-		2DBA1EE6E371CB5470BFB579 /* events.ics */ = {isa = PBXFileReference; lastKnownFileType = file.ics; path = events.ics; sourceTree = "<group>"; };
 		2DBA1F60FBF8244A097B7169 /* BaseNSWDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNSWDataSource.h; sourceTree = "<group>"; };
 		2DBA1FEB76C1602B32A6F545 /* CarlTermTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarlTermTableViewCell.h; sourceTree = "<group>"; };
 		5BE2E3248EC341149C22A407 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +91,6 @@
 		6896DDE41921354D00570E6B /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		6896DDE51921354D00570E6B /* ContactDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDataSource.h; sourceTree = "<group>"; };
 		6896DDE61921354D00570E6B /* ContactDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDataSource.m; sourceTree = "<group>"; };
-		68E045E2191FF6B100B36423 /* events_old.ics */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.ics; path = events_old.ics; sourceTree = "<group>"; };
 		68E045E41920061700B36423 /* NSWEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWEvent.m; sourceTree = "<group>"; };
 		C06B0FA12298495BA45210A7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E21CDE72191D47BF00884608 /* EventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataSource.h; sourceTree = "<group>"; };
@@ -298,12 +292,9 @@
 		FA9DFDE11921C30F00FC3A81 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				68E045E2191FF6B100B36423 /* events_old.ics */,
 				FA9DFDDC1921BDD200FC3A81 /* map.jpg */,
 				2DBA139D7276BDC39D4DB255 /* reveal-icon.png */,
 				2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */,
-				2DBA1EE6E371CB5470BFB579 /* events.ics */,
-				2DBA1C71116CB7163E1AC0A9 /* events_test.ics */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -422,14 +413,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9DFDDD1921BDD200FC3A81 /* map.jpg in Resources */,
-				68E045E3191FF6B100B36423 /* events_old.ics in Resources */,
 				E2842ADE191A9992007FBD9B /* Images.xcassets in Resources */,
 				E2842ACD191A9992007FBD9B /* InfoPlist.strings in Resources */,
 				E2842AD6191A9992007FBD9B /* Main.storyboard in Resources */,
 				2DBA1144374E8617A6191C18 /* reveal-icon.png in Resources */,
 				2DBA1BF8815FA54720707B52 /* reveal-icon@2x.png in Resources */,
-				2DBA12A52E9246896DE26E84 /* events.ics in Resources */,
-				2DBA1ECE9BB7E4234609C451 /* events_test.ics in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

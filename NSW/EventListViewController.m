@@ -97,7 +97,7 @@
 
         [userDefaults setBool:YES forKey:returningUserKey];
     } else {
-        [userDefaults setBool:NO forKey:returningUserKey];
+        //[userDefaults setBool:NO forKey:returningUserKey];
     }
 }
 
