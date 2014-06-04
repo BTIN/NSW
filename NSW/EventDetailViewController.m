@@ -185,9 +185,12 @@
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     // This will remove previous notification whenever a new one is set, or cancelled
+    
+    
+    /**
+       TODO:   NOT WORKING RIGHT NOW
+     **/
     self.timeChosen = NO;
-    
-    
     
     if(popup.tag == 0){
         self.time = -300;
@@ -214,47 +217,6 @@
         self.timeChosen = YES;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /**switch (popup.tag) {
-        case 1: {
-            switch (buttonIndex) {
-                case 0:
-                    self.time = -300;
-                    self.timeChosen = YES;
-                    break;
-                case 1:
-                    self.time = -900;
-                    self.timeChosen = YES;
-                    break;
-                case 2:
-                    self.time = -1800;
-                    self.timeChosen = YES;
-                    break;
-                case 3:
-                    self.time = -3600;
-                    self.timeChosen = YES;
-                    break;
-                case 4:
-                    self.time = -86400;
-                    self.timeChosen = YES;
-                    break;
-                default:
-                    break;
-            }
-            break;
-        }
-        default:
-            break;
-    }**/
 }
 
 
