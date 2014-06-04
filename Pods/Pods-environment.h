@@ -12,3 +12,9 @@
 #define COCOAPODS_VERSION_MINOR_VCTransitionsLibrary 4
 #define COCOAPODS_VERSION_PATCH_VCTransitionsLibrary 0
 
+// iToast
+#define COCOAPODS_POD_AVAILABLE_iToast
+#define COCOAPODS_VERSION_MAJOR_iToast 0
+#define COCOAPODS_VERSION_MINOR_iToast 0
+#define COCOAPODS_VERSION_PATCH_iToast 1
+
