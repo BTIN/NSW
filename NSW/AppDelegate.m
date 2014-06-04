@@ -9,14 +9,15 @@
 #import "AppDelegate.h"
 //#import "NSWStyle.h"
 #import "FLDownloader.h"
+#import "NSWConstants.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //self.window.backgroundColor = [NSWStyle lightBlueColor];
-    
-    
+    NSLog(@"Week start: %@\n  Week end: %@", [NSWConstants firstDayOfNSW], [NSWConstants lastDayOfNSW]);
+
     // Initialize the singleton downloader
     [FLDownloader sharedDownloader];
     return YES;
