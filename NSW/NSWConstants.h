@@ -16,6 +16,7 @@ typedef enum {
 } secondsPer;
 
 +(NSTimeZone *)northfieldTimeZone;
-
++(NSDate *) firstDayOfNSW;
++(NSDate *) lastDayOfNSW;
 
 @end
