@@ -238,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="369" y="280"/>
         </scene>
-        <!--Map View Controller - Title-->
+        <!--Map View Controller-->
         <scene sceneID="BqD-LU-ADy">
             <objects>
                 <viewController storyboardIdentifier="mapImage" id="MST-y0-eiy" customClass="MapViewController" sceneMemberID="viewController">
@@ -271,9 +271,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="f0w-5y-qQR">
-                        <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" id="j55-js-yWm"/>
-                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="revealButtonItem" destination="j55-js-yWm" id="d29-4A-myv"/>
@@ -288,10 +285,10 @@
             </objects>
             <point key="canvasLocation" x="369" y="992"/>
         </scene>
-        <!--Google Map View Controller-->
+        <!--Google Map View Controller - Title-->
         <scene sceneID="vx0-5d-KP8">
             <objects>
-                <viewController id="m6S-FO-gLg" customClass="GoogleMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gMap" id="m6S-FO-gLg" customClass="GoogleMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OP1-V0-ZsI"/>
                         <viewControllerLayoutGuide type="bottom" id="eyJ-7C-PMw"/>
@@ -301,6 +298,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="f0w-5y-qQR">
+                        <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" id="j55-js-yWm"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jNV-0t-Lzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
