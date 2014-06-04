@@ -31,8 +31,6 @@
 @implementation EventDetailViewController
 
 
-
-
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(NSWEvent *)newDetailItem
@@ -61,10 +59,8 @@
         **/
         
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        
+        // set dat format
         [dateFormatter setDateFormat:@"hh:mm a"];
-        
-        
         
         
         //[dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"];
@@ -107,21 +103,7 @@
         
         self.startTimeDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ %@", string, dash, newDateString];
     
-        
-        
-        
-        
-        
-        /**
-        
-        NSMutableString *descriptionString = [NSMutableString stringWithFormat:@"%d",descriptionInteger];
-        [descriptionString appendString:@" minutes"];
-        self.durationDescription.text = descriptionString;
-         
-         **/
-        
-        
-        
+
         
         
         
@@ -150,6 +132,9 @@
 // handles notificaton button press
 - (IBAction)notificationButton:(id)sender {
     
+    // Right now, notifications will display automatically because the NSW data we're using is from 2012 and that's in the past. Once 
+    // 2014 NSW data is used, notifications will work properly
+    
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"How far ahead would you like to be notified?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
                             @"5 Minutes",
                             @"15 Minutes",
@@ -165,7 +150,6 @@
     self.fireNotification = [self.detailItem startDateTime];
     self.localNotification.alertBody = self.eventName.text;
     self.localNotification.timeZone = [NSTimeZone defaultTimeZone];
-   // self.localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
    
 
 }
