@@ -132,6 +132,7 @@
     NSString *startEnd = [NSString stringWithFormat:@"%@ - %@", startTime, endTime];
     cell.startEndLabel.text = startEnd;
     cell.startEndLabel.textColor = [NSWStyle darkBlueColor];
+    
     cell.eventNameLabel.text = [event title];
     cell.eventNameLabel.textColor = [NSWStyle darkBlueColor];
     

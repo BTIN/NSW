@@ -10,6 +10,7 @@
 //#import "NSWEvent.h"
 
 @interface EventDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *endTime;
 @property (weak, nonatomic) IBOutlet UILabel *eventLocation;
 @property (weak, nonatomic) IBOutlet UITextView *eventDescription;
@@ -18,9 +19,13 @@
 //@property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
 - (void)configureView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeDescriptionLabel;
+@property int time;
+@property BOOL timeChosen;
+@property BOOL notificationSet;
 @end
 
 @implementation EventDetailViewController
+
 
 
 
@@ -66,7 +71,20 @@
         // handle description
        // self.eventDescription.adjustsFontSizeToFitWidth = YES;
         [self.eventDescription sizeToFit];
-                //self.title =[self.detailItem title];
+        
+        // Remove "NSW: " from event title
+        NSString *eventNameString = [self.detailItem title];
+        NSString *eventNameStringFirstFourChars = [eventNameString substringToIndex:5];
+        if([eventNameStringFirstFourChars  isEqual: @"NSW: "]){
+            eventNameString = [eventNameString substringFromIndex:5];
+        }
+        
+        
+        self.eventName.text = eventNameString;
+        self.eventName.adjustsFontSizeToFitWidth = YES;
+        
+        
+    
         self.eventDescription.text = [self.detailItem theDescription];
         
         
@@ -108,6 +126,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     
     
@@ -124,15 +143,118 @@
 }
 - (IBAction)notificationButton:(id)sender {
     
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"How far ahead would you like to be notified?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                            @"5 Minutes",
+                            @"15 Minutes",
+                            @"30 Minutes",
+                            @"1 Hour",
+                            @"1 Day",
+                            nil];
+    //popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
+    
+    
+    if(self.timeChosen == YES){
+    
+    
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
-    localNotification.alertBody = @"Notification Test";
+    //localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+    
+    NSDate *fireNotification = [self.detailItem startDateTime];
+        
+    // Notification set to 30 minutes before event. Right now it will fire off a notification automatically because
+    // we're using the 2012 NSW data and that's all in the past
+        
+    fireNotification = [fireNotification dateByAddingTimeInterval:self.time];
+    localNotification.fireDate = fireNotification;
+
+    localNotification.alertBody = self.eventName.text;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        
+    self.timeChosen = NO;
+        
+    }
     
 
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    // This will remove previous notification whenever a new one is set, or cancelled
+    self.timeChosen = NO;
+    
+    
+    
+    if(popup.tag == 0){
+        self.time = -300;
+        self.timeChosen = YES;
+    }
+    
+    else if(popup.tag == 1){
+        self.time = -900;
+        self.timeChosen = YES;
+    }
+    
+    else if(popup.tag == 2){
+        self.time = -1800;
+        self.timeChosen = YES;
+    }
+    
+    else if(popup.tag == 3){
+        self.time = -3600;
+        self.timeChosen = YES;
+    }
+    
+    else if(popup.tag == 4){
+        self.time = -86400;
+        self.timeChosen = YES;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**switch (popup.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:
+                    self.time = -300;
+                    self.timeChosen = YES;
+                    break;
+                case 1:
+                    self.time = -900;
+                    self.timeChosen = YES;
+                    break;
+                case 2:
+                    self.time = -1800;
+                    self.timeChosen = YES;
+                    break;
+                case 3:
+                    self.time = -3600;
+                    self.timeChosen = YES;
+                    break;
+                case 4:
+                    self.time = -86400;
+                    self.timeChosen = YES;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }**/
 }
 
 
