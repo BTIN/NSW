@@ -9,13 +9,17 @@
 #import "AppDelegate.h"
 //#import "NSWStyle.h"
 #import "FLDownloader.h"
+#import <GoogleMaps/GoogleMaps.h>
+#import "NSWConstants.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //self.window.backgroundColor = [NSWStyle lightBlueColor];
-    
+    NSLog(@"Week start: %@\n  Week end: %@", [NSWConstants firstDayOfNSW], [NSWConstants lastDayOfNSW]);
+
+    [GMSServices provideAPIKey:@"AIzaSyA9sxD0EYVsx4lCy2Af8J--xJBzBxU6BRE"];
     
     // Initialize the singleton downloader
     [FLDownloader sharedDownloader];
