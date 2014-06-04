@@ -30,7 +30,7 @@ static NSDateFormatter *dateFormatter;
 }
 
 + (NSDate *) lastDayOfNSW {
-    return [[NSWConstants firstDayOfNSW] dateByAddingTimeInterval:(secondsPerDay * 7)];
+    return [NSWConstants dateFor:@"09-09-2012"];
 }
 
 
