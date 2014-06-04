@@ -14,6 +14,7 @@
 #import "EventDetailViewController.h"
 #import "NSWStyle.h"
 #import "DataSourceManager.h"
+#import "iToast.h"
 
 @interface EventListViewController () {
     EventDataSource *myEventDS;
@@ -26,11 +27,6 @@
 @implementation EventListViewController
 
 
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -42,6 +38,8 @@
                                           otherButtonTitles:nil];
     [alert show];
      **/
+
+    [self displayDirectionsIfNewUser];
 
     //Connect this VC to the shared DataSource
     myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource];
@@ -64,18 +62,14 @@
     NSString *current = [formatter stringFromDate:currentDate];
     self.navigationController.navigationBar.topItem.title = current;
     
-    //[self.view addSubview:_dateLabel];
 }
 
 // Updates the event list to the events for currentDate
--(void)getEventsFromCurrentDate{
+-(void)getEventsFromCurrentDate {
     [myEventDS getEventsForDate:currentDate];
 }
 
 #pragma mark - Table View
--(void)setHeaderLabel{
-    _dateLabel.text = @"another day";
-}
 
 // Updates the label for the current day
 -(void)updateDateLabelToCurrentDate {
@@ -87,8 +81,24 @@
     
     self.navigationController.navigationBar.topItem.title = current;
     
+}
 
-    //_dateLabel.text = current;
+// Checks the user defaults and shows directions if this is a first user
+-(void)displayDirectionsIfNewUser {
+    NSString *returningUserKey = @"returning user";
+    //[NSUserDefaults resetStandardUserDefaults];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL isReturningUser = [userDefaults boolForKey:returningUserKey];
+    if (!isReturningUser) {
+        iToast *swipeToast = [iToast makeText:@"Swipe left or right on this screen to change days"];
+        [swipeToast setGravity:iToastGravityCenter];
+        [swipeToast setDuration:iToastDurationNormal];
+        [swipeToast show];
+
+        [userDefaults setBool:YES forKey:returningUserKey];
+    } else {
+        [userDefaults setBool:NO forKey:returningUserKey];
+    }
 }
 
 // Updates currentDate then the list of events to one day after the previous day
