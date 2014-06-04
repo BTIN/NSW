@@ -81,7 +81,6 @@
     
     NSString *current = [time stringFromDate:currentDate];
     
-    
     self.navigationController.navigationBar.topItem.title = current;
     
 
@@ -104,6 +103,7 @@
     NSLog(@"RIGHT");
     currentDate = [EventDataSource oneDayBefore:currentDate];
     [self getEventsFromCurrentDate];
+
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
     [self updateDateLabelToCurrentDate];
 }

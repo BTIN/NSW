@@ -9,13 +9,13 @@
 #import "AppDelegate.h"
 //#import "NSWStyle.h"
 #import "FLDownloader.h"
-
+#import <GoogleMaps/GoogleMaps.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //self.window.backgroundColor = [NSWStyle lightBlueColor];
-    
+    [GMSServices provideAPIKey:@"AIzaSyA9sxD0EYVsx4lCy2Af8J--xJBzBxU6BRE"];
     
     // Initialize the singleton downloader
     [FLDownloader sharedDownloader];
