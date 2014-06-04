@@ -22,6 +22,10 @@
 @property int time;
 @property BOOL timeChosen;
 @property BOOL notificationSet;
+
+@property UILocalNotification *localNotification;
+@property NSDate *fireNotification;
+
 @end
 
 @implementation EventDetailViewController
@@ -142,6 +146,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// handles notificaton button press
 - (IBAction)notificationButton:(id)sender {
     
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"How far ahead would you like to be notified?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
@@ -151,76 +157,78 @@
                             @"1 Hour",
                             @"1 Day",
                             nil];
-    //popup.tag = 1;
+     popup.tag = 1;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
     
     
-    // try chaning to while
-    if(self.timeChosen == YES){
-    
-    
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    //localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
-    
-    NSDate *fireNotification = [self.detailItem startDateTime];
-        
-    // Notification set to 30 minutes before event. Right now it will fire off a notification automatically because
-    // we're using the 2012 NSW data and that's all in the past
-        
-    fireNotification = [fireNotification dateByAddingTimeInterval:self.time];
-    localNotification.fireDate = fireNotification;
-
-    localNotification.alertBody = self.eventName.text;
-    localNotification.timeZone = [NSTimeZone defaultTimeZone];
-    localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-    
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-        
-    self.timeChosen = NO;
-        
-    }
-    
+    self.localNotification = [[UILocalNotification alloc] init];
+    self.fireNotification = [self.detailItem startDateTime];
+    self.localNotification.alertBody = self.eventName.text;
+    self.localNotification.timeZone = [NSTimeZone defaultTimeZone];
+   // self.localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+   
 
 }
 
+// options presented when selecting a notification time
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    // This will remove previous notification whenever a new one is set, or cancelled
+    // Setting a new notification removes previous notification
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    self.notificationSet = NO;
     
-    
-    /**
-       TODO:   NOT WORKING RIGHT NOW
-     **/
-    self.timeChosen = NO;
-    
-    if(popup.tag == 0){
-        self.time = -300;
-        self.timeChosen = YES;
+    if(buttonIndex == 0){
+        
+        // 5 minutes before event starts
+        self.fireNotification = [self.fireNotification dateByAddingTimeInterval:-300];
+        self.localNotification.fireDate = self.fireNotification;
+        [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
+        self.notificationSet = YES;
     }
     
-    else if(popup.tag == 1){
-        self.time = -900;
-        self.timeChosen = YES;
+    if(buttonIndex == 1){
+        
+        // 15 minutes before event starts
+        self.fireNotification = [self.fireNotification dateByAddingTimeInterval:-900];
+        self.localNotification.fireDate = self.fireNotification;
+        [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
+        self.notificationSet = YES;
     }
     
-    else if(popup.tag == 2){
-        self.time = -1800;
-        self.timeChosen = YES;
+    if(buttonIndex == 2){
+        
+        // 30 minutes before event starts
+        self.fireNotification = [self.fireNotification dateByAddingTimeInterval:-1800];
+        self.localNotification.fireDate = self.fireNotification;
+        [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
+        self.notificationSet = YES;
     }
     
-    else if(popup.tag == 3){
-        self.time = -3600;
-        self.timeChosen = YES;
+    if(buttonIndex == 3){
+        
+        // 1 hour before event starts
+        self.fireNotification = [self.fireNotification dateByAddingTimeInterval:-3600];
+        self.localNotification.fireDate = self.fireNotification;
+        [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
+        self.notificationSet = YES;
     }
     
-    else if(popup.tag == 4){
-        self.time = -86400;
-        self.timeChosen = YES;
+    if(buttonIndex == 4){
+        
+        // 1 day before event starts
+        self.fireNotification = [self.fireNotification dateByAddingTimeInterval:-86400];
+        self.localNotification.fireDate = self.fireNotification;
+        [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
+        self.notificationSet = YES;
     }
     
     else{
-        self.timeChosen = NO;
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        self.notificationSet = NO;
+
     }
+    
+   
     
 }
 
