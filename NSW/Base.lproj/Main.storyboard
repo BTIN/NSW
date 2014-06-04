@@ -242,18 +242,34 @@
         <scene sceneID="BqD-LU-ADy">
             <objects>
                 <viewController storyboardIdentifier="mapImage" id="MST-y0-eiy" customClass="MapViewController" sceneMemberID="viewController">
-                    <imageView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map.jpg" id="knk-UQ-Wk4" userLabel="mapImage">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WtN-fD-3Of"/>
+                        <viewControllerLayoutGuide type="bottom" id="0JJ-C1-wM7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QC0-MK-S92">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <accessibility key="accessibilityConfiguration" label="mapImage">
-                            <bool key="isElement" value="YES"/>
-                        </accessibility>
-                        <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="3MH-E6-rvg" appends="YES" id="BqH-iJ-H6q"/>
-                            <outletCollection property="gestureRecognizers" destination="gfP-Ml-eJS" appends="YES" id="cTs-Z2-GB8"/>
-                        </connections>
-                    </imageView>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yca-7b-m5Y">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="knk-UQ-Wk4" userLabel="mapImage">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="mapImage">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="3MH-E6-rvg" appends="YES" id="BqH-iJ-H6q"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="f0w-5y-qQR">
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" id="j55-js-yWm"/>
@@ -269,11 +285,6 @@
                         <action selector="handlePinch:" destination="MST-y0-eiy" id="4xl-w0-Jyc"/>
                     </connections>
                 </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="gfP-Ml-eJS">
-                    <connections>
-                        <action selector="handlePan:" destination="MST-y0-eiy" id="w6n-Yh-QVp"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="369" y="992"/>
         </scene>
