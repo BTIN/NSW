@@ -93,7 +93,9 @@
     //TODO Nice-to-have: animation with swipe so that it's less of a sudden change
     NSLog(@"LEFT");
     currentDate = [EventDataSource oneDayAfter:currentDate];
+    
     [self getEventsFromCurrentDate];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
     [self updateDateLabelToCurrentDate];
 }
 
@@ -102,6 +104,7 @@
     NSLog(@"RIGHT");
     currentDate = [EventDataSource oneDayBefore:currentDate];
     [self getEventsFromCurrentDate];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
     [self updateDateLabelToCurrentDate];
 }
 
