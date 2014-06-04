@@ -47,6 +47,7 @@
 
     if (self.detailItem) {
         self.eventLocation.text = [self.detailItem location];
+        self.eventLocation.adjustsFontSizeToFitWidth = YES;
         
         // Convert NSDate to NSString
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
