@@ -15,23 +15,15 @@
 
 NSMutableArray * parsedCarlTerms;
 
-- (id)initWithVCBackref:(CarlTermViewController *)carlTermViewController {
-    self = [super initWithVCBackref:carlTermViewController
-                    AndDataFromFile:@"terms.json"];
-    
-    return self;
-}
-
 - (id)init {
     self = [super initWithDataFromFile:@"terms.json"];
 
     return self;
 }
 
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-
+- (void)parseLocalData{
     [self parseAndSet:self.localData];
-    [self logDownloadTime];
+    [super parseLocalData];
 }
 - (void)parseAndSet:(NSData *)JSONData {
     parsedCarlTerms = [[NSMutableArray alloc] init];

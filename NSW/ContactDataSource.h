@@ -13,6 +13,5 @@
 
 @interface ContactDataSource : BaseNSWDataSource
 
--(id)initWithVCBackref:(ContactTableViewController *) contactTableViewController;
 
 @end

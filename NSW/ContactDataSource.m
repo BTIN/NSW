@@ -15,29 +15,21 @@
 NSMutableArray *parsedContacts;
 
 
-- (id)initWithVCBackref:(ContactTableViewController *)contactTableViewController {
-    self = [super initWithVCBackref:contactTableViewController
-                    AndDataFromFile:@"contacts.html"];
-
-    return self;
-}
-
 - (id)init {
     self = [super initWithDataFromFile:@"contacts.html"];
 
     return self;
 }
 
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    NSString *rawPageSrc = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
-    [self parseContactsFromHTML:rawPageSrc];
-    [self logDownloadTime];
+- (void)parseLocalData {
+    [self parseContactsFromHTML];
+    [super parseLocalData];
 }
 
-- (void)parseContactsFromHTML:(NSString *) rawHTML{
+- (void)parseContactsFromHTML{
     
     parsedContacts = [[NSMutableArray alloc] init];
+    NSString *rawHTML = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
 
     /* get the chunk of html code that contains contact info
         add each 'contact' chunk into a temporary list, splitHTMLContacts */

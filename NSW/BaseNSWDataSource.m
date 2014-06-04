@@ -13,7 +13,8 @@
 
 @implementation BaseNSWDataSource
 
-static NSString *genericLocalFilePath;
+static NSString *genericRawFilePath;
+static NSString *genericSafeFilePath; //location of the data that has been translated to UTF-8
 static BOOL dataIsReady;
 @synthesize localData;
 @synthesize dataList;
@@ -22,7 +23,7 @@ static BOOL dataIsReady;
 - (id)urlMap {
     if (!_urlMap) {
         NSArray *fileNames = @[@"events.ics", @"contacts.html", @"terms.json"];
-        NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2012-09-01&format=ical"],
+        NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?audience=256908&start_date=2012-09-04&end_date=2012-09-11&format=ical"],
                 [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/"],
                 [NSURL URLWithString:@"http://harrise.github.io/terms.json"]];
         _urlMap = [NSDictionary dictionaryWithObjects:urls forKeys:fileNames];
@@ -84,29 +85,32 @@ static BOOL dataIsReady;
     }
 }
 
-// Create the directory that the data files will be stored in 
+// Create the directories that the data files will be stored in 
 // if it hasn't already been created
 - (void)createLocalDataDirectoryIfNoneExists {
-    genericLocalFilePath = [[[FLDownloader sharedDownloader] defaultFilePath] stringByAppendingPathComponent:@"LocalData"];
+    genericRawFilePath = [[[FLDownloader sharedDownloader] defaultFilePath] stringByAppendingPathComponent:@"RawData"];
+    genericSafeFilePath = [[[FLDownloader sharedDownloader] defaultFilePath] stringByAppendingPathComponent:@"SafeData"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    BOOL isDir;
-    BOOL locationExists = [fileManager fileExistsAtPath:genericLocalFilePath 
-                                            isDirectory:&isDir];
-    // isDir will be changed to whether the genericLocalFilePath is a directory. 
-    // It's how the existence function is able to "return" 2 values
-    if (!locationExists)
-    {
-        NSError *error;
-        [fileManager createDirectoryAtPath:genericLocalFilePath 
-               withIntermediateDirectories:NO 
-                                attributes:nil 
-                                     error:&error];
-        if (error) {
-            NSLog(@"%@", error);
+    NSArray *filePaths = @[genericRawFilePath, genericSafeFilePath];
+    for (NSString *filePath in filePaths) {
+        BOOL isDir;
+        BOOL locationExists = [fileManager fileExistsAtPath:filePath
+                                                isDirectory:&isDir];
+        // isDir will be changed to whether the genericRawFilePath is a directory. 
+        // It's how locationExists is able to "return" 2 values
+        if (!locationExists) {
+            NSError *error;
+            [fileManager createDirectoryAtPath:filePath
+                   withIntermediateDirectories:NO
+                                    attributes:nil
+                                         error:&error];
+            if (error) {
+                NSLog(@"%@", error);
+            }
+        } else if (!isDir) {
+            NSLog(@"%@ exists but isn't a directory", filePath);
         }
-    } else if (!isDir) {
-        NSLog(@"%@ exists but isn't a directory", genericLocalFilePath);
     }
 }
 
@@ -114,12 +118,17 @@ static BOOL dataIsReady;
 // Otherwise, download it to local storage THEN load it into self.localData
 - (void)getLocalFile:(NSString *)fileName orDownloadFromURL:(NSURL *)URL {
     [self createLocalDataDirectoryIfNoneExists];
-    NSString *pathToLocalFile = [genericLocalFilePath stringByAppendingPathComponent:fileName];
+    NSString *pathToRawFile = [genericRawFilePath stringByAppendingPathComponent:fileName];
     
     //A block to "download" the data file from the file system into self.localData
     void (^onCompletion)(BOOL, NSError *) = ^(BOOL success, NSError *error) {
         if (success) {
-            [self getRawDataFromURL:[NSURL fileURLWithPath:pathToLocalFile]];
+            [self loadUTF8Data:fileName];
+            [self parseLocalData];
+            //[self getRawDataFromURL:[NSURL fileURLWithPath:pathToRawFile]];
+            if(error) {
+                NSLog(@"Error copying file to string:\n  %@", error);
+            }
         } else {
             NSLog(@"Error downloading %@: %@", fileName, error);
         }
@@ -128,63 +137,102 @@ static BOOL dataIsReady;
     //Set up a FLDownloadTask to download the source from the URL, but don't start yet
     FLDownloadTask *downloadTask = [[FLDownloader sharedDownloader] downloadTaskForURL:URL];
     [downloadTask setFileName:fileName];
-    [downloadTask setDestinationDirectory:genericLocalFilePath];
+    [downloadTask setDestinationDirectory:genericRawFilePath];
     [downloadTask setCompletionBlock:onCompletion];
 
-    if ([[NSFileManager defaultManager] fileExistsAtPath:pathToLocalFile]){
+    if ([[NSFileManager defaultManager] fileExistsAtPath:pathToRawFile]){
         onCompletion(YES, nil);
         //TODO check how old the local data is, Then reload if more than a day
     } else {
-        // Logs the progress of the the download
-        [downloadTask setProgressBlock:^(NSURL *url, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite)
-                {
-                    float progress = (float)totalBytesWritten / (float)totalBytesExpectedToWrite;
-                    NSLog(@"%@ Progress: %.2f", fileName, progress);
-                }];
         [downloadTask start];
     }
     
 }
 
-- (void)getRawDataFromURL:(NSURL *)sourceURL {
+/** Carleton's event database stores UTF-8 data. However, we are accessing it through an iCal export, 
+  * which breaks any string greater than 76 bytes across multiple lines. In rare cases, this break can 
+  * occur in the middle of a multi-byte character (such as the typographical apostrophe ’), which leaves 
+  * us with 3 bytes (separated by a line break + a space) that aren't valid UTF-8 characters, so the 
+  * raw ics file cannot be decoded as UTF-8.
+  * 
+  * In this method, we fix the logn strings by getting rid of the line breaks in them, thus rejoining the 
+  * broken multi-bit characters :-D
+*/
+- (void)loadUTF8Data:(NSString *)fileName {
+    NSError *error;
+    //try to load the UTF-8 local data
+    NSString *utfString = [NSString stringWithContentsOfFile:[genericSafeFilePath stringByAppendingPathComponent:fileName] 
+                                                    encoding:NSUTF8StringEncoding 
+                                                       error:&error];
+
     
-    // Allow the network activity indicator in the status bar
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    // i.e. the data wasn't there or couldn't be loaded as UTF-8
+    if (!utfString) {
+        NSLog(@"Could not load %@ as UTF-8 from location:\n  %@\n  Error: %@\n  Will try %@", 
+                fileName, genericSafeFilePath, error.description, genericRawFilePath);
+        // Clear error for reuse
+        error = nil;
+        NSData *originalData = [NSData dataWithContentsOfFile:[genericRawFilePath stringByAppendingPathComponent:fileName] 
+                                                      options:0
+                                                        error:&error];
+        
+        if (!error) {
+            char utf8BOM[] = {0xEF, 0xBB, 0xBF}; //These 3 bytes represent the BOM for a UTF-8 text file
+            NSMutableData *utf8Data = [NSMutableData dataWithBytes:utf8BOM length:3];
+            [utf8Data appendData:originalData];
+            
+            NSData *lineBreakAndSpace = [@"\r\n " dataUsingEncoding:NSUTF8StringEncoding];
+            // The original iCal file has CRLF line endings and all continuation lines start with a space to 'indent' them
+            NSData *crEnding = [@"\r" dataUsingEncoding:NSUTF8StringEncoding];
+            
+            //Remove a lineBreakAndSpace byte sequences
+            utf8Data = [self dataByReplacingSubData:lineBreakAndSpace inData:utf8Data withData:nil];
+            
+            //Remove the \r from every CRLF line ending, leaving just \n
+            utf8Data = [self dataByReplacingSubData:crEnding inData:utf8Data withData:nil];
 
-    // Create the request.
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:sourceURL
-                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                          timeoutInterval:60.0];
+            BOOL success = [utf8Data writeToFile:[genericSafeFilePath stringByAppendingPathComponent:fileName] atomically:YES];
+            if (success) {
 
+                self.localData = utf8Data;
+            }
+            //TODO save localData to file
+        } else {
+            NSLog(@"%@", error.description);
+        }
+    } else {
+        self.localData = [utfString dataUsingEncoding:NSUTF8StringEncoding];
+    }
+}
 
-    // Create the NSMutableData to hold the received data.
-    // localData is an instance variable declared elsewhere.
-    localData = [NSMutableData dataWithCapacity: 0];
-    // create the connection with the request
-    // and start loading the data
-    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-
-
-    if (!theConnection) {
-        // Release the localData object.
-        localData = nil;
-        // Inform the user that the connection failed.
-        NSLog(@"Connection failed");
-
+// Replaces any existing occurences of dataToReplace with dataToPut
+- (NSMutableData *)dataByReplacingSubData:(NSData *)dataToReplace
+                                   inData:(NSData *)fullData
+                                 withData:(NSData *)dataToPut {
+    
+    NSMutableData *mutableData = [fullData mutableCopy];
+    
+    // Initial values to be replaced if dataToPut is non-null
+    NSUInteger numberOfReplacementBytes = 0;
+    const char *bytesToPut = NULL;
+    if(dataToPut) {
+        numberOfReplacementBytes = dataToPut.length;
+        bytesToPut = dataToPut.bytes;
+    }
+    NSLog(@"size to put: %i", numberOfReplacementBytes);
+    
+    NSRange rangeToReplace = NSMakeRange(0, 0);
+    while (rangeToReplace.location != NSNotFound){
+        [mutableData replaceBytesInRange:rangeToReplace withBytes:bytesToPut length:numberOfReplacementBytes];
+        rangeToReplace = [mutableData rangeOfData:dataToReplace options:0 range:NSMakeRange(0, mutableData.length)];
     }
 
+    return mutableData;
 }
 
-- (void)connection:(NSURLConnection *)connection
-    didReceiveData:(NSData *)data {
-    // Append the new data to localData.
-    // localData is an instance variable declared elsewhere.
-    [localData appendData:data];
-
-}
-
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    //Override in subclasses
+- (void)parseLocalData {
+    // Extended in subclasses
+    [self logDownloadTime];
 }
 
 // Log how long it took to retrieve the download

@@ -32,16 +32,15 @@
 }
 
 
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-
+- (void)parseLocalData{
     [self parseDataIntoEventList];
-    [self logDownloadTime];
+    [super parseLocalData];
 }
 
 - (void)parseDataIntoEventList {
     
     // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:self.localData encoding:NSASCIIStringEncoding]; //NSUTF8StringEncoding];
+    NSString *rawICSString = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding]; //NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
@@ -120,7 +119,7 @@ example ICS event:
 */
 - (NSWEvent *)parseEventFromString:(NSString *) icsFormattedEvent {
     //First break the string into lines
-    NSArray *lines = [icsFormattedEvent componentsSeparatedByString:@"\r\n"];
+    NSArray *lines = [icsFormattedEvent componentsSeparatedByString:@"\n"];
 
     NSString *id_ = [self parseID:lines[1]];
     NSMutableString *title_ = [[self parseSimpleICSAttribute:lines[2]] mutableCopy];

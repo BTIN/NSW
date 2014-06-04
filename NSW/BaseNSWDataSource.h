@@ -13,7 +13,7 @@
 // the time that the download started
 @property (nonatomic, strong) NSDate *downloadStarted;
 
-@property (nonatomic, strong) NSMutableData *localData;
+@property (nonatomic, strong) NSData *localData;
 
 // The list of objects specific to each dataSource (Events, CarlTerms, or Contacts)
 @property (nonatomic, strong) NSArray *dataList;
@@ -25,10 +25,11 @@
 
 - (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController;
 
+-(void)parseLocalData;
+
 - (void)logDownloadTime;
 
 +(NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters;
 
--(void)getRawDataFromURL:(NSURL *)sourceURL;
 
 @end

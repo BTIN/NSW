@@ -13,7 +13,4 @@
 @interface CarlTermDataSource : BaseNSWDataSource
 
 
--(id)initWithVCBackref:(CarlTermViewController *) carlTermViewController;
-
-
 @end

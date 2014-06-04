@@ -15,8 +15,6 @@
 
 @property NSMutableArray *fullEventList;
 
-//NSMutableArray *getEventArrayForDate(NSString *date);
--(id)initWithVCBackref:(EventListViewController *) eventListViewController;
 -(void)getEventsForDate:(NSDate *) currentDate;
 +(NSDate *)oneDayBefore:(NSDate *) currentDate;
 +(NSDate *)oneDayAfter:(NSDate *) currentDate;
