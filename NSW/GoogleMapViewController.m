@@ -51,7 +51,7 @@
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     [self setNavigationColors];
     self.view.backgroundColor = [NSWStyle lightBlueColor];
-	// Do any additional setup after loading the view.
+	
 }
 
 
