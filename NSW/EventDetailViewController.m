@@ -83,7 +83,10 @@
         _middleContainer.layer.borderColor = [UIColor grayColor].CGColor;
         _middleContainer.layer.borderWidth = 0.25;
         _middleContainer.layer.cornerRadius = 3;
-
+        
+        _eventDescription.layer.borderColor = [UIColor grayColor].CGColor;
+        _eventDescription.layer.borderWidth = 0.25;
+        _eventDescription.layer.cornerRadius = 3;
        
         _eventLocation.text = [self.detailItem location];
         _eventLocation.adjustsFontSizeToFitWidth = YES;
