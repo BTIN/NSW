@@ -11,10 +11,12 @@
 #import "Contact.h"
 #import "ContactDataSource.h"
 #import "DataSourceManager.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface ContactTableViewController (){
-    //NSMutableArray *listItems;
-}
+@interface ContactTableViewController ()
+
+
+
 @end
 
 @implementation ContactTableViewController
@@ -32,6 +34,8 @@
 {
     [super viewDidLoad];
     
+
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -39,7 +43,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.listItems = [[NSMutableArray alloc] init];
-
+    
     //Connect this VC to the shared DataSource
     [[[DataSourceManager sharedDSManager] getContactDataSource] attachVCBackref:self];
 

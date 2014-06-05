@@ -7,24 +7,28 @@
 //
 
 #import "EventDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 //#import "NSWEvent.h"
 
 @interface EventDetailViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *topContainer;
+@property (weak, nonatomic) IBOutlet UIButton *middleContainer;
+
+//@property (weak, nonatomic) IBOutlet UITextView *textDescription;
 @property (weak, nonatomic) IBOutlet UILabel *eventName;
-@property (weak, nonatomic) IBOutlet UILabel *endTime;
 @property (weak, nonatomic) IBOutlet UILabel *eventLocation;
-@property (weak, nonatomic) IBOutlet UITextView *eventDescription;
-@property (weak, nonatomic) IBOutlet UIButton *notificationButton;
-@property (weak, nonatomic) IBOutlet UILabel *durationDescription;
-//@property (weak, nonatomic) IBOutlet UINavigationItem *titleDescriptionLabel;
-- (void)configureView;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *notificationButton;
+
 @property int time;
 @property BOOL timeChosen;
 @property BOOL notificationSet;
 
 @property UILocalNotification *localNotification;
 @property NSDate *fireNotification;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleBar;
+@property (weak, nonatomic) IBOutlet UITextView *eventDescription;
 
 @end
 
@@ -42,21 +46,54 @@
         [self configureView];
     }
 }
+- (IBAction)notifyButton:(id)sender {
+    // Right now, notifications will display automatically because the NSW data we're using is from 2012 and that's in the past. Once
+    // 2014 NSW data is used, notifications will work properly
+    
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"How far ahead would you like to be notified?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                            @"5 Minutes",
+                            @"15 Minutes",
+                            @"30 Minutes",
+                            @"1 Hour",
+                            @"1 Day",
+                            nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+
+    
+    self.localNotification = [[UILocalNotification alloc] init];
+    self.fireNotification = [self.detailItem startDateTime];
+    //self.localNotification.alertBody = self.eventName.text;
+    self.localNotification.timeZone = [NSTimeZone defaultTimeZone];
+
+}
 
 - (void)configureView
 {
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.eventLocation.text = [self.detailItem location];
-        self.eventLocation.adjustsFontSizeToFitWidth = YES;
+        
+
+        [_eventDescription setScrollEnabled:YES];
+        _topContainer.layer.borderColor = [UIColor grayColor].CGColor;
+        _topContainer.layer.borderWidth = 0.25;
+        _topContainer.layer.cornerRadius = 3;
+        
+        _middleContainer.layer.borderColor = [UIColor grayColor].CGColor;
+        _middleContainer.layer.borderWidth = 0.25;
+        _middleContainer.layer.cornerRadius = 3;
+
+       
+        _eventLocation.text = [self.detailItem location];
+        _eventLocation.adjustsFontSizeToFitWidth = YES;
         
         // Convert NSDate to NSString
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        /**
-        NSLocale *twelveHourLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        dateFormatter.locale = twelveHourLocale;
-        **/
+
+        //NSLocale *twelveHourLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        //dateFormatter.locale = twelveHourLocale;
+
         
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
         // set dat format
@@ -69,10 +106,7 @@
         NSDate *startDateTime = [self.detailItem startDateTime];
         
         
-        // handle description
-       // self.eventDescription.adjustsFontSizeToFitWidth = YES;
-        [self.eventDescription sizeToFit];
-        
+
         // Remove "NSW: " from event title
         NSString *eventNameString = [self.detailItem title];
         NSString *eventNameStringFirstFourChars = [eventNameString substringToIndex:5];
@@ -81,14 +115,14 @@
         }
         
         
-        self.eventName.text = eventNameString;
-        self.eventName.adjustsFontSizeToFitWidth = YES;
+        _eventName.text = eventNameString;
+        _eventName.adjustsFontSizeToFitWidth = YES;
         
         
     
-        self.eventDescription.text = [self.detailItem theDescription];
-        
-        
+        //_textDescription.text = [self.detailItem theDescription];
+        [_eventDescription setText:[self.detailItem theDescription]];
+    
         
         
         // Convert NSNumber to NSString for minutes
@@ -104,21 +138,28 @@
         self.startTimeDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ %@", string, dash, newDateString];
     
 
+        _titleBar.title = eventNameString;
         
         
-        
+    
+    
     }
 }
+
+- (CGFloat)textViewHeightForAttributedText: (NSAttributedString*)text andWidth: (CGFloat)width {
+    UITextView *calculationView = [[UITextView alloc] init];
+    [calculationView setAttributedText:text];
+    CGSize size = [calculationView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height;
+}
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    
-    //[_eventDescription setUserInteractionEnabled:NO];
-    _eventDescription.editable = NO;
     
     [self configureView];
 }
@@ -129,30 +170,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-// handles notificaton button press
-- (IBAction)notificationButton:(id)sender {
-    
-    // Right now, notifications will display automatically because the NSW data we're using is from 2012 and that's in the past. Once 
-    // 2014 NSW data is used, notifications will work properly
-    
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"How far ahead would you like to be notified?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                            @"5 Minutes",
-                            @"15 Minutes",
-                            @"30 Minutes",
-                            @"1 Hour",
-                            @"1 Day",
-                            nil];
-     popup.tag = 1;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
-    
-    
-    self.localNotification = [[UILocalNotification alloc] init];
-    self.fireNotification = [self.detailItem startDateTime];
-    self.localNotification.alertBody = self.eventName.text;
-    self.localNotification.timeZone = [NSTimeZone defaultTimeZone];
-   
 
-}
 
 // options presented when selecting a notification time
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -168,6 +186,8 @@
         self.localNotification.fireDate = self.fireNotification;
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
         self.notificationSet = YES;
+        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
+        [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
     if(buttonIndex == 1){
@@ -177,6 +197,8 @@
         self.localNotification.fireDate = self.fireNotification;
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
         self.notificationSet = YES;
+        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
+        [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
     if(buttonIndex == 2){
@@ -186,6 +208,8 @@
         self.localNotification.fireDate = self.fireNotification;
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
         self.notificationSet = YES;
+        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
+        [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
     if(buttonIndex == 3){
@@ -195,6 +219,8 @@
         self.localNotification.fireDate = self.fireNotification;
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
         self.notificationSet = YES;
+        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
+        [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
     if(buttonIndex == 4){
@@ -204,11 +230,14 @@
         self.localNotification.fireDate = self.fireNotification;
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
         self.notificationSet = YES;
+        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
+        [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
     else{
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
         self.notificationSet = NO;
+
 
     }
     
