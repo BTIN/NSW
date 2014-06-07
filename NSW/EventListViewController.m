@@ -13,6 +13,7 @@
 #import "EventTableViewCell.h"
 #import "EventDetailViewController.h"
 #import "NSWStyle.h"
+#import "NSWConstants.h"
 #import "DataSourceManager.h"
 #import "iToast.h"
 
@@ -103,9 +104,10 @@
 
 // Updates currentDate then the list of events to one day after the previous day
 - (void)oneFingerSwipeLeft:(UITapGestureRecognizer *)recognizer {
-    //TODO Nice-to-have: animation with swipe so that it's less of a sudden change
     NSLog(@"LEFT");
     currentDate = [EventDataSource oneDayAfter:currentDate];
+    //TODO intercept users trying to swipe beyond boudaries of NSW here and display a toast instead of just logging it 
+    //TODO in EventDataSource. Can use [currentDate earlierDate:] or laterDate:
     [self getEventsFromCurrentDate];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
     [self updateDateLabelToCurrentDate];

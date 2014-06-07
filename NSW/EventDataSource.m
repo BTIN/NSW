@@ -93,7 +93,7 @@
 //Returns an NSDate for exactly 1 day after the input
 + (NSDate *)oneDayAfter:(NSDate *) currentDate{
     if ([[NSDate dateWithTimeInterval:(secondsPerDay) sinceDate:currentDate] timeIntervalSinceDate:[NSWConstants lastDayOfNSW]] > 0){
-        NSLog(@"too soon");
+        NSLog(@"too late");
         return currentDate;
     }
     else{
