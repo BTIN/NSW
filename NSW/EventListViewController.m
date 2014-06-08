@@ -31,15 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    /**
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Swipe!"
-                                                    message:@"Swipe left or right to go to previous or next day"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-     **/
 
     [self displayDirectionsIfNewUser];
 
@@ -87,7 +78,6 @@
 // Checks the user defaults and shows directions if this is a first user
 -(void)displayDirectionsIfNewUser {
     NSString *returningUserKey = @"returning user";
-    //[NSUserDefaults resetStandardUserDefaults];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL isReturningUser = [userDefaults boolForKey:returningUserKey];
     if (!isReturningUser) {
@@ -98,29 +88,47 @@
 
         [userDefaults setBool:YES forKey:returningUserKey];
     } else {
-        //[userDefaults setBool:NO forKey:returningUserKey];
+        //TODO Resets the key for testing
+        [userDefaults setBool:NO forKey:returningUserKey];
     }
 }
 
 // Updates currentDate then the list of events to one day after the previous day
 - (void)oneFingerSwipeLeft:(UITapGestureRecognizer *)recognizer {
     NSLog(@"LEFT");
-    currentDate = [EventDataSource oneDayAfter:currentDate];
-    //TODO intercept users trying to swipe beyond boudaries of NSW here and display a toast instead of just logging it 
-    //TODO in EventDataSource. Can use [currentDate earlierDate:] or laterDate:
-    [self getEventsFromCurrentDate];
+    NSDate *tomorrow = [EventDataSource oneDayAfter:currentDate];
+    // Check whether tomorrow is a date during NSW
+    BOOL tomorrowIsOutsideNSW = (![tomorrow isEqualToDate:[NSWConstants lastDayOfNSW]] && 
+            [[tomorrow laterDate:[NSWConstants lastDayOfNSW]] isEqualToDate:tomorrow]);
+    if (tomorrowIsOutsideNSW) {
+        iToast *beyondNSWWarning = [iToast makeText:@"You're on the last day of NSW, I can't go any further..."];
+        [beyondNSWWarning setGravity:iToastGravityCenter];
+        [beyondNSWWarning show];
+    } else {
+        currentDate = tomorrow;
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+    }
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
-    [self updateDateLabelToCurrentDate];
 }
 
 // Updates currentDate then the list of events to one day before the previous day
 - (void)oneFingerSwipeRight:(UITapGestureRecognizer *)recognizer {
     NSLog(@"RIGHT");
-    currentDate = [EventDataSource oneDayBefore:currentDate];
-    [self getEventsFromCurrentDate];
-
+    NSDate *yesterday = [EventDataSource oneDayBefore:currentDate];
+    // Check whether yesterday is a date during NSW
+    BOOL yesterdayIsOutsideNSW = (![yesterday isEqualToDate:[NSWConstants firstDayOfNSW]] && 
+            [[yesterday earlierDate:[NSWConstants firstDayOfNSW]] isEqualToDate:yesterday]);
+    if (yesterdayIsOutsideNSW) {
+        iToast *beyondNSWWarning = [iToast makeText:@"You're on the first day of NSW, I can't go any further..."];
+        [beyondNSWWarning setGravity:iToastGravityCenter];
+        [beyondNSWWarning show];
+    } else {
+        currentDate = yesterday;
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+    }
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
-    [self updateDateLabelToCurrentDate];
 }
 
 
