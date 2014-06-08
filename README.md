@@ -5,7 +5,7 @@ NSW
 Notes on running it:
 ---
 - Because we're using CocoaPods, you have to open ```NSW.xcworkspace``` **not** ~~```NSW.xcodeproj```~~, otherwise the app won't build
-- Notifications will occur immediately because you are setting them for events from 2 years ago. If you want to check that they occur at the correct time, you have to manually set the device/emulator's date back to a day between 9-4-2012 and 9-11-2012 in the device settings
+- Notifications will occur immediately because you are setting them for events from 2 years ago. If you want to check that they occur at the correct time, you have to manually set the device/emulator's date back to a day between 9-4-2012 and 9-9-2012 in the device settings
 - Below is a checklist of everything that was suggested/desired and the ones that are actually functional are checked
 
 Checklist:
