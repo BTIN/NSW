@@ -52,9 +52,9 @@
 
 }
 - (IBAction)phoneLabel:(id)sender {
-    ContactButton *button = (ContactButton*)sender; //was uibutton
+    UIButton *button = (UIButton*)sender; //was uibutton
     
-    NSLog(button.titleLabel); 
+    NSLog(button.currentTitle);
     
     /*
     NSString *promptprefix = @"tel://";
