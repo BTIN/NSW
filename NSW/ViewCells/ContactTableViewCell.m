@@ -7,6 +7,7 @@
 //
 
 #import "ContactTableViewCell.h"
+#import "ContactButton.h"
 
 @implementation ContactTableViewCell
 

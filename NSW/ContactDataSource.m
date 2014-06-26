@@ -3,6 +3,7 @@
 //  
 //
 //  Created by Evan Harris on 5/11/14.
+//  Added functionality by Stephen Grinich
 //  Copyright (c) 2014 BTIN. All rights reserved.
 //
 
@@ -88,10 +89,22 @@ NSMutableArray *parsedContacts;
     // Some contacts don't have a fax number
     if (contactLines.count == 3) {
         email = [self parseEmailLine:contactLines[2]];
+        
+        // Handles case where HTML of data source is formatted weirdly and email doesn't contain @carleton.edu
+        if([email rangeOfString:@"@carleton.edu"].location == NSNotFound){
+            email = [email stringByAppendingString:@"@carleton.edu"];
+        }
+            
     }
+    
     else if (contactLines.count == 4) {
         fax = [self parsePhoneNumberFromLine:contactLines[2] withPrefix:@"Fax:"];
         email = [self parseEmailLine:contactLines[3]];
+    }
+    
+    // Need this because HTML formatting at source page is bizarre
+    if([title isEqualToString:@"OneCard"]){
+        email = @"onecard@carleton.edu";
     }
 
 

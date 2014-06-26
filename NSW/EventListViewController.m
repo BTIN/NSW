@@ -31,15 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /**
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Swipe!"
-                                                    message:@"Swipe left or right to go to previous or next day"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-     **/
-
     [self displayDirectionsIfNewUser];
 
     //Connect this VC to the shared DataSource
@@ -105,6 +96,7 @@
 - (void)oneFingerSwipeLeft:(UITapGestureRecognizer *)recognizer {
     //TODO Nice-to-have: animation with swipe so that it's less of a sudden change
     NSLog(@"LEFT");
+    
     currentDate = [EventDataSource oneDayAfter:currentDate];
     [self getEventsFromCurrentDate];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
@@ -114,9 +106,9 @@
 // Updates currentDate then the list of events to one day before the previous day
 - (void)oneFingerSwipeRight:(UITapGestureRecognizer *)recognizer {
     NSLog(@"RIGHT");
+    
     currentDate = [EventDataSource oneDayBefore:currentDate];
     [self getEventsFromCurrentDate];
-
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
     [self updateDateLabelToCurrentDate];
 }
@@ -129,7 +121,7 @@
     
     NSWEvent *event = self.listItems[(NSUInteger) indexPath.row];
     
-    //Optionally for time zone converstions
+    //Optionally for time zone conversions
     //[formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
     
     NSDateFormatter *time = [[NSDateFormatter alloc] init];
@@ -147,7 +139,17 @@
     cell.startEndLabel.text = startEnd;
     cell.startEndLabel.textColor = [NSWStyle darkBlueColor];
     
-    cell.eventNameLabel.text = [event title];
+    
+    // Remove "NSW: " from event title
+    NSString *eventNameString = [event title];
+    NSString *eventNameStringFirstFourChars = [eventNameString substringToIndex:5];
+    if([eventNameStringFirstFourChars  isEqual: @"NSW: "]){
+        eventNameString = [eventNameString substringFromIndex:5];
+    }
+    
+    
+    
+    cell.eventNameLabel.text = eventNameString;
     cell.eventNameLabel.textColor = [NSWStyle darkBlueColor];
     
     return cell;

@@ -70,7 +70,7 @@
         _eventDescription.layer.cornerRadius = 3;
        
         _eventLocation.text = [self.detailItem location];
-        _eventLocation.adjustsFontSizeToFitWidth = YES;
+        //_eventLocation.adjustsFontSizeToFitWidth = YES;
         
         // Convert NSDate to NSString
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

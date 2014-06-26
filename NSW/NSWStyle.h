@@ -17,10 +17,7 @@
 + (UIColor *)whiteColor;
 
 + (UIFont *)basicFont;
-
 + (UIFont *)boldFont;
-
 + (UIFont *)fontWithSize:(CGFloat)fontSize;
-
 + (UIFont *)boldFontWithSize:(CGFloat)fontSize;
 @end

@@ -9,8 +9,6 @@
 #import "CarlTermDataSource.h"
 #import "CarlTerm.h"
 
-
-
 @implementation CarlTermDataSource
 
 NSMutableArray * parsedCarlTerms;

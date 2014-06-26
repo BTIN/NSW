@@ -36,7 +36,7 @@
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
-    NSLog(@"%@", splitEventStrings[1]);
+    //NSLog(@"%@", splitEventStrings[1]);
 
     self.fullEventList = [[NSMutableArray alloc] init];
     for (NSUInteger i = 1; i < splitEventStrings.count-1; i++) {

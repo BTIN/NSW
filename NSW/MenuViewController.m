@@ -20,7 +20,8 @@
 @implementation MenuViewController
 
 - (void)viewDidLoad {
-    self.tableView.backgroundColor = [NSWStyle lightBlueColor];
+    //self.tableView.backgroundColor = [NSWStyle lightBlueColor];
+    self.tableView.backgroundColor = [UIColor grayColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
 
@@ -67,7 +68,7 @@
     UITableViewHeaderFooterView *menuHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerID];
     if (!menuHeaderView) {
         menuHeaderView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerID];
-        menuHeaderView.contentView.backgroundColor = [NSWStyle lightBlueColor];
+        menuHeaderView.contentView.backgroundColor = [UIColor grayColor]; //[NSWStyle lightBlueColor];
         //menuHeaderView.textLabel.text = @"Carleton NSW";
         //menuHeaderView.textLabel.textColor = [NSWStyle whiteColor];
         //menuHeaderView.textLabel.font = [NSWStyle boldFont];
@@ -91,7 +92,7 @@
 
     DrawerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [NSWStyle lightBlueColor];
+    cell.backgroundColor = [UIColor grayColor]; //[NSWStyle lightBlueColor];
     cell.textLabel.textColor = [NSWStyle whiteColor];
     cell.textLabel.font = [NSWStyle boldFont];
     cell.textLabel.text = self.menuTitles[(NSUInteger) indexPath.row];

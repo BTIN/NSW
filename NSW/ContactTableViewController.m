@@ -11,9 +11,12 @@
 #import "Contact.h"
 #import "ContactDataSource.h"
 #import "DataSourceManager.h"
+#import <MessageUI/MessageUI.h>
 #import <QuartzCore/QuartzCore.h>
+#import "ContactButton.h"
 
 @interface ContactTableViewController ()
+
 
 
 
@@ -49,14 +52,59 @@
 
 }
 - (IBAction)phoneLabel:(id)sender {
-    UIButton *button = (UIButton*)sender;
+    ContactButton *button = (ContactButton*)sender; //was uibutton
+    
+    NSLog(button.titleLabel); 
+    
+    /*
     NSString *promptprefix = @"tel://";
-    NSString *callprompt = [promptprefix stringByAppendingString:button.currentTitle];
+    NSString *callprompt = [promptprefix stringByAppendingString:button.titleLabel];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callprompt]];
+     */
 }
 
 - (IBAction)emailLabel:(id)sender {
     //emailto
+    ContactButton *button = (ContactButton*)sender;
+    
+    /*
+    if([button.currentTitle rangeOfString:@"carleton.edu"].location !=NSNotFound){
+        NSArray *toRecipents = [NSArray arrayWithObject:button.currentTitle];
+        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+        mc.mailComposeDelegate = self;
+       [mc setToRecipients:toRecipents];
+       [self presentViewController:mc animated:YES completion:NULL];
+    }
+    
+    else{
+        ;
+    }*/
+    
+    
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (ContactTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,6 +115,12 @@
     cell.titleLabel.text = [contact title];
     [cell.phoneLabel setTitle:[contact phone] forState:UIControlStateNormal];
     [cell.emailLabel setTitle:[contact email] forState:UIControlStateNormal];
+    
+    /*[cell.phoneLabel setContactString:[contact phone]];
+    NSLog(@"test",[cell.phoneLabel titleLabel]);
+     
+     */
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;

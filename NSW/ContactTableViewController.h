@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseNSWTableViewController.h"
+#import <MessageUI/MessageUI.h> 
 
 @interface ContactTableViewController : BaseNSWTableViewController
 

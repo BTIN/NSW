@@ -44,7 +44,9 @@
 		8011D58F19400C77001D9DBD /* alarm_clock-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8011D58E19400C77001D9DBD /* alarm_clock-25.png */; };
 		8011D59119401C47001D9DBD /* phone1-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8011D59019401C47001D9DBD /* phone1-25.png */; };
 		D69711B7193FB0D90092FA6D /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69711B6193FB0D90092FA6D /* GoogleMaps.framework */; };
+		E201E486194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E201E485194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
+		E2841CC0195CA2F40082BDB2 /* ContactButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2841CBF195CA2F40082BDB2 /* ContactButton.m */; };
 		E2842AC3191A9992007FBD9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC2191A9992007FBD9B /* Foundation.framework */; };
 		E2842AC5191A9992007FBD9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC4191A9992007FBD9B /* CoreGraphics.framework */; };
 		E2842AC7191A9992007FBD9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC6191A9992007FBD9B /* UIKit.framework */; };
@@ -60,6 +62,8 @@
 		E2842AE7191A9992007FBD9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC6191A9992007FBD9B /* UIKit.framework */; };
 		E2842AEF191A9992007FBD9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2842AED191A9992007FBD9B /* InfoPlist.strings */; };
 		E2842AF1191A9992007FBD9B /* NSWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2842AF0191A9992007FBD9B /* NSWTests.m */; };
+		E2DACED219539D6100EDF41A /* mail icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DACED119539D6100EDF41A /* mail icon.png */; };
+		E2DACED41953A04700EDF41A /* phoneicon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DACED31953A04700EDF41A /* phoneicon.png */; };
 		E2E77B3A193EBA5E0079F420 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E77B39193EBA5E0079F420 /* CoreLocation.framework */; };
 		FA36B635193FBABD0001C7E3 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA36B634193FBABD0001C7E3 /* GoogleMaps.bundle */; };
 		FA9DFDCF192166A000FC3A81 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */; };
@@ -134,8 +138,11 @@
 		8011D59019401C47001D9DBD /* phone1-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone1-25.png"; sourceTree = "<group>"; };
 		C06B0FA12298495BA45210A7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D69711B6193FB0D90092FA6D /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		E201E485194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2014-06-16 at 3.36.35 PM.png"; path = "../../../Screen Shot 2014-06-16 at 3.36.35 PM.png"; sourceTree = "<group>"; };
 		E21CDE72191D47BF00884608 /* EventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataSource.h; sourceTree = "<group>"; };
 		E21CDE73191D47BF00884608 /* EventDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDataSource.m; sourceTree = "<group>"; };
+		E2841CBE195CA2F40082BDB2 /* ContactButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactButton.h; sourceTree = "<group>"; };
+		E2841CBF195CA2F40082BDB2 /* ContactButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactButton.m; sourceTree = "<group>"; };
 		E2842ABF191A9992007FBD9B /* NSW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2842AC2191A9992007FBD9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E2842AC4191A9992007FBD9B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -157,6 +164,8 @@
 		E2842AEC191A9992007FBD9B /* NSWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NSWTests-Info.plist"; sourceTree = "<group>"; };
 		E2842AEE191A9992007FBD9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2842AF0191A9992007FBD9B /* NSWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSWTests.m; sourceTree = "<group>"; };
+		E2DACED119539D6100EDF41A /* mail icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mail icon.png"; path = "../../../App Random/mail icon.png"; sourceTree = "<group>"; };
+		E2DACED31953A04700EDF41A /* phoneicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phoneicon.png; path = ../../../phoneicon.png; sourceTree = "<group>"; };
 		E2E77B39193EBA5E0079F420 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FA36B634193FBABD0001C7E3 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		FA9DFDCD192166A000FC3A81 /* ContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewController.h; sourceTree = "<group>"; };
@@ -365,7 +374,10 @@
 		FA9DFDE11921C30F00FC3A81 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				E201E485194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png */,
+				E2DACED119539D6100EDF41A /* mail icon.png */,
 				68E045E2191FF6B100B36423 /* events_old.ics */,
+				E2DACED31953A04700EDF41A /* phoneicon.png */,
 				FA9DFDDC1921BDD200FC3A81 /* map.jpg */,
 				2DBA139D7276BDC39D4DB255 /* reveal-icon.png */,
 				2DBA1DBB01806B9A766482F6 /* reveal-icon@2x.png */,
@@ -382,6 +394,8 @@
 				68EB9720193EAAE00045640B /* GoogleMapViewController.m */,
 				FA9DFDCD192166A000FC3A81 /* ContactTableViewController.h */,
 				FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */,
+				E2841CBE195CA2F40082BDB2 /* ContactButton.h */,
+				E2841CBF195CA2F40082BDB2 /* ContactButton.m */,
 				E2842AD7191A9992007FBD9B /* EventListViewController.h */,
 				E2842AD8191A9992007FBD9B /* EventListViewController.m */,
 				E2842ADA191A9992007FBD9B /* EventDetailViewController.h */,
@@ -491,7 +505,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9DFDDD1921BDD200FC3A81 /* map.jpg in Resources */,
+				E201E486194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png in Resources */,
 				68E045E3191FF6B100B36423 /* events_old.ics in Resources */,
+				E2DACED41953A04700EDF41A /* phoneicon.png in Resources */,
 				E2842ADE191A9992007FBD9B /* Images.xcassets in Resources */,
 				E2842ACD191A9992007FBD9B /* InfoPlist.strings in Resources */,
 				E2842AD6191A9992007FBD9B /* Main.storyboard in Resources */,
@@ -500,6 +516,7 @@
 				8011D59119401C47001D9DBD /* phone1-25.png in Resources */,
 				8011D58D19400BB9001D9DBD /* clock-25.png in Resources */,
 				2DBA1BF8815FA54720707B52 /* reveal-icon@2x.png in Resources */,
+				E2DACED219539D6100EDF41A /* mail icon.png in Resources */,
 				2DBA12A52E9246896DE26E84 /* events.ics in Resources */,
 				2DBA1ECE9BB7E4234609C451 /* events_test.ics in Resources */,
 				FA36B635193FBABD0001C7E3 /* GoogleMaps.bundle in Resources */,
@@ -569,6 +586,7 @@
 				E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */,
 				2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */,
 				2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */,
+				E2841CC0195CA2F40082BDB2 /* ContactButton.m in Sources */,
 				2DBA1128AA3820D3ACDF6DB2 /* NSWConstants.m in Sources */,
 				68EB9721193EAAE00045640B /* GoogleMapViewController.m in Sources */,
 				2DBA145C9F5E8FBDAF398B20 /* SWRevealViewController.m in Sources */,

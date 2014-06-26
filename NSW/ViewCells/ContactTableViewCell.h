@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactButton.h"
 
 @interface ContactTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *phoneLabel;
-@property (weak, nonatomic) IBOutlet UIButton *emailLabel;
+@property (weak, nonatomic) IBOutlet ContactButton *phoneLabel;
+@property (weak, nonatomic) IBOutlet ContactButton *emailLabel;
 
 @end
