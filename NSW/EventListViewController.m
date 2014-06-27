@@ -52,7 +52,11 @@
     [formatter setDateFormat:@"MMMM dd"];
     
     NSString *current = [formatter stringFromDate:currentDate];
-    self.navigationController.navigationBar.topItem.title = current;
+    
+    // Changes "September 04" to "September 4" etc. for all dates. Doesn't matter for dates like "September 20" because NSW doesn't go that long
+    NSString *currentDate = [current stringByReplacingOccurrencesOfString:@"0" withString:@""];
+    
+    self.navigationController.navigationBar.topItem.title = currentDate;
     
 }
 
@@ -69,8 +73,8 @@
     [time setDateFormat:@"MMMM dd"];
     
     NSString *current = [time stringFromDate:currentDate];
-    
-    self.navigationController.navigationBar.topItem.title = current;
+    NSString *currentDate = [current stringByReplacingOccurrencesOfString:@"0" withString:@""];
+    self.navigationController.navigationBar.topItem.title = currentDate;
     
 }
 

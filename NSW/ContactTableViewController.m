@@ -3,6 +3,7 @@
 //  NSW
 //
 //  Created by Alex Simonides on 5/12/14.
+//  Added/fixed functionality by Stephen Grinich
 //  Copyright (c) 2014 BTIN. All rights reserved.
 //
 
@@ -16,8 +17,6 @@
 #import "ContactButton.h"
 
 @interface ContactTableViewController ()
-
-
 
 
 @end
@@ -52,22 +51,20 @@
 
 }
 - (IBAction)phoneLabel:(id)sender {
-    UIButton *button = (UIButton*)sender; //was uibutton
-    
-    NSLog(button.currentTitle);
-    
-    /*
+    UIButton *button = (UIButton*)sender;
+
     NSString *promptprefix = @"tel://";
-    NSString *callprompt = [promptprefix stringByAppendingString:button.titleLabel];
+    NSString *callprompt = [promptprefix stringByAppendingString:button.currentTitle];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callprompt]];
-     */
+     
 }
 
+
 - (IBAction)emailLabel:(id)sender {
-    //emailto
-    ContactButton *button = (ContactButton*)sender;
     
-    /*
+    UIButton *button = (UIButton*)sender;
+    
+    // Some cases exist where parsing cuts off "@carleton.edu" due to inconsistincies in HTML source. This is the fix.
     if([button.currentTitle rangeOfString:@"carleton.edu"].location !=NSNotFound){
         NSArray *toRecipents = [NSArray arrayWithObject:button.currentTitle];
         MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
@@ -77,8 +74,8 @@
     }
     
     else{
-        ;
-    }*/
+        
+    }
     
     
 }
@@ -113,13 +110,8 @@
     cell.accessoryType = UITableViewCellAccessoryNone;
     Contact *contact = self.listItems[(NSUInteger) indexPath.row];
     cell.titleLabel.text = [contact title];
-    [cell.phoneLabel setTitle:[contact phone] forState:UIControlStateNormal];
     [cell.emailLabel setTitle:[contact email] forState:UIControlStateNormal];
-    
-    /*[cell.phoneLabel setContactString:[contact phone]];
-    NSLog(@"test",[cell.phoneLabel titleLabel]);
-     
-     */
+    [cell.phoneLabel setTitle:[contact phone] forState:UIControlStateNormal];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
