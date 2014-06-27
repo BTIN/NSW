@@ -59,16 +59,18 @@
         [_eventDescription setScrollEnabled:YES];
         _topContainer.layer.borderColor = [UIColor grayColor].CGColor;
         _topContainer.layer.borderWidth = 0.25;
-        _topContainer.layer.cornerRadius = 3;
+        _topContainer.layer.cornerRadius = 15;
         
         _middleContainer.layer.borderColor = [UIColor grayColor].CGColor;
         _middleContainer.layer.borderWidth = 0.25;
-        _middleContainer.layer.cornerRadius = 3;
+        _middleContainer.layer.cornerRadius = 15;
         
         _eventDescription.layer.borderColor = [UIColor grayColor].CGColor;
         _eventDescription.layer.borderWidth = 0.25;
-        _eventDescription.layer.cornerRadius = 3;
-       
+        _eventDescription.layer.cornerRadius = 15;
+        
+        [_eventDescription setTextContainerInset:UIEdgeInsetsMake(8, 10, 8, 10)]; // top, left, bottom, right
+        
         _eventLocation.text = [self.detailItem location];
         //_eventLocation.adjustsFontSizeToFitWidth = YES;
         
@@ -123,9 +125,6 @@
 
         _titleBar.title = @"Event";
         
-        
-    
-    
     }
 }
 

@@ -45,7 +45,7 @@
     self.view = mapView_;
     
     
-    self.navigationItem.title = @"Map of Campus";
+    self.navigationItem.title = @"Campus Map";
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];

@@ -15,6 +15,8 @@
 #import "NSWStyle.h"
 #import "DataSourceManager.h"
 #import "iToast.h"
+#import "NSWConstants.h"
+
 
 
 @interface EventListViewController () {
@@ -101,23 +103,40 @@
     //TODO Nice-to-have: animation with swipe so that it's less of a sudden change
     NSLog(@"LEFT");
     
-    currentDate = [EventDataSource oneDayAfter:currentDate];
-    [self getEventsFromCurrentDate];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
-    [self updateDateLabelToCurrentDate];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSLog([formatter stringFromDate:currentDate]);
+    NSLog([formatter stringFromDate:[NSWConstants firstDayOfNSW]]);
+
+    NSString *currentDateString =[formatter stringFromDate:currentDate];
+    NSString *toDateString = [formatter stringFromDate:[NSWConstants lastDayOfNSW]];
+    
+    if (![currentDateString isEqualToString:toDateString]) {
+        currentDate = [EventDataSource oneDayAfter:currentDate];
+        [self getEventsFromCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+        [self updateDateLabelToCurrentDate];
+    }
 }
 
 // Updates currentDate then the list of events to one day before the previous day
 - (void)oneFingerSwipeRight:(UITapGestureRecognizer *)recognizer {
     NSLog(@"RIGHT");
     
-    currentDate = [EventDataSource oneDayBefore:currentDate];
-    [self getEventsFromCurrentDate];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
-    [self updateDateLabelToCurrentDate];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSString *currentDateString =[formatter stringFromDate:currentDate];
+    NSString *toDateString = [formatter stringFromDate:[NSWConstants firstDayOfNSW]];
+    
+    if (![currentDateString isEqualToString:toDateString]) {
+        currentDate = [EventDataSource oneDayBefore:currentDate];
+        [self getEventsFromCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+        [self updateDateLabelToCurrentDate];
+
+    }
+    
 }
-
-
 
 
 - (EventTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
