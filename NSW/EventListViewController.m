@@ -17,8 +17,6 @@
 #import "iToast.h"
 #import "NSWConstants.h"
 
-
-
 @interface EventListViewController () {
     EventDataSource *myEventDS;
     NSDate *currentDate;
@@ -152,13 +150,25 @@
 
     NSString *startTime = [time stringFromDate:event.startDateTime];
     NSString *endTime = [time stringFromDate:event.endDateTime];
+    
     if ([[startTime substringToIndex:1] isEqualToString:@"0"]){
         startTime = [startTime substringFromIndex:1];
-    }if ([[endTime substringToIndex:1] isEqualToString:@"0"]){
+    }
+    
+    if ([[endTime substringToIndex:1] isEqualToString:@"0"]){
         endTime = [endTime substringFromIndex:1];
     }
     
-    NSString *startEnd = [NSString stringWithFormat:@"%@ - %@", startTime, endTime];
+    // Removes end time if start time and end time are the same. Also adds hyphen accordingly. 
+    NSString *startEnd;
+    if ([startTime isEqualToString:endTime]) {
+        endTime = @"";
+        startEnd = startTime;
+    }
+    else{
+        startEnd = [NSString stringWithFormat:@"%@ - %@", startTime, endTime];
+    }
+    
     cell.startEndLabel.text = startEnd;
     cell.startEndLabel.textColor = [NSWStyle darkBlueColor];
     

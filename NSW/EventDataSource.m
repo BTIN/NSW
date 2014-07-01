@@ -110,7 +110,7 @@
 example ICS event:
     UID:20100804115306-653193@carleton.edu
     SUMMARY:NSW Parent Information Session: The First Year at Carleton
-    DESCRIPTION:The beginning of a college career brings momentous transitions to students
+    DESCRIPTIONT:he beginning of a college career brings momentous transitions to students
     and their families. At this session, staff and faculty will describe the va
     rious resources for guidance and assistance available to Carleton students
     and make some suggestions about parents’ roles in a liberal arts educatio
@@ -157,7 +157,27 @@ example ICS event:
         else {
             inTitle = NO;
             inDescription = NO;
+            
+            // This causes errors when descriptions include something like "3:00pm".
+            /*8
+           
+            NSString *pattern = @"(?<=[^0-9]):(?=[^0-9])";
+            NSString *dummy = @"NEVERSEETHIS";
+            
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
+            NSRange range = NSMakeRange(0, [currentLine length]);
+            NSString *modified= [regex replaceMatchesInString:currentLine options:0 range:range withTemplate:dummy];
+            
+            */
             NSArray *splitLine = [currentLine componentsSeparatedByString:@":"];
+            
+            
+            
+            
+            
+            
+            
+            
             NSString *attributeTitle = splitLine[0];
 
             if ([attributeTitle isEqual:@"DESCRIPTION"]) {

@@ -25,7 +25,7 @@ static BOOL dataIsReady;
         NSArray *fileNames = @[@"events.ics", @"contacts.html", @"terms.json"];
         NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?audience=256908&start_date=2012-09-04&end_date=2012-09-11&format=ical"],
                 [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/"],
-                [NSURL URLWithString:@"http://harrise.github.io/terms.json"]];
+                [NSURL URLWithString:@"http://alex-cs.github.io/carl_talk.json"]];
         _urlMap = [NSDictionary dictionaryWithObjects:urls forKeys:fileNames];
         if (_urlMap.count != urls.count) {
             NSLog(@"Have %d URLs, but have %d entries in urlMap", urls.count, _urlMap.count);
@@ -57,7 +57,7 @@ static BOOL dataIsReady;
 - (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController {
     myTableViewController = tableViewController;
     
-    // If data is ready, send it to tableViewController. Otherwise the data is still 
+    // If data is ready, send it t o tableViewController. Otherwise the data is still 
     // being retrieved and will be sent when it's ready.
     if (dataIsReady) {
         // EventListViewController only wants the list for today
