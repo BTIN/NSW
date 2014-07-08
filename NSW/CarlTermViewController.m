@@ -28,7 +28,6 @@
     return self;
 }
 
-
 int selectedIndex;
 
 - (void)viewDidLoad
@@ -57,30 +56,44 @@ int selectedIndex;
  Set selectedIndex to the clicked indexPath. [tableView begin/endUpdates] will reload view, calling heightForRowAtIndexPath. This sets the cell at selectedIndex to have a height 80
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //get rid of other cells here
+    
+    
+
+    
+    CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+    CarlTerm *term = self.listItems[(NSUInteger) indexPath.row];
+    
     if (selectedIndex == [indexPath row]){
-        CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
         cell.longNameLabel.numberOfLines = 1;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         selectedIndex = -1;
     }
     else {
-        CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
-        cell.longNameLabel.numberOfLines = 0;   //0 means unbounded in this case
+        cell.longNameLabel.text = [term longName];
+        cell.longNameLabel.numberOfLines = 10;   //0 means unbounded in this case
         cell.accessoryType = UITableViewCellAccessoryNone;
         selectedIndex = [indexPath row];
     }
 
     [tableView beginUpdates];
     [tableView endUpdates];
-}
+    
+    
+    }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] == selectedIndex) {
-        return  80;
+        return  200;
     }
-    else return 40;
+    else{
+        //CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+        return 40;
+
+    }
 }
 
 

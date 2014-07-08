@@ -140,7 +140,7 @@ example ICS event:
     //We can confidently assume the first two lines, (and usually the third, but not always) but beyond those the
     // description lasts an arbitrary number of lines and there are optional attributes that prevent us from reverse-indexing
     for (NSUInteger i = 3; i < lines.count-1; i++) {
-        NSString *currentLine = lines[i];
+        NSMutableString *currentLine = lines[i];
 
         // Descriptions and titles longer than 76 characters are more than one line and have a blank
         // space at the beginning of subsequent lines to indent them slightly
@@ -159,27 +159,42 @@ example ICS event:
             inDescription = NO;
             
             // This causes errors when descriptions include something like "3:00pm".
-            /*8
-           
-            NSString *pattern = @"(?<=[^0-9]):(?=[^0-9])";
+            
+           /*
+            NSString *regexString = @"(?<=[^0-9]):(?=[^0-9])";
             NSString *dummy = @"NEVERSEETHIS";
-            
-            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString
+                                                      options:0
+                                                        error:nil];
             NSRange range = NSMakeRange(0, [currentLine length]);
-            NSString *modified= [regex replaceMatchesInString:currentLine options:0 range:range withTemplate:dummy];
             
-            */
+            NSString *string2 = [regex stringByReplacingMatchesInString:currentLine
+                                                                options:0
+                                                                  range:range
+                                                           withTemplate:dummy];
+            
+            
+            NSArray *splitLine = [string2 componentsSeparatedByString:dummy];
+            NSLog(@"%@",splitLine);
+            
+            
+            NSRange match = [currentLine rangeOfString:@":"];
+            NSInteger index = match.location;
+            
+            NSString *afterindex = [currentLine substringWithRange:NSMakeRange(index+1, 1)];
+            
+            NSArray *splitLine;
+            
+            if(![afterindex isEqualToString:@"0"]){
+                 splitLine = [currentLine componentsSeparatedByString:@":"];
+            }*/
+            
+    
             NSArray *splitLine = [currentLine componentsSeparatedByString:@":"];
             
             
-            
-            
-            
-            
-            
-            
             NSString *attributeTitle = splitLine[0];
-
+            
             if ([attributeTitle isEqual:@"DESCRIPTION"]) {
                 [desc_ appendString:splitLine[1]];
                 inDescription = YES;
@@ -217,6 +232,7 @@ example ICS event:
 // Most of the attributes are of the form "ATTRIBUTENAME:data-we-care-about"
 - (NSString *)parseSimpleICSAttribute:(NSString *) fullLine{
     NSMutableArray *lineComponents = (NSMutableArray *) [fullLine componentsSeparatedByString:@":"];
+    NSLog(@"%@",lineComponents);
 
     if (lineComponents.count == 2){
         return lineComponents[1];

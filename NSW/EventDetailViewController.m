@@ -50,7 +50,9 @@
 
 - (void)configureView
 {
+    
     // Update the user interface for the detail item.
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
 
     if (self.detailItem) {
@@ -88,8 +90,9 @@
         
         //[dateFormatter setDateFormat:@"yyyyMMdd'T'HHmmss"];
         
-        NSString *string = [dateFormatter stringFromDate:[self.detailItem startDateTime]];
+        NSString *startDateTimeString = [dateFormatter stringFromDate:[self.detailItem startDateTime]];
         NSDate *startDateTime = [self.detailItem startDateTime];
+        NSDate *endDateTime = [self.detailItem endDateTime];
         
         
 
@@ -100,16 +103,11 @@
             eventNameString = [eventNameString substringFromIndex:5];
         }
         
-        
         _eventName.text = eventNameString;
         //_eventName.adjustsFontSizeToFitWidth = YES;
-        
-        
     
         //_textDescription.text = [self.detailItem theDescription];
         [_eventDescription setText:[self.detailItem theDescription]];
-    
-        
         
         // Convert NSNumber to NSString for minutes
         NSTimeInterval descriptionNumber = [self.detailItem duration];
@@ -121,7 +119,32 @@
         NSString *newDateString = [dateFormatter stringFromDate:newDate];
         NSString *dash = @" – ";
         
-        self.startTimeDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ %@", string, dash, newDateString];
+        
+        // Turns "08:00am" to "8:00am"
+        if(![startDateTime isEqualToDate:endDateTime]){
+            
+            if ([startDateTimeString hasPrefix:@"0"]) {
+                startDateTimeString = [startDateTimeString substringFromIndex:1];
+            }
+            
+            if ([newDateString hasPrefix:@"0"]) {
+                newDateString = [newDateString substringFromIndex:1];
+            }
+            
+            
+            
+            self.startTimeDescriptionLabel.text = [NSString stringWithFormat:@"%@ %@ %@", startDateTimeString, dash, newDateString];
+        }
+        
+        else{
+            
+            self.startTimeDescriptionLabel.text = [dateFormatter stringFromDate:startDateTime];
+            
+            if ([self.startTimeDescriptionLabel.text hasPrefix:@"0"]) {
+                self.startTimeDescriptionLabel.text = [self.startTimeDescriptionLabel.text substringFromIndex:1];
+            }
+        }
+        
 
         _titleBar.title = @"Event";
         
@@ -135,17 +158,25 @@
     return size.height;
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
+    self.wantsFullScreenLayout = YES;
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
     
 	// Do any additional setup after loading the view, typically from a nib.
     
     [self configureView];
 }
+
+-(IBAction)doneButtonPressed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+    //[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

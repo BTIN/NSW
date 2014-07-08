@@ -11,4 +11,6 @@
 
 @interface CarlTermViewController : BaseNSWTableViewController
 
+//bool sectionopen[47];
+
 @end

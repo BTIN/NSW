@@ -16,6 +16,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     // Initialize the downloader singleton and ensure there aren't any pending downloads 
     // (our downloads are so quick that we're better off just getting a new copy in case 
     // the data's been updated since that other download started).
