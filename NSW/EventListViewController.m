@@ -32,6 +32,12 @@
     [super viewDidLoad];
     
     [self displayDirectionsIfNewUser];
+    
+    
+    //UILabel *startEndLabel = (UILabel *)[self.tableView viewWithTag:1];
+    //UILabel *eventNameLabel = (UILabel *)[self.tableView viewWithTag:2];
+    
+    
 
     //Connect this VC to the shared DataSource
     myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource];

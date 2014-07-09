@@ -46,9 +46,12 @@
 		D69711B7193FB0D90092FA6D /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69711B6193FB0D90092FA6D /* GoogleMaps.framework */; };
 		E2015AE1195DFEE80018199B /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = E2015AE0195DFEE80018199B /* highlight.png */; };
 		E201E486194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E201E485194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png */; };
+		E21559ED196C98570023DE7C /* exit button jpg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E21559EC196C98570023DE7C /* exit button jpg.jpg */; };
+		E21559EF196C986D0023DE7C /* export button png.png in Resources */ = {isa = PBXBuildFile; fileRef = E21559EE196C986D0023DE7C /* export button png.png */; };
+		E21559F1196C9A6E0023DE7C /* exit button png highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = E21559F0196C9A6E0023DE7C /* exit button png highlighted.png */; };
+		E21559F3196C9D6F0023DE7C /* notification button.png in Resources */ = {isa = PBXBuildFile; fileRef = E21559F2196C9D6F0023DE7C /* notification button.png */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
-		E24666FE196B2AA20089C39F /* exitbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E24666FD196B2AA20089C39F /* exitbutton.png */; };
-		E2466700196B2F780089C39F /* exit icon highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = E24666FF196B2F780089C39F /* exit icon highlighted.png */; };
+		E220AD2A196C6AB00062BB40 /* CarlTermDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E220AD29196C6AB00062BB40 /* CarlTermDetailViewController.m */; };
 		E24BBF60196B3A7100209F56 /* up arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E24BBF5F196B3A7100209F56 /* up arrow.png */; };
 		E2841CC0195CA2F40082BDB2 /* ContactButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E2841CBF195CA2F40082BDB2 /* ContactButton.m */; };
 		E2842AC3191A9992007FBD9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC2191A9992007FBD9B /* Foundation.framework */; };
@@ -66,6 +69,7 @@
 		E2842AE7191A9992007FBD9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2842AC6191A9992007FBD9B /* UIKit.framework */; };
 		E2842AEF191A9992007FBD9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2842AED191A9992007FBD9B /* InfoPlist.strings */; };
 		E2842AF1191A9992007FBD9B /* NSWTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2842AF0191A9992007FBD9B /* NSWTests.m */; };
+		E2D427D5196DC030009B396C /* notification button blue.png in Resources */ = {isa = PBXBuildFile; fileRef = E2D427D4196DC030009B396C /* notification button blue.png */; };
 		E2DACED219539D6100EDF41A /* mail icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DACED119539D6100EDF41A /* mail icon.png */; };
 		E2DACED41953A04700EDF41A /* phoneicon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DACED31953A04700EDF41A /* phoneicon.png */; };
 		E2E77B3A193EBA5E0079F420 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E77B39193EBA5E0079F420 /* CoreLocation.framework */; };
@@ -144,10 +148,14 @@
 		D69711B6193FB0D90092FA6D /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		E2015AE0195DFEE80018199B /* highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highlight.png; path = "../../../App Random/highlight.png"; sourceTree = "<group>"; };
 		E201E485194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2014-06-16 at 3.36.35 PM.png"; path = "../../../Screen Shot 2014-06-16 at 3.36.35 PM.png"; sourceTree = "<group>"; };
+		E21559EC196C98570023DE7C /* exit button jpg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "exit button jpg.jpg"; path = "../../../App Random/exit button jpg.jpg"; sourceTree = "<group>"; };
+		E21559EE196C986D0023DE7C /* export button png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "export button png.png"; path = "../../../App Random/export button png.png"; sourceTree = "<group>"; };
+		E21559F0196C9A6E0023DE7C /* exit button png highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exit button png highlighted.png"; path = "../../../App Random/exit button png highlighted.png"; sourceTree = "<group>"; };
+		E21559F2196C9D6F0023DE7C /* notification button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "notification button.png"; path = "../../../App Random/notification button.png"; sourceTree = "<group>"; };
 		E21CDE72191D47BF00884608 /* EventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDataSource.h; sourceTree = "<group>"; };
 		E21CDE73191D47BF00884608 /* EventDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDataSource.m; sourceTree = "<group>"; };
-		E24666FD196B2AA20089C39F /* exitbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = exitbutton.png; path = "../../../App Random/exitbutton.png"; sourceTree = "<group>"; };
-		E24666FF196B2F780089C39F /* exit icon highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "exit icon highlighted.png"; path = "../../../App Random/exit icon highlighted.png"; sourceTree = "<group>"; };
+		E220AD28196C6AB00062BB40 /* CarlTermDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarlTermDetailViewController.h; sourceTree = "<group>"; };
+		E220AD29196C6AB00062BB40 /* CarlTermDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarlTermDetailViewController.m; sourceTree = "<group>"; };
 		E24BBF5F196B3A7100209F56 /* up arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "up arrow.png"; path = "../../../App Random/up arrow.png"; sourceTree = "<group>"; };
 		E2841CBE195CA2F40082BDB2 /* ContactButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactButton.h; sourceTree = "<group>"; };
 		E2841CBF195CA2F40082BDB2 /* ContactButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactButton.m; sourceTree = "<group>"; };
@@ -172,6 +180,7 @@
 		E2842AEC191A9992007FBD9B /* NSWTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NSWTests-Info.plist"; sourceTree = "<group>"; };
 		E2842AEE191A9992007FBD9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E2842AF0191A9992007FBD9B /* NSWTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSWTests.m; sourceTree = "<group>"; };
+		E2D427D4196DC030009B396C /* notification button blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "notification button blue.png"; path = "../../../App Random/notification button blue.png"; sourceTree = "<group>"; };
 		E2DACED119539D6100EDF41A /* mail icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mail icon.png"; path = "../../../App Random/mail icon.png"; sourceTree = "<group>"; };
 		E2DACED31953A04700EDF41A /* phoneicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phoneicon.png; path = ../../../phoneicon.png; sourceTree = "<group>"; };
 		E2E77B39193EBA5E0079F420 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -245,10 +254,10 @@
 		2DBA1BB93B02090DFFAF7DAA /* ViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				2DBA1774783673FD841ABF78 /* EventTableViewCell.h */,
 				2DBA1418FDE87099C2D4D6A4 /* EventTableViewCell.m */,
 				2DBA1FEB76C1602B32A6F545 /* CarlTermTableViewCell.h */,
 				2DBA12024D13496A05CB72A7 /* CarlTermTableViewCell.m */,
-				2DBA1774783673FD841ABF78 /* EventTableViewCell.h */,
 				2DBA17E6D9786CA5BEA75130 /* ContactTableViewCell.h */,
 				2DBA14AC9697B76D6FF558C1 /* ContactTableViewCell.m */,
 			);
@@ -320,9 +329,12 @@
 		E2842AC9191A9992007FBD9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E2D427D4196DC030009B396C /* notification button blue.png */,
+				E21559F2196C9D6F0023DE7C /* notification button.png */,
+				E21559F0196C9A6E0023DE7C /* exit button png highlighted.png */,
+				E21559EC196C98570023DE7C /* exit button jpg.jpg */,
+				E21559EE196C986D0023DE7C /* export button png.png */,
 				E24BBF5F196B3A7100209F56 /* up arrow.png */,
-				E24666FF196B2F780089C39F /* exit icon highlighted.png */,
-				E24666FD196B2AA20089C39F /* exitbutton.png */,
 				E2015AE0195DFEE80018199B /* highlight.png */,
 				8011D59019401C47001D9DBD /* phone1-25.png */,
 				8011D58E19400C77001D9DBD /* alarm_clock-25.png */,
@@ -414,6 +426,8 @@
 				E2842ADB191A9992007FBD9B /* EventDetailViewController.m */,
 				FA9DFDEA1922D95400FC3A81 /* CarlTermViewController.h */,
 				FA9DFDEB1922D95400FC3A81 /* CarlTermViewController.m */,
+				E220AD28196C6AB00062BB40 /* CarlTermDetailViewController.h */,
+				E220AD29196C6AB00062BB40 /* CarlTermDetailViewController.m */,
 				2DBA199D76F580210C9F3B13 /* BaseNSWTableViewController.h */,
 				2DBA1E9FDCADA3DDD5AC595A /* BaseNSWTableViewController.m */,
 				2DBA11891644C1A2292AD911 /* MenuViewController.m */,
@@ -517,19 +531,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9DFDDD1921BDD200FC3A81 /* map.jpg in Resources */,
+				E21559F3196C9D6F0023DE7C /* notification button.png in Resources */,
 				E201E486194F8CED000C74CE /* Screen Shot 2014-06-16 at 3.36.35 PM.png in Resources */,
 				68E045E3191FF6B100B36423 /* events_old.ics in Resources */,
+				E2D427D5196DC030009B396C /* notification button blue.png in Resources */,
 				E24BBF60196B3A7100209F56 /* up arrow.png in Resources */,
 				E2DACED41953A04700EDF41A /* phoneicon.png in Resources */,
 				E2842ADE191A9992007FBD9B /* Images.xcassets in Resources */,
+				E21559F1196C9A6E0023DE7C /* exit button png highlighted.png in Resources */,
 				E2842ACD191A9992007FBD9B /* InfoPlist.strings in Resources */,
+				E21559EF196C986D0023DE7C /* export button png.png in Resources */,
 				E2842AD6191A9992007FBD9B /* Main.storyboard in Resources */,
+				E21559ED196C98570023DE7C /* exit button jpg.jpg in Resources */,
 				8011D58F19400C77001D9DBD /* alarm_clock-25.png in Resources */,
 				2DBA1144374E8617A6191C18 /* reveal-icon.png in Resources */,
 				8011D59119401C47001D9DBD /* phone1-25.png in Resources */,
-				E2466700196B2F780089C39F /* exit icon highlighted.png in Resources */,
 				8011D58D19400BB9001D9DBD /* clock-25.png in Resources */,
-				E24666FE196B2AA20089C39F /* exitbutton.png in Resources */,
 				E2015AE1195DFEE80018199B /* highlight.png in Resources */,
 				2DBA1BF8815FA54720707B52 /* reveal-icon@2x.png in Resources */,
 				E2DACED219539D6100EDF41A /* mail icon.png in Resources */,
@@ -600,6 +617,7 @@
 				6896DDE81921354D00570E6B /* ContactDataSource.m in Sources */,
 				E2842ADC191A9992007FBD9B /* EventDetailViewController.m in Sources */,
 				E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */,
+				E220AD2A196C6AB00062BB40 /* CarlTermDetailViewController.m in Sources */,
 				2DBA1709FF76217A332E42CC /* BaseNSWDataSource.m in Sources */,
 				2DBA11AE1B9970A8E6772744 /* BaseNSWTableViewController.m in Sources */,
 				E2841CC0195CA2F40082BDB2 /* ContactButton.m in Sources */,

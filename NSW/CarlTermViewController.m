@@ -12,9 +12,11 @@
 #import "CarlTermTableViewCell.h"
 #import "NSWStyle.h"
 #import "DataSourceManager.h"
+#import "CarlTermDetailViewController.h"
 
 @interface CarlTermViewController (){
 }
+
 @end
 
 @implementation CarlTermViewController
@@ -33,7 +35,7 @@ int selectedIndex;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    selectedIndex = -1;
+    self.navigationItem.title = @"Speak Carleton";
 
     //Connect this VC to the shared DataSource
     [[[DataSourceManager sharedDSManager] getCarlTermDataSource] attachVCBackref:self];
@@ -47,7 +49,7 @@ int selectedIndex;
     CarlTerm *term = self.listItems[(NSUInteger) indexPath.row];
     cell.longNameLabel.text = [term longName];
     cell.abbreviationLabel.text = [term abbreviation];
-    cell.abbreviationLabel.textColor = [NSWStyle lightBlueColor];
+    cell.abbreviationLabel.textColor = [NSWStyle oceanBlueColor];
     cell.longNameLabel.numberOfLines = 1;
     return cell;
 }
@@ -56,45 +58,27 @@ int selectedIndex;
  Set selectedIndex to the clicked indexPath. [tableView begin/endUpdates] will reload view, calling heightForRowAtIndexPath. This sets the cell at selectedIndex to have a height 80
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //get rid of other cells here
-    
-    
 
+    }
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     
-    CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     CarlTerm *term = self.listItems[(NSUInteger) indexPath.row];
+    CarlTermDetailViewController *destViewController = segue.destinationViewController;
     
-    if (selectedIndex == [indexPath row]){
-        cell.longNameLabel.numberOfLines = 1;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        selectedIndex = -1;
-    }
-    else {
-        cell.longNameLabel.text = [term longName];
-        cell.longNameLabel.numberOfLines = 10;   //0 means unbounded in this case
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        selectedIndex = [indexPath row];
-    }
-
-    [tableView beginUpdates];
-    [tableView endUpdates];
-    
-    
-    }
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([indexPath row] == selectedIndex) {
-        return  200;
-    }
-    else{
-        //CarlTermTableViewCell *cell = (CarlTermTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
-        return 40;
-
+    if ([[segue identifier] isEqualToString:@"showTermDetail"]) {
+        
+        destViewController.termName = [term abbreviation];
+        destViewController.termDescription = [term longName]; 
+        
+        
     }
 }
+
 
 
 

@@ -63,10 +63,6 @@
         _topContainer.layer.borderWidth = 0.25;
         _topContainer.layer.cornerRadius = 15;
         
-        _middleContainer.layer.borderColor = [UIColor grayColor].CGColor;
-        _middleContainer.layer.borderWidth = 0.25;
-        _middleContainer.layer.cornerRadius = 15;
-        
         _eventDescription.layer.borderColor = [UIColor grayColor].CGColor;
         _eventDescription.layer.borderWidth = 0.25;
         _eventDescription.layer.cornerRadius = 15;
@@ -161,10 +157,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     self.wantsFullScreenLayout = YES;
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
     
 	// Do any additional setup after loading the view, typically from a nib.
     
@@ -173,7 +170,7 @@
 
 -(IBAction)doneButtonPressed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
-    //[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
 }
 
 

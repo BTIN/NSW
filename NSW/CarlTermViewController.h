@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseNSWTableViewController.h"
+#import "CarlTermDetailViewController.h"
 
 @interface CarlTermViewController : BaseNSWTableViewController
 
-//bool sectionopen[47];
 
 @end

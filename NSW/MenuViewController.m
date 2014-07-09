@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     //self.tableView.backgroundColor = [NSWStyle lightBlueColor];
-    self.tableView.backgroundColor = [UIColor lightGrayColor];
+    self.tableView.backgroundColor = [NSWStyle darkGrayColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
 
@@ -68,7 +68,7 @@
     UITableViewHeaderFooterView *menuHeaderView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerID];
     if (!menuHeaderView) {
         menuHeaderView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerID];
-        menuHeaderView.contentView.backgroundColor = [UIColor lightGrayColor]; //[NSWStyle lightBlueColor];
+        menuHeaderView.contentView.backgroundColor = [NSWStyle darkGrayColor]; //[NSWStyle lightBlueColor];
         //menuHeaderView.textLabel.text = @"Carleton NSW";
         //menuHeaderView.textLabel.textColor = [NSWStyle whiteColor];
         //menuHeaderView.textLabel.font = [NSWStyle boldFont];
@@ -92,7 +92,7 @@
 
     DrawerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor lightGrayColor]; //[NSWStyle lightBlueColor];
+    cell.backgroundColor = [NSWStyle darkGrayColor]; //[NSWStyle lightBlueColor];
     cell.textLabel.textColor = [NSWStyle whiteColor];
     cell.textLabel.font = [NSWStyle boldFont];
     cell.textLabel.text = self.menuTitles[(NSUInteger) indexPath.row];

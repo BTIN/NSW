@@ -30,7 +30,7 @@
 -(void)setNavigationColors{
     UINavigationBar *navBar = self.navigationController.navigationBar;
     navBar.translucent = NO;
-    navBar.barTintColor = [NSWStyle lightBlueColor];
+    navBar.barTintColor = [NSWStyle oceanBlueColor];
     [navBar setTitleTextAttributes:@{
             NSForegroundColorAttributeName : [NSWStyle whiteColor], 
             NSFontAttributeName : [NSWStyle boldFont]}];
