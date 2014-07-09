@@ -12,5 +12,4 @@
 
 @interface CarlTermViewController : BaseNSWTableViewController
 
-
 @end

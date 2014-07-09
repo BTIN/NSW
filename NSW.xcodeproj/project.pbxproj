@@ -73,6 +73,7 @@
 		E2DACED219539D6100EDF41A /* mail icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DACED119539D6100EDF41A /* mail icon.png */; };
 		E2DACED41953A04700EDF41A /* phoneicon.png in Resources */ = {isa = PBXBuildFile; fileRef = E2DACED31953A04700EDF41A /* phoneicon.png */; };
 		E2E77B3A193EBA5E0079F420 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E77B39193EBA5E0079F420 /* CoreLocation.framework */; };
+		E2EA669D196DDF9100ED9C68 /* NSW Splash Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = E2EA669C196DDF9100ED9C68 /* NSW Splash Screen.png */; };
 		FA36B635193FBABD0001C7E3 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FA36B634193FBABD0001C7E3 /* GoogleMaps.bundle */; };
 		FA9DFDCF192166A000FC3A81 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */; };
 		FA9DFDDB1921B9A400FC3A81 /* NSWStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9DFDDA1921B9A400FC3A81 /* NSWStyle.m */; };
@@ -184,6 +185,7 @@
 		E2DACED119539D6100EDF41A /* mail icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mail icon.png"; path = "../../../App Random/mail icon.png"; sourceTree = "<group>"; };
 		E2DACED31953A04700EDF41A /* phoneicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phoneicon.png; path = ../../../phoneicon.png; sourceTree = "<group>"; };
 		E2E77B39193EBA5E0079F420 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E2EA669C196DDF9100ED9C68 /* NSW Splash Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NSW Splash Screen.png"; path = "../../../App Random/NSW Splash Screen.png"; sourceTree = "<group>"; };
 		FA36B634193FBABD0001C7E3 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		FA9DFDCD192166A000FC3A81 /* ContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewController.h; sourceTree = "<group>"; };
 		FA9DFDCE192166A000FC3A81 /* ContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewController.m; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		E2842AC9191A9992007FBD9B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E2EA669C196DDF9100ED9C68 /* NSW Splash Screen.png */,
 				E2D427D4196DC030009B396C /* notification button blue.png */,
 				E21559F2196C9D6F0023DE7C /* notification button.png */,
 				E21559F0196C9A6E0023DE7C /* exit button png highlighted.png */,
@@ -541,6 +544,7 @@
 				E21559F1196C9A6E0023DE7C /* exit button png highlighted.png in Resources */,
 				E2842ACD191A9992007FBD9B /* InfoPlist.strings in Resources */,
 				E21559EF196C986D0023DE7C /* export button png.png in Resources */,
+				E2EA669D196DDF9100ED9C68 /* NSW Splash Screen.png in Resources */,
 				E2842AD6191A9992007FBD9B /* Main.storyboard in Resources */,
 				E21559ED196C98570023DE7C /* exit button jpg.jpg in Resources */,
 				8011D58F19400C77001D9DBD /* alarm_clock-25.png in Resources */,

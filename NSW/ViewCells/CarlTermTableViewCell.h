@@ -10,7 +10,6 @@
 
 @interface CarlTermTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *longNameLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *abbreviationLabel;
 
 @end
