@@ -158,39 +158,20 @@ example ICS event:
             inTitle = NO;
             inDescription = NO;
             
-            // This causes errors when descriptions include something like "3:00pm".
+            // This section causes errors when descriptions include something like "3:00pm".
             
-           /*
-            NSString *regexString = @"(?<=[^0-9]):(?=[^0-9])";
-            NSString *dummy = @"NEVERSEETHIS";
-            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString
-                                                      options:0
-                                                        error:nil];
+            // This pattern will only match ':' symbols with a capital letter on the left side of the ':'.
+            //NSString *pattern = @"(?<=[^0-9]):";
+            NSString *pattern = @"(?<=[A-Z]):";
+            NSString *dummy =  @" NEVERSEETHIS ";
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
             NSRange range = NSMakeRange(0, [currentLine length]);
-            
-            NSString *string2 = [regex stringByReplacingMatchesInString:currentLine
-                                                                options:0
-                                                                  range:range
-                                                           withTemplate:dummy];
-            
-            
-            NSArray *splitLine = [string2 componentsSeparatedByString:dummy];
-            NSLog(@"%@",splitLine);
-            
-            
-            NSRange match = [currentLine rangeOfString:@":"];
-            NSInteger index = match.location;
-            
-            NSString *afterindex = [currentLine substringWithRange:NSMakeRange(index+1, 1)];
-            
-            NSArray *splitLine;
-            
-            if(![afterindex isEqualToString:@"0"]){
-                 splitLine = [currentLine componentsSeparatedByString:@":"];
-            }*/
-            
+            NSString *modified = [regex stringByReplacingMatchesInString:currentLine options:0 range:range withTemplate:dummy];
+ 
+            NSLog(modified);
     
-            NSArray *splitLine = [currentLine componentsSeparatedByString:@":"];
+            NSArray *splitLine = [modified componentsSeparatedByString:dummy];
+            
             
             
             NSString *attributeTitle = splitLine[0];
