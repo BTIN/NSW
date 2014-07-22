@@ -140,11 +140,43 @@ NSMutableArray *parsedFaq;
     answer = [answer stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
     
     
+    //strip html junk elements here
+    answer = [self flattenHTML:answer];
+    
+    
+    
     return answer;
     
     
 }
 
+
+// strips html junk away. this might create nonsense within descriptions but that's better than having random html cpde in them
+- (NSString *)flattenHTML:(NSString *)html {
+    
+    NSScanner *theScanner;
+    NSString *text = nil;
+    
+    theScanner = [NSScanner scannerWithString:html];
+    
+    while ([theScanner isAtEnd] == NO) {
+        
+        // find start of tag
+        [theScanner scanUpToString:@"<" intoString:NULL] ;
+        
+        // find end of tag
+        [theScanner scanUpToString:@">" intoString:&text] ;
+        
+        // replace the found tag with a space
+        //(you can filter multi-spaces out later if you wish)
+        html = [html stringByReplacingOccurrencesOfString:
+                [ NSString stringWithFormat:@"%@>", text]
+                                               withString:@" "];
+        
+    } // while //
+    return html;
+    
+}
 
 
 
