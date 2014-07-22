@@ -57,14 +57,22 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMMM dd"];
     
+    NSDateFormatter *dayOfWeek = [[NSDateFormatter alloc] init];
+    [dayOfWeek setDateFormat:@"EEEE"];
+    NSString *dayName = [dayOfWeek stringFromDate:currentDate];
+    
+    
     NSString *current = [formatter stringFromDate:currentDate];
     
     // Changes "September 04" to "September 4" etc. for all dates. Doesn't matter for dates like "September 20" because NSW doesn't go that long
     NSString *currentDate = [current stringByReplacingOccurrencesOfString:@"0" withString:@""];
+    currentDate = [NSString stringWithFormat:@"%@%@%@", dayName, @", ", currentDate];
     
     self.navigationController.navigationBar.topItem.title = currentDate;
     
 }
+
+
 
 // Updates the event list to the events for currentDate
 -(void)getEventsFromCurrentDate {
@@ -78,8 +86,18 @@
     NSDateFormatter *time = [[NSDateFormatter alloc] init];
     [time setDateFormat:@"MMMM dd"];
     
+    
+    NSDateFormatter *dayOfWeek = [[NSDateFormatter alloc] init];
+    [dayOfWeek setDateFormat:@"EEEE"];
+    NSString *dayName = [dayOfWeek stringFromDate:currentDate];
+             
+    
+    
     NSString *current = [time stringFromDate:currentDate];
     NSString *currentDate = [current stringByReplacingOccurrencesOfString:@"0" withString:@""];
+                                  
+    currentDate = [NSString stringWithFormat:@"%@%@%@", dayName, @", ", currentDate];
+                                  
     self.navigationController.navigationBar.topItem.title = currentDate;
     
 }
@@ -91,10 +109,17 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL isReturningUser = [userDefaults boolForKey:returningUserKey];
     if (!isReturningUser) {
-        iToast *swipeToast = [iToast makeText:@"Swipe left or right on this screen to change days"];
+        /*iToast *swipeToast = [iToast makeText:@"Swipe left or right on this screen to change days"];
         [swipeToast setGravity:iToastGravityCenter];
         [swipeToast setDuration:iToastDurationNormal];
-        [swipeToast show];
+        [swipeToast show];*/
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome to Carleton!"
+                                                        message:@"Swipe left or right on this screen to view events for different days"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
 
         [userDefaults setBool:YES forKey:returningUserKey];
     } else {

@@ -160,16 +160,17 @@ example ICS event:
             
             // This section causes errors when descriptions include something like "3:00pm".
             
-            // This pattern will only match ':' symbols with a capital letter on the left side of the ':'.
+            // This pattern will only match ':' symbols with a capital letter on the left side of the ':'s.
             //NSString *pattern = @"(?<=[^0-9]):";
+            
+            //TODO: one event has "NOTE:" in the description, and this messes things up
             NSString *pattern = @"(?<=[A-Z]):";
             NSString *dummy =  @" NEVERSEETHIS ";
             NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
             NSRange range = NSMakeRange(0, [currentLine length]);
             NSString *modified = [regex stringByReplacingMatchesInString:currentLine options:0 range:range withTemplate:dummy];
  
-            NSLog(modified);
-    
+           // NSArray *splitLine = [currentLine componentsSeparatedByString:@":"];
             NSArray *splitLine = [modified componentsSeparatedByString:dummy];
             
             

@@ -7,6 +7,7 @@
 #import "EventDataSource.h"
 #import "ContactDataSource.h"
 #import "CarlTermDataSource.h"
+#import "FaqDataSource.h"
 
 
 @interface DataSourceManager : NSObject
@@ -16,4 +17,6 @@
 -(EventDataSource *) getEventDataSource;
 -(ContactDataSource *) getContactDataSource;
 -(CarlTermDataSource *) getCarlTermDataSource;
+-(FaqDataSource *) getFaqDataSource;
+
 @end

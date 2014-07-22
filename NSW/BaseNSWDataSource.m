@@ -22,10 +22,12 @@ static BOOL dataIsReady;
 // Maps what URL corresponds to which local file name
 - (id)urlMap {
     if (!_urlMap) {
-        NSArray *fileNames = @[@"events.ics", @"contacts.html", @"terms.json"];
+        NSArray *fileNames = @[@"events.ics", @"contacts.html", @"terms.json",@"faq.html"];
         NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?audience=256908&start_date=2012-09-04&end_date=2012-09-11&format=ical"],
                 [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/"],
-                [NSURL URLWithString:@"http://alex-cs.github.io/carl_talk.json"]];
+                [NSURL URLWithString:@"http://alex-cs.github.io/carl_talk.json"],
+                // added this here
+                [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/faq/#site_index"]];
         _urlMap = [NSDictionary dictionaryWithObjects:urls forKeys:fileNames];
         if (_urlMap.count != urls.count) {
             NSLog(@"Have %d URLs, but have %d entries in urlMap", urls.count, _urlMap.count);

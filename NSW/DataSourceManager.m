@@ -11,6 +11,7 @@
     @property EventDataSource *eventDataSource;
     @property ContactDataSource *contactDataSource;
     @property CarlTermDataSource *carlTermDataSource;
+    @property FaqDataSource *faqDataSource;
 @end
 
 
@@ -40,6 +41,7 @@ static DataSourceManager *sharedDSManager = nil;
         self.eventDataSource = [[EventDataSource alloc] init];
         self.contactDataSource = [[ContactDataSource alloc] init];
         self.carlTermDataSource = [[CarlTermDataSource alloc] init];
+        self.faqDataSource = [[FaqDataSource alloc] init];
     }
     return self;
 }
@@ -62,5 +64,9 @@ static DataSourceManager *sharedDSManager = nil;
 
 - (CarlTermDataSource *)getCarlTermDataSource {
     return self.carlTermDataSource;
+}
+
+- (FaqDataSource *)getFaqDataSource {
+    return self.faqDataSource;
 }
 @end

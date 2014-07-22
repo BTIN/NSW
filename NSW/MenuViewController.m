@@ -20,7 +20,6 @@
 @implementation MenuViewController
 
 - (void)viewDidLoad {
-    //self.tableView.backgroundColor = [NSWStyle lightBlueColor];
     self.tableView.backgroundColor = [NSWStyle darkGrayColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
@@ -29,8 +28,8 @@
     [self.revealViewController tapGestureRecognizer];
     //[self.revealViewController panGestureRecognizer];
 
-    self.menuIDs = @[@"events", @"map", @"terms", @"contacts"];
-    self.menuTitles = @[@"Schedule", @"Campus Map", @"Speak Carleton", @"Important Contacts"];
+    self.menuIDs = @[@"events", @"map", @"terms", @"contacts",@"faq"];
+    self.menuTitles = @[@"Schedule", @"Campus Map", @"Speak Carleton", @"Important Contacts",@"FAQ"];
 }
 
 // boilerplate preparation for storyboard segues
@@ -94,7 +93,6 @@
     
     cell.backgroundColor = [NSWStyle darkGrayColor]; //[NSWStyle lightBlueColor];
     cell.textLabel.textColor = [NSWStyle whiteColor];
-    cell.textLabel.font = [NSWStyle boldFont];
     cell.textLabel.text = self.menuTitles[(NSUInteger) indexPath.row];
     
     UIView * selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];

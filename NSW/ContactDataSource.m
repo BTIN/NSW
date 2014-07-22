@@ -51,6 +51,8 @@ NSMutableArray *parsedContacts;
     splitHTMLContacts[0] = normalizedFirst;
     
     
+    
+    
     /* loop through parse each each section of HTML into a new Contact
         add each instance created into global parsedContacts variable
      */
