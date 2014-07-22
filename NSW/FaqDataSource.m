@@ -67,6 +67,7 @@ NSMutableArray *parsedFaq;
     
     question = [self getQuestionFromString:htmlContact];
     answer = [self getAnswerFromString:htmlContact];
+    //answer = @"answer";
     
     return [[FaqItem alloc] initWithQuestion:question Answer:answer];
     
@@ -99,14 +100,12 @@ NSMutableArray *parsedFaq;
     
 }
 
-// returns answer to FAQ question
+// returns answer to FAQ question. taking a long time right now
 -(NSString *)getAnswerFromString:(NSString *) htmlContact{
     NSString *idNumberstring;
     NSString *question = [self getQuestionFromString:htmlContact];
     idNumberstring = [self getIDFromString:htmlContact];
     NSString *answer;
-    
-    NSLog(question);
     
     idNumberstring = [idNumberstring componentsSeparatedByString:@"\""][1];
     NSString *urlBeforeID = @"https://apps.carleton.edu/newstudents/contact/faq/";
@@ -121,7 +120,6 @@ NSMutableArray *parsedFaq;
         //Not connected to internet?
         NSLog(@"URL ERROR");
     }
-    
     
     NSString *questionAndHTML = [NSString stringWithFormat:@"%@%@",question,@"</h3>"];
     NSString *afterQuestion = [html componentsSeparatedByString:questionAndHTML][1];
@@ -138,11 +136,8 @@ NSMutableArray *parsedFaq;
     }
     
     
-    
     answer = [almostAnswer stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
     answer = [answer stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
-    
-
     
     
     return answer;

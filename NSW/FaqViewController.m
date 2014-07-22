@@ -12,7 +12,7 @@
 #import "FaqTableViewCell.h"
 #import "DataSourceManager.h"
 #import "NSWStyle.h"
-//#import "FaqDetailViewController.h"
+#import "FaqDetailViewController.h"
 
 @interface FaqViewController (){
     
@@ -46,33 +46,13 @@ int selectedIndex;
 - (FaqTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSLog(@"test"); 
     FaqTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     FaqItem *item = self.listItems[(NSUInteger) indexPath.row];
-    cell.questionLabel.text = @"Hello!";//[item question];
+    cell.questionLabel.text = [item question];
     
-    
-    
-    /*
- 
-    
-    cell.longNameLabel.text = [term longName];
-    cell.abbreviationLabel.text = [term abbreviation];
-    cell.abbreviationLabel.textColor = [NSWStyle oceanBlueColor];
-    cell.longNameLabel.numberOfLines = 1;
-     
-     */
+
     return cell;
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
-
-
-
-
 
 
 
@@ -83,15 +63,23 @@ int selectedIndex;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    FaqItem *item = self.listItems[(NSUInteger) indexPath.row];
+    FaqDetailViewController *destFaqViewController = segue.destinationViewController;
+    
+    if ([[segue identifier] isEqualToString:@"showAnswerDetail"]) {
+        
+        destFaqViewController.question = [item question];
+        destFaqViewController.answer = [item answer];
+        
+        
+    }
 }
-*/
+
+
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseNSWTableViewController.h"
-// #import "FAQDetailViewController.h"
+#import "FAQDetailViewController.h"
 
 
 @interface FaqViewController : BaseNSWTableViewController

@@ -51,6 +51,7 @@
 		E21559F3196C9D6F0023DE7C /* notification button.png in Resources */ = {isa = PBXBuildFile; fileRef = E21559F2196C9D6F0023DE7C /* notification button.png */; };
 		E21CDE74191D47BF00884608 /* EventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21CDE73191D47BF00884608 /* EventDataSource.m */; };
 		E220AD2A196C6AB00062BB40 /* CarlTermDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E220AD29196C6AB00062BB40 /* CarlTermDetailViewController.m */; };
+		E22D757A197EE0D30087AA70 /* FaqDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E22D7579197EE0D30087AA70 /* FaqDetailViewController.m */; };
 		E24BBF60196B3A7100209F56 /* up arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E24BBF5F196B3A7100209F56 /* up arrow.png */; };
 		E27C227B197D7EC800126171 /* FaqDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E27C227A197D7EC800126171 /* FaqDataSource.m */; };
 		E27C2284197D81A400126171 /* FaqItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E27C2283197D81A400126171 /* FaqItem.m */; };
@@ -159,6 +160,8 @@
 		E21CDE73191D47BF00884608 /* EventDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDataSource.m; sourceTree = "<group>"; };
 		E220AD28196C6AB00062BB40 /* CarlTermDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarlTermDetailViewController.h; sourceTree = "<group>"; };
 		E220AD29196C6AB00062BB40 /* CarlTermDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarlTermDetailViewController.m; sourceTree = "<group>"; };
+		E22D7578197EE0D30087AA70 /* FaqDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqDetailViewController.h; sourceTree = "<group>"; };
+		E22D7579197EE0D30087AA70 /* FaqDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqDetailViewController.m; sourceTree = "<group>"; };
 		E24BBF5F196B3A7100209F56 /* up arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "up arrow.png"; path = "../../../App Random/up arrow.png"; sourceTree = "<group>"; };
 		E27C2279197D7EC800126171 /* FaqDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqDataSource.h; sourceTree = "<group>"; };
 		E27C227A197D7EC800126171 /* FaqDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqDataSource.m; sourceTree = "<group>"; };
@@ -437,6 +440,8 @@
 				FA9DFDCD192166A000FC3A81 /* ContactTableViewController.h */,
 				E27C228B197D8E6600126171 /* FaqViewController.h */,
 				E27C228C197D8E6600126171 /* FaqViewController.m */,
+				E22D7578197EE0D30087AA70 /* FaqDetailViewController.h */,
+				E22D7579197EE0D30087AA70 /* FaqDetailViewController.m */,
 				FA9DFDEA1922D95400FC3A81 /* CarlTermViewController.h */,
 				FA9DFDEB1922D95400FC3A81 /* CarlTermViewController.m */,
 				E220AD28196C6AB00062BB40 /* CarlTermDetailViewController.h */,
@@ -653,6 +658,7 @@
 				2DBA1ED00471D28CA268FA58 /* EventTableViewCell.m in Sources */,
 				2DBA1DE1FBA75AE34934C6BC /* CarlTermTableViewCell.m in Sources */,
 				2DBA1ADD2D7E87F1AEA01F08 /* ContactTableViewCell.m in Sources */,
+				E22D757A197EE0D30087AA70 /* FaqDetailViewController.m in Sources */,
 				2DBA174E2354E5295C25AF96 /* FLDownloader.m in Sources */,
 				2DBA1604FAF3CAA6FA3288A8 /* FLDownloadTask.m in Sources */,
 				2DBA158FB79AE0291C63AD5A /* DataSourceManager.m in Sources */,
