@@ -11,8 +11,10 @@
 @interface FaqItem : NSObject
 @property (nonatomic, strong) NSString *question;
 @property (nonatomic, strong) NSString *answer;
+@property (nonatomic, strong) NSString *section;
 
--(id) initWithQuestion:(NSString *)faqQuestion Answer:(NSString *)faqAnswer;
+
+-(id) initWithQuestion:(NSString *)faqQuestion Answer:(NSString *)faqAnswer Section:(NSString *)faqSection;
 
 
 @end

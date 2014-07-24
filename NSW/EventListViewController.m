@@ -168,6 +168,14 @@
 }
 
 
+- (IBAction)calendarButton:(id)sender {
+    
+    NSLog(@"calendar button test");
+}
+
+
+
+
 - (EventTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     

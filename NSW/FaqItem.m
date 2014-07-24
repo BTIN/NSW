@@ -12,6 +12,7 @@
 
 @synthesize question;
 @synthesize answer;
+@synthesize section;
 
 - (id)init {
     self = [super init];
@@ -24,11 +25,12 @@
 
 
 - (id)initWithQuestion:(NSString *)faqQuestion
-              Answer:(NSString *)faqAnswer{
+              Answer:(NSString *)faqAnswer Section:(NSString *)faqSection{
     self = [super init];
     if (self) {
         self.question = faqQuestion;
         self.answer = faqAnswer;
+        self.section = faqSection;
     }
     
     return self;
