@@ -117,7 +117,7 @@ NSMutableArray *parsedFaq;
      -- ITS
      -- Language
      -- PrintServices
-     -- DisabilityService
+     -- DisabilityServices
      -- Miscellaneous
      */
     NSString *section;

@@ -25,7 +25,7 @@
      -- ITS
      -- Language
      -- PrintServices
-     -- DisabilityService
+     -- DisabilityServices
      -- Miscellaneous
      */
     
@@ -52,6 +52,7 @@
 
 
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -74,6 +75,8 @@ int selectedIndex;
     
     
 }
+
+
 
 - (FaqTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -194,7 +197,7 @@ int selectedIndex;
         else if([[item section] isEqualToString:@"PrintServices"]){
             [_printServicesSection addObject:item];
         }
-        else if([[item section] isEqualToString:@"DisabilityService"]){
+        else if([[item section] isEqualToString:@"DisabilityServices"]){
             [_disabilityServiceSection addObject:item];
         }
         else if([[item section] isEqualToString:@"Miscellaneous"]){
@@ -254,6 +257,21 @@ int selectedIndex;
     }
     return count;
 }
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UILabel *myLabel = [[UILabel alloc] init];
+    myLabel.frame = CGRectMake(0, 0, 320, 33);
+    myLabel.backgroundColor = [NSWStyle oceanBlueColor];
+    myLabel.font = [UIFont boldSystemFontOfSize:26];
+    myLabel.textColor = [UIColor whiteColor];
+    myLabel.textAlignment = NSTextAlignmentCenter; 
+    myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    
+    UIView *headerView = [[UIView alloc] init];
+    [headerView addSubview:myLabel];
+    
+    return headerView;
+}
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
@@ -261,7 +279,7 @@ int selectedIndex;
     
     switch (section) {
         case 0:
-            title = @"New Students 2014";
+            title = @"New Students";
             break;
         case 1:
             title = @"Housing";
@@ -273,7 +291,7 @@ int selectedIndex;
             title = @"Post Office";
             break;
         case 4:
-            title = @"SHAC";
+            title = @"Student Health";
             break;
         case 5:
             title = @"Advising";
@@ -312,16 +330,77 @@ int selectedIndex;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    FaqItem *item = self.listItems[(NSUInteger) indexPath.row];
     FaqDetailViewController *destFaqViewController = segue.destinationViewController;
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    NSString *sectionQuestion;
+    NSString *sectionAnswer;
+    
+    
+    switch (indexPath.section) {
+        case 0:
+            sectionQuestion = [[_studentsSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_studentsSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 1:
+            sectionQuestion = [[_housingSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_housingSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 2:
+            sectionQuestion = [[_oneCardSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_oneCardSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 3:
+            sectionQuestion = [[_postOfficeSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_postOfficeSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 4:
+            sectionQuestion = [[_shacSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_shacSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 5:
+            sectionQuestion = [[_advisingSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_advisingSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 6:
+            sectionQuestion = [[_itsSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_itsSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 7:
+            sectionQuestion = [[_languageSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_languageSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 8:
+            sectionQuestion = [[_printServicesSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_printServicesSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 9:
+            sectionQuestion = [[_disabilityServiceSection  objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_disabilityServiceSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        case 10:
+            sectionQuestion = [[_miscSection objectAtIndex:indexPath.row] question];
+            sectionAnswer = [[_miscSection objectAtIndex:indexPath.row] answer];
+            break;
+            
+        default:
+            break;
+    }
+
     
     if ([[segue identifier] isEqualToString:@"showAnswerDetail"]) {
         
-        destFaqViewController.question = [item question];
-        destFaqViewController.answer = [item answer];
-        
+        destFaqViewController.question = sectionQuestion;
+        destFaqViewController.answer = sectionAnswer;
         
     }
 }
