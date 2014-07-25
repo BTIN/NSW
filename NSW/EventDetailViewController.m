@@ -157,16 +157,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    
+        
     self.wantsFullScreenLayout = YES;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
     
 	// Do any additional setup after loading the view, typically from a nib.
     
     [self configureView];
 }
+
+
 
 -(IBAction)doneButtonPressed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];

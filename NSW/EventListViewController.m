@@ -155,6 +155,8 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
     NSString *currentDateString =[formatter stringFromDate:currentDate];
+    NSLog(currentDateString);
+    
     NSString *toDateString = [formatter stringFromDate:[NSWConstants firstDayOfNSW]];
     
     if (![currentDateString isEqualToString:toDateString]) {
@@ -168,10 +170,100 @@
 }
 
 
+
 - (IBAction)calendarButton:(id)sender {
+        
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Select a day to jump to" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                           @"Tuesday, September 4",
+                           @"Wednesday, September 5",
+                           @"Thursday, September 6",
+                           @"Friday, September 7",
+                           @"Saturday, September 8",
+                           @"Sunday, September 9",
+                           nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+
     
-    NSLog(@"calendar button test");
+    
 }
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *dateString;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+
+    
+    if(buttonIndex == 0){
+        dateString = @"2012-09-04";
+        currentDate = [formatter dateFromString:dateString];
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+
+    }
+    
+    if(buttonIndex == 1){
+        dateString = @"2012-09-05";
+        currentDate = [formatter dateFromString:dateString];
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+
+    }
+    
+    if(buttonIndex == 2){
+        dateString = @"2012-09-06";
+        currentDate = [formatter dateFromString:dateString];
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    if(buttonIndex == 3){
+        dateString = @"2012-09-07";
+        currentDate = [formatter dateFromString:dateString];
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    if(buttonIndex == 4){
+        dateString = @"2012-09-08";
+        currentDate = [formatter dateFromString:dateString];
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    if(buttonIndex == 5){
+        dateString = @"2012-09-09";
+        currentDate = [formatter dateFromString:dateString];
+        [self getEventsFromCurrentDate];
+        [self updateDateLabelToCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    else{
+        
+    }
+    
+    
+   
+    
+}
+
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    for (UIView *subview in actionSheet.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)subview;
+            [button setTitleColor:[NSWStyle oceanBlueColor] forState:UIControlStateNormal];
+        }
+    }
+}
+
 
 
 

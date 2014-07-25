@@ -74,6 +74,7 @@ int selectedIndex;
     
     [self followScrollView:self.tableView];
     
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,8 +83,15 @@ int selectedIndex;
     [self showNavBarAnimated:NO];
 }
 
+- (BOOL)scrollViewShouldScrollToTop {
+    [self showNavbar];
+    return YES;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    scrollView.bounces = NO;
+    
     // Prevent the AMScrollingNavbar from creating a black gap the first time the feed is scrolled.
     if (scrollView.contentOffset.y > 0
         && CGRectGetMinY(self.tableView.frame) != 0) {
@@ -356,6 +364,7 @@ int selectedIndex;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     FaqDetailViewController *destFaqViewController = segue.destinationViewController;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     NSString *sectionQuestion;
@@ -424,6 +433,7 @@ int selectedIndex;
 
     
     if ([[segue identifier] isEqualToString:@"showAnswerDetail"]) {
+        
         
         destFaqViewController.question = sectionQuestion;
         destFaqViewController.answer = sectionAnswer;

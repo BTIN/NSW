@@ -39,7 +39,6 @@
 {
     [super viewDidLoad];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
     
     termTitle.text = termName;
     termDescriptionTextView.text = termDescription;

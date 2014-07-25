@@ -37,7 +37,6 @@
 {
     [super viewDidLoad];
 
-    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
     questionLabel.text = question;
     answerTextView.text = answer; 
     
@@ -48,6 +47,12 @@
     
 
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar.layer removeAllAnimations];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
