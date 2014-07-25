@@ -422,7 +422,12 @@ NSMutableArray *parsedFaq;
     }
     
     else if([question isEqualToString:@"How do I ship my bicycle to Carleton?"]){
-        section = @"PostOffice";    }
+        section = @"PostOffice";
+    }
+    
+    else if([question isEqualToString:@"Is Photo I.D. required for package pick up?"]){
+        section = @"PostOffice";
+    }
     
     // Print Services Questions
     
@@ -900,10 +905,14 @@ NSMutableArray *parsedFaq;
         answer = @"Check with a bike shop near your home. Some bike shops will package a bike for shipping for a fee. UPS will ship a bicycle that is already properly packaged. Check out the helpful instructions offered at this web site: http://www.bikeflights.com/how_to_pack_a_bike.aspx";
     }
     
+    else if([question isEqualToString:@"Is Photo I.D. required for package pick up?"]){
+        answer = @"Check with a bike shop near your home. Some bike shops will package a bike for shipping for a fee. UPS will ship a bicycle that is already properly packaged. Check out the helpful instructions offered at this web site: http://www.bikeflights.com/how_to_pack_a_bike.aspx";
+    }
+    
     // Print Services Questions
     
     else if([question isEqualToString:@"How do I establish my account for Personal print jobs?"]){
-        answer = @"Set up your Personal account at https://www.printservices.carleton.edu/shop/.  Payment is due upon pick up (cash, check, Schillers or Ole Dollars).  This account is subject to MN sales tax.  Non-profit organizations must provide proof of sales tax exemption.";
+        answer = @"Yes - bring your OneCard, Driver's License, or Passport for identification purposes.";
     }
     
     // Student health and counseling questions

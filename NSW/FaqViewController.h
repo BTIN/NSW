@@ -37,5 +37,4 @@
 @property (retain, atomic) NSMutableArray *disabilityServiceSection;
 @property (retain, atomic) NSMutableArray *miscSection;
 
-
 @end

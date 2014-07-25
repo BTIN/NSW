@@ -13,9 +13,10 @@
 #import "DataSourceManager.h"
 #import "NSWStyle.h"
 #import "FaqDetailViewController.h"
+#import "UIViewController+ScrollingNavbar.h"
 
 @interface FaqViewController (){
-    /* Sections will be in this order and include:
+    /* Sections are in this order and include:
      -- NewStudents
      -- Housing
      -- OneCard
@@ -28,8 +29,6 @@
      -- DisabilityServices
      -- Miscellaneous
      */
-    
-    
     
 }
 
@@ -53,6 +52,7 @@
 
 
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -67,15 +67,32 @@ int selectedIndex;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"FAQs";
+    self.navigationItem.title = @"FAQ";
     
     //Connect this VC to the shared DataSource
     [[[DataSourceManager sharedDSManager] getFaqDataSource] attachVCBackref:self];
     
-    
+    [self followScrollView:self.tableView];
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self showNavBarAnimated:NO];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // Prevent the AMScrollingNavbar from creating a black gap the first time the feed is scrolled.
+    if (scrollView.contentOffset.y > 0
+        && CGRectGetMinY(self.tableView.frame) != 0) {
+        CGRect frameAdjustedToPreventOffset = self.tableView.frame;
+        frameAdjustedToPreventOffset.size.height += frameAdjustedToPreventOffset.origin.y;
+        frameAdjustedToPreventOffset.origin.y = 0;
+        self.tableView.frame = frameAdjustedToPreventOffset;
+    }
+}
 
 
 - (FaqTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -260,18 +277,27 @@ int selectedIndex;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UILabel *myLabel = [[UILabel alloc] init];
-    myLabel.frame = CGRectMake(0, 0, 320, 33);
+    myLabel.frame = CGRectMake(0, 0, 320, 40);
     myLabel.backgroundColor = [NSWStyle oceanBlueColor];
-    myLabel.font = [UIFont boldSystemFontOfSize:26];
+    myLabel.font = [UIFont boldSystemFontOfSize:24];
     myLabel.textColor = [UIColor whiteColor];
     myLabel.textAlignment = NSTextAlignmentCenter; 
     myLabel.text = [self tableView:tableView titleForHeaderInSection:section];
     
-    UIView *headerView = [[UIView alloc] init];
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, myLabel.frame.size.height)];
+    [headerView setBackgroundColor:[NSWStyle oceanBlueColor]];
     [headerView addSubview:myLabel];
     
     return headerView;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40;
+}
+
+
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     

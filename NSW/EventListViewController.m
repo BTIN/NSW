@@ -55,7 +55,7 @@
     [[self view] addGestureRecognizer:oneFingerSwipeRight];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMMM dd"];
+    [formatter setDateFormat:@"MMM dd"];
     
     NSDateFormatter *dayOfWeek = [[NSDateFormatter alloc] init];
     [dayOfWeek setDateFormat:@"EEEE"];
@@ -84,7 +84,7 @@
 // Updates the label for the current day
 -(void)updateDateLabelToCurrentDate {
     NSDateFormatter *time = [[NSDateFormatter alloc] init];
-    [time setDateFormat:@"MMMM dd"];
+    [time setDateFormat:@"MMM dd"];
     
     
     NSDateFormatter *dayOfWeek = [[NSDateFormatter alloc] init];
