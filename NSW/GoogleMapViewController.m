@@ -19,6 +19,7 @@
 @implementation GoogleMapViewController{
     GMSMapView *mapView_;
     GMSMarker *marker_;
+    GMSCameraPosition *cameraPosition_;
 }
 
 
@@ -36,17 +37,19 @@
     [super viewDidLoad];
     UIStoryboard *aStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     
+    marker_ = nil;
+    
     mapView_ = [aStoryboard instantiateViewControllerWithIdentifier:@"gMap"];
     
     
-    GMSCameraPosition *baldSpotLocation = [GMSCameraPosition cameraWithLatitude:44.461
+    cameraPosition_ = [GMSCameraPosition cameraWithLatitude:44.461
                                                             longitude:-93.1546
                                                                  zoom:17];
     
     int width = [UIScreen mainScreen].bounds.size.width;
     int height = [UIScreen mainScreen].bounds.size.height;
     
-    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, width,height) camera:baldSpotLocation];
+    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, width,height) camera:cameraPosition_];
     mapView_.myLocationEnabled = YES;
     
 
@@ -77,6 +80,7 @@
     [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     [self setNavigationColors];
+    
 	
 }
 
@@ -89,16 +93,15 @@
     
     mapChoiceController.delegate = self;
     [[self navigationController] presentModalViewController:mapChoiceController animated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES animated:YES];
 
 }
 
 - (void)addItemViewController:(MapLocationsTableViewController *)controller didFinishEnteringItem:(MapLocation *)locationObject
 {
-    //NSLog(@"This was returned from ViewControllerB %@",[locationObject maplocation]);
     
     marker_ = [[GMSMarker alloc]init];
     marker_ = [locationObject coordinates];
-    marker_.title = [locationObject maplocation];
     
     
     
@@ -106,10 +109,19 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:YES];
+    
+    [mapView_ clear];
+    
     marker_.map = mapView_;
+    cameraPosition_ = [GMSCameraPosition cameraWithTarget:marker_.position zoom:17];
+    
+    if (marker_ != nil) {
+        // can I make this better?
+        [mapView_ animateToCameraPosition:cameraPosition_];
+    }
     
 }
-
 
 
 

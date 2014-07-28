@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LocationTableViewCell.h"
 #import "MapLocation.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @class MapLocationsTableViewController;
 
@@ -24,6 +26,7 @@
 
 @property (retain, atomic) NSMutableArray *locationsList;
 @property (nonatomic, weak) id <MapLocationsTableViewControllerDelegate> delegate;
+@property(nonatomic,retain) CLLocationManager *locationManager;
 
 
 @end
