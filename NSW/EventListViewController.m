@@ -16,6 +16,8 @@
 #import "DataSourceManager.h"
 #import "iToast.h"
 #import "NSWConstants.h"
+#import "SWRevealViewController.h"
+
 
 @interface EventListViewController () {
     EventDataSource *myEventDS;
@@ -32,17 +34,16 @@
     [super viewDidLoad];
     
     [self displayDirectionsIfNewUser];
-    
-    
-    //UILabel *startEndLabel = (UILabel *)[self.tableView viewWithTag:1];
-    //UILabel *eventNameLabel = (UILabel *)[self.tableView viewWithTag:2];
-    
-    
+
 
     //Connect this VC to the shared DataSource
     myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource];
     currentDate = [myEventDS parseDateTimeFromICSString:@"20120904T000000"]; //TODO Only for testing, eventually use [NSDate date]
     [myEventDS attachVCBackref:self];
+    
+    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+
+    
     UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeLeft:)];
     
     [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
@@ -71,6 +72,8 @@
     self.navigationController.navigationBar.topItem.title = currentDate;
     
 }
+
+
 
 
 
@@ -152,20 +155,24 @@
 - (void)oneFingerSwipeRight:(UITapGestureRecognizer *)recognizer {
     NSLog(@"RIGHT");
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
-    NSString *currentDateString =[formatter stringFromDate:currentDate];
-    NSLog(currentDateString);
     
-    NSString *toDateString = [formatter stringFromDate:[NSWConstants firstDayOfNSW]];
     
-    if (![currentDateString isEqualToString:toDateString]) {
-        currentDate = [EventDataSource oneDayBefore:currentDate];
-        [self getEventsFromCurrentDate];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
-        [self updateDateLabelToCurrentDate];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        NSString *currentDateString =[formatter stringFromDate:currentDate];
+        NSLog(currentDateString);
+    
+        NSString *toDateString = [formatter stringFromDate:[NSWConstants firstDayOfNSW]];
+    
+        if (![currentDateString isEqualToString:toDateString]) {
+            currentDate = [EventDataSource oneDayBefore:currentDate];
+            [self getEventsFromCurrentDate];
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+            [self updateDateLabelToCurrentDate];
 
-    }
+        }
+        
+    
     
 }
 

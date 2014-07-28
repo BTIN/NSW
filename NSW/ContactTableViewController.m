@@ -15,6 +15,7 @@
 #import <MessageUI/MessageUI.h>
 #import <QuartzCore/QuartzCore.h>
 #import "ContactButton.h"
+#import "SWRevealViewController.h"
 
 @interface ContactTableViewController ()
 
@@ -36,13 +37,9 @@
 {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
 
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.delaysContentTouches = NO;
     
     self.listItems = [[NSMutableArray alloc] init];
     
@@ -82,6 +79,7 @@
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
+    
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -112,8 +110,20 @@
     cell.titleLabel.text = [contact title];
     [cell.emailLabel setTitle:[contact email] forState:UIControlStateNormal];
     [cell.phoneLabel setTitle:[contact phone] forState:UIControlStateNormal];
-    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
+    
+    
+    for (id obj in cell.subviews)
+    {
+        if ([NSStringFromClass([obj class]) isEqualToString:@"UITableViewCellScrollView"])
+        {
+            UIScrollView *scroll = (UIScrollView *) obj;
+            scroll.delaysContentTouches = NO;
+            break;
+        }
+    }
+    
     
     return cell;
 }

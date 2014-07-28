@@ -28,9 +28,36 @@
     [self.revealViewController tapGestureRecognizer];
     //[self.revealViewController panGestureRecognizer];
 
+
+
+   // SWRevealViewController *revealController =  [self revealViewController];
+    //[revealController panGestureRecognizer];
+    //[revealController tapGestureRecognizer];
+    
     self.menuIDs = @[@"events", @"map", @"terms", @"contacts",@"faq"];
     self.menuTitles = @[@"Schedule", @"Campus Map", @"Speak Carleton", @"Important Contacts",@"FAQ"];
 }
+
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.revealViewController.frontViewController.view setUserInteractionEnabled:NO];
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    //[super viewDidDisappear:animated];
+    
+    [self.revealViewController.frontViewController.view setUserInteractionEnabled:YES];
+
+}
+ 
+ 
+ 
+ 
+
+
 
 // boilerplate preparation for storyboard segues
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender

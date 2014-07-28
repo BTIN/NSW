@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapLocationsTableViewController.h"
 
-@interface GoogleMapViewController : UIViewController
+
+@interface GoogleMapViewController : UIViewController <MapLocationsTableViewControllerDelegate>
 
 @end

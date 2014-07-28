@@ -45,6 +45,8 @@ UIImageView *mapImageView;
     self.view.backgroundColor = [NSWStyle lightBlueColor];
 }
 
+
+
 //This is directly lifted from BaseNSWTableViewController, can we put it in an interface or such?
 - (void)setNavigationColors{
         UINavigationBar *navBar = self.navigationController.navigationBar;

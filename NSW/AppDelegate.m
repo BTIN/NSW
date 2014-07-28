@@ -11,6 +11,7 @@
 #import "DataSourceManager.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "NSWConstants.h"
+#import "SWRevealViewController.h"
 
 @implementation AppDelegate
 
@@ -33,6 +34,9 @@
     
     // Initialize the singleton downloader
     [FLDownloader sharedDownloader];
+    
+    
+    
     return YES;
 }
 							

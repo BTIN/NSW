@@ -13,6 +13,7 @@
 #import "NSWStyle.h"
 #import "DataSourceManager.h"
 #import "CarlTermDetailViewController.h"
+#import "SWRevealViewController.h"
 
 @interface CarlTermViewController (){
 }
@@ -36,6 +37,9 @@ int selectedIndex;
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Speak Carleton";
+    
+    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+
 
     //Connect this VC to the shared DataSource
     [[[DataSourceManager sharedDSManager] getCarlTermDataSource] attachVCBackref:self];

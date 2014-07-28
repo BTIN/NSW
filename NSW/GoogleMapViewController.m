@@ -10,6 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "SWRevealViewController.h"
 #import "NSWStyle.h"
+#import "MapLocationsTableViewController.h"
 
 @interface GoogleMapViewController ()
 @property (nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
@@ -17,6 +18,7 @@
 
 @implementation GoogleMapViewController{
     GMSMapView *mapView_;
+    GMSMarker *marker_;
 }
 
 
@@ -37,12 +39,37 @@
     mapView_ = [aStoryboard instantiateViewControllerWithIdentifier:@"gMap"];
     
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:44.461
+    GMSCameraPosition *baldSpotLocation = [GMSCameraPosition cameraWithLatitude:44.461
                                                             longitude:-93.1546
                                                                  zoom:17];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    
+    int width = [UIScreen mainScreen].bounds.size.width;
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, width,height) camera:baldSpotLocation];
     mapView_.myLocationEnabled = YES;
-    self.view = mapView_;
+    
+
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(buttonTouched)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [button setTitle:@"Looking for something?" forState:UIControlStateNormal];
+    button.layer.cornerRadius = 10;
+    button.clipsToBounds = YES;
+    [button setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
+    [button sizeToFit];
+    button.frame = CGRectMake(30, height-120, 260, 35);
+    [button setBackgroundColor:[NSWStyle oceanBlueColor]];
+    button.titleLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:18];
+
+    [self.view insertSubview:button atIndex:1];
+    [self.view insertSubview:mapView_ atIndex:0];
+    
+    
     
     
     self.navigationItem.title = @"Campus Map";
@@ -50,9 +77,40 @@
     [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     [self setNavigationColors];
-    self.view.backgroundColor = [NSWStyle oceanBlueColor];
 	
 }
+
+-(void)buttonTouched{
+    
+    
+    UIStoryboard *sboard = [UIStoryboard storyboardWithName:@"Main"
+                                                     bundle:nil];
+    MapLocationsTableViewController *mapChoiceController = [sboard instantiateViewControllerWithIdentifier:@"MapChoiceController"];
+    
+    mapChoiceController.delegate = self;
+    [[self navigationController] presentModalViewController:mapChoiceController animated:YES];
+
+}
+
+- (void)addItemViewController:(MapLocationsTableViewController *)controller didFinishEnteringItem:(MapLocation *)locationObject
+{
+    //NSLog(@"This was returned from ViewControllerB %@",[locationObject maplocation]);
+    
+    marker_ = [[GMSMarker alloc]init];
+    marker_ = [locationObject coordinates];
+    marker_.title = [locationObject maplocation];
+    
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    marker_.map = mapView_;
+    
+}
+
+
 
 
 //This is directly lifted from BaseNSWTableViewController, can we put it in an interface or such?

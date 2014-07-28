@@ -14,6 +14,7 @@
 #import "NSWStyle.h"
 #import "FaqDetailViewController.h"
 #import "UIViewController+ScrollingNavbar.h"
+#import "SWRevealViewController.h"
 
 @interface FaqViewController (){
     /* Sections are in this order and include:
@@ -51,8 +52,6 @@
 
 
 
-
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -74,6 +73,9 @@ int selectedIndex;
     
     [self followScrollView:self.tableView];
     
+    
+    [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+
     
 }
 
@@ -105,7 +107,6 @@ int selectedIndex;
 
 - (FaqTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cell for row at index path");
     
     FaqTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     //FaqItem *item = self.listItems[(NSUInteger) indexPath.row];
@@ -304,7 +305,6 @@ int selectedIndex;
 {
     return 40;
 }
-
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
