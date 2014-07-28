@@ -119,6 +119,7 @@
     if (marker_ != nil) {
         // can I make this better?
         [mapView_ animateToCameraPosition:cameraPosition_];
+        [mapView_ setSelectedMarker:marker_];
     }
     
 }

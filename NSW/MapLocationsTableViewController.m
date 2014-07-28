@@ -78,15 +78,15 @@
     // Benton House
     GMSMarker *bentonMarker = [[GMSMarker alloc] init];
     bentonMarker.position = CLLocationCoordinate2DMake(44.458730, -93.154315);
-    bentonMarker.title = @"Benton House";
-    MapLocation *benton = [[MapLocation alloc]initWithLocation:@"Benton House" Coordinates:bentonMarker];
+    bentonMarker.title = @"Benton House (Sci-Fi)";
+    MapLocation *benton = [[MapLocation alloc]initWithLocation:@"Benton (Sci-Fi) House" Coordinates:bentonMarker];
     [_locationsList addObject:benton];
     
     // Berg House
     GMSMarker *bergMarker = [[GMSMarker alloc] init];
     bergMarker.position = CLLocationCoordinate2DMake(44.458782, -93.157437);
-    bergMarker.title = @"Berg House";
-    MapLocation *berg = [[MapLocation alloc]initWithLocation:@"Berg House" Coordinates:bergMarker];
+    bergMarker.title = @"Berg House (WA House)";
+    MapLocation *berg = [[MapLocation alloc]initWithLocation:@"Berg (WA) House" Coordinates:bergMarker];
     [_locationsList addObject:berg];
     
     // Brooks House
@@ -106,15 +106,15 @@
     // Cassat Hall
     GMSMarker *cassatMarker = [[GMSMarker alloc] init];
     cassatMarker.position = CLLocationCoordinate2DMake(44.460041, -93.151038);
-    cassatMarker.title = @"Burton Hall";
+    cassatMarker.title = @"Cassat Hall";
     MapLocation *cassat = [[MapLocation alloc]initWithLocation:@"Cassat Hall" Coordinates:cassatMarker];
     [_locationsList addObject:cassat];
     
     // Chaney House
     GMSMarker *chaneyMarker = [[GMSMarker alloc] init];
     chaneyMarker.position = CLLocationCoordinate2DMake(44.458786, -93.150567);
-    chaneyMarker.title = @"Chaney House";
-    MapLocation *chaney = [[MapLocation alloc]initWithLocation:@"Chaney House" Coordinates:chaneyMarker];
+    chaneyMarker.title = @"Chaney House (CANOE House)";
+    MapLocation *chaney = [[MapLocation alloc]initWithLocation:@"Chaney (CANOE) House" Coordinates:chaneyMarker];
     [_locationsList addObject:chaney];
     
     // Clader House
@@ -148,7 +148,7 @@
     // Davis Hall
     GMSMarker *davisMarker = [[GMSMarker alloc] init];
     davisMarker.position = CLLocationCoordinate2DMake(44.460083, -93.156764);
-    davisMarker.title = @"Burton Hall";
+    davisMarker.title = @"Davis Hall";
     MapLocation *davis = [[MapLocation alloc]initWithLocation:@"Davis Hall" Coordinates:davisMarker];
     [_locationsList addObject:davis];
     
@@ -162,8 +162,8 @@
     // Douglas House
     GMSMarker *douglasMarker = [[GMSMarker alloc] init];
     douglasMarker.position = CLLocationCoordinate2DMake(44.457572,  -93.155313);
-    douglasMarker.title = @"Douglas House";
-    MapLocation *douglas = [[MapLocation alloc]initWithLocation:@"Douglas House" Coordinates:douglasMarker];
+    douglasMarker.title = @"Douglas House (F.I.S.H. House)";
+    MapLocation *douglas = [[MapLocation alloc]initWithLocation:@"Douglas (F.I.S.H.) House" Coordinates:douglasMarker];
     [_locationsList addObject:douglas];
     
     // Dow House
@@ -204,8 +204,8 @@
     // Geffert House
     GMSMarker *geffertMarker = [[GMSMarker alloc] init];
     geffertMarker.position = CLLocationCoordinate2DMake(44.458901, -93.158990);
-    geffertMarker.title = @"Geffert House";
-    MapLocation *geffert = [[MapLocation alloc]initWithLocation:@"Geffert House" Coordinates:geffertMarker];
+    geffertMarker.title = @"Geffert House (Fitness House)";
+    MapLocation *geffert = [[MapLocation alloc]initWithLocation:@"Geffert (Fitness) House" Coordinates:geffertMarker];
     [_locationsList addObject:geffert];
     
     // Goodhue Hall
@@ -218,8 +218,8 @@
     // Hall House
     GMSMarker *hallMarker = [[GMSMarker alloc] init];
     hallMarker.position = CLLocationCoordinate2DMake(44.459512, -93.157912);
-    hallMarker.title = @"Hall House";
-    MapLocation *hall = [[MapLocation alloc]initWithLocation:@"Hall House" Coordinates:hallMarker];
+    hallMarker.title = @"Hall House (Asia House)";
+    MapLocation *hall = [[MapLocation alloc]initWithLocation:@"Hall House (Asia House)" Coordinates:hallMarker];
     [_locationsList addObject:hall];
     
     // Henrickson House
@@ -239,8 +239,8 @@
     // Hunt Cottage
     GMSMarker *huntCottageMarker = [[GMSMarker alloc] init];
     huntCottageMarker.position = CLLocationCoordinate2DMake(44.459257, -93.157413);
-    huntCottageMarker.title = @"Hunt Cottage";
-    MapLocation *huntCottage = [[MapLocation alloc]initWithLocation:@"Hunt Cottage" Coordinates:huntCottageMarker];
+    huntCottageMarker.title = @"Hunt Cottage (La Casa de Sol)";
+    MapLocation *huntCottage = [[MapLocation alloc]initWithLocation:@"Hunt Cottage (La Casa de Sol)" Coordinates:huntCottageMarker];
     [_locationsList addObject:huntCottage];
     
     // Hunt House
@@ -267,8 +267,8 @@
     // Jewett House
     GMSMarker *jewettMarker = [[GMSMarker alloc] init];
     jewettMarker.position = CLLocationCoordinate2DMake(44.457677, -93.157513);
-    jewettMarker.title = @"Jewett House";
-    MapLocation *jewett = [[MapLocation alloc]initWithLocation:@"Jewett House" Coordinates:jewettMarker];
+    jewettMarker.title = @"Jewett House (Culinary House)";
+    MapLocation *jewett = [[MapLocation alloc]initWithLocation:@"Jewett (Culinary) House" Coordinates:jewettMarker];
     [_locationsList addObject:jewett];
     
     // Musser Hall
@@ -309,8 +309,8 @@
     // Page House
     GMSMarker *pageMarker = [[GMSMarker alloc] init];
     pageMarker.position = CLLocationCoordinate2DMake(44.457587, -93.155817);
-    pageMarker.title = @"Page House";
-    MapLocation *page = [[MapLocation alloc]initWithLocation:@"Page House" Coordinates:pageMarker];
+    pageMarker.title = @"Page House (Jewish Interest)";
+    MapLocation *page = [[MapLocation alloc]initWithLocation:@"Page House (Jewish Interest)" Coordinates:pageMarker];
     [_locationsList addObject:page];
     
     // Parish House
@@ -324,14 +324,14 @@
     GMSMarker *parrMarker = [[GMSMarker alloc] init];
     parrMarker.position = CLLocationCoordinate2DMake(44.466390, -93.149292);
     parrMarker.title = @"Parr House";
-    MapLocation *parr = [[MapLocation alloc]initWithLocation:@"Parish House" Coordinates:parrMarker];
+    MapLocation *parr = [[MapLocation alloc]initWithLocation:@"Parr House" Coordinates:parrMarker];
     [_locationsList addObject:parr];
     
     // Prentice House
     GMSMarker *prenticeMarker = [[GMSMarker alloc] init];
     prenticeMarker.position = CLLocationCoordinate2DMake(44.459940, -93.158371);
-    prenticeMarker.title = @"Prentice House";
-    MapLocation *prentice = [[MapLocation alloc]initWithLocation:@"Prentice House" Coordinates:prenticeMarker];
+    prenticeMarker.title = @"Prentice House (Q&A House)";
+    MapLocation *prentice = [[MapLocation alloc]initWithLocation:@"Prentice (Q&A) House" Coordinates:prenticeMarker];
     [_locationsList addObject:prentice];
     
     // Rice House
@@ -351,15 +351,15 @@
     // Severance Hall
     GMSMarker *severanceMarker = [[GMSMarker alloc] init];
     severanceMarker.position = CLLocationCoordinate2DMake(44.460972, -93.156760);
-    severanceMarker .title = @"Nourse Hall";
+    severanceMarker .title = @"Severance Hall";
     MapLocation *severance = [[MapLocation alloc]initWithLocation:@"Severance Hall" Coordinates:severanceMarker];
     [_locationsList addObject:severance];
     
     // Stimson House
     GMSMarker *stimsonMarker = [[GMSMarker alloc] init];
     stimsonMarker.position = CLLocationCoordinate2DMake(44.459488, -93.156788);
-    stimsonMarker.title = @"Stimson House";
-    MapLocation *stimson = [[MapLocation alloc]initWithLocation:@"Stimson House" Coordinates:stimsonMarker];
+    stimsonMarker.title = @"Stimson House (Multicultural Center)";
+    MapLocation *stimson = [[MapLocation alloc]initWithLocation:@"Stimson House (Multicultural Center)" Coordinates:stimsonMarker];
     [_locationsList addObject:stimson];
     
     // Watson Hall
@@ -372,8 +372,8 @@
     // Williams House
     GMSMarker *williamsMarker = [[GMSMarker alloc] init];
     williamsMarker.position = CLLocationCoordinate2DMake(44.459111, -93.156947);
-    williamsMarker .title = @"Williams House";
-    MapLocation *williams = [[MapLocation alloc]initWithLocation:@"Williams House" Coordinates:williamsMarker];
+    williamsMarker .title = @"Williams House (Freedom House)";
+    MapLocation *williams = [[MapLocation alloc]initWithLocation:@"Williams (Freedom) House" Coordinates:williamsMarker];
     [_locationsList addObject:williams];
     
     // Wilson House
