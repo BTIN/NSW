@@ -68,6 +68,8 @@ int selectedIndex;
     [super viewDidLoad];
     self.navigationItem.title = @"FAQ";
     
+ 
+    
     //Connect this VC to the shared DataSource
     [[[DataSourceManager sharedDSManager] getFaqDataSource] attachVCBackref:self];
     
@@ -81,6 +83,7 @@ int selectedIndex;
 
 -(void)viewWillAppear:(BOOL)animated{
     [self showNavBarAnimated:NO];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -93,27 +96,24 @@ int selectedIndex;
 - (BOOL)scrollViewShouldScrollToTop {
     [self showNavbar];
     return YES;
-    /*
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
-    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage*theImage=UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    NSData*theImageData=UIImageJPEGRepresentation(theImage, 1.0 ); //you can use PNG too
-    [theImageData writeToFile:@"screenshot.jpg" atomically:YES];
-    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"screenshot.jpg"]];
-    
-    NSError *error;
-    [[NSFileManager defaultManager]removeItemAtPath:@"screenshot.jpg" error:&error];
-     */
-    
-    
+
 }
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+     if([self isRowZeroVisible]){
+            CGRect frameAdjustedToPreventOffset = self.tableView.frame;
+            frameAdjustedToPreventOffset.size.height += frameAdjustedToPreventOffset.origin.y;
+            frameAdjustedToPreventOffset.origin.y = 0;
+            self.tableView.frame = frameAdjustedToPreventOffset;
+        }
+}
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     scrollView.bounces = NO;
+    
     
     // I need to do this just at the top of the screen
     
@@ -176,6 +176,8 @@ int selectedIndex;
 
 - (FaqTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+
     
     FaqTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     //FaqItem *item = self.listItems[(NSUInteger) indexPath.row];
