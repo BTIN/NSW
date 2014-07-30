@@ -79,31 +79,100 @@ int selectedIndex;
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self showNavBarAnimated:NO];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self showNavBarAnimated:NO];
 }
+
+
 
 - (BOOL)scrollViewShouldScrollToTop {
     [self showNavbar];
     return YES;
+    /*
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*theImage=UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    NSData*theImageData=UIImageJPEGRepresentation(theImage, 1.0 ); //you can use PNG too
+    [theImageData writeToFile:@"screenshot.jpg" atomically:YES];
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"screenshot.jpg"]];
+    
+    NSError *error;
+    [[NSFileManager defaultManager]removeItemAtPath:@"screenshot.jpg" error:&error];
+     */
+    
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     scrollView.bounces = NO;
     
+    // I need to do this just at the top of the screen
+    
     // Prevent the AMScrollingNavbar from creating a black gap the first time the feed is scrolled.
-    if (scrollView.contentOffset.y > 0
-        && CGRectGetMinY(self.tableView.frame) != 0) {
-        CGRect frameAdjustedToPreventOffset = self.tableView.frame;
-        frameAdjustedToPreventOffset.size.height += frameAdjustedToPreventOffset.origin.y;
-        frameAdjustedToPreventOffset.origin.y = 0;
-        self.tableView.frame = frameAdjustedToPreventOffset;
+    
+    if([self isRowZeroVisible]){
+        if (scrollView.contentOffset.y > 0
+            && CGRectGetMinY(self.tableView.frame) != 0) {
+            CGRect frameAdjustedToPreventOffset = self.tableView.frame;
+            frameAdjustedToPreventOffset.size.height += frameAdjustedToPreventOffset.origin.y;
+            frameAdjustedToPreventOffset.origin.y = 0;
+            self.tableView.frame = frameAdjustedToPreventOffset;
+        }
+        if (scrollView.contentOffset.y < 0
+            && CGRectGetMinY(self.tableView.frame) != 0) {
+            CGRect frameAdjustedToPreventOffset = self.tableView.frame;
+            frameAdjustedToPreventOffset.size.height += frameAdjustedToPreventOffset.origin.y;
+            frameAdjustedToPreventOffset.origin.y = 0;
+            self.tableView.frame = frameAdjustedToPreventOffset;
+        }
     }
+    
+    else{
+        if (scrollView.contentOffset.y > 0
+            && CGRectGetMinY(self.tableView.frame) != 0) {
+            CGRect frameAdjustedToPreventOffset = self.tableView.frame;
+            frameAdjustedToPreventOffset.size.height += frameAdjustedToPreventOffset.origin.y;
+            frameAdjustedToPreventOffset.origin.y = 0;
+            self.tableView.frame = frameAdjustedToPreventOffset;
+        }
+        
+        if (scrollView.contentOffset.y < 0
+            && CGRectGetMinY(self.tableView.frame) != 0) {
+            CGRect frameAdjustedToPreventOffset = self.tableView.frame;
+            frameAdjustedToPreventOffset.size.height += frameAdjustedToPreventOffset.origin.y;
+            frameAdjustedToPreventOffset.origin.y = 0;
+            self.tableView.frame = frameAdjustedToPreventOffset;
+        }
+        
+    }
+    
+    
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Do some stuff when the row is selected
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(BOOL)isRowZeroVisible {
+    NSArray *indexes = [self.tableView indexPathsForVisibleRows];
+    for (NSIndexPath *index in indexes) {
+        if (index.row == 0) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
 
 - (FaqTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
