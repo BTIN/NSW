@@ -38,37 +38,66 @@
 
     //Connect this VC to the shared DataSource
     myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource];
-    currentDate = [myEventDS parseDateTimeFromICSString:@"20120904T000000"]; //TODO Only for testing, eventually use [NSDate date]
+    
+    //initial date shown, should be whatever day it is if your current day is within nsw
+    // if I put it a day ahead it seems to work? otherwise the initial date is one day back
+    //currentDate = [myEventDS parseDateTimeFromICSString:@"20140909T000000"]; //TODO Only for testing, eventually use [NSDate date]
+    
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:9];
+    [comps setMonth:9];
+    [comps setYear:2014];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    currentDate = [gregorian dateFromComponents:comps];
+    
+    
+    
+    
+    
     [myEventDS attachVCBackref:self];
     
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
 
     
     UISwipeGestureRecognizer *oneFingerSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerSwipeLeft:)];
+    UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(oneFingerSwipeRight:)];
+    
+    
     
     [oneFingerSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     [[self view] addGestureRecognizer:oneFingerSwipeLeft];
     
-    UISwipeGestureRecognizer *oneFingerSwipeRight = [[UISwipeGestureRecognizer alloc]
-                                                      initWithTarget:self
-                                                      action:@selector(oneFingerSwipeRight:)];
+    
     [oneFingerSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [[self view] addGestureRecognizer:oneFingerSwipeRight];
     
+    
+    // for nav bar
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM dd"];
     
+    // get full day of week
     NSDateFormatter *dayOfWeek = [[NSDateFormatter alloc] init];
     [dayOfWeek setDateFormat:@"EEEE"];
+    
+    // string for nav bar day name
     NSString *dayName = [dayOfWeek stringFromDate:currentDate];
     
-    
+    // string for nav bar date
     NSString *current = [formatter stringFromDate:currentDate];
     
     // Changes "September 04" to "September 4" etc. for all dates. Doesn't matter for dates like "September 20" because NSW doesn't go that long
     NSString *currentDate = [current stringByReplacingOccurrencesOfString:@"0" withString:@""];
-    currentDate = [NSString stringWithFormat:@"%@%@%@", dayName, @", ", currentDate];
     
+    // nav bar ex: "Saturday, Sep 13"
+    //currentDate = [NSString stringWithFormat:@"%@%@%@", dayName, @", ", currentDate];
+    
+    // nav bar ex: "Saturday"
+    currentDate = [NSString stringWithFormat:@"%@", dayName];
+    
+    // set title for navigation bar
     self.navigationController.navigationBar.topItem.title = currentDate;
     
 }
@@ -99,7 +128,7 @@
     NSString *current = [time stringFromDate:currentDate];
     NSString *currentDate = [current stringByReplacingOccurrencesOfString:@"0" withString:@""];
                                   
-    currentDate = [NSString stringWithFormat:@"%@%@%@", dayName, @", ", currentDate];
+    currentDate = [NSString stringWithFormat:@"%@", dayName];
                                   
     self.navigationController.navigationBar.topItem.title = currentDate;
     
@@ -112,10 +141,6 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL isReturningUser = [userDefaults boolForKey:returningUserKey];
     if (!isReturningUser) {
-        /*iToast *swipeToast = [iToast makeText:@"Swipe left or right on this screen to change days"];
-        [swipeToast setGravity:iToastGravityCenter];
-        [swipeToast setDuration:iToastDurationNormal];
-        [swipeToast show];*/
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome to Carleton!"
                                                         message:@"Swipe left or right on this screen to view events for different days"
@@ -137,7 +162,9 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
+    NSLog(@"current date: ");
     NSLog([formatter stringFromDate:currentDate]);
+    NSLog(@"first day of nsw: ");
     NSLog([formatter stringFromDate:[NSWConstants firstDayOfNSW]]);
 
     NSString *currentDateString =[formatter stringFromDate:currentDate];
@@ -181,12 +208,12 @@
 - (IBAction)calendarButton:(id)sender {
         
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Select a day to jump to" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                           @"Tuesday, September 4",
-                           @"Wednesday, September 5",
-                           @"Thursday, September 6",
-                           @"Friday, September 7",
-                           @"Saturday, September 8",
-                           @"Sunday, September 9",
+                           @"Tuesday, September 9",
+                           @"Wednesday, September 10",
+                           @"Thursday, September 11",
+                           @"Friday, September 12",
+                           @"Saturday, September 13",
+                           @"Sunday, September 14",
                            nil];
     popup.tag = 1;
     [popup showInView:[UIApplication sharedApplication].keyWindow];
@@ -203,7 +230,7 @@
 
     
     if(buttonIndex == 0){
-        dateString = @"2012-09-04";
+        dateString = @"2014-09-09";
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -212,7 +239,7 @@
     }
     
     if(buttonIndex == 1){
-        dateString = @"2012-09-05";
+        dateString = @"2014-09-10";
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -221,7 +248,7 @@
     }
     
     if(buttonIndex == 2){
-        dateString = @"2012-09-06";
+        dateString = @"2014-09-11";
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -229,7 +256,7 @@
     }
     
     if(buttonIndex == 3){
-        dateString = @"2012-09-07";
+        dateString = @"2014-09-12";
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -237,7 +264,7 @@
     }
     
     if(buttonIndex == 4){
-        dateString = @"2012-09-08";
+        dateString = @"2014-09-13";
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -245,7 +272,7 @@
     }
     
     if(buttonIndex == 5){
-        dateString = @"2012-09-09";
+        dateString = @"2014-09-14";
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];

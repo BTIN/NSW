@@ -126,8 +126,12 @@ example ICS event:
     //First break the string into lines
     NSArray *lines = [icsFormattedEvent componentsSeparatedByString:@"\n"];
 
+    // get UID portion
     NSString *id_ = [self parseID:lines[1]];
+    
+    // get summary
     NSMutableString *title_ = [[self parseSimpleICSAttribute:lines[2]] mutableCopy];
+    
     NSMutableString *desc_ = [@"" mutableCopy];
 
     NSString *loc_;
@@ -147,6 +151,11 @@ example ICS event:
         if ([currentLine hasPrefix:@" "]) {
             if (inDescription) {
                 [desc_ appendString: [currentLine substringFromIndex:1]];
+                
+                // handles line breaks present in raw event description
+                desc_ = [[desc_ stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n\n"] mutableCopy];
+
+                
             }
             // Almost no titles are this long, but there are some
             else if (inTitle){
@@ -170,7 +179,6 @@ example ICS event:
             NSRange range = NSMakeRange(0, [currentLine length]);
             NSString *modified = [regex stringByReplacingMatchesInString:currentLine options:0 range:range withTemplate:dummy];
  
-           // NSArray *splitLine = [currentLine componentsSeparatedByString:@":"];
             NSArray *splitLine = [modified componentsSeparatedByString:dummy];
             
             
@@ -179,6 +187,16 @@ example ICS event:
             
             if ([attributeTitle isEqual:@"DESCRIPTION"]) {
                 [desc_ appendString:splitLine[1]];
+                
+                
+                // handles line breaks present in raw event description
+                desc_ = [[desc_ stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n\n"] mutableCopy];
+                
+                NSLog(desc_); 
+                
+                
+                
+                
                 inDescription = YES;
             }
             else if ([attributeTitle isEqual:@"LOCATION"]){
