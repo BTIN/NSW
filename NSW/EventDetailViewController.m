@@ -58,18 +58,25 @@
     if (self.detailItem) {
         
 
-        [_eventDescription setScrollEnabled:YES];
         _topContainer.layer.borderColor = [UIColor grayColor].CGColor;
         _topContainer.layer.borderWidth = 0.25;
         _topContainer.layer.cornerRadius = 15;
         
+        
+        [_eventDescription setScrollEnabled:YES];
         _eventDescription.layer.borderColor = [UIColor grayColor].CGColor;
         _eventDescription.layer.borderWidth = 0.25;
         _eventDescription.layer.cornerRadius = 15;
-        
         [_eventDescription setTextContainerInset:UIEdgeInsetsMake(8, 10, 8, 10)]; // top, left, bottom, right
-        
         _eventLocation.text = [self.detailItem location];
+        
+        
+        
+        
+        
+        
+        
+        
         //_eventLocation.adjustsFontSizeToFitWidth = YES;
         
         // Convert NSDate to NSString
@@ -166,12 +173,10 @@
 }
 
 
-
 -(IBAction)doneButtonPressed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -208,14 +213,13 @@
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     // Setting a new notification removes previous notification
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    //[[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     if(buttonIndex == 0){
         
         // 5 minutes before event starts
         self.localNotification.fireDate = [[self.detailItem startDateTime] dateByAddingTimeInterval:-300];
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
-        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
         [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
@@ -224,7 +228,6 @@
         // 15 minutes before event starts
         self.localNotification.fireDate = [[self.detailItem startDateTime] dateByAddingTimeInterval:-900];
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
-        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
         [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
@@ -233,7 +236,6 @@
         // 30 minutes before event starts
         self.localNotification.fireDate = [[self.detailItem startDateTime] dateByAddingTimeInterval:-1800];
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
-        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
         [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
@@ -242,7 +244,6 @@
         // 1 hour before event starts
         self.localNotification.fireDate = [[self.detailItem startDateTime] dateByAddingTimeInterval:-3600];
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
-        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
         [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
@@ -251,12 +252,11 @@
         // 1 day before event starts
         self.localNotification.fireDate = [[self.detailItem startDateTime] dateByAddingTimeInterval:-86400];
         [[UIApplication sharedApplication] scheduleLocalNotification:self.localNotification];
-        [_notificationButton setTitle:@"Notification Set" forState:UIControlStateNormal]; // To set the title
         [_notificationButton setEnabled:NO]; // To toggle enabled / disabled
     }
     
     else{
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        //[[UIApplication sharedApplication] cancelAllLocalNotifications];
 
 
     }

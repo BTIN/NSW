@@ -50,7 +50,34 @@
     [comps setYear:2014];
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];
-    currentDate = [gregorian dateFromComponents:comps];
+    NSDate *startDate = [gregorian dateFromComponents:comps];
+    
+    NSDateComponents *comps2 = [[NSDateComponents alloc] init];
+    [comps2 setDay:15];
+    [comps2 setMonth:9];
+    [comps2 setYear:2014];
+    
+    NSDate *endDate = [gregorian dateFromComponents:comps2];
+    
+    
+    
+    
+    
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
+    NSDate *today = [calendar dateFromComponents:components];
+    
+    if (([startDate compare:today] == NSOrderedAscending) && ([endDate compare:today] == NSOrderedDescending)) {
+        currentDate = today;
+    }
+    
+    else{
+        currentDate = startDate;
+    }
+    
+    
+    
     
     
     
@@ -143,7 +170,7 @@
     if (!isReturningUser) {
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome to Carleton!"
-                                                        message:@"Swipe left or right on this screen to view events for different days"
+                                                        message:@"Swipe left or right on this screen to view events for different days. NSW begins on Tuesday and ends on Sunday. \n\n Please wait while your schedule is downloaded... "
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -162,19 +189,19 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
-    NSLog(@"current date: ");
     NSLog([formatter stringFromDate:currentDate]);
-    NSLog(@"first day of nsw: ");
     NSLog([formatter stringFromDate:[NSWConstants firstDayOfNSW]]);
 
     NSString *currentDateString =[formatter stringFromDate:currentDate];
     NSString *toDateString = [formatter stringFromDate:[NSWConstants lastDayOfNSW]];
     
     if (![currentDateString isEqualToString:toDateString]) {
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         currentDate = [EventDataSource oneDayAfter:currentDate];
         [self getEventsFromCurrentDate];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
         [self updateDateLabelToCurrentDate];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
+        
     }
 }
 
@@ -192,6 +219,7 @@
         NSString *toDateString = [formatter stringFromDate:[NSWConstants firstDayOfNSW]];
     
         if (![currentDateString isEqualToString:toDateString]) {
+            [self.tableView setContentOffset:CGPointZero animated:NO];
             currentDate = [EventDataSource oneDayBefore:currentDate];
             [self getEventsFromCurrentDate];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
@@ -231,6 +259,7 @@
     
     if(buttonIndex == 0){
         dateString = @"2014-09-09";
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -240,6 +269,7 @@
     
     if(buttonIndex == 1){
         dateString = @"2014-09-10";
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -249,6 +279,7 @@
     
     if(buttonIndex == 2){
         dateString = @"2014-09-11";
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -257,6 +288,7 @@
     
     if(buttonIndex == 3){
         dateString = @"2014-09-12";
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -265,6 +297,7 @@
     
     if(buttonIndex == 4){
         dateString = @"2014-09-13";
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -273,6 +306,7 @@
     
     if(buttonIndex == 5){
         dateString = @"2014-09-14";
+        [self.tableView setContentOffset:CGPointZero animated:NO];
         currentDate = [formatter dateFromString:dateString];
         [self getEventsFromCurrentDate];
         [self updateDateLabelToCurrentDate];
@@ -364,6 +398,17 @@
         NSWEvent *object = self.listItems[(NSUInteger) indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
+}
+
+- (BOOL)inputDate:(NSDate*)date start:(NSDate*)beginDate end:(NSDate*)endDate
+{
+    if ([date compare:beginDate] == NSOrderedAscending)
+        return NO;
+    
+    if ([date compare:endDate] == NSOrderedDescending)
+        return NO;
+    
+    return YES;
 }
 
 

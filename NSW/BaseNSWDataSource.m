@@ -59,7 +59,7 @@ static BOOL dataIsReady;
 - (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController {
     myTableViewController = tableViewController;
     
-    // If data is ready, send it t o tableViewController. Otherwise the data is still 
+    // If data is ready, send it to tableViewController. Otherwise the data is still 
     // being retrieved and will be sent when it's ready.
     if (dataIsReady) {
         // EventListViewController only wants the list for today

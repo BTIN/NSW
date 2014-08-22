@@ -132,6 +132,7 @@ example ICS event:
     // get summary
     NSMutableString *title_ = [[self parseSimpleICSAttribute:lines[2]] mutableCopy];
     
+    
     NSMutableString *desc_ = [@"" mutableCopy];
 
     NSString *loc_;
@@ -145,6 +146,8 @@ example ICS event:
     // description lasts an arbitrary number of lines and there are optional attributes that prevent us from reverse-indexing
     for (NSUInteger i = 3; i < lines.count-1; i++) {
         NSMutableString *currentLine = lines[i];
+        
+        
 
         // Descriptions and titles longer than 76 characters are more than one line and have a blank
         // space at the beginning of subsequent lines to indent them slightly
@@ -160,6 +163,7 @@ example ICS event:
             // Almost no titles are this long, but there are some
             else if (inTitle){
                 [title_ appendString: [currentLine substringFromIndex:1]];
+                
             }
         }
 
@@ -181,21 +185,14 @@ example ICS event:
  
             NSArray *splitLine = [modified componentsSeparatedByString:dummy];
             
-            
-            
+
             NSString *attributeTitle = splitLine[0];
             
             if ([attributeTitle isEqual:@"DESCRIPTION"]) {
                 [desc_ appendString:splitLine[1]];
                 
-                
                 // handles line breaks present in raw event description
                 desc_ = [[desc_ stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n\n"] mutableCopy];
-                
-                NSLog(desc_); 
-                
-                
-                
                 
                 inDescription = YES;
             }
@@ -209,6 +206,32 @@ example ICS event:
                 dur_ = [self parseDurationFromICSString:splitLine[1]];
             }
         }
+        
+        // this is needed to put URL in description, since the raw data says "here" where "here" links to a URL on the NSW website
+        if ([title_ isEqualToString:@"NSW: Music Auditions"]) {
+            desc_ = [@"Please refer to the Department of Music website here: https://apps.carleton.edu/curricular/musc/newstudents/schedule/ for additional information." mutableCopy];
+        }
+        
+        // this location is too long, so shorten it
+        if([title_ isEqualToString:@"NSW: Career Center Welcome Reception"]){
+            loc_ = @"Sayles, 2nd Floor Balcony";
+        }
+        
+        if([title_ isEqualToString:@"NSW: Language Placement"]){
+            loc_ = @"LDC Classrooms";
+        }
+        
+        if([title_ isEqualToString:@"NSW: Meaning, Music, & Muffins"]){
+            loc_ = @"Chapel Lobby (Street Side)";
+        }
+        
+        if([title_ isEqualToString:@"NSW: Rainbow Reception"]){
+            loc_ = @"GSC, Ground Scoville";
+        }
+        
+        
+        
+        
     }
     /*
     if (id_ == nil || title_ == nil || desc_ == nil || loc_ == nil || start_ == nil || dur_ == 0){

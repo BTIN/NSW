@@ -27,7 +27,6 @@
     NSString *pathToDocuments = [downloader defaultFilePath];
     NSLog(@"Default download location:\n  %@", pathToDocuments);
     [DataSourceManager sharedDSManager];
-    //self.window.backgroundColor = [NSWStyle lightBlueColor];
     NSLog(@"Week start: %@\n  Week end: %@", [NSWConstants firstDayOfNSW], [NSWConstants lastDayOfNSW]);
 
     [GMSServices provideAPIKey:@"AIzaSyA9sxD0EYVsx4lCy2Af8J--xJBzBxU6BRE"];
