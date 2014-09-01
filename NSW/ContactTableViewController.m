@@ -44,7 +44,7 @@
     self.listItems = [[NSMutableArray alloc] init];
     
     //Connect this VC to the shared DataSource
-    [[[DataSourceManager sharedDSManager] getContactDataSource] attachVCBackref:self];
+    [[[DataSourceManager sharedDSManager] contactDataSource] attachVCBackref:self];
 
 }
 - (IBAction)phoneLabel:(id)sender {

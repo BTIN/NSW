@@ -17,22 +17,28 @@
 @synthesize fullEventList;
 
 
-- (id)init {
-    self = [super initWithDataFromFile:@"events.ics"];
+- (id)init
+{
+    self = [BaseNSWDataSource dataSourceOfType:NSWDataSourceTypeEvent];
     
     return self;
 }
 
++ (instancetype)dataSource
+{
+    return (EventDataSource *)[super dataSourceOfType:NSWDataSourceTypeEvent];
+}
 
-- (void)parseLocalData{
+
+- (void)parseLocalData
+{
     [self parseDataIntoEventList];
     [super parseLocalData];
 }
 
-- (void)parseDataIntoEventList {
-    
-    // This ASCII can't handle the typographical apostrophe. Unicode gives us Chinese, UTF-8 gives us nil. What do we do?
-    NSString *rawICSString = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding]; //NSUTF8StringEncoding];
+- (void)parseDataIntoEventList 
+{
+    NSString *rawICSString = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
 
     NSArray *splitEventStrings = [rawICSString componentsSeparatedByString:@"BEGIN:VEVENT"];
 
@@ -55,8 +61,8 @@
 
 
 // Called by the ViewController to only get the events for one day
-- (void)getEventsForDate:(NSDate *)currentDate {
-
+- (void)getEventsForDate:(NSDate *)currentDate 
+{
     NSDateComponents *currentDateComps = [NSWEvent getDateComponentsFromDate:currentDate];
     NSString *predicateFormat = [NSString stringWithFormat: @"startDateComponents.day = %i && startDateComponents.month == %i && startDateComponents.year == %i",
                     currentDateComps.day, currentDateComps.month, currentDateComps.year];
@@ -68,7 +74,8 @@
 }
 
 //Sorts the input array of NSWEvents by their startDateTime attribute
--(NSArray *)eventsSortedByTime:(NSArray *)unsortedEvents {
+-(NSArray *)eventsSortedByTime:(NSArray *)unsortedEvents 
+{
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startDateTime"
                                                  ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
@@ -79,7 +86,8 @@
 }
 
 //Returns an NSDate for exactly 1 day before the input
-+ (NSDate *)oneDayBefore:(NSDate *) currentDate{
++ (NSDate *)oneDayBefore:(NSDate *)currentDate
+{
     
     if ([[NSDate dateWithTimeInterval:(-1 * secondsPerDay) sinceDate:currentDate] timeIntervalSinceDate:[NSWConstants firstDayOfNSW]] < 0){
          NSLog(@"too soon");
@@ -91,7 +99,8 @@
 }
 
 //Returns an NSDate for exactly 1 day after the input
-+ (NSDate *)oneDayAfter:(NSDate *) currentDate{
++ (NSDate *)oneDayAfter:(NSDate *)currentDate
+{
     if ([[NSDate dateWithTimeInterval:(secondsPerDay) sinceDate:currentDate] timeIntervalSinceDate:[NSWConstants lastDayOfNSW]] > 0){
         NSLog(@"too soon");
         return currentDate;
@@ -122,7 +131,8 @@ example ICS event:
     DURATION:PT0H45M0S
     END:VEVENT
 */
-- (NSWEvent *)parseEventFromString:(NSString *) icsFormattedEvent {
+- (NSWEvent *)parseEventFromString:(NSString *) icsFormattedEvent 
+{
     //First break the string into lines
     NSArray *lines = [icsFormattedEvent componentsSeparatedByString:@"\n"];
 
@@ -246,14 +256,16 @@ example ICS event:
                                Duration:dur_];
 }
 
-- (NSString *)parseID:(NSString *) idLine{
+- (NSString *)parseID:(NSString *)idLine
+{
     NSArray *lineComponents = [EventDataSource splitString:idLine atCharactersInString:@"-@"];
     //The unique ID is the part between the "-" and the "@"
     return lineComponents[1];
 }
 
 // Most of the attributes are of the form "ATTRIBUTENAME:data-we-care-about"
-- (NSString *)parseSimpleICSAttribute:(NSString *) fullLine{
+- (NSString *)parseSimpleICSAttribute:(NSString *)fullLine
+{
     NSMutableArray *lineComponents = (NSMutableArray *) [fullLine componentsSeparatedByString:@":"];
     NSLog(@"%@",lineComponents);
 
@@ -269,7 +281,8 @@ example ICS event:
 
 
 // Takes a start time string in the ICS format and translates it into an NSDate object
-- (NSDate *)parseDateTimeFromICSString:(NSString *)rawStartDateTime {
+- (NSDate *)parseDateTimeFromICSString:(NSString *)rawStartDateTime
+{
     static NSDateFormatter *dateFormatter = nil;
     if (dateFormatter == nil){
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -286,7 +299,8 @@ example ICS event:
 }
 
 // Create a NSTimeInterval from an ICS-formatted DURATION
-- (NSTimeInterval)parseDurationFromICSString:(NSString *)rawDuration {
+- (NSTimeInterval)parseDurationFromICSString:(NSString *)rawDuration
+{
     // Split a string that looks like "PT##H##M##S" into the array ['P', # of hours, # of minutes, # of seconds, '']
     NSArray *matches = [EventDataSource splitString:rawDuration atCharactersInString:@"THMS"];
 

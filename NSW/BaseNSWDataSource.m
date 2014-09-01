@@ -9,7 +9,21 @@
 
 @interface BaseNSWDataSource ()
 @property (nonatomic, strong) NSDictionary *urlMap;
+@property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong, readwrite) NSDate *downloadStartTime;
+@property (nonatomic, strong) FLDownloader *downloader;
+@property (nonatomic, strong) FLDownloadTask *downloadTask;
 @end
+
+NSString *const EventsFileName = @"events.ics";
+NSString *const ContactsFileName = @"contacts.html";
+NSString *const CarlTermsFileName = @"terms.json";
+NSString *const FAQsFileName = @"faq.html";
+
+NSString *const EventsURL = @"https://apps.carleton.edu/newstudents/events/?start_date=2014-08-21&format=ical";
+NSString *const ContactsURL = @"https://apps.carleton.edu/newstudents/contact/";
+NSString *const CarlTermsURL = @"http://alex-cs.github.io/carl_talk.json";
+NSString *const FAQsURL = @"https://apps.carleton.edu/newstudents/contact/faq/#site_index";
 
 @implementation BaseNSWDataSource
 
@@ -20,25 +34,33 @@ static BOOL dataIsReady;
 @synthesize dataList;
 
 // Maps what URL corresponds to which local file name
-- (id)urlMap {
+- (NSDictionary *)urlMap {
     if (!_urlMap) {
-        NSArray *fileNames = @[@"events.ics", @"contacts.html", @"terms.json",@"faq.html"];
-        NSArray *urls = @[[NSURL URLWithString:@"https://apps.carleton.edu/newstudents/events/?start_date=2014-08-21&format=ical"],
-                [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/"],
-                [NSURL URLWithString:@"http://alex-cs.github.io/carl_talk.json"],
-                // added this here
-                [NSURL URLWithString:@"https://apps.carleton.edu/newstudents/contact/faq/#site_index"]];
-        _urlMap = [NSDictionary dictionaryWithObjects:urls forKeys:fileNames];
-        if (_urlMap.count != urls.count) {
-            NSLog(@"Have %d URLs, but have %d entries in urlMap", urls.count, _urlMap.count);
-        }
+        _urlMap = @{
+                CarlTermsFileName : [NSURL URLWithString:CarlTermsURL],
+                ContactsFileName  : [NSURL URLWithString:ContactsURL],
+                EventsFileName    : [NSURL URLWithString:EventsURL],
+                FAQsFileName      : [NSURL URLWithString:FAQsURL]
+        };
     }
     return _urlMap;
 }
 
+- (NSURL *)url
+{
+    return self.urlMap[self.fileName];
+}
+
+- (FLDownloader *)downloader
+{
+    if (!_downloader) {
+        _downloader = [FLDownloader sharedDownloader];
+    }
+    return _downloader;
+}
 
 - (id)initPrivate {
-    self.downloadStarted = [NSDate date];
+    self.downloadStartTime = [NSDate date];
     dataIsReady = NO;
     return [super init];
 }
@@ -48,15 +70,42 @@ static BOOL dataIsReady;
 
     if (self) {
         myTableViewController = nil;
-        NSURL *remoteURL = [self.urlMap objectForKey:localName];
-        [self getLocalFile:localName orDownloadFromURL:remoteURL];
+        self.fileName = localName;
+        [self loadData];
     }
 
     return self;
 }
 
++ (instancetype)dataSourceOfType:(NSWDataSourceType)type
+{
+    BaseNSWDataSource *dataSource = nil;
+    switch (type) {
+        case NSWDataSourceTypeCarlTerm:
+            dataSource = [[BaseNSWDataSource alloc] initWithDataFromFile:CarlTermsFileName];
+            break;
+        case NSWDataSourceTypeContact:
+            dataSource = [[BaseNSWDataSource alloc] initWithDataFromFile:ContactsFileName];
+            break;
+        case NSWDataSourceTypeEvent:
+            dataSource = [[BaseNSWDataSource alloc] initWithDataFromFile:EventsFileName];
+            break;
+        case NSWDataSourceTypeFAQ:
+            dataSource = [[BaseNSWDataSource alloc] initWithDataFromFile:FAQsFileName];
+            break;
+    }
+
+    return dataSource;
+}
+
++ (instancetype)dataSource
+{
+    return nil;
+}
+
 // Attaches a TableViewController to send the data to once it has been loaded
-- (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController {
+- (void)attachVCBackref:(BaseNSWTableViewController *)tableViewController 
+{
     myTableViewController = tableViewController;
     
     // If data is ready, send it to tableViewController. Otherwise the data is still 
@@ -68,14 +117,19 @@ static BOOL dataIsReady;
         } else {
             [myTableViewController setVCArrayToDataSourceArray:self.dataList];
         }
-    } else {
+    } 
+    else if (self.downloader.tasks[self.url]){
         NSLog(@"Data is still being retrieved.");
+    }
+    else {
+        [self.downloadTask start];
     }
 }
 
 // Create the directories that the data files will be stored in 
 // if it hasn't already been created
-- (void)createLocalDataDirectoryIfNoneExists {
+- (void)createLocalDataDirectoryIfNoneExists 
+{
     genericRawFilePath = [[[FLDownloader sharedDownloader] defaultFilePath] stringByAppendingPathComponent:@"RawData"];
     genericSafeFilePath = [[[FLDownloader sharedDownloader] defaultFilePath] stringByAppendingPathComponent:@"SafeData"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -104,37 +158,56 @@ static BOOL dataIsReady;
 
 // If the file exists locally, load it into self.localData (using getRawDataFromURL)
 // Otherwise, download it to local storage THEN load it into self.localData
-- (void)getLocalFile:(NSString *)fileName orDownloadFromURL:(NSURL *)URL {
+- (void)loadData
+{
     [self createLocalDataDirectoryIfNoneExists];
-    NSString *pathToRawFile = [genericRawFilePath stringByAppendingPathComponent:fileName];
+    NSString *pathToRawFile = [genericRawFilePath stringByAppendingPathComponent:self.fileName];
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:pathToRawFile]) {
+        [self dataDidDownload];
+        //TODO check how old the local data is, Then reload if more than a day
+    } else {
+        [self.downloadTask start];
+    }
     
+}
+
+- (FLDownloadTask *)downloadTask
+{
+    //Set up a FLDownloadTask to download the source from the URL, but don't start yet
+    NSMutableDictionary *existingTasks = [self.downloader.tasks copy];
+    FLDownloadTask *downloadTask = [self.downloader downloadTaskForURL:self.url];
+    if (!existingTasks[self.url]) {
+        [downloadTask setFileName:self.fileName];
+        [downloadTask setDestinationDirectory:genericRawFilePath];
+        [downloadTask setCompletionBlock:[self completionBlock]];
+    }
+    return downloadTask;
+}
+
+- (void (^)(BOOL, NSError *))completionBlock
+{
     //A block to "download" the data file from the file system into self.localData
-    void (^onCompletion)(BOOL, NSError *) = ^(BOOL success, NSError *error) {
+    __weak BaseNSWDataSource *weakSelf = self;
+    return  ^(BOOL success, NSError *error) {
         if (success) {
-            [self loadUTF8Data:fileName];
-            [self parseLocalData];
-            //[self getRawDataFromURL:[NSURL fileURLWithPath:pathToRawFile]];
+            [weakSelf dataDidDownload];
+
             if(error) {
                 NSLog(@"Error copying file to string:\n  %@", error);
             }
         } else {
-            NSLog(@"Error downloading %@: %@", fileName, error);
+            NSLog(@"Error downloading %@: %@", weakSelf.fileName, error);
+            // Try again until the download succeeds
+            [weakSelf.downloadTask start];
         }
     };
-    
-    //Set up a FLDownloadTask to download the source from the URL, but don't start yet
-    FLDownloadTask *downloadTask = [[FLDownloader sharedDownloader] downloadTaskForURL:URL];
-    [downloadTask setFileName:fileName];
-    [downloadTask setDestinationDirectory:genericRawFilePath];
-    [downloadTask setCompletionBlock:onCompletion];
+}
 
-    if ([[NSFileManager defaultManager] fileExistsAtPath:pathToRawFile]){
-        onCompletion(YES, nil);
-        //TODO check how old the local data is, Then reload if more than a day
-    } else {
-        [downloadTask start];
-    }
-    
+- (void)dataDidDownload
+{
+    [self loadUTF8Data];
+    [self parseLocalData];
 }
 
 /** Carleton's event database stores UTF-8 data. However, we are accessing it through an iCal export, 
@@ -143,13 +216,14 @@ static BOOL dataIsReady;
   * us with 3 bytes (separated by a line break + a space) that aren't valid UTF-8 characters, so the 
   * raw ics file cannot be decoded as UTF-8.
   * 
-  * In this method, we fix the logn strings by getting rid of the line breaks in them, thus rejoining the 
+  * In this method, we fix the long strings by getting rid of the line breaks in them, thus rejoining the 
   * broken multi-bit characters :-D
 */
-- (void)loadUTF8Data:(NSString *)fileName {
+- (void)loadUTF8Data 
+{
     NSError *error;
     //try to load the UTF-8 local data
-    NSString *utfString = [NSString stringWithContentsOfFile:[genericSafeFilePath stringByAppendingPathComponent:fileName] 
+    NSString *utfString = [NSString stringWithContentsOfFile:[genericSafeFilePath stringByAppendingPathComponent:self.fileName] 
                                                     encoding:NSUTF8StringEncoding 
                                                        error:&error];
 
@@ -157,10 +231,10 @@ static BOOL dataIsReady;
     // i.e. the data wasn't there or couldn't be loaded as UTF-8
     if (!utfString) {
         NSLog(@"Could not load %@ as UTF-8 from location:\n  %@\n  Error: %@\n  Will try %@", 
-                fileName, genericSafeFilePath, error.description, genericRawFilePath);
+                self.fileName, genericSafeFilePath, error.description, genericRawFilePath);
         // Clear error for reuse
         error = nil;
-        NSData *originalData = [NSData dataWithContentsOfFile:[genericRawFilePath stringByAppendingPathComponent:fileName] 
+        NSData *originalData = [NSData dataWithContentsOfFile:[genericRawFilePath stringByAppendingPathComponent:self.fileName] 
                                                       options:0
                                                         error:&error];
         
@@ -179,7 +253,8 @@ static BOOL dataIsReady;
             //Remove the \r from every CRLF line ending, leaving just \n
             utf8Data = [self dataByReplacingSubData:crEnding inData:utf8Data withData:nil];
 
-            BOOL success = [utf8Data writeToFile:[genericSafeFilePath stringByAppendingPathComponent:fileName] atomically:YES];
+            BOOL success = [utf8Data writeToFile:[genericSafeFilePath stringByAppendingPathComponent:self.fileName] 
+                                      atomically:YES];
             if (success) {
 
                 self.localData = utf8Data;
@@ -193,10 +268,17 @@ static BOOL dataIsReady;
     }
 }
 
+- (void)parseLocalData
+{
+    // Extended in subclasses
+    [self logDownloadTime];
+}
+
 // Replaces any existing occurences of dataToReplace with dataToPut
 - (NSMutableData *)dataByReplacingSubData:(NSData *)dataToReplace
                                    inData:(NSData *)fullData
-                                 withData:(NSData *)dataToPut {
+                                 withData:(NSData *)dataToPut 
+{
     
     NSMutableData *mutableData = [fullData mutableCopy];
     
@@ -218,22 +300,19 @@ static BOOL dataIsReady;
     return mutableData;
 }
 
-- (void)parseLocalData {
-    // Extended in subclasses
-    [self logDownloadTime];
-}
-
 // Log how long it took to retrieve the download
-- (void)logDownloadTime {
+- (void)logDownloadTime 
+{
     dataIsReady = YES;
     NSDate *downloadFinished = [NSDate date];
-    NSLog(@"Download took %.6f seconds", [downloadFinished timeIntervalSinceDate:self.downloadStarted]);
+    NSLog(@"Download took %.6f seconds", [downloadFinished timeIntervalSinceDate:self.downloadStartTime]);
 }
 
 /* Convenience/readability wrapper for a very unwieldily-named function
  * Which splits a string between any of the characters listed in splitCharacters
  */
-+ (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters{
++ (NSArray *)splitString:(NSString *)wholeString atCharactersInString:(NSString *)splitCharacters
+{
     return [wholeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:splitCharacters]];
 }
 

@@ -17,17 +17,24 @@ NSMutableArray *parsedContacts;
 
 
 - (id)init {
-    self = [super initWithDataFromFile:@"contacts.html"];
+    self = [BaseNSWDataSource dataSourceOfType:NSWDataSourceTypeContact];
 
     return self;
 }
 
-- (void)parseLocalData {
++ (instancetype)dataSource
+{
+    return (ContactDataSource *)[super dataSourceOfType:NSWDataSourceTypeContact];
+}
+
+- (void)parseLocalData 
+{
     [self parseContactsFromHTML];
     [super parseLocalData];
 }
 
-- (void)parseContactsFromHTML{
+- (void)parseContactsFromHTML
+{
     
     parsedContacts = [[NSMutableArray alloc] init];
     NSString *rawHTML = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
@@ -70,7 +77,8 @@ NSMutableArray *parsedContacts;
     }
 }
 
-- (Contact *)parseContactFromString:(NSString *) htmlContact {
+- (Contact *)parseContactFromString:(NSString *) htmlContact 
+{
 
     //Strip out any special html characters
     htmlContact = [htmlContact stringByReplacingOccurrencesOfString:@"&nbsp;"
@@ -113,7 +121,8 @@ NSMutableArray *parsedContacts;
     return [[Contact alloc] initWithTitle:title Phone:phone Fax:fax Email:email];
 }
 
-- (NSString *)parseTitleLine:(NSString *)titleLine {
+- (NSString *)parseTitleLine:(NSString *)titleLine 
+{
     NSString *title;
     title = [titleLine componentsSeparatedByString:@"</strong>"][0];
     // Some of the titles have subtitles that we are discarding for now
@@ -123,7 +132,8 @@ NSMutableArray *parsedContacts;
     return title;
 }
 
-- (NSString *)parsePhoneNumberFromLine:(NSString *)line withPrefix:(NSString *)prefix{
+- (NSString *)parsePhoneNumberFromLine:(NSString *)line withPrefix:(NSString *)prefix
+{
     //find the fax number for the current Contact
     NSString *phone = nil;
     if ([line hasPrefix:prefix]){
@@ -132,7 +142,8 @@ NSMutableArray *parsedContacts;
     return phone;
 }
 
-- (NSString *)parseEmailLine:(NSString *)emailLine {
+- (NSString *)parseEmailLine:(NSString *)emailLine 
+{
     //find the email address for the current Contact
     NSString *email = nil;
     if ([emailLine hasPrefix:@"Email:"]){

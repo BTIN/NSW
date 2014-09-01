@@ -14,18 +14,26 @@
 NSMutableArray *parsedFaq;
 
 
-- (id)init {
-    self = [super initWithDataFromFile:@"faq.html"];
+- (id)init 
+{
+    self = [BaseNSWDataSource dataSourceOfType:NSWDataSourceTypeFAQ];
     
     return self;
 }
 
-- (void)parseLocalData{
++ (instancetype)dataSource
+{
+    return (FaqDataSource *)[super dataSourceOfType:NSWDataSourceTypeFAQ];
+}
+
+- (void)parseLocalData
+{
     [self parseFaqFromHtml];
     [super parseLocalData];
 }
 
--(void)parseFaqFromHtml{
+-(void)parseFaqFromHtml
+{
     
     parsedFaq = [[NSMutableArray alloc] init];
     NSString *rawHTML = [[NSString alloc] initWithData:self.localData encoding:NSUTF8StringEncoding];
@@ -65,7 +73,8 @@ NSMutableArray *parsedFaq;
     
 }
 
-- (FaqItem *)parseItemFromString:(NSString *) htmlContact {
+- (FaqItem *)parseItemFromString:(NSString *) htmlContact 
+{
     
     NSString *question;
     NSString *answer;
@@ -81,7 +90,8 @@ NSMutableArray *parsedFaq;
 
 
 //Returns string "?faq_id=xxxxxx" for some ID xxxxx
-- (NSString *)getIDFromString:(NSString *) htmlContact {
+- (NSString *)getIDFromString:(NSString *) htmlContact 
+{
     NSString *beforeIDString = @"><strong><a href=\"";
     //everything after "><strong><a href="
     NSString *afterHREF =[htmlContact componentsSeparatedByString:beforeIDString][0];
@@ -92,7 +102,8 @@ NSMutableArray *parsedFaq;
 }
 
 // Gets question portion of FAQ item
-- (NSString *)getQuestionFromString:(NSString *) htmlContact {
+- (NSString *)getQuestionFromString:(NSString *) htmlContact 
+{
     NSString *beforeDescriptionPattern = @"<strong><a href=\"?faq_id=\\d+?\">";
     NSString *dummy =  @" NEVERSEETHIS ";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:beforeDescriptionPattern options:0 error:nil];
@@ -106,7 +117,8 @@ NSMutableArray *parsedFaq;
     
 }
 
--(NSString *)getSectionFromString:(NSString *)htmlContact{
+-(NSString *)getSectionFromString:(NSString *)htmlContact
+{
     /* Sections will be in this order and include:
      -- NewStudents
      -- Housing

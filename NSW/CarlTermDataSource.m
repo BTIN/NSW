@@ -14,16 +14,23 @@
 NSMutableArray * parsedCarlTerms;
 
 - (id)init {
-    self = [super initWithDataFromFile:@"terms.json"];
+    self = [BaseNSWDataSource dataSourceOfType:NSWDataSourceTypeCarlTerm];
 
     return self;
 }
 
-- (void)parseLocalData{
++ (instancetype)dataSource
+{
+    return (CarlTermDataSource *)[super dataSourceOfType:NSWDataSourceTypeCarlTerm];
+}
+
+- (void)parseLocalData
+{
     [self parseAndSet:self.localData];
     [super parseLocalData];
 }
-- (void)parseAndSet:(NSData *)JSONData {
+- (void)parseAndSet:(NSData *)JSONData 
+{
     parsedCarlTerms = [[NSMutableArray alloc] init];
     NSDictionary *termlist = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
     for(id key in termlist) {
