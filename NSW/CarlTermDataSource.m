@@ -1,5 +1,5 @@
 //
-//  DictionaryDataSource.m
+//  CarlTermDataSource.m
 //  NSW
 //
 //  Created by Alex Simonides on 5/13/14.
@@ -13,17 +13,20 @@
 
 NSMutableArray * parsedCarlTerms;
 
-- (id)init {
-    self = [super initWithDataFromFile:@"terms.json"];
+- (instancetype)init
+{
+    self = [super initWithDataFromFile:CarlTermsFileName];
 
     return self;
 }
 
-- (void)parseLocalData{
+- (void)parseLocalData
+{
     [self parseAndSet:self.localData];
     [super parseLocalData];
 }
-- (void)parseAndSet:(NSData *)JSONData {
+- (void)parseAndSet:(NSData *)JSONData 
+{
     parsedCarlTerms = [[NSMutableArray alloc] init];
     NSDictionary *termlist = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
     for(id key in termlist) {

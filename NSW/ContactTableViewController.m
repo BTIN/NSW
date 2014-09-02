@@ -12,9 +12,6 @@
 #import "Contact.h"
 #import "ContactDataSource.h"
 #import "DataSourceManager.h"
-#import <MessageUI/MessageUI.h>
-#import <QuartzCore/QuartzCore.h>
-#import "ContactButton.h"
 #import "SWRevealViewController.h"
 
 @interface ContactTableViewController ()
@@ -44,7 +41,7 @@
     self.listItems = [[NSMutableArray alloc] init];
     
     //Connect this VC to the shared DataSource
-    [[[DataSourceManager sharedDSManager] getContactDataSource] attachVCBackref:self];
+    [[[DataSourceManager sharedDSManager] contactDataSource] attachVCBackref:self];
 
 }
 - (IBAction)phoneLabel:(id)sender {

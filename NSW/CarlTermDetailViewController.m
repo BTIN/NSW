@@ -53,7 +53,9 @@
 
 
     //Connect this VC to the shared DataSource
-    //[[[DataSourceManager sharedDSManager] getCarlTermDataSource] attachVCBackref:self];
+    //[[[DataSourceManager sharedDSManager] getCarlTermDataSource] attachVCBackref:self]; //old
+    
+    //[[[DataSourceManager sharedDSManager] carlTermDataSource] attachVCBackref:self]; // new
 }
 
 - (void)didReceiveMemoryWarning

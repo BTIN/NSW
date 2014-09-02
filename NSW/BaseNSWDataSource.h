@@ -7,13 +7,26 @@
 #import "BaseNSWTableViewController.h"
 
 
+//typedef NS_ENUM(NSInteger, NSWDataSourceType) {
+//    NSWDataSourceTypeEvent = 0,
+//    NSWDataSourceTypeContact,
+//    NSWDataSourceTypeCarlTerm,
+//    NSWDataSourceTypeFAQ
+//};
+
+extern NSString *const EventsFileName;
+extern NSString *const ContactsFileName;
+extern NSString *const CarlTermsFileName;
+extern NSString *const FAQsFileName;
+
 @interface BaseNSWDataSource : NSObject {
     __weak BaseNSWTableViewController *myTableViewController;
 }
 // the time that the download started
-@property (nonatomic, strong) NSDate *downloadStarted;
+@property (nonatomic, strong, readonly) NSDate *downloadStartTime;
 
 @property (nonatomic, strong) NSData *localData;
+@property (nonatomic, strong) NSURL *url;
 
 // The list of objects specific to each dataSource (Events, CarlTerms, or Contacts)
 @property (nonatomic, strong) NSArray *dataList;

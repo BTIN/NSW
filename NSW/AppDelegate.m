@@ -51,11 +51,25 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSLog(@"NSW did enter background");
+    NSMutableDictionary *tasks = [[FLDownloader sharedDownloader] tasks];
+    for (NSURL *url in tasks) {
+        NSLog(@"pausing %@", url);
+        FLDownloadTask *downloadTask = [[FLDownloader sharedDownloader] downloadTaskForURL:url];
+        [downloadTask.downloadTask suspend];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    NSLog(@"NSW will enter foreground");
+    NSMutableDictionary *tasks = [[FLDownloader sharedDownloader] tasks];
+    for (NSURL *url in tasks) {
+        NSLog(@"resuming %@", url);
+        FLDownloadTask *downloadTask = [[FLDownloader sharedDownloader] downloadTaskForURL:url];
+        [downloadTask start];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

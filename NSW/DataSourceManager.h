@@ -4,19 +4,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EventDataSource.h"
-#import "ContactDataSource.h"
-#import "CarlTermDataSource.h"
-#import "FaqDataSource.h"
+
+@class EventDataSource;
+@class ContactDataSource;
+@class CarlTermDataSource;
+@class FaqDataSource;
 
 
 @interface DataSourceManager : NSObject
 
 + (id) sharedDSManager;
 
--(EventDataSource *) getEventDataSource;
--(ContactDataSource *) getContactDataSource;
--(CarlTermDataSource *) getCarlTermDataSource;
--(FaqDataSource *) getFaqDataSource;
+@property (nonatomic, strong, readonly) EventDataSource *eventDataSource;
+@property (nonatomic, strong, readonly) ContactDataSource *contactDataSource;
+@property (nonatomic, strong, readonly) CarlTermDataSource *carlTermDataSource;
+@property (nonatomic, strong, readonly) FaqDataSource *faqDataSource;
 
 @end

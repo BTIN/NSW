@@ -4,14 +4,18 @@
 //
 
 #import "DataSourceManager.h"
+
 #import "EventDataSource.h"
+#import "ContactDataSource.h"
+#import "CarlTermDataSource.h"
+#import "FaqDataSource.h"
 
 
 @interface DataSourceManager ()
-    @property EventDataSource *eventDataSource;
-    @property ContactDataSource *contactDataSource;
-    @property CarlTermDataSource *carlTermDataSource;
-    @property FaqDataSource *faqDataSource;
+@property (nonatomic, strong, readwrite) EventDataSource *eventDataSource;
+@property (nonatomic, strong, readwrite) ContactDataSource *contactDataSource;
+@property (nonatomic, strong, readwrite) CarlTermDataSource *carlTermDataSource;
+@property (nonatomic, strong, readwrite) FaqDataSource *faqDataSource;
 @end
 
 
@@ -48,25 +52,43 @@ static DataSourceManager *sharedDSManager = nil;
 
 // raise an exception
 - (id)init {
-    [NSException exceptionWithName:@"InvalidOperation" reason:@"Cannot invoke init on a Singleton class. Use sharedDSManager." userInfo:nil];
+    [NSException exceptionWithName:@"InvalidOperation" 
+                            reason:@"Cannot invoke init on a Singleton class. Use sharedDSManager." 
+                          userInfo:nil];
     return nil;
 }
 
 #pragma mark ---- Getters
 
-- (EventDataSource *) getEventDataSource {
-    return self.eventDataSource;
+- (EventDataSource *)eventDataSource
+{
+    if (!_eventDataSource) {
+        _eventDataSource = [[EventDataSource alloc] init];
+    }
+    return _eventDataSource;
 }
 
-- (ContactDataSource *)getContactDataSource {
-    return self.contactDataSource;
+- (ContactDataSource *)contactDataSource
+{
+    if (!_contactDataSource) {
+        _contactDataSource = [[ContactDataSource alloc] init];
+    }
+    return _contactDataSource;
 }
 
-- (CarlTermDataSource *)getCarlTermDataSource {
-    return self.carlTermDataSource;
+- (CarlTermDataSource *)carlTermDataSource
+{
+    if (!_carlTermDataSource) {
+        _carlTermDataSource = [[CarlTermDataSource alloc] init];
+    }
+    return _carlTermDataSource;
 }
 
-- (FaqDataSource *)getFaqDataSource {
-    return self.faqDataSource;
+- (FaqDataSource *)faqDataSource
+{
+    if (!_faqDataSource) {
+        _faqDataSource = [[FaqDataSource alloc] init];
+    }
+    return _faqDataSource;
 }
 @end
