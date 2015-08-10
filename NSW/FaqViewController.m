@@ -71,7 +71,9 @@ int selectedIndex;
  
     
     //Connect this VC to the shared DataSource
-    [[[DataSourceManager sharedDSManager] getFaqDataSource] attachVCBackref:self];
+    [[[DataSourceManager sharedDSManager] getFaqDataSource] attachVCBackref:self]; //old
+    
+    //[[[DataSourceManager sharedDSManager] faqDataSource] attachVCBackref:self]; // new
     
     [self followScrollView:self.tableView];
     

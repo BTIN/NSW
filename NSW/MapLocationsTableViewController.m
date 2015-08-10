@@ -353,7 +353,7 @@
     GMSMarker *htoMarker = [[GMSMarker alloc] init];
     htoMarker.position = CLLocationCoordinate2DMake(44.463266, -93.147314);
     htoMarker.title = @"Hill of Three Oaks";
-    MapLocation *hillThreeOaks = [[MapLocation alloc]initWithLocation:@"Hill of Thre Oaks" Coordinates:htoMarker];
+    MapLocation *hillThreeOaks = [[MapLocation alloc]initWithLocation:@"Hill of Three Oaks" Coordinates:htoMarker];
     [_locationsList addObject:hillThreeOaks];
     
     // Hunt Cottage

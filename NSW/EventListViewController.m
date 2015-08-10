@@ -37,7 +37,9 @@
 
 
     //Connect this VC to the shared DataSource
-    myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource];
+    myEventDS = [[DataSourceManager sharedDSManager] getEventDataSource]; //old
+    
+    //myEventDS = [[DataSourceManager sharedDSManager] eventDataSource]; // new
     
     //initial date shown, should be whatever day it is if your current day is within nsw
     // if I put it a day ahead it seems to work? otherwise the initial date is one day back
@@ -223,6 +225,7 @@
             currentDate = [EventDataSource oneDayBefore:currentDate];
             [self getEventsFromCurrentDate];
             [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
+
             [self updateDateLabelToCurrentDate];
 
         }

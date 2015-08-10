@@ -221,7 +221,7 @@ example ICS event:
             loc_ = @"LDC Classrooms";
         }
         
-        if([title_ isEqualToString:@"NSW: Meaning, Music, & Muffins"]){
+        if([title_ isEqualToString:@"NSW: Meaning, Music & Muffins"]){
             loc_ = @"Chapel Lobby (Street Side)";
         }
         
